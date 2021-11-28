@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'ManyTwitch' });
 });
 
+router.get('/error', function(req, res, next) {
+  res.render('error', { title: 'ManyTwitch' });
+})
+
 module.exports = router;
