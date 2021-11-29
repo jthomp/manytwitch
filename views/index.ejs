@@ -46,7 +46,13 @@
               &nbsp;ManyTwitch is inspired by <a href="https://github.com/bhamrick/multitwitch" target="_blank">Multitwitch</a>.
             </p>
             <p>Copyright &copy; Antillian. All Rights Reserved.</p>        
-            <p>Version <%= version %></p>
+            <p><a href="javascript:;" 
+                  data-toggle="modal" 
+                  data-target="#changelog-modal"
+                  title="Click to view changelog.">
+                  Version <%= version %>
+               </a>
+            </p>
           </div>
         </div>
       </div>
@@ -215,6 +221,8 @@
         </iframe>
       </span>
     </script>
+
+    <%- include('modal'); %>
 
   </body>
 </html>
