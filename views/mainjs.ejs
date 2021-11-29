@@ -5,14 +5,6 @@
     ManyTwitch.streams.update(); // add the streams to the modal and the page.
 
     $('#streams-modal').modal('handleUpdate');
-    $('#streams-modal #new_stream').val('');
-    $('#streams-modal #add-stream-btn').attr('disabled', 'disabled');
-    var saveBtn = $('#streams-modal #save-btn');
-    saveBtn.attr('disabled', 'disabled');
-
-    if ($('.stream').length < 1) {
-      saveBtn.attr('disabled', 'disabled');
-    }
 
     $('#streams-modal').on('shown.bs.modal', function(e) {
       $('#streams-list tr').remove();
