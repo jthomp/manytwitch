@@ -1,0 +1,55 @@
+<script type="text/javascript">
+
+  $(function() {
+    ManyTwitch.manager.setStreams(ManyTwitch.manager.getStreamsFromURL()); // init session storage item.
+    ManyTwitch.streams.updateHistory(); // set url path.
+    ManyTwitch.streams.update(); // add the streams to the modal and the page.
+
+    $('#streams-modal').modal('handleUpdate');
+    $('#streams-modal #new_stream').val('');
+    $('#streams-modal #add-stream-btn').attr('disabled', 'disabled');
+    var saveBtn = $('#streams-modal #save-btn');
+    saveBtn.attr('disabled', 'disabled');
+
+    if ($('.stream').length < 1) {
+      saveBtn.attr('disabled', 'disabled');
+    }
+
+    $('#streams-modal').on('shown.bs.modal', function(e) {
+      $('#streams-list tr').remove();
+      $.each(ManyTwitch.manager.getStreams(), function(idx, value) {
+        ManyTwitch.streams.addToModalTable(value);
+      });
+      $('#new_stream').focus();
+    });
+  });   
+
+  $('#streams-modal #save-btn').on('click', function() {
+    var streamsList = $('#streams-modal #streams-list [data-stream-name]');
+    var streams = ManyTwitch.manager.getStreams();
+    var newStreams = [];
+
+    $.each(streamsList, function(idx, value) {
+      var streamName = $(value).data('stream-name');
+      if ($(value).is(':checked')) {
+        newStreams.push(streamName);
+      } else {
+        $('tr#tr-'+streamName).remove();
+      }
+    });
+
+    ManyTwitch.manager.setStreams(newStreams.join(','));
+    ManyTwitch.streams.update();
+  });
+
+  $('#streams-modal #new_stream').on('paste', function() {
+    var addStreamBtn = $('#streams-modal #add-stream-btn');
+
+    if ($(this).length < 1) {
+      addStreamBtn.attr('disabled', 'disabled');
+    } else {
+      addStreamBtn.removeAttr('disabled');
+    }
+  });
+
+</script>
