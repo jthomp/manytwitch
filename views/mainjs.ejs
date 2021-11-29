@@ -2,7 +2,7 @@
 
   $(function() {
     ManyTwitch.manager.setStreams(ManyTwitch.manager.getStreamsFromURL()); // init session storage item.
-    ManyTwitch.streams.updateHistory(); // set url path.
+    // ManyTwitch.streams.updateHistory(); // set url path.
     ManyTwitch.streams.update(); // add the streams to the modal and the page.
 
     $('#streams-modal').modal('handleUpdate');
