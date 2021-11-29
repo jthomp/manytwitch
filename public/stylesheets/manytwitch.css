@@ -59,3 +59,9 @@ html, body {
   color: #fff !important;
   background-color: rgb(159, 138, 199);
 }
+
+p#author {
+  font-size: 0.7em;
+  text-align: center;
+  margin: 5px 0;
+}
