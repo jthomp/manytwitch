@@ -43,6 +43,7 @@ ManyTwitch.manager = {
   },
 
   getStreamsFromURL() {
+    // unfortunately, this currently doesn't work.
     var path = window.location.pathname;
     var streamsFromURL = [];
     var splits = path.split('/');
@@ -168,7 +169,7 @@ ManyTwitch.streams = {
 
     console.log('\t Current streams: '+streams);
 
-    ManyTwitch.streams.updateHistory();
+    // ManyTwitch.streams.updateHistory();
     console.log('ManyTwitch.streams.update() - End');
   },
 
