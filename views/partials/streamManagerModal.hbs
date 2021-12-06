@@ -1,0 +1,66 @@
+<div id="streams-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Streams...</h5>
+        <button type="button" 
+                class="close"
+                data-dismiss="modal" 
+                aria-label="Close"
+                title="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped stream-list" id="streams-list">
+          <tbody>
+          </tbody>
+        </table>
+        <form id="new_stream_form" name="new_stream_form">
+          <input type="text" 
+                  name="new_stream" 
+                  id="new_stream" 
+                  value="" 
+                  placeholder="Add stream..." 
+                  class="form-control"
+                  onkeyup="ManyTwitch.manager.toggleAddButton();"
+                  autocomplete="on" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="https://www.twitch.tv/directory/following/live"
+            class="btn btn-purple"
+            id="list-on-twitch-btn"
+            rel="nofollow"
+            target="_blank"
+            title="See the list of streamers you're following on Twitch.">
+          Following
+          <i class="fa fa-external-link"></i>
+        </a>
+        <button type="button" 
+                class="btn btn-success" 
+                id="add-stream-btn" 
+                onclick="ManyTwitch.streams.addToModalTable($('#new_stream').val()); return false;"
+                title="Add a new stream."
+                disabled=disabled>
+          <i class="fa fa-plus">&nbsp;</i>Add Stream
+        </button>
+        <button type="submit" 
+                class="btn btn-primary" 
+                id="save-btn"
+                data-dismiss="modal"
+                title="Save your streams and watch!"
+                disabled=disabled>
+          <i class="fa fa-save">&nbsp;</i>Save
+        </button>
+        <button type="button" 
+                class="btn btn-secondary" 
+                data-dismiss="modal" 
+                id="cancel-btn"
+                title="Cancel changes.">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

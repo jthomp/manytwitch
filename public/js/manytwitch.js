@@ -76,10 +76,9 @@ ManyTwitch.streams = {
 
     console.log('\t streamParm: '+streamParm);
     if (streamParm != "") {
-      console.log('\t Adding streamParm '+streamParm);
       var streamsTable = $('#streams-modal #streams-list tbody');
       var newStreamField = $('#streams-modal #new_stream');
-      var newStream = streamParm != "" ? streamParm : newStreamField.val();
+      var newStream = streamParm;
       var source = $('#streams-modal-new-stream-template').html();
       var template = Handlebars.compile(source);
       var context = { stream: newStream };
