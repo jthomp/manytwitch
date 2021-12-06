@@ -1,18 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta content="Watch multiple Twitch streams in your browser." name="description" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <title>ManyTwitch - Watch multiple Twitch streams</title>
-    <link rel="stylesheet" media="all" href="stylesheets/font-awesome.min.css">
-    <link rel="stylesheet" media="all" href="stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" media="all" href="stylesheets/manytwitch.css">
-    <script src="js/jquery.min.js"></script>
-    <script defer src="js/bootstrap.min.js"></script>
-    <script defer src="js/handlebars.js"></script>
-    <script defer src="js/manytwitch.js"></script>
-    <%- include('analytics') %>
+    {{> head }}
   </head>
   <body>
     <div id="container">
@@ -53,7 +42,7 @@
               data-toggle="modal" 
               data-target="#changelog-modal"
               title="Click to view the changelog.">
-              Version <%= version %>
+              Version {{{version}}}
             </a>
           </p>
         </div>
@@ -131,8 +120,8 @@
         </div>
       </div>
     </div>
-    <%- include('mainjs') %>
-    <%- include('new_stream_template') %>
-    <%- include('modal') %>
+    {{> mainjs }}
+    {{> newStreamTemplate }}
+    {{> modal }}
   </body>
 </html>

@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 
-var app = require('../server');
-var debug = require('debug')('manytwitch:server');
+var app = require('../app');
+var debug = require('debug')('manytwitch:app');
 var http = require('http');
 
 /**
