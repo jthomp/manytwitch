@@ -1,7 +1,7 @@
-var express = require('express');
+const express = require('express');
 const path = require('path');
-var app = express();
-var version = process.env.npm_package_version
+const app = express();
+const version = process.env.npm_package_version
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')))
