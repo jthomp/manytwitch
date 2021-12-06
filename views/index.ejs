@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="Watch multiple Twitch streams in your browser." name="description" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <title>ManyTwitch - Watch multiple Twitch streams</title>
+    <link rel="stylesheet" media="all" href="stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" media="all" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" media="all" href="stylesheets/manytwitch.css">
+    <script src="js/jquery.min.js"></script>
+    <script defer src="js/bootstrap.min.js"></script>
+    <script defer src="js/handlebars.js"></script>
+    <script defer src="js/manytwitch.js"></script>
+    <%- include('analytics') %>
+  </head>
+  <body>
+    <div id="container">
+
+      <div id="manage-btn">
+        <button type='button'
+                class='btn btn-sm btn-secondary'
+                data-toggle='modal'
+                data-target='#streams-modal'>
+          <i class='fa fa-television'>&nbsp;</i>Streams
+        </button>
+      </div>
+
+      <div id="default" class="card border-secondary mb-3">
+        <h3 class="card-header">Welcome to ManyTwitch!</h3>
+        <div class="card-body">
+          <div class="card-text">
+            <button type='button'
+                    class='btn btn-lg btn-secondary'
+                    data-toggle='modal'
+                    data-target='#streams-modal'
+                    title="Manage the streams you're currently watching.">
+              <i class="fa fa-television">&nbsp;</i>Streams
+            </button>
+            <br />
+            <br />
+            <span>Please click the "Streams" button to get started.</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <p id="author">
+            Copyright &copy; <a href="https://twitter.com/antillian_"
+            target= "_blank"
+            title="Antillian on Twitter">Antillian</a>.&nbsp;&nbsp;All Rights Reserved.
+            &nbsp;ManyTwitch is inspired by <a href="https://github.com/bhamrick/multitwitch" target="_blank">Multitwitch</a>.
+            <br />
+            <a href="javascript:;" 
+              data-toggle="modal" 
+              data-target="#changelog-modal"
+              title="Click to view the changelog.">
+              Version <%= version %>
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div id="streams"></div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <div id="stream-manager">
+    <div id="streams-modal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Streams...</h5>
+            <button type="button" 
+                    class="close"
+                    data-dismiss="modal" 
+                    aria-label="Close"
+                    title="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped stream-list" id="streams-list">
+              <tbody>
+              </tbody>
+            </table>
+            <form id="new_stream_form" name="new_stream_form">
+              <input type="text" 
+                     name="new_stream" 
+                     id="new_stream" 
+                     value="" 
+                     placeholder="Add stream..." 
+                     class="form-control"
+                     onkeyup="ManyTwitch.manager.toggleAddButton();"
+                     autocomplete="on" />
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a href="https://www.twitch.tv/directory/following/live"
+               class="btn btn-purple"
+               id="list-on-twitch-btn"
+               rel="nofollow"
+               target="_blank"
+               title="See the list of streamers you're following on Twitch.">
+              Following
+              <i class="fa fa-external-link"></i>
+            </a>
+            <button type="button" 
+                    class="btn btn-success" 
+                    id="add-stream-btn" 
+                    onclick="ManyTwitch.streams.addToModalTable($('#new_stream').val()); return false;"
+                    title="Add a new stream."
+                    disabled=disabled>
+              <i class="fa fa-plus">&nbsp;</i>Add Stream
+            </button>
+            <button type="submit" 
+                    class="btn btn-primary" 
+                    id="save-btn"
+                    data-dismiss="modal"
+                    title="Save your streams and watch!"
+                    disabled=disabled>
+              <i class="fa fa-save">&nbsp;</i>Save
+            </button>
+            <button type="button" 
+                    class="btn btn-secondary" 
+                    data-dismiss="modal" 
+                    id="cancel-btn"
+                    title="Cancel changes.">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('mainjs') %>
+    <%- include('new_stream_template') %>
+    <%- include('modal') %>
+  </body>
+</html>
