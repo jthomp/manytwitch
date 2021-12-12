@@ -12,20 +12,30 @@
       <br />
       <br />
       <span>Please click the "Streams" button to get started.</span>
+      <br />
     </div>
   </div>
-  <div class="card-footer">
-    <p id="author">
-      Created by <a href="https://twitter.com/antillian_"
-      target= "_blank"
-      title="Antillian on Twitter">Antillian.</a>
-      <br />
-      <a href="javascript:;" 
-         data-toggle="modal" 
-         data-target="#changelog-modal"
-         title="Click to view the changelog.">
-          (Version <%= version %>)
-      </a>
-    </p>
+  <div id="footer"
+       class="card-footer text-muted">
+    Created by 
+    <a href="https://twitter.com/antillian_"
+       target= "_blank"
+       title="Antillian on Twitter">Antillian.</a>
+    |
+    <a href="javascript:;" 
+        data-toggle="modal" 
+        data-target="#changelog-modal"
+        title="Click to view the changelog.">
+        (Version <%= version %>)
+    </a>
+    |
+    <a href="javascript:;"
+       data-toggle="modal"
+       data-target="#psod-modal"
+       title="Click for more information.">
+       PSOD Warning
+    </a>
   </div>
 </div>
+
+<%- include('psodModal') %>
