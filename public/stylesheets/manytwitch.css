@@ -65,3 +65,11 @@ p#author {
   text-align: center;
   margin: 5px 0;
 }
+
+#changelog h4 {
+  font-size: 1.1em;
+}
+
+#changelog li {
+  font-size: 0.9em;
+}
