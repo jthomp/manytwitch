@@ -15,6 +15,10 @@ if (typeof ManyTwitch === typeof undefined) {
 
 })();
 
+log = function(msg='') {
+  console.log(msg);
+}
+
 ManyTwitch.manager = {
   toggleAddButton() {
     const newStreamInput = $('#streams-modal #new_stream');
@@ -34,30 +38,14 @@ ManyTwitch.manager = {
   },
 
   setStreams(streamsParm) {
-    console.log('ManyTwitch.manager.setStreams() - Begin');
+    log('ManyTwitch.manager.setStreams() - Begin');
 
-    console.log(`\t streamsParm: ${streamsParm}`);
+    log(`\t streamsParm: ${streamsParm}`);
     const streams = (typeof streamsParm == typeof undefined) ? '' : streamsParm;
 
     sessionStorage.setItem('streams', streams);
 
-    console.log('ManyTwitch.manager.setStreams() - End');
-  },
-
-  getStreamsFromURL() {
-    // unfortunately, this currently doesn't work.
-    const path = window.location.pathname;
-    let streamsFromURL = [];
-    const splits = path.split('/');
-
-    if (splits.length > 0) {
-      $.each(splits, function(idx, value) {
-        if (value != "") {
-          streamsFromURL.push(value);
-        }
-      });
-    }
-    return streamsFromURL;
+    log('ManyTwitch.manager.setStreams() - End');
   },
 
   // Util methods.
@@ -74,11 +62,11 @@ ManyTwitch.manager = {
 ManyTwitch.streams = {
 
   addToModalTable(streamParm) {
-    console.log('ManyTwitch.streams.addToModalTable() - Begin');
+    log('ManyTwitch.streams.addToModalTable() - Begin');
 
-    console.log(`t streamParm: ${streamParm}`);
+    log(`t streamParm: ${streamParm}`);
     if (streamParm != "") {
-      console.log(`\t Adding streamParm ${streamParm}`);
+      log(`\t Adding streamParm ${streamParm}`);
       const streamsTable = $('#streams-modal #streams-list tbody');
       const newStreamField = $('#streams-modal #new_stream');
       let newStream = streamParm != "" ? streamParm : newStreamField.val();
@@ -97,11 +85,11 @@ ManyTwitch.streams = {
       $('#new_stream').focus();
     }
 
-    console.log('ManyTwitch.streams.addToModalTable() - End');
+    log('ManyTwitch.streams.addToModalTable() - End');
   },
   
   update() {
-    console.log('ManyTwitch.streams.update() - Begin');
+    log('ManyTwitch.streams.update() - Begin');
     let streamsContainer = $('#streams');
     let manage = $('#manage-btn');
     let streams = ManyTwitch.manager.getStreams();
@@ -110,11 +98,11 @@ ManyTwitch.streams = {
 
     if (streams.length > 0) {
 
-      console.log('\t Current streams: '+streams);
+      log('\t Current streams: '+streams);
 
       $.each(streams, function(idx, value) {
         if ($(`span#stream-${value}-video`).length == 0) {
-          console.log(`\t Adding new stream: ${value}`);
+          log(`\t Adding new stream: ${value}`);
           const newStreamSource = $('#new-stream-template').html();
           const newStreamTemplate = Handlebars.compile(newStreamSource);
           const newStreamContext = { stream: value };
@@ -174,14 +162,14 @@ ManyTwitch.streams = {
       manage.hide();
     }
 
-    console.log(`\t Current streams: ${streams}`);
+    log(`\t Current streams: ${streams}`);
 
-    // ManyTwitch.streams.updateHistory();
-    console.log('ManyTwitch.streams.update() - End');
+    ManyTwitch.streams.updateHistory();
+    log('ManyTwitch.streams.update() - End');
   },
 
   updateHistory() {
-    console.log("ManyTwitch.streams.updateHistory() - Start");
+    log("ManyTwitch.streams.updateHistory() - Start");
 
     let streams = ManyTwitch.manager.getStreams();
     let newUrl = "";
@@ -196,6 +184,6 @@ ManyTwitch.streams = {
       history.replaceState(null, "", "/");
     }
 
-    console.log("ManyTwitch.streams.updateHistory() - End");
+    log("ManyTwitch.streams.updateHistory() - End");
   }
 }

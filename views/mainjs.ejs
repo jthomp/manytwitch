@@ -1,7 +1,7 @@
 <script type="text/javascript">
 
   $(function() {
-    ManyTwitch.manager.setStreams(); // init session storage item.
+    ManyTwitch.manager.setStreams('<%= streamsFromParms %>'); // init session storage item.
     ManyTwitch.streams.update();
     $('#streams-modal').modal('handleUpdate');
   });
