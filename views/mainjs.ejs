@@ -9,12 +9,13 @@
   $('#streams-modal').on('shown.bs.modal', function(e) {
     var addStreamBtn = $('#streams-modal #add-stream-btn');
     var saveBtn = $('#streams-modal #save-btn');
+    var newStream = $('#new_stream');
 
     $('#streams-list tr').remove();
     $.each(ManyTwitch.manager.getStreams(), function(idx, value) {
       ManyTwitch.streams.addToModalTable(value);
     });
-    $('#new_stream').focus();
+    newStream.focus();
 
     if (ManyTwitch.manager.streamCount() < 1) {
       addStreamBtn.attr('disabled', 'disabled');
@@ -23,6 +24,7 @@
       addStreamBtn.removeAttr('disabled');
       saveBtn.removeAttr('disabled');
     }
+
   });
 
   $('#streams-modal #save-btn').on('click', function() {

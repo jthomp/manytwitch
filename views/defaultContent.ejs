@@ -1,0 +1,31 @@
+<div id="default" class="card border-secondary mb-3">
+  <h3 class="card-header">Welcome to ManyTwitch!</h3>
+  <div class="card-body">
+    <div class="card-text">
+      <button type='button'
+              class='btn btn-lg btn-purple'
+              data-toggle='modal'
+              data-target='#streams-modal'
+              title="Manage the streams you're currently watching.">
+        <i class="fa fa-television">&nbsp;</i>Streams
+      </button>
+      <br />
+      <br />
+      <span>Please click the "Streams" button to get started.</span>
+    </div>
+  </div>
+  <div class="card-footer">
+    <p id="author">
+      Created by <a href="https://twitter.com/antillian_"
+      target= "_blank"
+      title="Antillian on Twitter">Antillian</a>
+      <br />
+      <a href="javascript:;" 
+         data-toggle="modal" 
+         data-target="#changelog-modal"
+         title="Click to view the changelog.">
+          Version <%= version %>
+      </a>
+    </p>
+  </div>
+</div>
