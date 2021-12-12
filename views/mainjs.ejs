@@ -27,6 +27,10 @@
 
   });
 
+  $('#streams-modal').on('hidden.bs.modal', function(e) {
+    $('#new_stream').val('');
+  });
+
   $('#streams-modal #save-btn').on('click', function() {
     var streamsList = $('#streams-modal #streams-list [data-stream-name]');
     var streams = ManyTwitch.manager.getStreams();
