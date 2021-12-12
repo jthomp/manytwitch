@@ -1,5 +1,7 @@
-if (typeof ManyTwitch == typeof undefined) {
-  var ManyTwitch = {};
+const ManyTwitch = {};
+
+if (typeof ManyTwitch === typeof undefined) {
+  const ManyTwitch = {};
 }
 
 (function() {
@@ -15,8 +17,8 @@ if (typeof ManyTwitch == typeof undefined) {
 
 ManyTwitch.manager = {
   toggleAddButton() {
-    var newStreamInput = $('#streams-modal #new_stream');
-    var addButton = $('#streams-modal #add-stream-btn');
+    const newStreamInput = $('#streams-modal #new_stream');
+    const addButton = $('#streams-modal #add-stream-btn');
 
     if (newStreamInput.val().length > 0) {
       addButton.removeAttr('disabled');
@@ -27,15 +29,15 @@ ManyTwitch.manager = {
 
   // returns streams as an array
   getStreams() {
-    var streams = sessionStorage.getItem('streams');
+    let streams = sessionStorage.getItem('streams');
     return (streams == '') ? [] : streams.split(',');
   },
 
   setStreams(streamsParm) {
     console.log('ManyTwitch.manager.setStreams() - Begin');
 
-    console.log('\t streamsParm: '+streamsParm);
-    var streams = (typeof streamsParm == typeof undefined) ? '' : streamsParm;
+    console.log(`\t streamsParm: ${streamsParm}`);
+    const streams = (typeof streamsParm == typeof undefined) ? '' : streamsParm;
 
     sessionStorage.setItem('streams', streams);
 
@@ -44,9 +46,9 @@ ManyTwitch.manager = {
 
   getStreamsFromURL() {
     // unfortunately, this currently doesn't work.
-    var path = window.location.pathname;
-    var streamsFromURL = [];
-    var splits = path.split('/');
+    const path = window.location.pathname;
+    let streamsFromURL = [];
+    const splits = path.split('/');
 
     if (splits.length > 0) {
       $.each(splits, function(idx, value) {
@@ -74,16 +76,16 @@ ManyTwitch.streams = {
   addToModalTable(streamParm) {
     console.log('ManyTwitch.streams.addToModalTable() - Begin');
 
-    console.log('\t streamParm: '+streamParm);
+    console.log(`t streamParm: ${streamParm}`);
     if (streamParm != "") {
-      console.log('\t Adding streamParm '+streamParm);
-      var streamsTable = $('#streams-modal #streams-list tbody');
-      var newStreamField = $('#streams-modal #new_stream');
-      var newStream = streamParm != "" ? streamParm : newStreamField.val();
-      var source = $('#streams-modal-new-stream-template').html();
-      var template = Handlebars.compile(source);
-      var context = { stream: newStream };
-      var html = template(context);
+      console.log(`\t Adding streamParm ${streamParm}`);
+      const streamsTable = $('#streams-modal #streams-list tbody');
+      const newStreamField = $('#streams-modal #new_stream');
+      let newStream = streamParm != "" ? streamParm : newStreamField.val();
+      const source = $('#streams-modal-new-stream-template').html();
+      let template = Handlebars.compile(source);
+      let context = { stream: newStream };
+      let html = template(context);
       streamsTable.append(html);
   
       newStreamField.val('');
@@ -95,50 +97,53 @@ ManyTwitch.streams = {
       $('#new_stream').focus();
     }
 
-    console.log('ManyTwitch.streams.addToModalTable() - End');    
+    console.log('ManyTwitch.streams.addToModalTable() - End');
   },
   
   update() {
     console.log('ManyTwitch.streams.update() - Begin');
-    var streamsContainer = $('#streams');
-    var manage = $('#manage-btn');
-    var streams = ManyTwitch.manager.getStreams();
+    let streamsContainer = $('#streams');
+    let manage = $('#manage-btn');
+    let streams = ManyTwitch.manager.getStreams();
+    let iframeStreams;
+    let numStreams = 0;
 
     if (streams.length > 0) {
 
       console.log('\t Current streams: '+streams);
 
       $.each(streams, function(idx, value) {
-        var existing = $('span#stream-'+value+'-video');
-        if (existing.length == 0) {
-          console.log('\t Adding new stream: '+value);
-          var newStreamSource = $('#new-stream-template').html();
-          var newStreamTemplate = Handlebars.compile(newStreamSource);
-          var newStreamContext = { stream: value };
-          var newStreamHTML = newStreamTemplate(newStreamContext);
+        if ($(`span#stream-${value}-video`).length == 0) {
+          console.log(`\t Adding new stream: ${value}`);
+          const newStreamSource = $('#new-stream-template').html();
+          const newStreamTemplate = Handlebars.compile(newStreamSource);
+          const newStreamContext = { stream: value };
+          const newStreamHTML = newStreamTemplate(newStreamContext);
           streamsContainer.append(newStreamHTML);  
         }
       });
 
-      $.each($('iframe.stream'), function(idx, value) {
-        var streamName = $(this).closest('span').prop('id').split('-')[1];
+      iframeStreams = $('iframe.stream');
+      numStreams = iframeStreams.length;
+
+      $.each(iframeStreams, function(idx, value) {
+        let streamName = $(this).closest('span').prop('id').split('-')[1];
         if (!streams.includes(streamName)) {
           $(this).closest('span').remove();
         }
       });
 
-      var numStreams = $('iframe.stream').length;
-      var windowHeight = $(window).innerHeight() - 48;
-      var containerWidth = $('#container').width();
+      const windowHeight = $(window).innerHeight() - 48;
+      const containerWidth = $('#container').width();
       streamsContainer.width(containerWidth);
-      var calculatedHeight = 0;
-      var calculatedWidth = 0;
-      var containerPadding = 0;
+      let calculatedHeight = 0;
+      let calculatedWidth = 0;
+      let containerPadding = 0;
 
       for (var perRow=1; perRow<=numStreams; perRow++) {
-        var numRows = Math.ceil(numStreams / perRow);
-        var maxWidth = Math.floor(containerWidth / perRow) - 4;
-        var maxHeight = Math.floor(windowHeight / numRows) - 4;
+        const numRows = Math.ceil(numStreams / perRow);
+        let maxWidth = Math.floor(containerWidth / perRow) - 4;
+        let maxHeight = Math.floor(windowHeight / numRows) - 4;
 
         if (maxWidth * 9/16 < maxHeight) {
           maxHeight = maxWidth * 9/16;
@@ -158,16 +163,18 @@ ManyTwitch.streams = {
       streamsContainer.css('padding-top', containerPadding);
     }
 
+    const defaultContainer = $('#default');
+
     if (numStreams > 0) {
-      $('#default').hide();
+      defaultContainer.hide();
       manage.show();
     } else {
-      $('#default').show();
+      defaultContainer.show();
       $('iframe.stream').remove();
       manage.hide();
     }
 
-    console.log('\t Current streams: '+streams);
+    console.log(`\t Current streams: ${streams}`);
 
     // ManyTwitch.streams.updateHistory();
     console.log('ManyTwitch.streams.update() - End');
@@ -176,8 +183,8 @@ ManyTwitch.streams = {
   updateHistory() {
     console.log("ManyTwitch.streams.updateHistory() - Start");
 
-    var streams = ManyTwitch.manager.getStreams();
-    var newUrl = "";
+    let streams = ManyTwitch.manager.getStreams();
+    let newUrl = "";
 
     $.each(streams, function(idx, value) {
       newUrl = newUrl+'/'+streams[idx];
