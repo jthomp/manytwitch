@@ -1,7 +1,7 @@
 const CACHE_NAME = 'manytwitch-cache';
 const toCache = [
   '/',
-  '/index.ejs',
+  '/views/index.ejs',
   '/js/status.js'
 ];
 
