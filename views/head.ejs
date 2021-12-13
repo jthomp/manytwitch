@@ -3,8 +3,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta content="Watch multiple Twitch streams in your browser." name="description" />
 <meta content="manytwitch, many, multitwitch, multi, twitch, player, chat, group, live, stream, multistream" name="keywords" />
+<meta name="apple-mobile-web-app-status-bar" content="#6441a4" />
+<meta name="theme-color" content="#6441a4" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title><%= appTitle %></title>
+<link rel="manifest" href="/js/pwa.webmanifest" />
 <link rel="stylesheet" media="all" href="/stylesheets/font-awesome.min.css">
 <link rel="stylesheet" media="all" href="/stylesheets/bootstrap.min.css">
 <link rel="stylesheet" media="all" href="/stylesheets/manytwitch.css">
@@ -12,4 +15,6 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/handlebars.js"></script>
 <script src="/js/manytwitch.js"></script>
+<script src="/js/pwa.js"></script>
+<script src="/js/status.js"></script>
 <%- include('analytics') %>
