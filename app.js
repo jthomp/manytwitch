@@ -1,5 +1,10 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
+const https = require('https');
+const httpPort = 80;
+const httpsPort = 443;
+
 const app = express();
 const version = process.env.npm_package_version;
 const appTitle = 'ManyTwitch - Watch multiple Twitch streams at once';
