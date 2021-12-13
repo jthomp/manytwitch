@@ -8,11 +8,6 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/../images/manytwitch.png",
-      "type": "image/png", 
-      "sizes": "150x150"
-    },
-    {
       "src": "/../images/splash-screen.png",
       "type": "image/png",
       "sizes": "512x512"
