@@ -72,3 +72,7 @@ div#footer {
 #changelog li {
   font-size: 0.9em;
 }
+
+a {
+  text-decoration: none;
+}

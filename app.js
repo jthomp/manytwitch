@@ -13,6 +13,16 @@ let streamsFromParms = [];
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 
+app.use(
+  "/style",
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
+);
+
+app.use(
+  "/js",
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+);
+
 app.get('/*', function(req, res) {
   streamsFromParms = req.params['0'].split('/').filter(String);
   res.render('index', {
