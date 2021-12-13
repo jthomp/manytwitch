@@ -1,7 +1,7 @@
 {
   "name": "ManyTwitch",
   "short_name": "ManyTwitch",
-  "start_url": "views/index.ejs",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#000",
   "theme_color": "#6441a4",
@@ -14,7 +14,7 @@
     },
     {
       "src": "/images/splash-screen.png",
-      "type": "image.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ]
