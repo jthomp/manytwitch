@@ -6,7 +6,13 @@
   "background_color": "#000",
   "theme_color": "#6441a4",
   "orientation": "portrait-primary",
+  "prefer_related_applications": false,
   "icons": [
+    {
+      "src": "/../images/apple-touch-icon.png",
+      "type": "image/png", 
+      "sizes": "192x192"
+    },
     {
       "src": "/../images/splash-screen.png",
       "type": "image/png",
