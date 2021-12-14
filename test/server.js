@@ -13,7 +13,7 @@ describe("Load the index", function() {
 });
 
 describe("Load the index with a stream", function() {
-  var url="http://localhost:3000/arcus";
+  var url = "http://localhost:3000/arcus";
   
   it("returns status 200", function(done) {
     request(url, function(error, response, body) {
