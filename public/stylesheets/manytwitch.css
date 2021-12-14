@@ -29,8 +29,8 @@ html, body {
   margin: 0 auto;
   display: none;
   margin-top: 50px;
-  width: 425px;
-  min-width: auto;
+  max-width: 500px;
+  width: auto;
   text-align: center;
 }
 
