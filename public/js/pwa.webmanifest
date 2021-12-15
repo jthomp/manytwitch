@@ -14,7 +14,7 @@
       "sizes": "192x192"
     },
     {
-      "src": "/../images/splash-screen.png",
+      "src": "/../images/.png",
       "type": "image/png",
       "sizes": "512x512"
     }

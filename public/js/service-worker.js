@@ -6,8 +6,7 @@ const toCache = [
   '/js/manytwitch.js',
   '/js/bootstrap.min.js',
   '/js/handlebars.js',
-  '/js/jquery.min.js',
-  '/images/splash-screen.png'
+  '/js/jquery.min.js'
 ];
 
 self.addEventListener('install', function(event) {
