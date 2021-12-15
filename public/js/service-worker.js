@@ -6,7 +6,8 @@ const toCache = [
   '/js/manytwitch.js',
   '/js/bootstrap.min.js',
   '/js/handlebars.js',
-  '/js/jquery.min.js'
+  '/js/jquery.min.js',
+  '/images/splash-screen.png'
 ];
 
 self.addEventListener('install', function(event) {
@@ -17,7 +18,7 @@ self.addEventListener('install', function(event) {
     })
     .then(self.skipWaiting())
   )
-})
+});
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
@@ -29,7 +30,7 @@ self.addEventListener('fetch', function(event) {
           })
       })
   )
-})
+});
 
 self.addEventListener('activate', function(event) {
   event.waitUntil(
@@ -44,4 +45,4 @@ self.addEventListener('activate', function(event) {
       })
       .then(() => self.clients.claim())
   )
-})
+});

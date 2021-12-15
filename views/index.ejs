@@ -21,14 +21,15 @@
       <div id="streams"></div>
       <div class="clearfix"></div>
     </div>
-  </div>
 
-  <div id="stream-manager">
-    <%- include('streamManagerModal') %>
-  </div>    
+    <div id="stream-manager">
+      <%- include('streamManagerModal') %>
+    </div>    
 
     <%- include('newStreamTemplate') %>
     <%- include('changelogModal') %>
+  
+    <script src="/js/pwa.js"></script>
 
     <script type='text/javascript'>
       $(function() {
@@ -36,7 +37,7 @@
         ManyTwitch.streams.update();
         $('#streams-modal').modal('handleUpdate');
       });
-      
+    
       $('#streams-modal').on('shown.bs.modal', function(e) {
         var addStreamBtn = $('#streams-modal #add-stream-btn');
         var saveBtn = $('#streams-modal #save-btn');
@@ -89,6 +90,5 @@
         }
       });
     </script>
-    
   </body>
 </html>
