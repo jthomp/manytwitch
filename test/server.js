@@ -22,3 +22,14 @@ describe("Load the index with a stream", function() {
     });
   });
 });
+
+describe("Load the index with multiple streams", function() {
+  var url = "http://localhost:3000/arcus/lackattack";
+  
+  it("returns status 200", function(done) {
+    request(url, function(error, response, body) {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
+  });
+});
