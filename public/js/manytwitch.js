@@ -7,6 +7,7 @@ if (typeof ManyTwitch === typeof undefined) {
 (function() {
   ManyTwitch["streams"] = {};
   ManyTwitch["manager"] = {};
+  ManyTwitch["util"] = {};
 
   // resize the streams if the window is resized.
   window.onresize = function() {
@@ -14,10 +15,6 @@ if (typeof ManyTwitch === typeof undefined) {
   };
 
 })();
-
-log = function(msg='') {
-  console.log(msg);
-}
 
 ManyTwitch.manager = {
   toggleAddButton() {
@@ -33,44 +30,45 @@ ManyTwitch.manager = {
 
   // returns streams as an array
   getStreams() {
-    let streams = sessionStorage.getItem('streams');
+    const streams = sessionStorage.getItem('streams');
     return (streams == '') ? [] : streams.split(',');
   },
 
   setStreams(streamsParm) {
-    log('ManyTwitch.manager.setStreams() - Begin');
+    ManyTwitch.util.log('ManyTwitch.manager.setStreams() - Begin');
 
-    log(`\t streamsParm: ${streamsParm}`);
-    const streams = (typeof streamsParm == typeof undefined) ? '' : streamsParm;
+    ManyTwitch.util.log(`\t streamsParm: ${streamsParm}`);
+    const streams = (typeof streamsParm == typeof undefined) ? '' : streamsParm;sessionStorage.setItem('streams', streams);
 
-    sessionStorage.setItem('streams', streams);
-
-    log('ManyTwitch.manager.setStreams() - End');
+    ManyTwitch.util.log('ManyTwitch.manager.setStreams() - End');
   },
 
-  // Util methods.
+},
 
-  toString() {
-    return ManyTwitch.manager.getStreams().join(',');
-  },
+ManyTwitch.util = {
 
   streamCount() {
     return ManyTwitch.manager.getStreams().length;
+  },
+
+  log(msg='') {
+    console.log(msg);
   }
+
 },
 
 ManyTwitch.streams = {
 
   addToModalTable(streamParm) {
-    log('ManyTwitch.streams.addToModalTable() - Begin');
+    ManyTwitch.util.log('ManyTwitch.streams.addToModalTable() - Begin');
 
-    log(`t streamParm: ${streamParm}`);
+    ManyTwitch.util.log(`\t streamParm: ${streamParm}`);
     if (streamParm != "") {
-      log(`\t Adding streamParm ${streamParm}`);
-      const streamsTable = $('#streams-modal #streams-list tbody');
-      const newStreamField = $('#streams-modal #new_stream');
+      ManyTwitch.util.log(`\t Adding streamParm ${streamParm}`);
+      let streamsTable = $('#streams-modal #streams-list tbody');
+      let newStreamField = $('#streams-modal #new_stream');
       let newStream = streamParm != "" ? streamParm : newStreamField.val();
-      const source = $('#streams-modal-new-stream-template').html();
+      let source = $('#streams-modal-new-stream-template').html();
       let template = Handlebars.compile(source);
       let context = { stream: newStream };
       let html = template(context);
@@ -82,54 +80,60 @@ ManyTwitch.streams = {
     }
 
     if ($('#streams-modal').css('display', 'block')) {
-      $('#new_stream').focus();
+      $('#new_stream').trigger('click');
     }
 
-    log('ManyTwitch.streams.addToModalTable() - End');
+    ManyTwitch.util.log('ManyTwitch.streams.addToModalTable() - End');
   },
   
   update() {
-    log('ManyTwitch.streams.update() - Begin');
-    let streamsContainer = $('#streams');
-    let manage = $('#manage-btn');
+    ManyTwitch.util.log('ManyTwitch.streams.update() - Begin');
+    const streamsContainer = $('#streams');
+    const manage = $('#manage-btn');
     let streams = ManyTwitch.manager.getStreams();
-    let iframeStreams;
+    let iframes = {};
     let numStreams = 0;
 
     if (streams.length > 0) {
 
-      log('\t Current streams: '+streams);
+      ManyTwitch.util.log('\t Current streams: '+streams);
 
       $.each(streams, function(idx, value) {
         if ($(`span#stream-${value}-video`).length == 0) {
-          log(`\t Adding new stream: ${value}`);
-          const newStreamSource = $('#new-stream-template').html();
-          const newStreamTemplate = Handlebars.compile(newStreamSource);
-          const newStreamContext = { stream: value };
-          const newStreamHTML = newStreamTemplate(newStreamContext);
-          streamsContainer.append(newStreamHTML);  
+          ManyTwitch.util.log(`\t Adding new stream: ${value}`);
+          let newStreamSource = $('#new-stream-template').html();
+          let newStreamTemplate = Handlebars.compile(newStreamSource);
+          let newStreamContext = { stream: value };
+          let newStreamHTML = newStreamTemplate(newStreamContext);
+          streamsContainer.append(newStreamHTML);
         }
       });
 
-      iframeStreams = $('iframe.stream');
-      numStreams = iframeStreams.length;
+      iframes = $('iframe.stream');
+      ManyTwitch.util.log(`\t frames count: ${iframes.length}`);
+      numStreams = iframes.length;
 
-      $.each(iframeStreams, function(idx, value) {
+      $.each(iframes, function(idx, value) {
         let streamName = $(this).closest('span').prop('id').split('-')[1];
         if (!streams.includes(streamName)) {
           $(this).closest('span').remove();
+          numStreams -= 1;
         }
       });
 
-      const windowHeight = $(window).innerHeight() - 48;
-      const containerWidth = $('#container').width();
+      if (numStreams < 0) {
+        numStreams = 0;
+      }
+
+      let windowHeight = $(window).innerHeight() - 48;
+      let containerWidth = $('#container').width();
       streamsContainer.width(containerWidth);
       let calculatedHeight = 0;
       let calculatedWidth = 0;
       let containerPadding = 0;
 
-      for (var perRow=1; perRow<=numStreams; perRow++) {
-        const numRows = Math.ceil(numStreams / perRow);
+      for (let perRow=1; perRow<=numStreams; perRow++) {
+        let numRows = Math.ceil(numStreams / perRow);
         let maxWidth = Math.floor(containerWidth / perRow) - 4;
         let maxHeight = Math.floor(windowHeight / numRows) - 4;
 
@@ -162,14 +166,14 @@ ManyTwitch.streams = {
       manage.hide();
     }
 
-    log(`\t Current streams: ${streams}`);
+    ManyTwitch.util.log(`\t Current streams: ${streams}`);
 
     ManyTwitch.streams.updateHistory();
-    log('ManyTwitch.streams.update() - End');
+    ManyTwitch.util.log('ManyTwitch.streams.update() - End');
   },
 
   updateHistory() {
-    log("ManyTwitch.streams.updateHistory() - Start");
+    ManyTwitch.util.log("ManyTwitch.streams.updateHistory() - Start");
 
     let streams = ManyTwitch.manager.getStreams();
     let newUrl = "";
@@ -184,6 +188,6 @@ ManyTwitch.streams = {
       history.replaceState(null, "", "/");
     }
 
-    log("ManyTwitch.streams.updateHistory() - End");
+    ManyTwitch.util.log("ManyTwitch.streams.updateHistory() - End");
   }
 }

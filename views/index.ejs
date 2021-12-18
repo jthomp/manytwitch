@@ -49,7 +49,7 @@
         });
         newStream.focus();
 
-        if (ManyTwitch.manager.streamCount() < 1) {
+        if (ManyTwitch.util.streamCount() < 1) {
           addStreamBtn.attr('disabled', 'disabled');
           saveBtn.attr('disabled', 'disabled');
         } else {
