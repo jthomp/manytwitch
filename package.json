@@ -19,5 +19,9 @@
     "nodemon": "^2.0.15",
     "pwacompat": "^2.0.17",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "jsdom": "19.0.0",
+    "jsdom-global": "3.0.2"
   }
 }

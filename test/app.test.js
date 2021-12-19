@@ -33,3 +33,17 @@ describe("Load the index with multiple streams", function() {
     });
   });
 });
+
+describe("Load the index with multiple streams and remove a stream.", function() {
+  var url = "http://localhost:3000/arcus/lackattack";
+
+  it("returns status 200", function(done) {
+    request(url, function(error, response, body) {
+      expect(response.statusCode).to.equal(200);
+      // const button = document.querySelector(".js-super-special");
+      const iframes = document.querySelector('iframe.stream');
+      expect(iframes.length).to.equal(2);
+      done();
+    });
+  });
+});
