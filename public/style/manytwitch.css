@@ -11,8 +11,8 @@ html, body {
 #container #manage-btn {
   display: none;
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 0.5rem;
+  top: 0.5rem;
 }
 
 #streams {
@@ -27,8 +27,8 @@ html, body {
 #default {
   margin: 0 auto;
   display: none;
-  margin-top: 50px;
-  max-width: 500px;
+  margin-top: 5rem;
+  max-width: 30rem;
   width: auto;
   text-align: center;
 }
@@ -42,7 +42,7 @@ html, body {
 }
 
 #streams-modal .table.stream-list {
-  padding-left: 10px;
+  padding-left: 1rem;
 }
 
 #streams-modal .table.stream-list td:first-of-type {
