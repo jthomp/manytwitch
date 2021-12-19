@@ -9,6 +9,11 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(
+  "/webfonts",
+  express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/webfonts"))
+);
+
+app.use(
   "/style",
   express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
 );
@@ -16,6 +21,11 @@ app.use(
 app.use(
   "/js",
   express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+);
+
+app.use(
+  "/js",
+  express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/js"))
 );
 
 app.get('/*', function(req, res) {
