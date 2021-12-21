@@ -2,11 +2,11 @@ const CACHE_NAME = 'manytwitch-cache';
 const toCache = [
   '/',
   '/../views/index.ejs',
-  '/js/manytwitch.js',
-  '/js/bootstrap.min.js',
-  '/js/handlebars.js',
-  '/js/jquery.min.js',
-  '/js/all.min.js'
+  '/../js/manytwitch.js',
+  '/../js/bootstrap.min.js',
+  '/../js/handlebars.js',
+  '/../js/jquery.min.js',
+  '/../js/all.min.js'
 ];
 
 self.addEventListener('install', function(event) {
