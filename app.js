@@ -29,7 +29,7 @@ app.use(
 );
 
 app.get('/oauth', function(req, res) {
-  res.send(req);
+  res.send(req.params);
 });
 
 app.get('/*', function(req, res) {
