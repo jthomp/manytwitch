@@ -50,9 +50,9 @@
       });
     
       $('#streams-modal').on('shown.bs.modal', function(e) {
-        var addStreamBtn = $('#streams-modal #add-stream-btn');
-        var saveBtn = $('#streams-modal #save-btn');
-        var newStream = $('#new_stream');
+        let addStreamBtn = $('#streams-modal #add-stream-btn');
+        let saveBtn = $('#streams-modal #save-btn');
+        let newStream = $('#new_stream');
 
         $('#streams-list tr').remove();
         $.each(ManyTwitch.manager.getStreams(), function(idx, value) {
@@ -74,12 +74,12 @@
       });
 
       $('#streams-modal #save-btn').on('click', function() {
-        var streamsList = $('#streams-modal #streams-list [data-stream-name]');
-        var streams = ManyTwitch.manager.getStreams();
-        var newStreams = [];
+        let streamsList = $('#streams-modal #streams-list [data-stream-name]');
+        let streams = ManyTwitch.manager.getStreams();
+        let newStreams = [];
 
         $.each(streamsList, function(idx, value) {
-          var streamName = $(value).data('stream-name');
+          let streamName = $(value).data('stream-name');
           if ($(value).is(':checked')) {
             newStreams.push(streamName);
           } else {
@@ -92,7 +92,7 @@
       });
 
       $('#streams-modal #new_stream').on('paste', function() {
-        var addStreamBtn = $('#streams-modal #add-stream-btn');
+        let addStreamBtn = $('#streams-modal #add-stream-btn');
 
         if ($(this).length < 1) {
           addStreamBtn.attr('disabled', 'disabled');
