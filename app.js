@@ -20,6 +20,11 @@ app.use(
 
 app.use(
   "/js",
+  express.static(path.join(__dirname, "node_modules/jquery/dist"))
+);
+
+app.use(
+  "/js",
   express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
 );
 
