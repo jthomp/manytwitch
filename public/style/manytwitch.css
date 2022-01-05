@@ -1,3 +1,8 @@
+:root {
+  --purple-bg-color: rgb(100, 65, 164);
+  --purple-bg-color-hover: rgb(159, 138, 199);
+}
+
 html, body {
   background-color: #000;
 }
@@ -46,7 +51,7 @@ html, body {
 }
 
 #streams-modal table#streams-list tbody tr:hover { 
-  background-color: rgb(100, 65, 164);
+  background-color: var(--purple-bg-color);
 }
 
 #streams-modal table#streams-list tbody tr:last-of-type {
@@ -54,14 +59,14 @@ html, body {
 }
 
 .btn-purple {
-  background-color: rgb(100, 65, 164);
+  background-color: var(--purple-bg-color);
   color: #fff !important;
 }
 
 .btn-purple:hover {
   text-decoration: none;
   color: #fff !important;
-  background-color: rgb(159, 138, 199);
+  background-color: var(--purple-bg-color-hover);
 }
 
 div#footer {
