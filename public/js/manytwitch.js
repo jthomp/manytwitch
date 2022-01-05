@@ -1,9 +1,5 @@
 const ManyTwitch = {};
 
-if (typeof ManyTwitch === typeof undefined) {
-  const ManyTwitch = {};
-}
-
 (function() {
   ManyTwitch["streams"] = {};
   ManyTwitch["manager"] = {};
@@ -150,8 +146,7 @@ ManyTwitch.streams = {
         }
       }
     
-      $('.stream').height(Math.floor(calculatedHeight));
-      $('.stream').width(Math.floor(calculatedWidth));
+      $('.stream').height(Math.floor(calculatedHeight)).width(Math.floor(calculatedWidth));
       streamsContainer.css('padding-top', containerPadding);
     }
 
