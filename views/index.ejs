@@ -7,7 +7,8 @@
     <div id="container">
 
       <div id="manage-btn">
-        <button type='button'
+        <button id='manage-btn-actual'
+                type='button'
                 class='btn btn-sm btn-purple'
                 data-bs-toggle='modal'
                 data-bs-target='#streams-modal'
@@ -36,6 +37,14 @@
         ManyTwitch.manager.setStreams('<%= streamsFromParms %>'); // init session storage item.
         ManyTwitch.streams.update();
         $('#streams-modal').modal('handleUpdate');
+      });
+
+      $('#manage-btn-actual').on('mouseenter', function() {
+        $(this).html("<i class='fas fa-tv'></i>&nbsp;&nbsp;Streams");
+      });
+
+      $('#manage-btn-actual').on('mouseleave', function() {
+        $(this).html("<i class='fas fa-tv'></i>");
       });
     
       $('#streams-modal').on('shown.bs.modal', function(e) {
