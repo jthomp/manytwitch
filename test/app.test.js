@@ -1,8 +1,8 @@
-var expect = require('chai').expect;
-var request = require('request');
+const expect = require('chai').expect;
+const request = require('request');
 
 describe("Load the index", function() {
-  var url = "http://localhost:3000/";
+  const url = "http://localhost:3000/";
   
   it("returns status 200", function(done) {
     request(url, function(error, response, body) {
@@ -14,7 +14,7 @@ describe("Load the index", function() {
 });
 
 describe("Load the index with a stream", function() {
-  var url = "http://localhost:3000/arcus";
+  const url = "http://localhost:3000/arcus";
   
   it("returns status 200", function(done) {
     request(url, function(error, response, body) {
@@ -26,7 +26,7 @@ describe("Load the index with a stream", function() {
 });
 
 describe("Load the index with multiple streams", function() {
-  var url = "http://localhost:3000/arcus/lackattack";
+  const url = "http://localhost:3000/arcus/lackattack";
   
   it("returns status 200", function(done) {
     request(url, function(error, response, body) {
