@@ -46,7 +46,7 @@ html, body {
 }
 
 #streams-modal table#streams-list tbody tr:hover { 
-  background-color: rgb(159, 138, 199);
+  background-color: rgb(100, 65, 164);
 }
 
 #streams-modal table#streams-list tbody tr:last-of-type {
