@@ -45,8 +45,12 @@ html, body {
   padding-left: 1rem;
 }
 
-#streams-modal .table.stream-list td:first-of-type {
-  border-top: none;
+#streams-modal table#streams-list tbody tr:hover { 
+  background-color: rgb(159, 138, 199);
+}
+
+#streams-modal table#streams-list tbody tr:last-of-type {
+  border-bottom: transparent;
 }
 
 .btn-purple {
