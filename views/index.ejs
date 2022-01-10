@@ -42,17 +42,11 @@
       });
 
       $('#manage-btn-actual').on('mouseenter', function() {
-        $(this).animate({
-          width: '+=60px'
-        }, 250, function() {
-          $(this).html("<i class='fas fa-tv'></i>&nbsp;&nbsp;Streams");
-        });
+        $(this).html("<i class='fas fa-tv'></i>&nbsp;&nbsp;Streams");
       });
 
       $('#manage-btn-actual').on('mouseleave', function() {
         $(this).html("<i class='fas fa-tv'></i>");
-        $(this).animate({
-          width: '-=60px'});
       });
     
       $('#streams-modal').on('shown.bs.modal', function(e) {
