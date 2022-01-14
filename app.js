@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const compression = require('compression');
 const version = process.env.npm_package_version;
 const buildId = process.env.HEROKU_RELEASE_VERSION;
 const appTitle = 'ManyTwitch - Watch multiple Twitch streams at once';
@@ -8,6 +9,8 @@ let streamsFromParms = [];
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
+
+app.use(compression({ level: 9 }));
 
 app.use(
   "/webfonts",
