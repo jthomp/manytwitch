@@ -8,9 +8,8 @@ const appTitle = 'ManyTwitch - Watch multiple Twitch streams at once';
 let streamsFromParms = [];
 
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, '/public')));
-
 app.use(compression({ level: 9 }));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(
   "/webfonts",
