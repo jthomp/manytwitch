@@ -26,7 +26,7 @@ ManyTwitch.manager = {
 
   // returns streams as an array
   getStreams() {
-    const streams = sessionStorage.getItem('streams');
+    const streams = window.sessionStorage.getItem('streams');
     return (streams == '') ? [] : streams.split(',');
   },
 
@@ -34,7 +34,7 @@ ManyTwitch.manager = {
     ManyTwitch.util.log('ManyTwitch.manager.setStreams() - Begin');
 
     ManyTwitch.util.log(`\t streamsParm: ${streamsParm}`);
-    const streams = (typeof streamsParm == typeof undefined) ? '' : streamsParm;sessionStorage.setItem('streams', streams);
+    const streams = (typeof streamsParm == typeof undefined) ? '' : streamsParm;window.sessionStorage.setItem('streams', streams);
 
     ManyTwitch.util.log('ManyTwitch.manager.setStreams() - End');
   },

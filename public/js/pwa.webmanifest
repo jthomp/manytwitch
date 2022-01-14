@@ -2,6 +2,7 @@
   "name": "ManyTwitch",
   "short_name": "ManyTwitch",
   "start_url": "https://manytwitch.herokuapp.com/",
+  "scope": ".",
   "display": "standalone",
   "background_color": "black",
   "theme_color": "black",
