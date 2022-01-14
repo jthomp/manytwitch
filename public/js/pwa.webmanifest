@@ -4,7 +4,7 @@
   "start_url": "https://manytwitch.herokuapp.com/",
   "display": "standalone",
   "background_color": "black",
-  "theme_color": "red",
+  "theme_color": "black",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
