@@ -20,6 +20,10 @@ html, body {
   top: 0.5rem;
 }
 
+#container #manage-btn #manage-btn-actual {
+  opacity: 0.5;
+}
+
 #streams {
   margin: 0;
   padding: 0;
