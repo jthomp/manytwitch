@@ -1,4 +1,4 @@
-const CACHE_NAME = 'manytwitch-cache';
+const cacheName = 'manytwitch-cache';
 const toCache = [
   '/../js/manytwitch.js',
   '/../js/bootstrap.min.js',
