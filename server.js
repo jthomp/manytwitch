@@ -18,6 +18,11 @@ app.use(
 
 app.use(
   "/style",
+  express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/css"))
+);
+
+app.use(
+  "/style",
   express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
 );
 
