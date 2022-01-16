@@ -84,3 +84,7 @@ div#footer {
 a {
   text-decoration: none;
 }
+
+#psod-modal img {
+  max-width: 100%;
+}
