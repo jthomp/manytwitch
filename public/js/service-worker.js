@@ -34,10 +34,14 @@ self.addEventListener('fetch', (e) => {
 });
 
 self.addEventListener('activate', (e) => {
-  e.waitUntil(caches.keys().then((keyList) => {
-    return Promise.all(keyList.map((key) => {
-      if (key === cacheName) { return; }
-      return caches.delete(key);
-    }))
-  }));
+  e.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(cacheName) {
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
+    })
+  );
 });
