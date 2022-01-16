@@ -36,8 +36,8 @@ html, body {
 #default {
   margin: 0 auto;
   display: block;
-  margin-top: 10rem;
-  max-width: 30rem;
+  /* margin-top: 10rem; */
+  min-width: 30rem;
   text-align: center;
 }
 
