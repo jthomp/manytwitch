@@ -35,8 +35,6 @@ html, body {
 
 #default {
   margin: 0 auto;
-  /* display: block; */
-  /* margin-top: 10rem; */
   min-width: 25rem;
   text-align: center;
 }
