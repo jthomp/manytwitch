@@ -1,9 +1,9 @@
 const ManyTwitch = {};
 
 (function() {
-  ManyTwitch["streams"] = {};
-  ManyTwitch["manager"] = {};
-  ManyTwitch["util"] = {};
+  ManyTwitch['manager'] = {};
+  ManyTwitch['streams'] = {};
+  ManyTwitch['util'] = {};
 
   // resize the streams if the window is resized.
   window.onresize = function() {
@@ -38,18 +38,6 @@ ManyTwitch.manager = {
 
     ManyTwitch.util.log('ManyTwitch.manager.setStreams() - End');
   },
-
-},
-
-ManyTwitch.util = {
-
-  streamCount() {
-    return ManyTwitch.manager.getStreams().length;
-  },
-
-  log(msg='') {
-    console.log(msg);
-  }
 
 },
 
@@ -186,4 +174,16 @@ ManyTwitch.streams = {
 
     ManyTwitch.util.log("ManyTwitch.streams.updateHistory() - End");
   }
+},
+
+ManyTwitch.util = {
+
+  streamCount() {
+    return ManyTwitch.manager.getStreams().length;
+  },
+
+  log(msg='') {
+    console.log(msg);
+  }
+
 }
