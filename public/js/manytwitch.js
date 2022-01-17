@@ -85,7 +85,7 @@ ManyTwitch.streams = {
   update() {
     ManyTwitch.util.log('ManyTwitch.streams.update() - Begin');
     const streamsContainer = $('#streams');
-    const manage = $('#manage-btn');
+    const manage = $('#manage-btn-actual');
     let streams = ManyTwitch.manager.getStreams();
     let iframes = {};
     let numStreams = 0;
