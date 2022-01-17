@@ -85,7 +85,8 @@ ManyTwitch.streams = {
   update() {
     ManyTwitch.util.log('ManyTwitch.streams.update() - Begin');
     const streamsContainer = $('#streams');
-    const manage = $('#manage-btn-actual');
+    const manage = $('#manage-btn');
+    const defaultContainer = $('#default');
     let streams = ManyTwitch.manager.getStreams();
     let iframes = {};
     let numStreams = 0;
@@ -149,8 +150,6 @@ ManyTwitch.streams = {
       $('.stream').height(Math.floor(calculatedHeight)).width(Math.floor(calculatedWidth));
       streamsContainer.css('padding-top', containerPadding);
     }
-
-    const defaultContainer = $('#default');
 
     if (numStreams > 0) {
       defaultContainer.hide();
