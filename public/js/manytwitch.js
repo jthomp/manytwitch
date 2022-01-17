@@ -84,6 +84,7 @@ ManyTwitch.streams = {
   
   update() {
     ManyTwitch.util.log('ManyTwitch.streams.update() - Begin');
+
     const streamsContainer = $('#streams');
     const manage = $('#manage-btn');
     const defaultContainer = $('#default');
@@ -163,6 +164,7 @@ ManyTwitch.streams = {
     ManyTwitch.util.log(`\t Current streams: ${streams}`);
 
     ManyTwitch.streams.updateHistory();
+
     ManyTwitch.util.log('ManyTwitch.streams.update() - End');
   },
 
