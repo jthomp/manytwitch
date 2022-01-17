@@ -34,7 +34,7 @@
 
     <script type='text/javascript'>
       $(function() {
-        ManyTwitch.manager.setStreams('<%= streamsFromParms %>'); // init session storage item.
+        ManyTwitch.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
         ManyTwitch.streams.update();
         $('#streams-modal').modal('handleUpdate');
       });
@@ -57,8 +57,8 @@
         let newStream = $('#new_stream');
 
         $('#streams-list tr').remove();
-        $.each(ManyTwitch.manager.getStreams(), function(idx, value) {
-          ManyTwitch.streams.addToModalTable(value);
+        $.each(ManyTwitch.streams.getStreams(), function(idx, value) {
+          ManyTwitch.manager.addToTable(value);
         });
         newStream.focus();
 
@@ -77,7 +77,7 @@
 
       $('#streams-modal #save-btn').on('click', function() {
         let streamsList = $('#streams-modal #streams-list [data-stream-name]');
-        let streams = ManyTwitch.manager.getStreams();
+        let streams = ManyTwitch.streams.getStreams();
         let newStreams = [];
 
         $.each(streamsList, function(idx, value) {
@@ -89,7 +89,7 @@
           }
         });
 
-        ManyTwitch.manager.setStreams(newStreams.join(','));
+        ManyTwitch.streams.setStreams(newStreams.join(','));
         ManyTwitch.streams.update();
       });
 
