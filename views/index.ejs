@@ -39,17 +39,17 @@
         $('#streams-modal').modal('handleUpdate');
       });
 
-      $('#manage-btn-actual').on('mouseenter', function() {
-        $(this).fadeTo('normal', 1.0, function() {
-          $(this).html("<i class='fas fa-tv'></i>&nbsp;&nbsp;Streams");
-        });
-      });
+      // $('#manage-btn-actual').on('mouseenter', function() {
+      //   $(this).fadeTo('normal', 1.0, function() {
+      //     $(this).html("<i class='fas fa-tv'></i>&nbsp;&nbsp;Streams");
+      //   });
+      // });
 
-      $('#manage-btn-actual').on('mouseleave', function() {
-        $(this).fadeTo('normal', 0.5, function() {
-          $(this).html("<i class='fas fa-tv'></i>");
-        });
-      });
+      // $('#manage-btn-actual').on('mouseleave', function() {
+      //   $(this).fadeTo('normal', 0.5, function() {
+      //     $(this).html("<i class='fas fa-tv'></i>");
+      //   });
+      // });
     
       $('#streams-modal').on('shown.bs.modal', function(e) {
         let addStreamBtn = $('#streams-modal #add-stream-btn');
