@@ -97,7 +97,7 @@ ManyTwitch.streams = {
       });
 
       iframes = $('iframe.stream');
-      ManyTwitch.util.log(`\t streams count: ${iframes.length}`);
+      ManyTwitch.util.log(`\t Stream count: ${iframes.length}`);
       numStreams = iframes.length;
 
       $.each(iframes, function(idx, value) {
