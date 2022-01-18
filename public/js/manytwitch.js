@@ -97,7 +97,7 @@ ManyTwitch.streams = {
       });
 
       iframes = $('iframe.stream');
-      ManyTwitch.util.log(`\t frames count: ${iframes.length}`);
+      ManyTwitch.util.log(`\t streams count: ${iframes.length}`);
       numStreams = iframes.length;
 
       $.each(iframes, function(idx, value) {
@@ -141,6 +141,8 @@ ManyTwitch.streams = {
       streamsContainer.css('padding-top', containerPadding);
     }
 
+    ManyTwitch.util.log(`ManyTwitch.streams.update() - numStreams: ${numStreams}`);
+
     if (numStreams > 0) {
       defaultContainer.hide();
       manage.show();
@@ -149,8 +151,6 @@ ManyTwitch.streams = {
       $('iframe.stream').remove();
       manage.hide();
     }
-
-    ManyTwitch.util.log(`\t Current streams: ${streams}`);
 
     ManyTwitch.streams.updateHistory();
 
