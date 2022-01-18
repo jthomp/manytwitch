@@ -85,7 +85,7 @@
           if ($(value).is(':checked')) {
             newStreams.push(streamName);
           } else {
-            $('tr#tr-'+streamName).remove();
+            $(`tr#tr${streamName}`).remove();
           }
         });
 
