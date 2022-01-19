@@ -5,14 +5,15 @@
       data-stream-name="{{stream}}">
     <td>
       <div>
-        <div style="float: left; margin-top: 5px;">
+        <div style="float: left; margin-top: 5px; width: 90%;">
           <input id="streams_{{stream}}" 
                  type="checkbox" 
                  name="streams[]" 
                  value="{{stream}}"
                  checked="checked"
                  data-stream-name="{{stream}}">
-          <label for="streams_{{stream}}">&nbsp;&nbsp;{{stream}}</label>
+          <label for="streams_{{stream}}"
+                 style="width: 90%;">&nbsp;&nbsp;{{stream}}</label>
         </div>
         <div style="float: right;">
           <a href="javascript:;"
