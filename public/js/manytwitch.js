@@ -7,7 +7,7 @@ const ManyTwitch = {};
 
   // resize the streams if the window is resized.
   window.onresize = function() {
-    setTimeout(ManyTwitch.streams.update(), 100);
+    setTimeout(ManyTwitch.streams.handleResize(), 100);
   };
 })();
 
@@ -85,25 +85,25 @@ ManyTwitch.streams = {
 
     if (streamsArray.length > 0) {
 
-      $.each(streamsArray, function(idx, value) {
-        if ($(`span#stream-${value}-video`).length == 0) {
-          ManyTwitch.util.log(`\t Adding new stream: ${value}`);
-          let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
-          let newStreamTemplate = Handlebars.compile(newStreamSource);
-          let newStreamContext = { stream: value };
-          let newStreamHTML = newStreamTemplate(newStreamContext);
-          streamsContainer.innerHTML += newStreamHTML;
-        }
+      streamsArray.forEach(element => {
+        if (document.getElementById(`stream-${element}-video`) != null) return;
+
+        ManyTwitch.util.log(`\t Adding new stream: ${element}`);
+        let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
+        let newStreamTemplate = Handlebars.compile(newStreamSource);
+        let newStreamContext = { stream: element };
+        let newStreamHTML = newStreamTemplate(newStreamContext);
+        streamsContainer.innerHTML += newStreamHTML;
       });
 
       iframes = document.getElementsByClassName('stream');
       numStreams = iframes.length;
       ManyTwitch.util.log(`\t Stream count: ${numStreams}`);
 
-      $.each(iframes, function(idx, value) {
-        let streamName = $(this).closest('span').prop('id').split('-')[1];
+      Array.from(iframes).forEach(element => {
+        let streamName = element.dataset.streamName;
         if (!streamsArray.includes(streamName)) {
-          $(this).closest('span').remove();
+          element.remove();
           numStreams -= 1;
         }
       });
@@ -111,38 +111,6 @@ ManyTwitch.streams = {
       if (numStreams < 0) {
         numStreams = 0;
       }
-
-      let windowHeight = window.innerHeight - 48;
-      let containerWidth = document.getElementById('container').width;
-      streamsContainer.width = containerWidth;
-      let calculatedHeight = 0;
-      let calculatedWidth = 0;
-      let containerPadding = 0;
-
-      for (let perRow=1; perRow<=numStreams; perRow++) {
-        let numRows = Math.ceil(numStreams / perRow);
-        let maxWidth = Math.floor(containerWidth / perRow) - 4;
-        let maxHeight = Math.floor(windowHeight / numRows) - 4;
-
-        if (maxWidth * 9/16 < maxHeight) {
-          maxHeight = maxWidth * 9/16;
-        } else {
-          maxWidth = maxHeight * 16/9;
-        }
-
-        if (maxWidth > calculatedWidth) {
-          calculatedWidth = maxWidth;
-          calculatedHeight = maxHeight;
-          containerPadding = (windowHeight - numRows * maxHeight)/2;
-        }
-      }
-    
-      Array.from(document.getElementsByClassName('stream')).forEach(element => {
-        element.height = calculatedHeight;
-        element.width = calculatedWidth;
-      });
-
-      streamsContainer.style.paddingTop = containerPadding;
     }
 
     ManyTwitch.util.log(`ManyTwitch.streams.update() - numStreams: ${numStreams}`);
@@ -161,6 +129,40 @@ ManyTwitch.streams = {
     ManyTwitch.streams.updateHistory();
 
     ManyTwitch.util.log('ManyTwitch.streams.update() - End');
+  },
+
+  handleResize() {
+    let windowHeight = window.innerHeight - 48;
+    let containerWidth = document.getElementById('container').width;
+    streamsContainer.width = containerWidth;
+    let calculatedHeight = 0;
+    let calculatedWidth = 0;
+    let containerPadding = 0;
+
+    for (let perRow=1; perRow<=numStreams; perRow++) {
+      let numRows = Math.ceil(numStreams / perRow);
+      let maxWidth = Math.floor(containerWidth / perRow) - 4;
+      let maxHeight = Math.floor(windowHeight / numRows) - 4;
+
+      if (maxWidth * 9/16 < maxHeight) {
+        maxHeight = maxWidth * 9/16;
+      } else {
+        maxWidth = maxHeight * 16/9;
+      }
+
+      if (maxWidth > calculatedWidth) {
+        calculatedWidth = maxWidth;
+        calculatedHeight = maxHeight;
+        containerPadding = (windowHeight - numRows * maxHeight)/2;
+      }
+    }
+  
+    Array.from(document.getElementsByClassName('stream')).forEach(element => {
+      element.height = calculatedHeight;
+      element.width = calculatedWidth;
+    });
+
+    document.getElementById('streams').style.paddingTop = containerPadding;
   },
 
   updateHistory() {

@@ -33,59 +33,68 @@
     <script src="/js/pwa.js"></script>
 
     <script type='text/javascript'>
-      $(function() {
+
+      let streamsModal = document.getElementById('streams-modal');
+      let manageBtnActual = document.getElementById('manage-btn-actual');
+      let saveBtn = document.getElementById('save-btn');
+      let newStreamField = document.getElementById('new_stream');
+
+      document.addEventListener('DOMContentLoaded', (event) => {
         ManyTwitch.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
         ManyTwitch.streams.update();
-        $('#streams-modal').modal('handleUpdate');
       });
 
-      // $('#manage-btn-actual').on('mouseenter', function() {
+
+      // manageBtnActual.addEventListener('mouseenter', function(event) {
       //   $(this).fadeTo('normal', 1.0, function() {
       //     $(this).html("<i class='fas fa-tv'></i>&nbsp;&nbsp;Streams");
       //   });
       // });
 
-      // $('#manage-btn-actual').on('mouseleave', function() {
+      // manageBtnActual.addEventListener('mouseleave', function(event) {
       //   $(this).fadeTo('normal', 0.5, function() {
       //     $(this).html("<i class='fas fa-tv'></i>");
       //   });
       // });
-    
-      $('#streams-modal').on('shown.bs.modal', function(e) {
-        let addStreamBtn = $('#streams-modal #add-stream-btn');
-        let saveBtn = $('#streams-modal #save-btn');
-        let newStream = $('#new_stream');
+
+      streamsModal.addEventListener('shown.bs.modal', function(event) {
+
+        let addStreamBtn = document.getElementById('add-stream-btn');
 
         $('#streams-list tr').remove();
-        $.each(ManyTwitch.streams.getStreams(), function(idx, value) {
-          ManyTwitch.manager.addToTable(value);
+
+        Array.from(ManyTwitch.streams.getStreams()).forEach(element => {
+          ManyTwitch.manager.addToTable(element);
         });
-        newStream.focus();
+
+        newStreamField.focus();
 
         if (ManyTwitch.util.streamCount() < 1) {
-          addStreamBtn.attr('disabled', 'disabled');
-          saveBtn.attr('disabled', 'disabled');
+          addStreamBtn.setAttribute('disabled', 'disabled');
+          saveBtn.setAttribute('disabled', 'disabled');
         } else {
-          saveBtn.removeAttr('disabled');
+          saveBtn.removeAttribute('disabled');
         }
+
       });
 
-      $('#streams-modal').on('hidden.bs.modal', function(e) {
-        $('#new_stream').val('');
-        $('#add-stream-btn').attr('disabled', 'disabled');
+      streamsModal.addEventListener('hidden.bs.modal', function(event) {
+        newStreamField.value = '';
+        document.getElementById('add-stream-btn').setAttribute('disabled', 'disabled');
       });
 
       $('#streams-modal #save-btn').on('click', function() {
-        let streamsList = $('#streams-modal #streams-list [data-stream-name]');
+
+        let streamsList = document.getElementsByClassName('streams-modal-table-tr');
         let streams = ManyTwitch.streams.getStreams();
         let newStreams = [];
 
-        $.each(streamsList, function(idx, value) {
-          let streamName = $(value).data('stream-name');
-          if ($(value).is(':checked')) {
+        Array.from(streamsList).forEach(element => {
+          let streamName = element.dataset.streamName;
+          if (element.checked) {
             newStreams.push(streamName);
           } else {
-            $(`tr#tr${streamName}`).remove();
+            element.remove();
           }
         });
 
@@ -93,16 +102,15 @@
         ManyTwitch.streams.update();
       });
 
-      $('#streams-modal #new_stream').on('paste', function() {
-        let addStreamBtn = $('#streams-modal #add-stream-btn');
-
+      newStreamField.addEventListener('paste', function(event) {
         if ($(this).length < 1) {
-          addStreamBtn.attr('disabled', 'disabled');
+          addStreamBtn.setAttribute('disabled', 'disabled');
         } else {
-          addStreamBtn.removeAttr('disabled');
+          addStreamBtn.removeAttribute('disabled');
         }
       });
     </script>
+
     <%- include('analytics') %>
   </body>
 </html>

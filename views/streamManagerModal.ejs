@@ -72,27 +72,22 @@
 </div>
 
 <script type='text/javascript'>
-  $(function() {
-
-    document.getElementById('new_stream').addEventListener('keypress', function(event) {
-      if (event.keyCode === 13) {
-        $('#streams-modal #add-stream-btn').click();
-        event.preventDefault();
-        return false;
-      }
-    });
-
-    $(window).bind('keydown', function(event) {
-      if (event.ctrlKey || event.metaKey) {
-        switch (String.fromCharCode(event.which).toLowerCase()) {
-        case 's':
-          event.preventDefault();
-          $('#save-btn').click();
-          break;
-        }
-      }
-    });
-
+  document.getElementById('new_stream').addEventListener('keypress', function(event) {
+    if (event.keyCode === 13) {
+      document.getElementById('add-stream-btn').click();
+      event.preventDefault();
+      return false;
+    }
   });
 
+  document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey || event.metaKey) {
+      switch (String.fromCharCode(event.which).toLowerCase()) {
+      case 's':
+        event.preventDefault();
+        $('#save-btn').click();
+        break;
+      }
+    }
+  });
 </script>
