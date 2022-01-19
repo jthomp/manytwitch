@@ -1,15 +1,12 @@
 const ManyTwitch = {};
+ManyTwitch['manager'] = {};
+ManyTwitch['streams'] = {};
+ManyTwitch['util'] = {};
 
-(function() {
-  ManyTwitch['manager'] = {};
-  ManyTwitch['streams'] = {};
-  ManyTwitch['util'] = {};
-
-  // resize the streams if the window is resized.
-  window.onresize = function() {
-    setTimeout(ManyTwitch.streams.handleResize(), 100);
-  };
-})();
+// resize the streams if the window is resized.
+window.onresize = function() {
+  setTimeout(ManyTwitch.streams.handleResize(), 100);
+};
 
 // methods for the stream manager modal.
 ManyTwitch.manager = {
@@ -137,21 +134,20 @@ ManyTwitch.streams = {
 
     let streamsContainer = document.getElementById('streams');
     let numStreams = document.getElementsByClassName('stream').length;
-
-    let calculatedWindowHeight = window.innerHeight - 48;
+    let innerWindowHeight = window.innerHeight - 48;
     let containerWidth = document.getElementById('container').offsetWidth;
-    console.log(containerWidth);
-    streamsContainer.width = containerWidth;
     let calculatedHeight = 0;
     let calculatedWidth = 0;
     let containerPadding = 0;
 
+    streamsContainer.width = containerWidth;
+
     for (let perRow=1; perRow<=numStreams; perRow++) {
       let numRows = Math.ceil(numStreams / perRow);
       let maxWidth = Math.floor(containerWidth / perRow) - 4;
-      let maxHeight = Math.floor(calculatedWindowHeight / numRows) - 4;
+      let maxHeight = Math.floor(innerWindowHeight / numRows) - 4;
 
-      if (maxWidth * 9/16 < maxHeight) {
+      if ((maxWidth * 9/16) < maxHeight) {
         maxHeight = maxWidth * 9/16;
       } else {
         maxWidth = maxHeight * 16/9;
@@ -160,7 +156,7 @@ ManyTwitch.streams = {
       if (maxWidth > calculatedWidth) {
         calculatedWidth = maxWidth;
         calculatedHeight = maxHeight;
-        containerPadding = (calculatedWindowHeight - numRows * maxHeight)/2;
+        containerPadding = (innerWindowHeight - numRows * maxHeight)/2;
       }
     }
   
@@ -169,7 +165,7 @@ ManyTwitch.streams = {
       element.width = Math.floor(calculatedWidth);
     });
 
-    document.getElementById('streams').style.paddingTop = containerPadding;
+    streamsContainer.style.paddingTop = `${containerPadding}px`;
 
     ManyTwitch.util.log('ManyTwitch.streams.handleResize() - End');
   },
