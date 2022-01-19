@@ -133,10 +133,14 @@ ManyTwitch.streams = {
   },
 
   handleResize() {
-    const streamsContainer = document.getElementById('streams');
+    ManyTwitch.util.log('ManyTwitch.streams.handleResize() - Begin');
+
+    let streamsContainer = document.getElementById('streams');
     let numStreams = document.getElementsByClassName('stream').length;
-    let windowHeight = window.innerHeight - 48;
-    let containerWidth = document.getElementById('container').width;
+
+    let calculatedWindowHeight = window.innerHeight - 48;
+    let containerWidth = document.getElementById('container').offsetWidth;
+    console.log(containerWidth);
     streamsContainer.width = containerWidth;
     let calculatedHeight = 0;
     let calculatedWidth = 0;
@@ -145,7 +149,7 @@ ManyTwitch.streams = {
     for (let perRow=1; perRow<=numStreams; perRow++) {
       let numRows = Math.ceil(numStreams / perRow);
       let maxWidth = Math.floor(containerWidth / perRow) - 4;
-      let maxHeight = Math.floor(windowHeight / numRows) - 4;
+      let maxHeight = Math.floor(calculatedWindowHeight / numRows) - 4;
 
       if (maxWidth * 9/16 < maxHeight) {
         maxHeight = maxWidth * 9/16;
@@ -156,16 +160,18 @@ ManyTwitch.streams = {
       if (maxWidth > calculatedWidth) {
         calculatedWidth = maxWidth;
         calculatedHeight = maxHeight;
-        containerPadding = (windowHeight - numRows * maxHeight)/2;
+        containerPadding = (calculatedWindowHeight - numRows * maxHeight)/2;
       }
     }
   
     Array.from(document.getElementsByClassName('stream')).forEach(element => {
-      element.height = calculatedHeight;
-      element.width = calculatedWidth;
+      element.height = Math.floor(calculatedHeight);
+      element.width = Math.floor(calculatedWidth);
     });
 
     document.getElementById('streams').style.paddingTop = containerPadding;
+
+    ManyTwitch.util.log('ManyTwitch.streams.handleResize() - End');
   },
 
   updateHistory() {
