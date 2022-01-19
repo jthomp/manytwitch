@@ -28,20 +28,19 @@ ManyTwitch.manager = {
   addToTable(streamParm) {
     ManyTwitch.util.log('ManyTwitch.manager.addToTable() - Begin');
 
+    const streamsTable = document.getElementById('streams-list-tbody');
     const newStreamField = document.getElementById('new_stream');
     const saveBtn = document.getElementById('save-btn');
 
     ManyTwitch.util.log(`\t streamParm: ${streamParm}`);
-    if (streamParm != "") {
+    if (streamParm != '') {
       ManyTwitch.util.log(`\t Adding streamParm ${streamParm}`);
-      let streamsTable = $('#streams-modal #streams-list tbody');
-      // let streamsTable = document.getElementById('streams-list-body')
-      let newStream = streamParm != "" ? streamParm : newStreamField.val();
-      let source = document.getElementById('streams-modal-new-stream-template').innerHTML;
+      let newStream = streamParm != "" ? streamParm : newStreamField.value;
+      let source = document.getElementById('streams-modal-new-stream-template').innerHTML.trim();
       let template = Handlebars.compile(source);
       let context = { stream: newStream };
       let html = template(context);
-      streamsTable.append(html);
+      streamsTable.innerHTML += html;
   
       newStreamField.value = '';
       saveBtn.removeAttribute('disabled');
@@ -77,29 +76,29 @@ ManyTwitch.streams = {
   update() {
     ManyTwitch.util.log('ManyTwitch.streams.update() - Begin');
 
-    const streamsContainer = $('#streams');
-    const manage = $('#manage-btn');
-    const defaultContainer = $('#default');
+    const streamsContainer = document.getElementById('streams');
+    const manage = document.getElementById('manage-btn');
+    const defaultContainer = document.getElementById('default');
     let streamsArray = ManyTwitch.streams.getStreams();
+    let iframes = [];
     let numStreams = 0;
 
     if (streamsArray.length > 0) {
 
-      streamsArray.forEach(element => {
-        if (document.getElementById(`stream-${element}-video`) != null) return;
-
-        ManyTwitch.util.log(`\t Adding new stream: ${element}`);
-        let newStreamSource = $('#new-stream-template').html();
-        // let newStreamSource = document.getElementById('new-stream-template').innerHTML;
-        let newStreamTemplate = Handlebars.compile(newStreamSource);
-        let newStreamContext = { stream: element };
-        let newStreamHTML = newStreamTemplate(newStreamContext);
-        streamsContainer.append(newStreamHTML);
+      $.each(streamsArray, function(idx, value) {
+        if ($(`span#stream-${value}-video`).length == 0) {
+          ManyTwitch.util.log(`\t Adding new stream: ${value}`);
+          let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
+          let newStreamTemplate = Handlebars.compile(newStreamSource);
+          let newStreamContext = { stream: value };
+          let newStreamHTML = newStreamTemplate(newStreamContext);
+          streamsContainer.innerHTML += newStreamHTML;
+        }
       });
 
-      // let iframes = document.getElementsByClassName('stream');
-      let iframes = $('iframe.stream');
+      iframes = document.getElementsByClassName('stream');
       numStreams = iframes.length;
+      ManyTwitch.util.log(`\t Stream count: ${numStreams}`);
 
       $.each(iframes, function(idx, value) {
         let streamName = $(this).closest('span').prop('id').split('-')[1];
