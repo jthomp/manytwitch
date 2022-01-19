@@ -15,38 +15,41 @@ const ManyTwitch = {};
 ManyTwitch.manager = {
 
   toggleAddButton() {
-    const newStreamInput = $('#streams-modal #new_stream');
-    const addButton = $('#streams-modal #add-stream-btn');
+    const newStreamInput = document.getElementById('new_stream');
+    const addButton = document.getElementById('add-stream-btn');
 
-    if (newStreamInput.val().length > 0) {
-      addButton.removeAttr('disabled');
+    if (newStreamInput.value.length > 0) {
+      addButton.removeAttribute('disabled');
     } else {
-      addButton.attr('disabled', 'disabled');
+      addButton.setAttribute('disabled', 'disabled');
     }
   },
 
   addToTable(streamParm) {
     ManyTwitch.util.log('ManyTwitch.manager.addToTable() - Begin');
 
+    const newStreamField = document.getElementById('new_stream');
+    const saveBtn = document.getElementById('save-btn');
+
     ManyTwitch.util.log(`\t streamParm: ${streamParm}`);
     if (streamParm != "") {
       ManyTwitch.util.log(`\t Adding streamParm ${streamParm}`);
       let streamsTable = $('#streams-modal #streams-list tbody');
-      let newStreamField = $('#streams-modal #new_stream');
+      // let streamsTable = document.getElementById('streams-list-body')
       let newStream = streamParm != "" ? streamParm : newStreamField.val();
-      let source = $('#streams-modal-new-stream-template').html();
+      let source = document.getElementById('streams-modal-new-stream-template').innerHTML;
       let template = Handlebars.compile(source);
       let context = { stream: newStream };
       let html = template(context);
       streamsTable.append(html);
   
-      newStreamField.val('');
-      $('#streams-modal #save-btn').removeAttr('disabled');
+      newStreamField.value = '';
+      saveBtn.removeAttribute('disabled');
       ManyTwitch.manager.toggleAddButton();  
     }
 
-    if ($('#streams-modal').css('display', 'block')) {
-      $('#new_stream').trigger('click');
+    if (document.getElementById('streams-modal').style.display == 'block') {
+      newStreamField.click();
     }
 
     ManyTwitch.util.log('ManyTwitch.manager.addToTable() - End');
@@ -58,15 +61,15 @@ ManyTwitch.streams = {
 
   // returns streams as an array
   getStreams() {
-    const streams = window.sessionStorage.getItem('streams');
-    return (streams == '') ? [] : streams.split(',');
+    let sessionStorage = window.sessionStorage.getItem('streams');
+    return (sessionStorage == '') ? [] : sessionStorage.split(',');
   },
 
   setStreams(streamsParm) {
     ManyTwitch.util.log('ManyTwitch.streams.setStreams() - Begin');
 
     ManyTwitch.util.log(`\t streamsParm: ${streamsParm}`);
-    const streams = (typeof streamsParm == typeof undefined) ? '' : streamsParm;window.sessionStorage.setItem('streams', streams);
+    window.sessionStorage.setItem('streams', streamsParm);
 
     ManyTwitch.util.log('ManyTwitch.streams.setStreams() - End');
   },
@@ -77,32 +80,30 @@ ManyTwitch.streams = {
     const streamsContainer = $('#streams');
     const manage = $('#manage-btn');
     const defaultContainer = $('#default');
-    let streams = ManyTwitch.streams.getStreams();
-    let iframes = {};
+    let streamsArray = ManyTwitch.streams.getStreams();
     let numStreams = 0;
 
-    if (streams.length > 0) {
+    if (streamsArray.length > 0) {
 
-      ManyTwitch.util.log('\t Current streams: '+streams);
+      streamsArray.forEach(element => {
+        if (document.getElementById(`stream-${element}-video`) != null) return;
 
-      $.each(streams, function(idx, value) {
-        if ($(`span#stream-${value}-video`).length == 0) {
-          ManyTwitch.util.log(`\t Adding new stream: ${value}`);
-          let newStreamSource = $('#new-stream-template').html();
-          let newStreamTemplate = Handlebars.compile(newStreamSource);
-          let newStreamContext = { stream: value };
-          let newStreamHTML = newStreamTemplate(newStreamContext);
-          streamsContainer.append(newStreamHTML);
-        }
+        ManyTwitch.util.log(`\t Adding new stream: ${element}`);
+        let newStreamSource = $('#new-stream-template').html();
+        // let newStreamSource = document.getElementById('new-stream-template').innerHTML;
+        let newStreamTemplate = Handlebars.compile(newStreamSource);
+        let newStreamContext = { stream: element };
+        let newStreamHTML = newStreamTemplate(newStreamContext);
+        streamsContainer.append(newStreamHTML);
       });
 
-      iframes = $('iframe.stream');
-      ManyTwitch.util.log(`\t Stream count: ${iframes.length}`);
+      // let iframes = document.getElementsByClassName('stream');
+      let iframes = $('iframe.stream');
       numStreams = iframes.length;
 
       $.each(iframes, function(idx, value) {
         let streamName = $(this).closest('span').prop('id').split('-')[1];
-        if (!streams.includes(streamName)) {
+        if (!streamsArray.includes(streamName)) {
           $(this).closest('span').remove();
           numStreams -= 1;
         }
@@ -112,9 +113,9 @@ ManyTwitch.streams = {
         numStreams = 0;
       }
 
-      let windowHeight = $(window).innerHeight() - 48;
-      let containerWidth = $('#container').width();
-      streamsContainer.width(containerWidth);
+      let windowHeight = window.innerHeight - 48;
+      let containerWidth = document.getElementById('container').width;
+      streamsContainer.width = containerWidth;
       let calculatedHeight = 0;
       let calculatedWidth = 0;
       let containerPadding = 0;
@@ -137,19 +138,25 @@ ManyTwitch.streams = {
         }
       }
     
-      $('.stream').height(Math.floor(calculatedHeight)).width(Math.floor(calculatedWidth));
-      streamsContainer.css('padding-top', containerPadding);
+      Array.from(document.getElementsByClassName('stream')).forEach(element => {
+        element.height = calculatedHeight;
+        element.width = calculatedWidth;
+      });
+
+      streamsContainer.style.paddingTop = containerPadding;
     }
 
     ManyTwitch.util.log(`ManyTwitch.streams.update() - numStreams: ${numStreams}`);
 
     if (numStreams > 0) {
-      defaultContainer.hide();
-      manage.show();
+      defaultContainer.style.display = 'none';
+      manage.style.display = 'block';
     } else {
-      defaultContainer.show();
-      $('iframe.stream').remove();
-      manage.hide();
+      defaultContainer.style.display = 'block';
+      Array.from(document.getElementsByClassName('stream')).forEach(element => {
+        element.remove();
+      });
+      manage.style.display = 'none';
     }
 
     ManyTwitch.streams.updateHistory();
@@ -161,14 +168,14 @@ ManyTwitch.streams = {
     ManyTwitch.util.log("ManyTwitch.streams.updateHistory() - Start");
 
     let streams = ManyTwitch.streams.getStreams();
-    let newUrl = "";
+    let newURL = "";
 
-    $.each(streams, function(idx, value) {
-      newUrl = newUrl+'/'+streams[idx];
+    streams.forEach(element => {
+      newURL = newURL+'/'+element;
     });
 
-    if (newUrl != "") {
-      history.replaceState(null, "", newUrl);
+    if (newURL != "") {
+      history.replaceState(null, "", newURL);
     } else {
       history.replaceState(null, "", "/");
     }
@@ -184,7 +191,7 @@ ManyTwitch.util = {
   },
 
   log(msg='') {
-    console.log(msg);
+    return console.log(msg);
   }
 
 }
