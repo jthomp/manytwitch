@@ -38,12 +38,12 @@
       let manageBtnActual = document.getElementById('manage-btn-actual');
       let saveBtn = document.getElementById('save-btn');
       let newStreamField = document.getElementById('new_stream');
+      let addStreamBtn = document.getElementById('add-stream-btn');
 
       document.addEventListener('DOMContentLoaded', (event) => {
         ManyTwitch.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
         ManyTwitch.streams.update();
       });
-
 
       // manageBtnActual.addEventListener('mouseenter', function(event) {
       //   $(this).fadeTo('normal', 1.0, function() {
@@ -59,9 +59,9 @@
 
       streamsModal.addEventListener('shown.bs.modal', function(event) {
 
-        let addStreamBtn = document.getElementById('add-stream-btn');
-
-        $('#streams-list tr').remove();
+        Array.from(document.getElementsByClassName('streams-modal-table-tr')).forEach(element => {
+          element.remove();
+        });
 
         Array.from(ManyTwitch.streams.getStreams()).forEach(element => {
           ManyTwitch.manager.addToTable(element);
@@ -80,10 +80,10 @@
 
       streamsModal.addEventListener('hidden.bs.modal', function(event) {
         newStreamField.value = '';
-        document.getElementById('add-stream-btn').setAttribute('disabled', 'disabled');
+        addStreamBtn.setAttribute('disabled', 'disabled');
       });
 
-      $('#streams-modal #save-btn').on('click', function() {
+      saveBtn.addEventListener('click', function(event) {
 
         let streamsList = document.getElementsByClassName('streams-modal-table-tr');
         let streams = ManyTwitch.streams.getStreams();
@@ -91,7 +91,8 @@
 
         Array.from(streamsList).forEach(element => {
           let streamName = element.dataset.streamName;
-          if (element.checked) {
+          let streamCheckbox = document.getElementById(`streams_${streamName}`);
+          if (streamCheckbox.checked) {
             newStreams.push(streamName);
           } else {
             element.remove();

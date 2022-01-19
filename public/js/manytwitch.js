@@ -134,8 +134,7 @@ ManyTwitch.streams = {
 
   handleResize() {
     const streamsContainer = document.getElementById('streams');
-    iframes = document.getElementsByClassName('stream');
-    let numStreams = iframes.length;
+    let numStreams = document.getElementsByClassName('stream').length;
     let windowHeight = window.innerHeight - 48;
     let containerWidth = document.getElementById('container').width;
     streamsContainer.width = containerWidth;
