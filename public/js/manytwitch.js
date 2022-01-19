@@ -126,12 +126,16 @@ ManyTwitch.streams = {
       manage.style.display = 'none';
     }
 
+    ManyTwitch.streams.handleResize();
     ManyTwitch.streams.updateHistory();
 
     ManyTwitch.util.log('ManyTwitch.streams.update() - End');
   },
 
   handleResize() {
+    const streamsContainer = document.getElementById('streams');
+    iframes = document.getElementsByClassName('stream');
+    let numStreams = iframes.length;
     let windowHeight = window.innerHeight - 48;
     let containerWidth = document.getElementById('container').width;
     streamsContainer.width = containerWidth;
