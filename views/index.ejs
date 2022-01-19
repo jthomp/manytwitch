@@ -34,11 +34,11 @@
 
     <script type='text/javascript'>
 
-      let streamsModal = document.getElementById('streams-modal');
-      let manageBtnActual = document.getElementById('manage-btn-actual');
-      let saveBtn = document.getElementById('save-btn');
-      let newStreamField = document.getElementById('new_stream');
-      let addStreamBtn = document.getElementById('add-stream-btn');
+      const streamsModal = document.getElementById('streams-modal');
+      const manageBtnActual = document.getElementById('manage-btn-actual');
+      const saveBtn = document.getElementById('save-btn');
+      const newStreamField = document.getElementById('new_stream');
+      const addStreamBtn = document.getElementById('add-stream-btn');
 
       document.addEventListener('DOMContentLoaded', (event) => {
         ManyTwitch.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
