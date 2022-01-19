@@ -46,7 +46,7 @@
         <button type="button" 
                 class="btn btn-success" 
                 id="add-stream-btn" 
-                onclick="ManyTwitch.manager.addToTable($('#new_stream').val()); return false;"
+                onclick="ManyTwitch.manager.addToTable(document.getElementById('new_stream').value); return false;"
                 title="Add a new stream."
                 disabled=disabled>
           <i class="fa fa-plus"></i>&nbsp;Add
@@ -85,7 +85,7 @@
       switch (String.fromCharCode(event.which).toLowerCase()) {
       case 's':
         event.preventDefault();
-        $('#save-btn').click();
+        document.getElementById('save-btn').click();
         break;
       }
     }
