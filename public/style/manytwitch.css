@@ -57,7 +57,7 @@ html, body {
 } */
 
 #streams-modal table#streams-list tbody#streams-list-tbody tr td {
-  padding: 0.5rem 1rem 1rem 0.5rem;
+  padding: 1rem;
 }
 
 #streams-modal table#streams-list tbody#streams-list-tbody tr:hover {
