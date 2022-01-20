@@ -48,11 +48,19 @@ html, body {
   display: inline-block;
 }
 
-#streams-modal .table.stream-list {
-  padding-left: 1rem;
+#streams-modal table#streams-list input {
+  transform: scale(150%);
 }
 
-#streams-modal table#streams-list tbody tr:hover { 
+#streams-modal table#streams-list {
+  font-size: 1.5vw;
+}
+
+#streams-modal table#streams-list tbody#streams-list-tbody tr td {
+  padding: 0.5rem 1rem 1rem 0.5rem;
+}
+
+#streams-modal table#streams-list tbody#streams-list-tbody tr:hover {
   background-color: var(--purple-bg-color);
 }
 
