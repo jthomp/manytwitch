@@ -36,9 +36,9 @@ app.use(
   express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/js"))
 );
 
-app.get('/oauth', function(req, res) {
-  res.send(req.params);
-});
+// app.get('/oauth', function(req, res) {
+//   res.send(req.params);
+// });
 
 app.get('/*', function(req, res) {
   streamsFromParms = req.params['0'].split('/').filter(String);
