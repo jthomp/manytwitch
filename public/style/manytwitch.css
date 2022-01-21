@@ -51,10 +51,11 @@ html, body {
 /* #streams-modal table#streams-list input {
   transform: scale(150%);
 }
+*/
 
 #streams-modal table#streams-list {
-  font-size: 1.5vw;
-} */
+  font-size: 1.25rem;
+}
 
 #streams-modal table#streams-list tbody#streams-list-tbody tr td {
   padding: 1rem;
