@@ -96,3 +96,10 @@ a {
 #psod-modal img {
   max-width: 100%;
 }
+
+#privacy-modal-content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
