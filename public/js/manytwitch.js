@@ -83,14 +83,14 @@ ManyTwitch.streams = {
     if (streamsArray.length > 0) {
 
       streamsArray.forEach(element => {
-        if (document.getElementById(`stream-${element}-video`) != null) return;
-
-        ManyTwitch.util.log(`\t Adding new stream: ${element}`);
-        let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
-        let newStreamTemplate = Handlebars.compile(newStreamSource);
-        let newStreamContext = { stream: element };
-        let newStreamHTML = newStreamTemplate(newStreamContext);
-        streamsContainer.innerHTML += newStreamHTML;
+        if (document.getElementById(`stream-${element}-video`) == null) {
+          ManyTwitch.util.log(`\t Adding new stream: ${element}`);
+          let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
+          let newStreamTemplate = Handlebars.compile(newStreamSource);
+          let newStreamContext = { stream: element };
+          let newStreamHTML = newStreamTemplate(newStreamContext);
+          streamsContainer.innerHTML += newStreamHTML;
+        }
       });
 
       iframes = document.getElementsByClassName('stream');
