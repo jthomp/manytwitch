@@ -38,11 +38,13 @@
         type="text/x-handlebars-template">
   <span id="stream-{{stream}}-video">
     <iframe src="https://player.twitch.tv/?muted=true&channel={{stream}}&parent=manytwitch.herokuapp.com"
-            frameborder="0"
             allowfullscreen="true"
             scrolling="no"
             class="stream"
-            data-stream-name="{{stream}}">
+            data-stream-name="{{stream}}"
+            style="border: none;"
+            title="{{stream}}"
+            loading="eager">
     </iframe>
   </span>
 </script>
