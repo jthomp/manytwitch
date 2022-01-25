@@ -3,7 +3,6 @@
   <%- include('head') %>
   <body>
     <div id="container">
-
       <div id="manage-btn">
         <button id='manage-btn-actual'
                 type='button'
@@ -44,19 +43,19 @@
         ManyTwitch.streams.update();
       });
 
-      // manageBtnActual.addEventListener('mouseenter', function(event) {
+      // manageBtnActual.addEventListener('mouseenter', (event) => {
       //   $(this).fadeTo('normal', 1.0, function() {
       //     $(this).html("<i class='fas fa-tv'></i>&nbsp;&nbsp;Streams");
       //   });
       // });
 
-      // manageBtnActual.addEventListener('mouseleave', function(event) {
+      // manageBtnActual.addEventListener('mouseleave', (event) => {
       //   $(this).fadeTo('normal', 0.5, function() {
       //     $(this).html("<i class='fas fa-tv'></i>");
       //   });
       // });
 
-      streamsModal.addEventListener('shown.bs.modal', function(event) {
+      streamsModal.addEventListener('shown.bs.modal', (event) => {
 
         Array.from(document.getElementsByClassName('streams-modal-table-tr')).forEach(element => {
           element.remove();
@@ -77,12 +76,12 @@
 
       });
 
-      streamsModal.addEventListener('hidden.bs.modal', function(event) {
+      streamsModal.addEventListener('hidden.bs.modal', (event) => {
         newStreamField.value = '';
         addStreamBtn.setAttribute('disabled', 'disabled');
       });
 
-      saveBtn.addEventListener('click', function(event) {
+      saveBtn.addEventListener('click', (event) => {
 
         let streamsList = document.getElementsByClassName('streams-modal-table-tr');
         let streams = ManyTwitch.streams.getStreams();
@@ -102,7 +101,7 @@
         ManyTwitch.streams.update();
       });
 
-      newStreamField.addEventListener('paste', function(event) {
+      newStreamField.addEventListener('paste', (event) => {
         if ($(this).length < 1) {
           addStreamBtn.setAttribute('disabled', 'disabled');
         } else {
