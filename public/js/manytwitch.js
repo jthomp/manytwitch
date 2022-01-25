@@ -12,6 +12,8 @@ window.onresize = function() {
 ManyTwitch.manager = {
 
   toggleAddButton() {
+    ManyTwitch.util.log('ManyTwitch.manager.toggleAddButton() - Begin');
+
     const newStreamInput = document.getElementById('new_stream');
     const addButton = document.getElementById('add-stream-btn');
 
@@ -20,6 +22,8 @@ ManyTwitch.manager = {
     } else {
       addButton.setAttribute('disabled', 'disabled');
     }
+
+    ManyTwitch.util.log('ManyTwitch.manager.toggleAddButton() - End');
   },
 
   addToTable(streamParm) {
@@ -83,7 +87,8 @@ ManyTwitch.streams = {
     if (streamsArray.length > 0) {
 
       streamsArray.forEach(element => {
-        if (document.getElementById(`stream-${element}-video`) == null) {
+        let existing = document.getElementById(`stream-${element}-video`);
+        if (existing == null) {
           ManyTwitch.util.log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
           let newStreamTemplate = Handlebars.compile(newStreamSource);
@@ -100,11 +105,13 @@ ManyTwitch.streams = {
       Array.from(iframes).forEach(element => {
         let streamName = element.dataset.streamName;
         if (!streamsArray.includes(streamName)) {
+          ManyTwitch.util.log(`\t Removing ${streamName}`);
           element.remove();
           numStreams -= 1;
         }
       });
 
+      // sanity check.
       if (numStreams < 0) {
         numStreams = 0;
       }
@@ -173,11 +180,11 @@ ManyTwitch.streams = {
   updateHistory() {
     ManyTwitch.util.log("ManyTwitch.streams.updateHistory() - Start");
 
-    let streams = ManyTwitch.streams.getStreams();
+    const streams = ManyTwitch.streams.getStreams();
     let newURL = "";
 
     streams.forEach(element => {
-      newURL = newURL+'/'+element;
+      newURL = `${newURL}/${element}`;
     });
 
     if (newURL != "") {
