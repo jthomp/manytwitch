@@ -106,6 +106,6 @@ a {
 
 @media screen and (max-width: 1200px) {
   div.alert.alert-primary {
-    font-size: 4vmin;
+    font-size: 3vmin;
   }
 }
