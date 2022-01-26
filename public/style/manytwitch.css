@@ -105,5 +105,5 @@ a {
 }
 
 div.alert.alert-primary {
-  font-size: calc(0.8vw + 0.8vh + 0.7vmin);
+  font-size: calc(0.8vw + 1vh + 1vmin);
 }
