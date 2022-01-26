@@ -7,13 +7,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Stream Manager</h4>
-        <button type="button" 
-                class="close btn btn-purple"
-                data-bs-dismiss="modal" 
-                aria-label="Close"
-                title="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <div class="pull-right">
+          <%- include('streamManagerModalActions') %>
+        </div>
       </div>
       <div class="modal-body">
         <form id="new_stream_form" 
@@ -39,40 +35,6 @@
                 id="streams-list">
           <tbody id="streams-list-tbody"></tbody>
         </table>
-      </div>
-      <div class="modal-footer">
-        <a href="https://www.twitch.tv/directory/following/live"
-           class="btn btn-purple"
-           id="list-on-twitch-btn"
-           rel="nofollow"
-           target="_blank"
-           title="See the list of streamers you're following on Twitch. Opens a new window.">
-          &nbsp;&nbsp;Following
-          <i class="fas fa-globe-americas"></i>
-        </a>
-        <button type="button" 
-                class="btn btn-success" 
-                id="add-stream-btn" 
-                onclick="ManyTwitch.manager.addToTable(document.getElementById('new_stream').value); return false;"
-                title="Add a new stream."
-                disabled=disabled>
-          <i class="fa fa-plus"></i>&nbsp;Add
-        </button>
-        <button type="button" 
-                class="btn btn-primary" 
-                id="save-btn"
-                data-bs-dismiss="modal"
-                title="Save your streams and watch!"
-                disabled=disabled>
-          <i class="fa fa-save"></i>&nbsp;Save
-        </button>
-        <button type="button" 
-                class="btn btn-secondary" 
-                data-bs-dismiss="modal" 
-                id="cancel-btn"
-                title="Cancel changes.">
-          Cancel
-        </button>
       </div>
     </div>
   </div>

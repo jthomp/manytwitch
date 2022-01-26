@@ -1,0 +1,35 @@
+<button type="button"
+        class="btn btn-purple"
+        id="list-on-twitch-btn"
+        rel="nofollow"
+        target="_blank"
+        title="See the list of creators you're following on Twitch. Opens a new window.">
+  Following&nbsp;
+  <i class="fas fa-globe-americas"></i>
+</button>
+
+<button type="button" 
+        class="btn btn-success" 
+        id="add-stream-btn" 
+        onclick="ManyTwitch.manager.addToTable(document.getElementById('new_stream').value); return false;"
+        title="Add a new stream."
+        disabled=disabled>
+  <i class="fa fa-plus"></i>&nbsp;Add
+</button>
+
+<button type="button" 
+        class="btn btn-primary" 
+        id="save-btn"
+        data-bs-dismiss="modal"
+        title="Save your streams and watch!"
+        disabled=disabled>
+  <i class="fa fa-save"></i>&nbsp;Save
+</button>
+
+<button type="button" 
+        class="close btn btn-purple"
+        data-bs-dismiss="modal" 
+        aria-label="Close"
+        title="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
