@@ -7,6 +7,10 @@ html, body {
   background-color: #000;
 }
 
+a {
+  text-decoration: none;
+}
+
 #container {
   margin: 0 auto;
   width: 100%;
@@ -40,6 +44,10 @@ html, body {
   text-align: center;
 }
 
+#default a {
+  color:#07d19d;
+}
+
 #default p {
   font-size: 0.9em;
 }
@@ -47,11 +55,6 @@ html, body {
 #streams div {
   display: inline-block;
 }
-
-/* #streams-modal table#streams-list input {
-  transform: scale(150%);
-}
-*/
 
 #streams-modal table#streams-list {
   font-size: 1.25rem;
@@ -80,17 +83,13 @@ html, body {
   background-color: var(--purple-bg-color-hover);
 }
 
-div#footer {
-  font-size: 0.8em;
+#footer {
+  font-size: 0.9em;
   text-align: center;
 }
 
 #changelog li {
   font-size: 0.9em;
-}
-
-a {
-  text-decoration: none;
 }
 
 #psod-modal img {
@@ -103,7 +102,3 @@ a {
   justify-content: center;
   align-items: center;
 }
-
-/* div.alert.alert-primary {
-  font-size: 2rem;
-} */
