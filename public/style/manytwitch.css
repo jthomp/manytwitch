@@ -11,6 +11,11 @@ a {
   text-decoration: none;
 }
 
+.form-control:focus {
+  border-color: #b665e2;
+  box-shadow: 0 0 0 0.2rem rgba(124, 31, 246, 0.25);
+} 
+
 #container {
   margin: 0 auto;
   width: 100%;
