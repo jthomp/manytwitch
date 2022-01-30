@@ -57,6 +57,7 @@ ManyTwitch.manager = {
 
 },
 
+// methods to manage the streams.
 ManyTwitch.streams = {
 
   // returns streams as an array
@@ -197,6 +198,7 @@ ManyTwitch.streams = {
   }
 },
 
+// utils used by the app.
 ManyTwitch.util = {
 
   streamCount() {
@@ -207,4 +209,4 @@ ManyTwitch.util = {
     return console.log(msg);
   }
 
-}
+};
