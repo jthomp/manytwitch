@@ -1,9 +1,10 @@
 {
   "name": "ManyTwitch",
+  "short_name": "ManyTwitch",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "black",
-  "theme_color": "black",
+  "background_color": "#000",
+  "theme_color": "#000",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
