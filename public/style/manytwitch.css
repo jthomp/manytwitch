@@ -89,12 +89,12 @@ a {
 }
 
 #footer {
-  font-size: 0.9em;
+  font-size: 0.9rem;
   text-align: center;
 }
 
 #changelog li {
-  font-size: 0.9em;
+  font-size: 1.0rem;
 }
 
 #psod-modal img {
