@@ -11,17 +11,17 @@ const toCache = [
   '/../style/manytwitch.css'
 ];
 
-self.addEventListener('install', (e) => {
+self.addEventListener('install', (event) => {
   console.log('[Service Worker] Install');
-  e.waitUntil((async () => {
+  event.waitUntil((async () => {
     const cache = await caches.open(cacheName);
     console.log('[Service Worker] Caching all: app shell and content');
     await cache.addAll(toCache);
   })());
 });
 
-self.addEventListener('fetch', (e) => {
-  e.respondWith((async () => {
+self.addEventListener('fetch', (event) => {
+  event.respondWith((async () => {
     const r = await caches.match(e.request);
     console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
     if (r) { return r; }
@@ -33,8 +33,8 @@ self.addEventListener('fetch', (e) => {
   })());
 });
 
-self.addEventListener('activate', (e) => {
-  e.waitUntil(
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(
         cacheNames.filter(function(cacheName) {
