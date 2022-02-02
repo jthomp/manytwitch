@@ -4,13 +4,13 @@
   <body style="background-color: #000;">
     <div id="container">
       <div id="manage-btn">
-        <button id='manage-btn-actual'
-                type='button'
-                class='btn btn-sm btn-purple'
-                data-bs-toggle='modal'
-                data-bs-target='#streams-modal'
-                title='Manage the streams you are currently watching.'>
-          <i class='fas fa-tv'></i>
+        <button id="manage-btn-actual"
+                type="button"
+                class="btn btn-sm btn-purple"
+                data-bs-toggle="modal"
+                data-bs-target="#streams-modal"
+                title="Manage the streams you are currently watching.">
+          <i class="fas fa-tv"></i>
         </button>
       </div>
 
@@ -42,18 +42,6 @@
         ManyTwitch.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
         ManyTwitch.streams.update();
       });
-
-      // manageBtnActual.addEventListener('mouseenter', (event) => {
-      //   $(this).fadeTo('normal', 1.0, function() {
-      //     $(this).html("<i class='fas fa-tv'></i>&nbsp;&nbsp;Streams");
-      //   });
-      // });
-
-      // manageBtnActual.addEventListener('mouseleave', (event) => {
-      //   $(this).fadeTo('normal', 0.5, function() {
-      //     $(this).html("<i class='fas fa-tv'></i>");
-      //   });
-      // });
 
       streamsModal.addEventListener('shown.bs.modal', (event) => {
 

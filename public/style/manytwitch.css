@@ -58,6 +58,10 @@ a {
   display: inline-block;
 }
 
+#streams-modal #new_stream {
+  font-size: 1.25rem;
+}
+
 #streams-modal table#streams-list {
   font-size: 1.25rem;
 }
