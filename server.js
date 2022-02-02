@@ -42,7 +42,7 @@ app.get('/*', function(req, res) {
     version: version,
     appTitle: appTitle,
     streamsFromParms: streamsFromParms,
-    buildId: buildId
+    buildId: (buildId || 0)
   });
 });
 
