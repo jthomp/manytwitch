@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const compression = require('compression');
 const version = process.env.npm_package_version;
-const buildId = process.env.HEROKU_RELEASE_VERSION;
+const buildId = process.env.HEROKU_RELEASE_VERSION || '0';
 const appTitle = 'ManyTwitch - Watch multiple Twitch streams at once';
 let streamsFromParms = [];
 
@@ -42,7 +42,7 @@ app.get('/*', function(req, res) {
     version: version,
     appTitle: appTitle,
     streamsFromParms: streamsFromParms,
-    buildId: (buildId.replace('v', '') || 0)
+    buildId: buildId.replace('v', '')
   });
 });
 
