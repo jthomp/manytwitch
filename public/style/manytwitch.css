@@ -50,20 +50,6 @@ a {
   text-align: center;
 }
 
-#loading-content {
-  margin: 0;
-  padding: 0;
-  display: block;
-  z-index: 9999;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  background-color: grey;
-  position: absolute;
-  overflow: hidden;
-}
-
 #default a {
   color: rgb(7, 209, 157);
 }
