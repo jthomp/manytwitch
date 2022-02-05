@@ -129,6 +129,7 @@ ManyTwitch.streams = {
         element.remove();
       });
       manage.style.display = 'none';
+      // window.sessionStorage.clear();
     }
 
     ManyTwitch.streams.handleResize();

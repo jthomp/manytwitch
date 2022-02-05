@@ -40,7 +40,6 @@
       window.addEventListener('DOMContentLoaded', (event) => {
         ManyTwitch.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
         ManyTwitch.streams.update();
-        document.getElementById('loading-content').style.display = 'none';
       });
 
       streamsModal.addEventListener('shown.bs.modal', (event) => {
