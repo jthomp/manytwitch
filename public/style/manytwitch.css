@@ -54,6 +54,10 @@ a {
   color: rgb(7, 209, 157);
 }
 
+#default button {
+  padding: 1rem;
+}
+
 #streams div {
   display: inline-block;
 }
