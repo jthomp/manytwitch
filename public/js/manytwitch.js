@@ -89,6 +89,7 @@ ManyTwitch.streams = {
 
       streamsArray.forEach(element => {
         let existing = document.getElementById(`stream-${element}-video`);
+        ManyTwitch.util.log(`existing is null? ${existing == null}`);
         if (existing == null) {
           ManyTwitch.util.log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
@@ -108,6 +109,7 @@ ManyTwitch.streams = {
         if (!streamsArray.includes(streamName)) {
           ManyTwitch.util.log(`\t Removing ${streamName}`);
           element.remove();
+          document.getElementById(`stream-${streamName}-video`).remove();
           numStreams -= 1;
         }
       });
@@ -115,6 +117,7 @@ ManyTwitch.streams = {
       // sanity check.
       if (numStreams < 0) {
         numStreams = 0;
+        window.sessionStorage.setItem('streams', '');
       }
     }
 
@@ -129,7 +132,6 @@ ManyTwitch.streams = {
         element.remove();
       });
       manage.style.display = 'none';
-      // window.sessionStorage.clear();
     }
 
     ManyTwitch.streams.handleResize();
