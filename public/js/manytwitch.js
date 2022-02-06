@@ -127,9 +127,7 @@ ManyTwitch.streams = {
     } else {
       defaultContainer.style.display = 'block';
       manage.style.display = 'none';
-      document.getElementsByClassName('stream').forEach(element => {
-        element.remove();
-      });
+      document.getElementById('streams-container').innerHTML = '';
     }
 
     ManyTwitch.streams.handleResize();
