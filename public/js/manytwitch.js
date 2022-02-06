@@ -172,7 +172,7 @@ ManyTwitch.streams = {
       element.width = Math.floor(calculatedWidth);
     });
 
-    streamsContainer.style.paddingTop = `${containerPadding}vh`;
+    streamsContainer.style.paddingTop = `${containerPadding}px`;
 
     ManyTwitch.util.log('ManyTwitch.streams.handleResize() - End');
   },
