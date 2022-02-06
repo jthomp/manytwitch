@@ -166,7 +166,7 @@ ManyTwitch.streams = {
       }
     }
   
-    Array.from(document.getElementsByClassName('stream-iframe')).forEach(element => {
+    Array.from(document.getElementsByClassName('stream')).forEach(element => {
       element.height = Math.floor(calculatedHeight);
       element.width = Math.floor(calculatedWidth);
     });
