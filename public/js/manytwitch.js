@@ -163,7 +163,7 @@ ManyTwitch.streams = {
       if (maxWidth > calculatedWidth) {
         calculatedWidth = maxWidth;
         calculatedHeight = maxHeight;
-        containerPadding = (innerWindowHeight - numRows * maxHeight)/2;
+        containerPadding = (innerWindowHeight - (numRows * maxHeight))/2;
       }
     }
   
