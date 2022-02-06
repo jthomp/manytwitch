@@ -139,7 +139,7 @@ ManyTwitch.streams = {
     ManyTwitch.util.log('ManyTwitch.streams.handleResize() - Begin');
 
     let streamsContainer = document.getElementById('streams-container');
-    let numStreams = document.getElementsByClassName('stream-iframe').length;
+    let numStreams = document.getElementsByClassName('stream').length;
     let innerWindowHeight = window.innerHeight - 48;
     let containerWidth = document.getElementById('container').offsetWidth;
     let calculatedHeight = 0;
@@ -166,7 +166,7 @@ ManyTwitch.streams = {
       }
     }
   
-    Array.from(document.getElementsByClassName('stream')).forEach(element => {
+    Array.from(document.getElementsByClassName('stream-iframe')).forEach(element => {
       element.height = Math.floor(calculatedHeight);
       element.width = Math.floor(calculatedWidth);
     });
