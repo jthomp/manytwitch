@@ -78,15 +78,14 @@ ManyTwitch.streams = {
   update() {
     ManyTwitch.util.log('ManyTwitch.streams.update() - Begin');
 
-    const streamsContainer = document.getElementById('streams');
+    const streamsContainer = document.getElementById('streams-container');
     const manage = document.getElementById('manage-btn');
     const defaultContainer = document.getElementById('default');
     let streamsArray = ManyTwitch.streams.getStreams();
-    let iframes = [];
+    let streamSpans = [];
     let numStreams = 0;
 
     if (streamsArray.length > 0) {
-
       streamsArray.forEach(element => {
         let existing = document.getElementById(`stream-${element}-video`);
         ManyTwitch.util.log(`existing is null? ${existing == null}`);
@@ -100,22 +99,21 @@ ManyTwitch.streams = {
         }
       });
 
-      iframes = document.getElementsByClassName('stream');
-      numStreams = iframes.length;
+      streamSpans = document.getElementsByClassName('stream');
+      numStreams = streamSpans.length;
       ManyTwitch.util.log(`\t Stream count: ${numStreams}`);
 
-      Array.from(iframes).forEach(element => {
+      Array.from(streamSpans).forEach(element => {
         let streamName = element.dataset.streamName;
         if (!streamsArray.includes(streamName)) {
           ManyTwitch.util.log(`\t Removing ${streamName}`);
-          element.remove();
           document.getElementById(`stream-${streamName}-video`).remove();
           numStreams -= 1;
         }
       });
 
       // sanity check.
-      if (numStreams < 0) {
+      if (numStreams <= 0) {
         numStreams = 0;
         window.sessionStorage.setItem('streams', '');
       }
@@ -128,9 +126,6 @@ ManyTwitch.streams = {
       manage.style.display = 'block';
     } else {
       defaultContainer.style.display = 'block';
-      Array.from(document.getElementsByClassName('stream')).forEach(element => {
-        element.remove();
-      });
       manage.style.display = 'none';
     }
 
@@ -143,7 +138,7 @@ ManyTwitch.streams = {
   handleResize() {
     ManyTwitch.util.log('ManyTwitch.streams.handleResize() - Begin');
 
-    let streamsContainer = document.getElementById('streams');
+    let streamsContainer = document.getElementById('streams-container');
     let numStreams = document.getElementsByClassName('stream').length;
     let innerWindowHeight = window.innerHeight - 48;
     let containerWidth = document.getElementById('container').offsetWidth;
