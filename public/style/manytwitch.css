@@ -34,12 +34,16 @@ a {
   opacity: 0.75;
 }
 
-#streams {
+#streams-container {
   margin: 0;
   padding: 0;
   width: 100%;
   text-align: center;
   background-color: rgb(0, 0, 0);
+}
+
+#streams-containers div {
+  display: inline-block;
 }
 
 #default {
@@ -58,11 +62,7 @@ a {
   padding: 1rem;
 }
 
-#streams div {
-  display: inline-block;
-}
-
-#streams-modal #new_stream {
+#streams-modal input#new_stream {
   font-size: 1.25rem;
 }
 
