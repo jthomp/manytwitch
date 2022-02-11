@@ -35,12 +35,13 @@ a {
 }
 
 #streams-container {
-  margin: 0;
+  background-color: rgb(0, 0, 0);
+   margin: 0;
   padding: 0;
   width: 100%;
   text-align: center;
-  background-color: rgb(0, 0, 0);
 }
+ 
 
 #streams-containers div {
   display: inline-block;
@@ -88,9 +89,9 @@ a {
 }
 
 .btn-purple:hover {
-  text-decoration: none;
-  color: rgb(255, 255, 255) !important;
   background-color: var(--purple-bg-color-hover);
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
 }
 
 #footer {
