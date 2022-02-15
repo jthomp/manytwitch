@@ -30,7 +30,7 @@ a {
   top: 0.5rem;
 }
 
-#container #manage-btn #manage-btn-actual {
+#container #manage-btn button {
   opacity: 0.75;
 }
 
