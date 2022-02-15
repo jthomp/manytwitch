@@ -15,7 +15,18 @@ a {
 .form-control:focus {
   border-color: --purple-form-control-hover;
   box-shadow: 0 0 0 0.2rem rgba(124, 31, 246, 0.25);
-} 
+}
+
+.btn-purple {
+  background-color: var(--purple-bg-color);
+  color: rgb(255, 255, 255) !important;
+}
+
+.btn-purple:hover {
+  background-color: var(--purple-bg-color-hover);
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
+}
 
 #container {
   margin: 0 auto;
@@ -34,18 +45,6 @@ a {
   opacity: 0.75;
 }
 
-#streams-container {
-  background-color: rgb(0, 0, 0);
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  text-align: center;
-}
-
-#streams-container div {
-  display: inline-block;
-}
-
 #default {
   margin: 0 auto;
   display: block;
@@ -62,10 +61,23 @@ a {
   padding: 1rem;
 }
 
-#streams-modal input#new_stream {
-  font-size: 1.25rem;
+#streams-container {
+  background-color: rgb(0, 0, 0);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
 }
 
+#streams-container div {
+  display: inline-block;
+}
+
+#streams-container iframe {
+  border: none;
+}
+
+#streams-modal input#new_stream,
 #streams-modal table#streams-list {
   font-size: 1.25rem;
 }
@@ -80,17 +92,6 @@ a {
 
 #streams-modal table#streams-list tbody tr:last-of-type {
   border-bottom: transparent;
-}
-
-.btn-purple {
-  background-color: var(--purple-bg-color);
-  color: rgb(255, 255, 255) !important;
-}
-
-.btn-purple:hover {
-  background-color: var(--purple-bg-color-hover);
-  color: rgb(255, 255, 255) !important;
-  text-decoration: none;
 }
 
 #footer {
