@@ -4,8 +4,9 @@ ManyTwitch['streams'] = {};
 ManyTwitch['util'] = {};
 
 // resize the streams if the window is resized.
-window.onresize = function() {
-  setTimeout(ManyTwitch.streams.handleResize(), 100);
+window.onresize = function(event) {
+  clearTimeout(resize);
+  resize = setTimeout(ManyTwitch.streams.handleResize(), 100);
 };
 
 // methods for the stream manager modal.
