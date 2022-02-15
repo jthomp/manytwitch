@@ -5,8 +5,7 @@ ManyTwitch['util'] = {};
 
 // resize the streams if the window is resized.
 window.onresize = function(event) {
-  clearTimeout(resize);
-  resize = setTimeout(ManyTwitch.streams.handleResize(), 100);
+  return setTimeout(ManyTwitch.streams.handleResize(), 500);
 };
 
 // methods for the stream manager modal.
@@ -164,7 +163,7 @@ ManyTwitch.streams = {
       if (maxWidth > calculatedWidth) {
         calculatedWidth = maxWidth;
         calculatedHeight = maxHeight;
-        containerPadding = (innerWindowHeight - (numRows * maxHeight))/2;
+        containerPadding = (innerWindowHeight - numRows * maxHeight)/2;
       }
     }
   
