@@ -8,11 +8,15 @@ window.onresize = function(event) {
   return setTimeout(ManyTwitch.streams.handleResize(), 500);
 };
 
+function log(msg='') {
+  return console.log(msg);
+}
+
 // methods for the stream manager modal.
 ManyTwitch.manager = {
 
   toggleAddButton() {
-    ManyTwitch.util.log('ManyTwitch.manager.toggleAddButton() - Begin');
+   log('ManyTwitch.manager.toggleAddButton() - Begin');
 
     const newStreamInput = document.getElementById('new_stream');
     const addButton = document.getElementById('add-stream-btn');
@@ -23,19 +27,19 @@ ManyTwitch.manager = {
       addButton.setAttribute('disabled', 'disabled');
     }
 
-    ManyTwitch.util.log('ManyTwitch.manager.toggleAddButton() - End');
+   log('ManyTwitch.manager.toggleAddButton() - End');
   },
 
   addToTable(streamParm) {
-    ManyTwitch.util.log('ManyTwitch.manager.addToTable() - Begin');
+   log('ManyTwitch.manager.addToTable() - Begin');
 
     const streamsTable = document.getElementById('streams-list-tbody');
     const newStreamField = document.getElementById('new_stream');
     const saveBtn = document.getElementById('save-btn');
 
-    ManyTwitch.util.log(`\t streamParm: ${streamParm}`);
+   log(`\t streamParm: ${streamParm}`);
     if (streamParm != '') {
-      ManyTwitch.util.log(`\t Adding streamParm ${streamParm}`);
+     log(`\t Adding streamParm ${streamParm}`);
       let newStream = streamParm != "" ? streamParm : newStreamField.value;
       let source = document.getElementById('streams-modal-new-stream-template').innerHTML.trim();
       let template = Handlebars.compile(source);
@@ -52,7 +56,7 @@ ManyTwitch.manager = {
       newStreamField.click();
     }
 
-    ManyTwitch.util.log('ManyTwitch.manager.addToTable() - End');
+   log('ManyTwitch.manager.addToTable() - End');
   }
 
 },
@@ -67,16 +71,16 @@ ManyTwitch.streams = {
   },
 
   setStreams(streamsParm) {
-    ManyTwitch.util.log('ManyTwitch.streams.setStreams() - Begin');
+   log('ManyTwitch.streams.setStreams() - Begin');
 
-    ManyTwitch.util.log(`\t streamsParm: ${streamsParm}`);
+   log(`\t streamsParm: ${streamsParm}`);
     window.sessionStorage.setItem('streams', streamsParm);
 
-    ManyTwitch.util.log('ManyTwitch.streams.setStreams() - End');
+   log('ManyTwitch.streams.setStreams() - End');
   },
   
   update() {
-    ManyTwitch.util.log('ManyTwitch.streams.update() - Begin');
+   log('ManyTwitch.streams.update() - Begin');
 
     const streamsContainer = document.getElementById('streams-container');
     const manage = document.getElementById('manage-btn');
@@ -88,9 +92,9 @@ ManyTwitch.streams = {
     if (streamsArray.length > 0) {
       streamsArray.forEach(element => {
         let existing = document.getElementById(`stream-${element}-video`);
-        ManyTwitch.util.log(`existing is null? ${existing == null}`);
+       log(`existing is null? ${existing == null}`);
         if (existing == null) {
-          ManyTwitch.util.log(`\t Adding new stream: ${element}`);
+         log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
           let newStreamTemplate = Handlebars.compile(newStreamSource);
           let newStreamContext = { stream: element };
@@ -101,12 +105,12 @@ ManyTwitch.streams = {
 
       streamSpans = document.getElementsByClassName('stream');
       numStreams = streamSpans.length;
-      ManyTwitch.util.log(`\t Stream count: ${numStreams}`);
+     log(`\t Stream count: ${numStreams}`);
 
       Array.from(streamSpans).forEach(element => {
         let streamName = element.dataset.streamName;
         if (!streamsArray.includes(streamName)) {
-          ManyTwitch.util.log(`\t Removing ${streamName}`);
+         log(`\t Removing ${streamName}`);
           document.getElementById(`stream-${streamName}-video`).remove();
           numStreams -= 1;
         }
@@ -119,7 +123,7 @@ ManyTwitch.streams = {
       }
     }
 
-    ManyTwitch.util.log(`ManyTwitch.streams.update() - numStreams: ${numStreams}`);
+   log(`ManyTwitch.streams.update() - numStreams: ${numStreams}`);
 
     if (numStreams > 0) {
       defaultContainer.style.display = 'none';
@@ -133,11 +137,11 @@ ManyTwitch.streams = {
     ManyTwitch.streams.handleResize();
     ManyTwitch.streams.updateHistory();
 
-    ManyTwitch.util.log('ManyTwitch.streams.update() - End');
+   log('ManyTwitch.streams.update() - End');
   },
 
   handleResize() {
-    ManyTwitch.util.log('ManyTwitch.streams.handleResize() - Begin');
+   log('ManyTwitch.streams.handleResize() - Begin');
 
     let streamsContainer = document.getElementById('streams-container');
     let numStreams = document.getElementsByClassName('stream').length;
@@ -174,11 +178,11 @@ ManyTwitch.streams = {
 
     streamsContainer.style.paddingTop = `${containerPadding}px`;
 
-    ManyTwitch.util.log('ManyTwitch.streams.handleResize() - End');
+   log('ManyTwitch.streams.handleResize() - End');
   },
 
   updateHistory() {
-    ManyTwitch.util.log("ManyTwitch.streams.updateHistory() - Start");
+   log("ManyTwitch.streams.updateHistory() - Start");
 
     const streams = ManyTwitch.streams.getStreams();
     let newURL = "";
@@ -193,7 +197,7 @@ ManyTwitch.streams = {
       history.replaceState(null, "", "/");
     }
 
-    ManyTwitch.util.log("ManyTwitch.streams.updateHistory() - End");
+   log("ManyTwitch.streams.updateHistory() - End");
   }
 },
 
@@ -202,10 +206,6 @@ ManyTwitch.util = {
 
   streamCount() {
     return ManyTwitch.streams.getStreams().length;
-  },
-
-  log(msg='') {
-    return console.log(msg);
   }
 
 };
