@@ -1,3 +1,4 @@
+// define our constants.
 const ManyTwitch = {};
 ManyTwitch['manager'] = {};
 ManyTwitch['streams'] = {};
@@ -8,7 +9,7 @@ window.onresize = function(event) {
   return setTimeout(ManyTwitch.streams.handleResize(), 500);
 };
 
-// shortcut for logging.
+// shortcut for logging to the browser's console.
 function log(msg='') {
   return console.log(msg);
 }
@@ -16,6 +17,7 @@ function log(msg='') {
 // methods for the stream manager modal.
 ManyTwitch.manager = {
 
+  // enable/disable the add button in the stream manager modal.
   toggleAddButton() {
    log('ManyTwitch.manager.toggleAddButton() - Begin');
 
@@ -31,6 +33,7 @@ ManyTwitch.manager = {
    log('ManyTwitch.manager.toggleAddButton() - End');
   },
 
+  // add stream to the stream manager table.
   addToTable(streamParm) {
    log('ManyTwitch.manager.addToTable() - Begin');
 
@@ -65,12 +68,13 @@ ManyTwitch.manager = {
 // methods to manage the streams.
 ManyTwitch.streams = {
 
-  // returns streams as an array
+  // returns streams as an array.
   getStreams() {
     let sessionStorage = window.sessionStorage.getItem('streams');
     return (sessionStorage == '') ? [] : sessionStorage.split(',');
   },
 
+  // set the streams sessionStorage item.
   setStreams(streamsParm) {
    log('ManyTwitch.streams.setStreams() - Begin');
 
@@ -80,6 +84,7 @@ ManyTwitch.streams = {
    log('ManyTwitch.streams.setStreams() - End');
   },
   
+  // add/remove streams.
   update() {
    log('ManyTwitch.streams.update() - Begin');
 
@@ -140,6 +145,7 @@ ManyTwitch.streams = {
    log('ManyTwitch.streams.update() - End');
   },
 
+  // handles resizing the streams based on the browser window size.
   handleResize() {
    log('ManyTwitch.streams.handleResize() - Begin');
 
@@ -181,11 +187,12 @@ ManyTwitch.streams = {
    log('ManyTwitch.streams.handleResize() - End');
   },
 
+  // updates the url to include all the current streams.
   updateHistory() {
    log("ManyTwitch.streams.updateHistory() - Start");
 
     const streams = ManyTwitch.streams.getStreams();
-    let newURL = "";
+    let newURL = '';
 
     streams.forEach(element => {
       newURL = `${newURL}/${element}`;
@@ -204,6 +211,7 @@ ManyTwitch.streams = {
 // utils used by the app.
 ManyTwitch.util = {
 
+  // return how many streams there are.
   streamCount() {
     return ManyTwitch.streams.getStreams().length;
   }
