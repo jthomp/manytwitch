@@ -8,6 +8,7 @@ window.onresize = function(event) {
   return setTimeout(ManyTwitch.streams.handleResize(), 500);
 };
 
+// shortcut for logging.
 function log(msg='') {
   return console.log(msg);
 }
