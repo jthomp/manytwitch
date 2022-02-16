@@ -93,7 +93,6 @@ ManyTwitch.streams = {
     if (streamsArray.length > 0) {
       streamsArray.forEach(element => {
         let existing = document.getElementById(`stream-${element}-video`);
-       log(`existing is null? ${existing == null}`);
         if (existing == null) {
          log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
