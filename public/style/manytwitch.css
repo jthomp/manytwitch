@@ -84,7 +84,7 @@ a {
 }
 
 #streams-modal table#streams-list tbody#streams-list-tbody tr td:hover {
-  background: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   color:rgb(0, 0, 0);
 }
 
