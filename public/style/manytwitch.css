@@ -86,9 +86,13 @@ a {
   padding: 1rem;
 }
 
-#streams-modal table#streams-list tbody#streams-list-tbody tr:hover {
+#streams-modal table#streams-list tbody#streams-list-tbody tr:nth-child(odd) {
   background-color: var(--purple-bg-color);
 }
+
+/* #streams-modal table#streams-list tbody#streams-list-tbody tr:hover {
+  background-color: var(--purple-bg-color);
+} */
 
 #streams-modal table#streams-list tbody tr:last-of-type {
   border-bottom: transparent;
