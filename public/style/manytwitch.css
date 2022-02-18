@@ -2,7 +2,7 @@
   --purple-bg-color: rgb(100, 65, 164);
   --purple-bg-color-lighter: rgb(159, 138, 199);
   --purple-bg-color-hover: rgb(159, 138, 199);
-  --purple-form-control-hover: rgb(182, 101, 226);
+  --purple-form-control-focus: rgb(182, 101, 226);
 }
 
 html, body {
@@ -14,7 +14,7 @@ a {
 }
 
 .form-control:focus {
-  border-color: --purple-form-control-hover;
+  border-color: --purple-form-control-focus;
   box-shadow: 0 0 0 0.2rem rgba(124, 31, 246, 0.25);
 }
 
@@ -84,7 +84,6 @@ a {
 }
 
 #streams-modal table#streams-list tbody#streams-list-tbody tr td:hover {
-  /* background-color: var(--purple-bg-color-hover); */
   background: rgb(255, 255, 255);
   color:rgb(0, 0, 0);
 }
@@ -95,7 +94,6 @@ a {
 
 #streams-modal table#streams-list tbody#streams-list-tbody tr:nth-child(even) {
   background-color: var(--purple-bg-color-lighter);
-  /* color:rgb(0, 0, 0); */
 }
 
 #streams-modal table#streams-list tbody#streams-list-tbody tr td {
