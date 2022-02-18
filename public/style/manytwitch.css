@@ -103,6 +103,8 @@ a {
 }
 
 #psod-modal img {
+  width: 80%;
+  height: 80%;
   max-width: 99%;
   max-height: 99%;
 }
