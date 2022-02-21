@@ -2,7 +2,7 @@
   "name": "ManyTwitch",
   "short_name": "ManyTwitch",
   "lang": "en-US",
-  "start_url": "/",
+  "start_url": "./",
   "scope": "/",
   "display": "standalone",
   "background_color": "#000",
@@ -16,7 +16,7 @@
       "sizes": "192x192"
     },
     {
-      "src": "/../images/psod.png",
+      "src": "/../images/psod.webp",
       "type": "image/png",
       "sizes": "512x512"
     },
