@@ -10,7 +10,7 @@ html, body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .form-control:focus {
@@ -19,14 +19,14 @@ a {
 }
 
 .btn-purple {
-  background-color: var(--purple-bg-color);
+  background-color: var(--purple-bg-color) !important;
   color: rgb(255, 255, 255) !important;
 }
 
 .btn-purple:hover {
-  background-color: var(--purple-bg-color-hover);
+  background-color: var(--purple-bg-color-hover) !important;
   color: rgb(255, 255, 255) !important;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 #container {
