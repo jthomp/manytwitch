@@ -162,7 +162,6 @@ ManyTwitch.streams = {
     let numStreams = ManyTwitch.util.streamCount();
     let innerWindowHeight = window.innerHeight - 48;
     let containerWidth = document.getElementById('container').clientWidth;
-    log(`\t Container width: ${containerWidth}`);
     let calculatedHeight = 0;
     let calculatedWidth = 0;
     let containerPadding = 0;
