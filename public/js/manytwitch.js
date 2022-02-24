@@ -55,8 +55,8 @@ ManyTwitch.manager = {
       let template = Handlebars.compile(source);
       let context = { stream: newStream };
       let html = template(context);
+
       streamsTable.innerHTML += html;
-  
       newStreamField.value = '';
       saveBtn.removeAttribute('disabled');
       ManyTwitch.manager.toggleAddButton();  
