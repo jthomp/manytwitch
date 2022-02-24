@@ -82,17 +82,17 @@ ManyTwitch.streams = {
 
   // set the streams sessionStorage item.
   setStreams(streamsParm) {
-   log('ManyTwitch.streams.setStreams() - Begin');
+    log('ManyTwitch.streams.setStreams() - Begin');
 
-   log(`\t streamsParm: ${streamsParm}`);
-   window.sessionStorage.setItem('streams', streamsParm);
+    log(`\t streamsParm: ${streamsParm}`);
+    window.sessionStorage.setItem('streams', streamsParm);
 
-   log('ManyTwitch.streams.setStreams() - End');
+    log('ManyTwitch.streams.setStreams() - End');
   },
   
   // add/remove streams.
   update() {
-   log('ManyTwitch.streams.update() - Begin');
+    log('ManyTwitch.streams.update() - Begin');
 
     const streamsContainer = document.getElementById('streams-container');
     const manage = document.getElementById('manage-btn');
