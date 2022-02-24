@@ -41,13 +41,6 @@
     <script src="/js/pwa.js"></script>
 
     <script type="text/javascript">
-
-      window.onbeforeunload = function(event) {
-        if (ManyTwitch.util.streamCount() > 0) {
-          return "Are you sure you want to reload?";
-        }
-      };
-
       const streamsModal = document.getElementById('streams-modal');
       const manageBtnActual = document.getElementById('manage-btn-actual');
       const saveBtn = document.getElementById('save-btn');
