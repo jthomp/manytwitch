@@ -171,10 +171,10 @@ ManyTwitch.streams = {
 
     for (let perRow=1; perRow<=numStreams; perRow++) {
       let numRows = Math.ceil(numStreams / perRow);
-      let maxWidth = Math.floor(containerWidth / perRow) - 4;
-      let maxHeight = Math.floor(innerWindowHeight / numRows) - 4;
+      let maxWidth = Math.floor(containerWidth / perRow) - 8;
+      let maxHeight = Math.floor(innerWindowHeight / numRows) - 8;
 
-      if ((maxWidth * 9/16) < maxHeight) {
+      if (maxWidth * 9/16 < maxHeight) {
         maxHeight = maxWidth * 9/16;
       } else {
         maxWidth = maxHeight * 16/9;
