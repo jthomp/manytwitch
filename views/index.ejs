@@ -69,7 +69,7 @@
           ManyTwitch.manager.addToTable(element);
         });
 
-        newStreamField.focus();
+        document.getElementById('new_stream').focus();
 
         if (ManyTwitch.util.streamCount() < 1) {
           addStreamBtn.setAttribute('disabled', 'disabled');
