@@ -48,7 +48,6 @@ ManyTwitch.manager = {
     const newStreamField = document.getElementById('new_stream');
     const saveBtn = document.getElementById('save-btn');
 
-   log(`\t streamParm: ${streamParm}`);
     if (streamParm != '') {
      log(`\t Adding streamParm ${streamParm}`);
       let newStream = streamParm != "" ? streamParm : newStreamField.value;
