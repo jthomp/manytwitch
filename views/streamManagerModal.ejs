@@ -20,7 +20,7 @@
                  value="" 
                  placeholder="Add stream..." 
                  class="form-control"
-                 onkeyup="ManyTwitch.manager.toggleAddButton();"
+                 onkeyup="handleKeyUp(); return false;"
                  autocomplete="on"
                  autocorrect="off"
                  spellcheck="false"
@@ -39,6 +39,13 @@
 </div>
 
 <script type="text/javascript">
+
+  let timeoutId = 0;
+  function handleKeyUp() {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(ManyTwitch.manager.toggleAddButton, 500);
+  }
+
   document.getElementById("new_stream").addEventListener("keypress", (event) => {
     if (event.keyCode === 13) {
       document.getElementById("add-stream-btn").click();

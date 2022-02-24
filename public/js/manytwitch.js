@@ -102,6 +102,7 @@ ManyTwitch.streams = {
     let numStreams = 0;
 
     if (streamsArray.length > 0) {
+
       streamsArray.forEach(element => {
         let existing = document.getElementById(`stream-${element}-video`);
 
@@ -113,11 +114,12 @@ ManyTwitch.streams = {
           let newStreamHTML = newStreamTemplate(newStreamContext);
           streamsContainer.innerHTML += newStreamHTML;
         }
+
       });
 
       streamSpans = document.getElementsByClassName('stream');
       numStreams = streamSpans.length;
-      log(`\t Stream count: ${numStreams}`);
+      log(`\t Stream count before removal: ${numStreams}`);
 
       Array.from(streamSpans).forEach(element => {
         let streamName = element.dataset.streamName;
@@ -135,7 +137,7 @@ ManyTwitch.streams = {
       }
     }
 
-    log(`\t Stream count: ${numStreams}`);
+    log(`\t Stream count after removal: ${numStreams}`);
 
     if (numStreams > 0) {
       defaultContainer.style.display = 'none';
@@ -156,10 +158,11 @@ ManyTwitch.streams = {
   handleResize() {
     log('ManyTwitch.streams.handleResize() - Begin');
 
-    let streamsContainer = document.getElementById('streams-container');
-    let numStreams = document.getElementsByClassName('stream').length;
+    const streamsContainer = document.getElementById('streams-container');
+    let numStreams = ManyTwitch.util.streamCount();
     let innerWindowHeight = window.innerHeight - 48;
-    let containerWidth = document.getElementById('container').offsetWidth;
+    let containerWidth = document.getElementById('container').clientWidth;
+    log(`\t Container width: ${containerWidth}`);
     let calculatedHeight = 0;
     let calculatedWidth = 0;
     let containerPadding = 0;
