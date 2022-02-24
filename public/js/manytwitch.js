@@ -85,7 +85,7 @@ ManyTwitch.streams = {
    log('ManyTwitch.streams.setStreams() - Begin');
 
    log(`\t streamsParm: ${streamsParm}`);
-    window.sessionStorage.setItem('streams', streamsParm);
+   window.sessionStorage.setItem('streams', streamsParm);
 
    log('ManyTwitch.streams.setStreams() - End');
   },
@@ -104,6 +104,7 @@ ManyTwitch.streams = {
     if (streamsArray.length > 0) {
       streamsArray.forEach(element => {
         let existing = document.getElementById(`stream-${element}-video`);
+
         if (existing == null) {
          log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
@@ -116,12 +117,12 @@ ManyTwitch.streams = {
 
       streamSpans = document.getElementsByClassName('stream');
       numStreams = streamSpans.length;
-     log(`\t Stream count: ${numStreams}`);
+      log(`\t Stream count: ${numStreams}`);
 
       Array.from(streamSpans).forEach(element => {
         let streamName = element.dataset.streamName;
         if (!streamsArray.includes(streamName)) {
-         log(`\t Removing ${streamName}`);
+          log(`\t Removing ${streamName}`);
           document.getElementById(`stream-${streamName}-video`).remove();
           numStreams -= 1;
         }
@@ -147,13 +148,13 @@ ManyTwitch.streams = {
 
     ManyTwitch.streams.handleResize();
     ManyTwitch.streams.updateHistory();
-
-   log('ManyTwitch.streams.update() - End');
+    
+    log('ManyTwitch.streams.update() - End');
   },
 
   // handles resizing the streams based on the browser window size.
   handleResize() {
-   log('ManyTwitch.streams.handleResize() - Begin');
+    log('ManyTwitch.streams.handleResize() - Begin');
 
     let streamsContainer = document.getElementById('streams-container');
     let numStreams = document.getElementsByClassName('stream').length;
@@ -189,13 +190,13 @@ ManyTwitch.streams = {
     });
 
     streamsContainer.style.paddingTop = `${containerPadding}px`;
-
-   log('ManyTwitch.streams.handleResize() - End');
+    
+    log('ManyTwitch.streams.handleResize() - End');
   },
 
   // updates the url to include all the current streams.
   updateHistory() {
-   log("ManyTwitch.streams.updateHistory() - Start");
+    log("ManyTwitch.streams.updateHistory() - Start");
 
     const streams = ManyTwitch.streams.getStreams();
     let newURL = '';
@@ -209,8 +210,8 @@ ManyTwitch.streams = {
     } else {
       history.replaceState(null, "", "/");
     }
-
-   log("ManyTwitch.streams.updateHistory() - End");
+    
+    log("ManyTwitch.streams.updateHistory() - End");
   }
 },
 
