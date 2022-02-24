@@ -16,8 +16,10 @@ window.onresize = function(event) {
 
 // shortcut for logging to the browser's console.
 function log(msg='') {
-  return console.log(msg);
-}
+  if (window.console && window.console.log) {
+    window.console.log(msg);
+  }
+};
 
 // methods for the stream manager modal.
 ManyTwitch.manager = {
@@ -133,7 +135,7 @@ ManyTwitch.streams = {
       }
     }
 
-   log(`ManyTwitch.streams.update() - numStreams: ${numStreams}`);
+   log(`\t ManyTwitch.streams.update() - stream count: ${numStreams}`);
 
     if (numStreams > 0) {
       defaultContainer.style.display = 'none';
