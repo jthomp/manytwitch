@@ -135,7 +135,7 @@ ManyTwitch.streams = {
       }
     }
 
-   log(`\t Stream count: ${numStreams}`);
+    log(`\t Stream count: ${numStreams}`);
 
     if (numStreams > 0) {
       defaultContainer.style.display = 'none';
