@@ -1,6 +1,6 @@
 /**
  * ManyTwitch
- * Copyright (C) 2017-2022 by Justin Thompson (Antillian) 
+ * Copyright (C) Justin Thompson (Antillian) 
  */
 
 // define our constants.
