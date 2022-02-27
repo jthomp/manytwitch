@@ -44,7 +44,7 @@
   let timeoutId = 0;
   function handleKeyUp() {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(ManyTwitch.manager.toggleAddButton, 500);
+    timeoutId = setTimeout(ManyTwitch.manager.toggleAddButton, 300);
   }
 
   document.getElementById("new_stream").addEventListener("keypress", (event) => {
