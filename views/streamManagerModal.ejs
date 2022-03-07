@@ -20,7 +20,7 @@
                  value="" 
                  placeholder="Add stream..." 
                  class="form-control"
-                 onkeyup="handleKeyUp(); return false;"
+                 onkeyup="handleKeyUp();"
                  autocomplete="on"
                  autocorrect="off"
                  spellcheck="false"
@@ -32,6 +32,12 @@
                       table-striped
                       stream-list" 
                 id="streams-list">
+          <thead>
+            <tr>
+              <td>Stream name</td>
+              <td></td>
+            </tr>
+          </thead>
           <tbody id="streams-list-tbody"></tbody>
         </table>
       </div>
@@ -44,7 +50,7 @@
   let timeoutId = 0;
   function handleKeyUp() {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(ManyTwitch.manager.toggleAddButton, 200);
+    timeoutId = setTimeout(ManyTwitch.manager.toggleAddButton, 150);
   }
 
   document.getElementById("new_stream").addEventListener("keypress", (event) => {
