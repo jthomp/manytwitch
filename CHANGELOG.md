@@ -1,0 +1,251 @@
+##### Version 1.5.5 - (02/24/2022)
+
+*   Some reliability fixes.
+*   Fixed stream resizing bug.
+
+  
+
+##### Version 1.5.4 - (02/21/2022)
+
+*   Even more speed improvements.
+
+  
+
+##### Version 1.5.3 - (02/18/2022)
+
+*   Some aesthetic tweaks to the stream manager modal.
+
+  
+
+##### Version 1.5.2 - (02/17/2022)
+
+*   Speed improvements.
+
+  
+
+##### Version 1.5.1 - (02/16/2022)
+
+*   Some refactoring and fixes.
+
+  
+
+##### Version 1.5.0 - (02/14/2022)
+
+*   Add a modal to get a URL containing all the current streams so you can share it.
+
+  
+
+##### Version 1.4.10 - (02/07/2022)
+
+*   Prompt to leave if streams are active.
+
+  
+
+##### Version 1.4.9 - (02/05/2022)
+
+*   Fix bug where adding a stream, removing it and then adding it again didn't work.
+*   Add a theme color.
+
+  
+
+##### Version 1.4.8 - (02/02/2022)
+
+*   Readability enhancements.
+
+  
+
+##### Version 1.4.7 - (02/01/2022)
+
+*   Speed improvements.
+
+  
+
+##### Version 1.4.6 - (01/29/2022)
+
+*   Tweaks to the default content.
+
+  
+
+##### Version 1.4.5 - (01/28/2022)
+
+*   You know the drill. More tweaks and fixes.
+
+  
+
+##### Version 1.4.4 - (01/26/2022)
+
+*   Some accessibility tweaks.
+
+  
+
+##### Version 1.4.3 - (01/26/2022)
+
+*   Keep new stream field at top of stream manager modal.
+*   Move modal buttons to top of stream manager.
+
+  
+
+##### Version 1.4.2 - (01/25/2022)
+
+*   More underlying tweaks, optimizations and some security fixes.
+
+  
+
+##### Version 1.4.1 - (01/23/2022)
+
+*   Updates and security fixes.
+*   Privacy Notice modal changes.
+
+  
+
+##### Version 1.4.0 - (01/19/2022)
+
+*   Under-the-hood refactoring.
+*   Fixed a bug where videos didn't resize to fit properly.
+*   Clicking the label on the stream manager will now toggle the checkbox.
+
+  
+
+##### Version 1.3.3 - (01/17/2022)
+
+*   Add support for saving by using CTRL+S.
+*   Bug fixes and house cleaning.
+*   Some underlying refactoring.
+
+  
+
+##### Version 1.3.2 - (01/15/2022)
+
+*   Fade the manage button in and out.
+*   Bug fixes.
+*   More speed improvements.
+
+  
+
+##### Version 1.3.1 - (01/14/2022)
+
+*   Add splash screen for light mode.
+*   App now loads about 50% faster!
+
+  
+
+##### Version 1.3.0 - (01/13/2022)
+
+*   Add splash screen (PWA.)
+*   Speed improvements.
+
+  
+
+##### Version 1.2.10 - (01/13/2022)
+
+*   Underlying tweaks, fixes and optimizations.
+
+  
+
+##### Version 1.2.9 - (01/09/2022)
+
+*   Bug fixes and optimizations.
+
+  
+
+##### Version 1.2.8 - (01/06/2022)
+
+*   Tweaks to the stream manager.
+
+  
+
+##### Version 1.2.7 - (01/05/2022)
+
+*   Lots of little bug fixes, tweaks and improvements.
+
+  
+
+##### Version 1.2.6 - (01/04/2022)
+
+*   Style tweaks.
+*   Stream manager tweaks.
+*   Add button to open stream on Twitch.
+*   Tweaks for the manage button.
+*   Add Privacy Notice.
+
+  
+
+##### Version 1.2.5 - (01/01/2022)
+
+*   HAPPY NEW YEAR!
+*   Fix image width issues on PSOD modal on mobile.
+
+  
+
+##### Version 1.2.4 - (12/21/2021)
+
+*   Disable autocorrect, autocapitalize and spellcheck in new stream field.
+
+  
+
+##### Version 1.2.3 - (12/18/2021)
+
+*   Fix bug where stream container didn't properly resize when removing streams.
+*   Update Fontawesome and other tweaks.
+*   Layout tweaks.
+
+  
+
+##### Version 1.2.2 - (12/14/2021)
+
+*   Underlying tweaks and optimizations.
+
+  
+
+##### Version 1.2.1 - (12/13/2021)
+
+*   More work on PWA support.
+
+  
+
+##### Version 1.2.0 - (12/13/2021)
+
+*   PWA Support (beta.)
+*   Make the changelog and psod modals full screen.
+
+  
+
+##### Version 1.1.0 - (12/12/2021)
+
+*   NEW! You can now add streams via the address bar.
+
+  
+
+##### Version 1.0.9 - (12/12/2021)
+
+*   Lots of tiny tweaks and optimizations.
+*   Changelog modal now scrolls!
+*   Added PSOD (purple screen of death) warning.
+
+  
+
+##### Version 1.0.8 - (12/11/2021)
+
+*   On the stream manager, press Enter to add a stream and enter another.
+
+  
+
+##### Version 1.0.7 - (12/05/2021)
+
+*   Tweaks and optimizations for a smoother experience.
+
+  
+
+##### Version 1.0.6 - (11/28/2021)
+
+*   Add Google Analytics.
+
+  
+
+##### Version 1.0.5 - (11/28/2021)
+
+*   Add the changelog.
+*   Use EJS.
+*   Some other refactoring.
+*   For now, don't append streams to the URL.
+*   Lots of tiny tweaks.
