@@ -3,7 +3,7 @@
   <tr id="tr-{{stream}}" 
       class="streams-modal-table-tr"
       data-stream-name="{{stream}}">
-    <td>
+    <td colspan="2">
       <div style="float: left; padding-top: 5px;">
         <input id="streams_{{stream}}" 
                 type="checkbox" 
@@ -14,8 +14,6 @@
                 class="form-check-input me-1">
         <label for="streams_{{stream}}">{{stream}}</label>
       </div>
-    </td>
-    <td>
       <div style="float: right;">
         <a href="javascript:;"
             onclick="window.open('https://www.twitch.tv/popout/{{stream}}/chat', '', 'width=350,height=500');"
