@@ -1,3 +1,10 @@
+##### Version 1.5.6 - (03/7/2022)
+
+*  Remove changelog modal.
+*  Move changelog to this file.
+*  Lots of little tweaks.
+
+
 ##### Version 1.5.5 - (02/24/2022)
 
 *   Some reliability fixes.
