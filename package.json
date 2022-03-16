@@ -12,14 +12,15 @@
     "chai": "^4.3.4",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
+    "debug": "~4.3.3",
     "ejs": "^3.1.6",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
+    "express": "~4.17.3",
+    "http-errors": "~2.0.0",
+    "morgan": "~1.10.0",
     "nodemon": "^2.0.15",
     "pwacompat": "^2.0.17",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "faker": "^6.6.6",
