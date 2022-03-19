@@ -5,7 +5,6 @@ const compression = require('compression');
 const version = process.env.npm_package_version;
 const buildId = process.env.HEROKU_RELEASE_VERSION || '0';
 const appTitle = 'ManyTwitch - Watch multiple Twitch streams at once';
-let streamsFromParms = [];
 
 app.set('view engine', 'ejs');
 app.use(compression({ level: 9 }));
@@ -32,6 +31,7 @@ app.use(
 );
 
 app.get('/*', function(req, res) {
+  let streamsFromParms = [];
   streamsFromParms = req.params['0'].split('/').filter(String);
   res.render('index', {
     version: version,
