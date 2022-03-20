@@ -1,3 +1,7 @@
+##### Version 1.5.8 - (03/20/2022)
+
+* Speed improvements.
+
 ##### Version 1.5.7 - (03/16/2022)
 
 *  Bug fixes and improvements.
@@ -14,13 +18,11 @@
 *   Some reliability fixes.
 *   Fixed stream resizing bug.
 
-  
 
 ##### Version 1.5.4 - (02/21/2022)
 
 *   Even more speed improvements.
 
-  
 
 ##### Version 1.5.3 - (02/18/2022)
 
