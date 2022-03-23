@@ -1,3 +1,9 @@
+##### Version 1.5.9 - (03/23/2022)
+
+* Security update.
+* Add refresh button (in case streams crash; it happens.)
+* Change share button icon to avoid confusion with refresh icon.
+
 ##### Version 1.5.8 - (03/20/2022)
 
 * Speed improvements.
