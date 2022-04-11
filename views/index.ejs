@@ -27,6 +27,7 @@
       const saveBtn = document.getElementById('save-btn');
       const newStreamField = document.getElementById('new_stream');
       const addStreamBtn = document.getElementById('add-stream-btn');
+      const clearBtn = document.getElementById('clear-btn');
 
       window.addEventListener('DOMContentLoaded', (event) => {
         ManyTwitch.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
@@ -84,6 +85,21 @@
           addStreamBtn.setAttribute('disabled', 'disabled');
         } else {
           addStreamBtn.removeAttribute('disabled');
+        }
+      });
+
+      clearBtn.addEventListener('click', (event) => {
+        if (confirm('This will clear all your current streams. This change applies immediately.\r\n\r\nAre you sure?')) {
+          let streamsList = document.getElementsByClassName('streams-modal-table-tr');
+          let streams = ManyTwitch.streams.getStreams();
+          let newStreams = [];
+
+          Array.from(streamsList).forEach(element => {
+            element.remove();
+          });
+
+          ManyTwitch.streams.setStreams(newStreams.join(','));
+          ManyTwitch.streams.update();
         }
       });
     </script>

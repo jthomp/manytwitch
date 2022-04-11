@@ -1,3 +1,7 @@
+##### Version 1.5.10 - (04/11/2022)
+
+* Add button to clear all currently active streams.
+
 ##### Version 1.5.9 - (03/23/2022)
 
 * Security update.
