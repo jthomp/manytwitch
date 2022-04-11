@@ -214,6 +214,14 @@ ManyTwitch.streams = {
     }
     
     log("ManyTwitch.streams.updateHistory() - End");
+  },
+
+  clearAll() {
+    log("ManyTwitch.streams.clearAll() - Start");
+    ManyTwitch.manager.setStreams = "";
+    ManyTwitch.manager.update();
+    ManyTwitch.manager.updateHistory(); 
+    log("ManyTwitch.streams.clearAll() - End");
   }
 },
 
