@@ -46,14 +46,6 @@ a {
   opacity: 0.75;
 }
 
-#default {
-  margin: 0 auto;
-  display: block;
-  margin-top: 22.5rem;
-  max-width: 32.5rem;
-  text-align: center;
-}
-
 #default a {
   color: rgb(7, 209, 157);
 }
