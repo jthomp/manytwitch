@@ -116,10 +116,3 @@ a {
   max-width: 99%;
   max-height: 99%;
 }
-
-#privacy-modal-content {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

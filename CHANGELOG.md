@@ -1,3 +1,8 @@
+##### Version 1.5.11 - (04/12/2022)
+
+* Remove Privacy modal because it's not needed.
+* Dependency and security updates.
+
 ##### Version 1.5.10 - (04/11/2022)
 
 * Add button to clear all currently active streams.
