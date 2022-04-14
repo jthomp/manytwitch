@@ -24,6 +24,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "async": "^3.2.3",
     "faker": "^5.5.3",
     "jsdom": "19.0.0",
     "jsdom-global": "3.0.2",
