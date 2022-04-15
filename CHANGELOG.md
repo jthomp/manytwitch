@@ -1,3 +1,7 @@
+##### Version 1.5.12 - (04/14/2022)
+
+* Security updates.
+
 ##### Version 1.5.11 - (04/12/2022)
 
 * Slight redesign of the main screen.
