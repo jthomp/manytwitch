@@ -1,3 +1,7 @@
+##### Version 1.5.14 - (04/18/2022)
+
+* Security updates.
+
 ##### Version 1.5.13 - (04/18/2022)
 
 * WE GOT OUR OWN DOMAIN BABY!!!
