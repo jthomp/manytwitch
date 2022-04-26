@@ -4,6 +4,7 @@ describe('Load the homepage', function() {
 
     browser
           .url('http://localhost:3000/')
+          .expect.section('#default').to.be.visible
           .assert.textContains('#default', 'Welcome to ManyTwitch')
           .assert.textContains('#default', "Let's Watch!")
           .assert.textContains('#default', 'PSOD Notice')
@@ -12,5 +13,11 @@ describe('Load the homepage', function() {
           .end();
 
   });
+
+  // it('loads the index with one stream', function(browser) {
+  //   browser
+  //         .url('http://localhost:3000/arcus')
+  //         .assert.textContains('span#stream-arcus-video')
+  // });
 
 });
