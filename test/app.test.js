@@ -4,7 +4,8 @@ describe('Load the homepage', function() {
 
     browser
           .url('http://localhost:3000/')
-          .expect.section('#default').to.be.visible
+          .assert.visible('#default')
+          .assert.not.visible('#streams-container')
           .assert.textContains('#default', 'Welcome to ManyTwitch')
           .assert.textContains('#default', "Let's Watch!")
           .assert.textContains('#default', 'PSOD Notice')
@@ -14,10 +15,27 @@ describe('Load the homepage', function() {
 
   });
 
-  // it('loads the index with one stream', function(browser) {
-  //   browser
-  //         .url('http://localhost:3000/arcus')
-  //         .assert.textContains('span#stream-arcus-video')
-  // });
+  it('loads the index with one stream', function(browser) {
+    browser
+          .url('http://localhost:3000/arcus')
+          .assert.not.visible('#default')
+          .assert.not.visible('#disclaimer')
+          .assert.visible('#manage-btn')
+          .assert.visible('span#stream-arcus-video')
+          .end();
+  });
+
+  it('loads the index with multiple streams', function(browser) {
+
+    browser
+          .url('http://localhost:3000/arcus/lackattack')
+          .assert.not.visible('#default')
+          .assert.not.visible('#disclaimer')
+          .assert.visible('#manage-btn')
+          .assert.visible('span#stream-arcus-video')
+          .assert.visible('span#stream-lackattack-video')
+          .end();
+
+  });
 
 });
