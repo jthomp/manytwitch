@@ -46,7 +46,7 @@ module.exports = {
       },
 
       desiredCapabilities: {
-        browserName : 'chrome'
+        browserName : 'safari'
       },
 
       webdriver: {
