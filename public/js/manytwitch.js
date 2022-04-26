@@ -3,7 +3,7 @@
  * Copyright (C) Justin Thompson (Antillian) 
  */
 
-// define our constants.
+// define our constants/namespaces.
 const ManyTwitch = {};
 ManyTwitch['manager'] = {};
 ManyTwitch['streams'] = {};
@@ -29,7 +29,7 @@ ManyTwitch.manager = {
    log('ManyTwitch.manager.toggleAddButton() - Begin');
 
     const newStreamInput = document.getElementById('new_stream');
-    const addButton = document.getElementById('add-stream-btn');
+    const addButton =      document.getElementById('add-stream-btn');
 
     if (newStreamInput.value.length > 0) {
       addButton.removeAttribute('disabled');
@@ -44,9 +44,9 @@ ManyTwitch.manager = {
   addToTable(streamParm) {
    log('ManyTwitch.manager.addToTable() - Begin');
 
-    const streamsTable = document.getElementById('streams-list-tbody');
+    const streamsTable =   document.getElementById('streams-list-tbody');
     const newStreamField = document.getElementById('new_stream');
-    const saveBtn = document.getElementById('save-btn');
+    const saveBtn =        document.getElementById('save-btn');
 
     if (streamParm != '') {
      log(`\t Adding streamParm ${streamParm}`);
