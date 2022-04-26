@@ -3,6 +3,7 @@
 * Remove clear all button from stream manager.
 * Remove share modal.
 * Add disclaimer to default content.
+* Add testing.
 
 ##### Version 1.5.16 - (04/25/2022)
 
