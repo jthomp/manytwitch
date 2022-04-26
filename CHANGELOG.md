@@ -1,3 +1,7 @@
+##### Version 1.5.16 - (04/25/2022)
+
+* Move add stream button next to stream input field.
+
 ##### Version 1.5.14 - (04/18/2022)
 
 * Security updates.

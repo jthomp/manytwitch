@@ -14,18 +14,29 @@
       <div class="modal-body">
         <form id="new_stream_form" 
               name="new_stream_form">
-          <input type="text" 
-                 name="new_stream" 
-                 id="new_stream" 
-                 value="" 
-                 placeholder="Add stream..." 
-                 class="form-control"
-                 onkeyup="ManyTwitch.manager.toggleAddButton();"
-                 autocomplete="on"
-                 autocorrect="off"
-                 spellcheck="false"
-                 autocapitalize="none"
-                 autofocus />
+          <div class="input-group mb-3">
+            <input type="text" 
+                  name="new_stream" 
+                  id="new_stream" 
+                  value="" 
+                  placeholder="Add stream..." 
+                  class="form-control"
+                  onkeyup="ManyTwitch.manager.toggleAddButton();"
+                  autocomplete="on"
+                  autocorrect="off"
+                  spellcheck="false"
+                  autocapitalize="none"
+                  autofocus />
+            <button type="button" 
+                    class="btn btn-success" 
+                    id="add-stream-btn" 
+                    onclick="ManyTwitch.manager.addToTable(document.getElementById('new_stream').value);"
+                    title="Add a new stream."
+                    disabled=disabled>
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+         
         </form>
         <br />
         <table class="table
