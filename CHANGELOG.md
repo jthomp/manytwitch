@@ -1,3 +1,8 @@
+##### Version 1.5.17 - (04/26/2022)
+
+* Remove clear all button from stream manager.
+* Remove share modal.
+
 ##### Version 1.5.16 - (04/25/2022)
 
 * Move add stream button next to stream input field.
