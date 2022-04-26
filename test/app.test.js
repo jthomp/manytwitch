@@ -1,4 +1,4 @@
-// const expect = require('chai').expect;
+import { should } from 'chai';
 // const request = require('request');
 
 // describe("Load the index", function() {
