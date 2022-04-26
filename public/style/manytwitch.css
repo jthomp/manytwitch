@@ -116,3 +116,12 @@ a {
   max-width: 99%;
   max-height: 99%;
 }
+
+#disclaimer {
+  width: 100%; 
+  text-align: center; 
+  margin: 0 auto; 
+  font-size: 0.7em; 
+  color: rgb(170, 170, 170);
+  line-height: 0.1em;
+}

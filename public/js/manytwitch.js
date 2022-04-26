@@ -96,7 +96,7 @@ ManyTwitch.streams = {
 
     const streamsContainer = document.getElementById('streams-container');
     const manage = document.getElementById('manage-btn');
-    const defaultContainer = document.getElementById('default');
+    const defaultContainer = document.getElementById('default-content-container');
     let streamsArray = ManyTwitch.streams.getStreams();
     let streamSpans = [];
     let numStreams = 0;

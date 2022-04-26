@@ -1,36 +1,39 @@
-<div id="default" 
-    class="card border-secondary mb-3"
-    style="background-color: rgb(48,48,48);">
-  <h3 class="card-header">Welcome to ManyTwitch</h3>
-  <div class="card-body">
-    <div class="card-text">
-      <div class="d-grid gap-2">
-        <button type="button"
-                class="btn btn-lg btn-purple"
-                data-bs-toggle="modal"
-                data-bs-target="#streams-modal"
-                title="Click here to add some streams to watch!">
-          <i class="fab fa-twitch"></i>&nbsp;&nbsp;Let's Watch!
-        </button>
+<div id="default-content-container">
+  <div id="default" 
+      class="card border-secondary mb-3"
+      style="background-color: rgb(48,48,48);">
+    <h3 class="card-header">Welcome to ManyTwitch</h3>
+    <div class="card-body">
+      <div class="card-text">
+        <div class="d-grid gap-2">
+          <button type="button"
+                  class="btn btn-lg btn-purple"
+                  data-bs-toggle="modal"
+                  data-bs-target="#streams-modal"
+                  title="Click here to add some streams to watch!">
+            <i class="fab fa-twitch"></i>&nbsp;&nbsp;Let's Watch!
+          </button>
+        </div>
       </div>
     </div>
+    <div id="footer"
+        class="card-footer">
+      v<%= version %>
+      &CenterDot;
+      <a href="javascript:;"
+        data-bs-toggle="modal"
+        data-bs-target="#psod-modal"
+        title="Click for more information.">
+        PSOD Notice
+      </a>
+      &CenterDot;
+      Created by 
+      <a href="https://twitter.com/antillian_"
+        target= "_blank"
+        title="Antillian on Twitter">Antillian</a>
+    </div>
   </div>
-  <div id="footer"
-      class="card-footer">
-    v<%= version %>
-    &CenterDot;
-    <a href="javascript:;"
-      data-bs-toggle="modal"
-      data-bs-target="#psod-modal"
-      title="Click for more information.">
-      PSOD Notice
-    </a>
-    &CenterDot;
-    Created by 
-    <a href="https://twitter.com/antillian_"
-      target= "_blank"
-      title="Antillian on Twitter">Antillian</a>
+  <div id="disclaimer">
+    ManyTwitch is not affiliated with Twitch or Amazon.
   </div>
 </div>
-
-
