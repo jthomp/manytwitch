@@ -2,7 +2,7 @@
   "name": "ManyTwitch",
   "short_name": "ManyTwitch",
   "lang": "en-US",
-  "start_url": "/",
+  "start_url": "https://www.manytwitch.app",
   "scope": "/",
   "display": "standalone",
   "background_color": "rgb(0, 0, 0)",
