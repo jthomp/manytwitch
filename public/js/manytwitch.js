@@ -10,12 +10,12 @@ ManyTwitch['streams'] = {};
 ManyTwitch['util'] = {};
 
 // resize the streams if the window is resized.
-window.onresize = function(event) {
+window.onresize = () => {
   return setTimeout(ManyTwitch.streams.handleResize(), 500);
 };
 
 // shortcut for logging to the browser's console.
-function log(msg='') {
+log = (msg) => {
   if (window.console && window.console.log) {
     window.console.log(msg);
   }
