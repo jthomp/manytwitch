@@ -83,18 +83,20 @@ a {
   font-size: 1.25rem;
 }
 
-/* #streams-modal table#streams-list tbody#streams-list-tbody tr td:hover {
+#streams-modal table#streams-list tbody#streams-list-tbody tr td:hover {
   background-color: rgb(200, 200, 200);
   color:rgb(0, 0, 0);
 }
 
+/* 
 #streams-modal table#streams-list tbody#streams-list-tbody tr:nth-child(odd) {
   background-color: var(--purple-bg-color);
 }
 
 #streams-modal table#streams-list tbody#streams-list-tbody tr:nth-child(even) {
   background-color: var(--purple-bg-color-lighter);
-} */
+} 
+*/
 
 #streams-modal table#streams-list tbody#streams-list-tbody tr td {
   padding: 1rem;
