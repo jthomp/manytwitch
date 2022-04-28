@@ -83,6 +83,10 @@ a {
   font-size: 1.25rem;
 }
 
+#streams-modal table#streams-list tbody#streams-list-tbody tr td {
+  transition: all 0.5s ease-out;
+}
+
 #streams-modal table#streams-list tbody#streams-list-tbody tr td:hover {
   background-color: rgb(200, 200, 200);
   color:rgb(0, 0, 0);
