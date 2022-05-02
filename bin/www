@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 
-const app = require('../server');
-const debug = require('debug')('manytwitch:server');
+const app = require('../app');
+const debug = require('debug')('manytwitch:app');
 const http = require('http');
 
 /**
