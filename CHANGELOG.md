@@ -1,3 +1,5 @@
+# ManyTwitch Changelog
+
 ##### Version 1.5.18 - (05/02/2022)
 
 * Security updates.
