@@ -1,6 +1,6 @@
 # ManyTwitch
 Watch multiple Twitch streams at once.
 
-[ManyTwitch website](https://manytwitch.app/)
+[ManyTwitch website](https://www.manytwitch.app/)
 
 By: Antillian.
