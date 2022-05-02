@@ -55,7 +55,7 @@ a {
 }
 
 #default a {
-  color:rgb(173, 216, 230);
+  color: var(--purple-bg-color-lighter);
 }
 
 #default button {
