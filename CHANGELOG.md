@@ -1,3 +1,7 @@
+##### Version 1.5.18 - (05/02/2022)
+
+* Security updates.
+
 ##### Version 1.5.17 - (04/26/2022)
 
 * Remove clear all button from stream manager.
