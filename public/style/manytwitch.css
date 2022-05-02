@@ -117,10 +117,7 @@ a {
 
 #footer {
   text-align: center;
-}
-
-#changelog li {
-  font-size: 1rem;
+  font-size: 1.25em;
 }
 
 #psod-modal img {
