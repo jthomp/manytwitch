@@ -1,5 +1,5 @@
 # ManyTwitch
-Watch multiple Twitch streams at once.
+Watch multiple Twitch streams on your device.
 
 [ManyTwitch website](https://www.manytwitch.app/)
 
