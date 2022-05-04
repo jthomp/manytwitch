@@ -64,15 +64,11 @@
         let newStreams = [];
         const orderChangedElement = document.getElementById('order-changed');
 
-        console.log(streamsList);
-
         if (orderChangedElement.value == 'true') {
           console.log('Streams have been re-ordered. Resetting...');
           ManyTwitch.streams.setStreams('');
           streams = ManyTwitch.streams.getStreams(); // reset our var.
         }
-
-        console.log(streamsList);
 
         Array.from(streamsList).forEach(element => {
           let streamName = element.dataset.streamName;
