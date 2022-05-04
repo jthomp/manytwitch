@@ -62,6 +62,11 @@
         let streamsList = document.getElementsByClassName('streams-modal-table-tr');
         let streams = ManyTwitch.streams.getStreams();
         let newStreams = [];
+        const orderChangedElement = document.getElementById('order-changed');
+
+        if (orderChangedElement.value == "true") {
+          ManyTwitch.streams.setStreams('');
+        }
 
         Array.from(streamsList).forEach(element => {
           let streamName = element.dataset.streamName;

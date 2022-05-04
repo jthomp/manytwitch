@@ -55,6 +55,10 @@
   </div>
 </div>
 
+<input type="hidden"
+       id="order-changed"
+       value=false />
+
 <script type="text/javascript">
 
   let streamsList = document.getElementById('streams-list-tbody');
@@ -62,7 +66,7 @@
     animation: 100,
     draggable: '.streams-modal-table-tr',
     onEnd: (evt) => {
-      console.log('dragging has ended.');
+      document.getElementById('order-changed').value = "true";
     }
   });
 

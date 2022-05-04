@@ -3,7 +3,7 @@
  * Copyright (C) Justin Thompson (Antillian) 
  */
 
-// define our constants/namespaces.
+// define our namespaces.
 const ManyTwitch = {};
 ManyTwitch['manager'] = {};
 ManyTwitch['streams'] = {};
@@ -90,7 +90,7 @@ ManyTwitch.streams = {
     log('ManyTwitch.streams.update() - Begin');
 
     const streamsContainer = document.getElementById('streams-container');
-    const manage = document.getElementById('manage-btn');
+    const manage =           document.getElementById('manage-btn');
     const defaultContainer = document.getElementById('default-content-container');
     let streamsArray = ManyTwitch.streams.getStreams();
     let streamSpans = [];
