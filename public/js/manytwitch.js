@@ -86,7 +86,7 @@ ManyTwitch.streams = {
   },
   
   // add/remove streams.
-  update() {
+  update(reordered=false) {
     log('ManyTwitch.streams.update() - Begin');
 
     const streamsContainer = document.getElementById('streams-container');
@@ -101,7 +101,11 @@ ManyTwitch.streams = {
       streamsArray.forEach(element => {
         let existing = document.getElementById(`stream-${element}-video`);
 
-        if (existing == null) {
+        if (existing != null && reordered) {
+          existing.remove();
+        }
+
+        if (existing == null || reordered) {
          log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById('new-stream-template').innerHTML.trim();
           let newStreamTemplate = Handlebars.compile(newStreamSource);

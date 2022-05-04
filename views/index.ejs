@@ -64,11 +64,12 @@
         let newStreams = [];
         const orderChangedElement = document.getElementById('order-changed');
 
+        console.log(streamsList);
+
         if (orderChangedElement.value == 'true') {
           console.log('Streams have been re-ordered. Resetting...');
           ManyTwitch.streams.setStreams('');
           streams = ManyTwitch.streams.getStreams(); // reset our var.
-          orderChangedElement.value = 'false';
         }
 
         console.log(streamsList);
@@ -84,7 +85,8 @@
         });
 
         ManyTwitch.streams.setStreams(newStreams.join(','));
-        ManyTwitch.streams.update();
+        ManyTwitch.streams.update(orderChangedElement.value);
+        orderChangedElement.value = 'false';
       });
 
       newStreamField.addEventListener('paste', (event) => {
