@@ -17,11 +17,6 @@ a {
   text-decoration: none !important;
 }
 
-.form-control:focus {
-  border-color: var(--purple-form-control-focus) !important;
-  box-shadow: 0 0 0 0.2rem rgba(124, 31, 246, 0.25);
-}
-
 .btn-purple {
   background-color: var(--purple-bg-color) !important;
   color: rgb(255, 255, 255) !important;
@@ -81,6 +76,11 @@ a {
 
 #streams-container iframe {
   border: none;
+}
+
+#streams-modal input#new_stream.form-control:focus {
+  border-color: var(--purple-form-control-focus) !important;
+  box-shadow: 0 0 0 0.2rem rgba(124, 31, 246, 0.25);
 }
 
 #streams-modal input#new_stream,
