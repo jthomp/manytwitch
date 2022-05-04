@@ -26,18 +26,13 @@ ManyTwitch.manager = {
 
   // enable/disable the add button in the stream manager modal.
   toggleAddButton() {
-   log('ManyTwitch.manager.toggleAddButton() - Begin');
-
     const newStreamInput = document.getElementById('new_stream');
     const addButton =      document.getElementById('add-stream-btn');
-
     if (newStreamInput.value.length > 0) {
       addButton.removeAttribute('disabled');
     } else {
       addButton.setAttribute('disabled', 'disabled');
     }
-
-   log('ManyTwitch.manager.toggleAddButton() - End');
   },
 
   // add stream to the stream manager table.
@@ -119,7 +114,6 @@ ManyTwitch.streams = {
 
       streamSpans = document.getElementsByClassName('stream');
       numStreams = streamSpans.length;
-      log(`\t Stream count before removal: ${numStreams}`);
 
       Array.from(streamSpans).forEach(element => {
         let streamName = element.dataset.streamName;
@@ -136,8 +130,6 @@ ManyTwitch.streams = {
         window.sessionStorage.setItem('streams', '');
       }
     }
-
-    log(`\t Stream count after removal: ${numStreams}`);
 
     if (numStreams > 0) {
       defaultContainer.style.display = 'none';
