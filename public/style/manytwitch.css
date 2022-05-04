@@ -18,7 +18,7 @@ a {
 }
 
 .form-control:focus {
-  border-color: --purple-form-control-focus;
+  border-color: var(--purple-form-control-focus) !important;
   box-shadow: 0 0 0 0.2rem rgba(124, 31, 246, 0.25);
 }
 
