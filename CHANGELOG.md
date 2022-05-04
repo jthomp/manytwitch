@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.6.0 - (05/xx/2022)
+
+* Allow re-ordering streams from the stream manager modal.
+
 ##### Version 1.5.18 - (05/02/2022)
 
 * Security updates.
