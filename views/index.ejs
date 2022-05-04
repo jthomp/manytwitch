@@ -64,8 +64,10 @@
         let newStreams = [];
         const orderChangedElement = document.getElementById('order-changed');
 
-        if (orderChangedElement.value == "true") {
+        if (orderChangedElement.value == 'true') {
+          console.log('Streams have been re-ordered. Resetting...');
           ManyTwitch.streams.setStreams('');
+          orderChangedElement.value = 'false';
         }
 
         Array.from(streamsList).forEach(element => {
