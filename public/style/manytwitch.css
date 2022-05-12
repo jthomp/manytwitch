@@ -115,6 +115,13 @@ a {
   border-bottom: transparent;
 }
 
+#streams-modal #streams-manager-default-content {
+  background-color: var(--purple-bg-color);
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.25em;
+}
+
 #footer {
   text-align: center;
   font-size: 1.25em;
