@@ -42,6 +42,7 @@ ManyTwitch.manager = {
     const streamsTable =   document.getElementById('streams-list-tbody');
     const newStreamField = document.getElementById('new_stream');
     const saveBtn =        document.getElementById('save-btn');
+    const streamManagerDefaultContent = document.getElementById('streams-manager-default-content');
 
     if (streamParm != '') {
      log(`\t Adding streamParm ${streamParm}`);
@@ -54,7 +55,8 @@ ManyTwitch.manager = {
       streamsTable.innerHTML += html;
       newStreamField.value = '';
       saveBtn.removeAttribute('disabled');
-      ManyTwitch.manager.toggleAddButton();  
+      ManyTwitch.manager.toggleAddButton();
+      streamManagerDefaultContent.style.display = 'none';
     }
 
     if (document.getElementById('streams-modal').style.display == 'block') {

@@ -25,6 +25,7 @@
       const saveBtn = document.getElementById('save-btn');
       const newStreamField = document.getElementById('new_stream');
       const addStreamBtn = document.getElementById('add-stream-btn');
+      const streamManagerDefaultContent = document.getElementById('streams-manager-default-content');
 
       window.addEventListener('DOMContentLoaded', (event) => {
         ManyTwitch.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
@@ -43,11 +44,13 @@
 
         newStreamField.focus();
 
-        if (ManyTwitch.util.streamCount() < 1) {
+        if (ManyTwitch.util.streamCount() == 0) {
           addStreamBtn.setAttribute('disabled', 'disabled');
           saveBtn.setAttribute('disabled', 'disabled');
+          streamManagerDefaultContent.style.display = 'block';
         } else {
           saveBtn.removeAttribute('disabled');
+          streamManagerDefaultContent.style.display = 'none';
         }
 
       });
