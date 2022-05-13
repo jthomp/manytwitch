@@ -99,6 +99,7 @@ ManyTwitch.streams = {
 
   /**
    * Returns an array of the streams stored in sessionStorage.
+   * @return {Array} The streams stored in sessionStorage.
   */
   getStreams() {
     let sessionStorage = window.sessionStorage.getItem('streams');
@@ -173,7 +174,6 @@ ManyTwitch.streams = {
 
     if (numStreams > 0) {
       defaultContainer.style = "display: none !important;";
-      // defaultContainer.style.display = 'none';
       manage.style.display = 'block';
     } else {
       defaultContainer.style.display = 'block';
@@ -259,8 +259,9 @@ ManyTwitch.streams = {
 ManyTwitch.util = {
 
   /**
-   * Returns a count of how many streams are stored in sessionStorage
+   * Returns a count of how many streams are stored in sessionStorage.
    * Warning: This does not reflect the state of the stream manager modal table.
+   * @return {Number} The number of streams.
   */
   streamCount() {
     return ManyTwitch.streams.getStreams().length;
