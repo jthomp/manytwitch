@@ -45,12 +45,13 @@ a {
   opacity: 0.75;
 }
 
-/* #default {
+#default {
   margin: 0 auto;
   display: block;
+  margin-top: 15rem;
   max-width: 40rem;
   text-align: center;
-} */
+}
 
 #default a {
   color: var(--purple-bg-color-lighter);
