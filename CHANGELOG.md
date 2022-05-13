@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.6.2 - (05/13/2022)
+
+* Properly vertically and horizontally align default content.
+
 ##### Version 1.6.1 - (05/12/2022)
 
 * Stream manager modal default content.
