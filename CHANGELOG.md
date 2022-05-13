@@ -4,6 +4,7 @@
 
 * Properly vertically and horizontally align default content.
 * Add delete button to stream manager.
+* Add documentation to manytwitch.js.
 
 ##### Version 1.6.1 - (05/12/2022)
 
