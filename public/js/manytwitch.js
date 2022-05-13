@@ -1,20 +1,28 @@
 /**
  * ManyTwitch
- * Copyright (C) Justin Thompson (Antillian) 
+ * Copyright (C) Justin Thompson (Antillian)
+ * https://www.twitter.com/antillian_
  */
 
-// define our namespaces.
+/**
+ * Establish and define our namespaces.
+*/
 const ManyTwitch = {};
 ManyTwitch['manager'] = {};
 ManyTwitch['streams'] = {};
 ManyTwitch['util'] = {};
 
-// resize the streams if the window is resized.
+/**
+ * Recalculate the size of the streams if the window is resized.
+ */
 window.onresize = () => {
   return setTimeout(ManyTwitch.streams.handleResize(), 500);
 };
 
-// shortcut for logging to the browser's console.
+/**
+ * Passthrough for logging a message to the browser's console.
+ * @param {String} msg The message to log to the console.
+ */
 log = (msg) => {
   if (window.console && window.console.log) {
     window.console.log(msg);
@@ -24,7 +32,9 @@ log = (msg) => {
 // methods for the stream manager modal.
 ManyTwitch.manager = {
 
-  // enable/disable the add button in the stream manager modal.
+  /**
+   * Toggles the add stream button on the stream manager modal.
+   */
   toggleAddButton() {
     const newStreamInput = document.getElementById('new_stream');
     const addButton =      document.getElementById('add-stream-btn');
@@ -35,7 +45,10 @@ ManyTwitch.manager = {
     }
   },
 
-  // add stream to the stream manager table.
+  /**
+   * Add new stream to the stream manager table.
+   * @param {String} streamParm The stream to add.
+  */
   addToTable(streamParm) {
    log('ManyTwitch.manager.addToTable() - Begin');
 
@@ -66,7 +79,10 @@ ManyTwitch.manager = {
    log('ManyTwitch.manager.addToTable() - End');
   },
 
-  // remove stream to the stream manager table.
+  /**
+   * Remove a given stream from the stream manager table.
+   * @param {String} streamParm The stream to remove.
+  */
   removeFromTable(streamParm) {
     log('ManyTwitch.manager.removeFromTable() - Begin');
     if (streamParm != '') {
@@ -81,13 +97,18 @@ ManyTwitch.manager = {
 // methods to manage the streams.
 ManyTwitch.streams = {
 
-  // returns streams as an array.
+  /**
+   * Returns an array of the streams stored in sessionStorage.
+  */
   getStreams() {
     let sessionStorage = window.sessionStorage.getItem('streams');
     return (sessionStorage == '') ? [] : sessionStorage.split(',');
   },
 
-  // set the streams sessionStorage item.
+  /**
+   * Set the streams in sessionStorage with a collection of streams.
+   * @param {String} streamsParm The streams to store in sessionStorage.
+  */
   setStreams(streamsParm) {
     log('ManyTwitch.streams.setStreams() - Begin');
 
@@ -97,7 +118,10 @@ ManyTwitch.streams = {
     log('ManyTwitch.streams.setStreams() - End');
   },
   
-  // add/remove streams.
+  /**
+   * Update the current streams stored in sessionStorage.
+   * @param {Boolean} reordered If the user reordered the streams, we need to reload them based on the given order.
+  */
   update(reordered=false) {
     log('ManyTwitch.streams.update() - Begin');
 
@@ -163,7 +187,9 @@ ManyTwitch.streams = {
     log('ManyTwitch.streams.update() - End');
   },
 
-  // handles resizing the streams based on the browser window size.
+  /**
+   * Handles resizing streams.
+  */
   handleResize() {
     log('ManyTwitch.streams.handleResize() - Begin');
 
@@ -205,7 +231,9 @@ ManyTwitch.streams = {
     log('ManyTwitch.streams.handleResize() - End');
   },
 
-  // updates the url to include all the current streams.
+  /**
+   * Update the current URL to include all current streams.
+  */
   updateHistory() {
     log("ManyTwitch.streams.updateHistory() - Start");
 
@@ -230,7 +258,10 @@ ManyTwitch.streams = {
 // utils used by the app.
 ManyTwitch.util = {
 
-  // return how many streams there are.
+  /**
+   * Returns a count of how many streams are stored in sessionStorage
+   * Warning: This does not reflect the state of the stream manager modal table.
+  */
   streamCount() {
     return ManyTwitch.streams.getStreams().length;
   }
