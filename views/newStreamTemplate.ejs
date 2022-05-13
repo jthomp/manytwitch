@@ -5,6 +5,11 @@
       data-stream-name="{{stream}}">
     <td colspan="2">
       <div class="stream-row-container">
+        <input id="streams_{{stream}}"
+               type="hidden"
+               value="{{stream}}"
+               data-stream-name="{{stream}}">
+               
         <input id="streams_{{stream}}" 
                 type="checkbox" 
                 name="streams[]" 
@@ -14,7 +19,13 @@
                 class="form-check-input me-1">
         <label for="streams_{{stream}}">{{stream}}</label>
       </div>
-      <div style="float: right;">
+      <div class="float-end">
+        <a href="javascript:;"
+           onclick=""
+           class="btn btn-danger"
+           title="Remove this stream.">
+          <i class="fa fa-trash"></i>
+        </a>
         <a href="javascript:;"
            onclick="window.open('https://www.twitch.tv/popout/{{stream}}/chat', '', 'width=400,height=screen.height');"
            class="btn btn-primary"

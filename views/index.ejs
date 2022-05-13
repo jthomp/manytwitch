@@ -75,12 +75,7 @@
 
         Array.from(streamsList).forEach(element => {
           let streamName = element.dataset.streamName;
-          let streamCheckbox = document.getElementById(`streams_${streamName}`);
-          if (streamCheckbox.checked) {
-            newStreams.push(streamName);
-          } else {
-            element.remove();
-          }
+          newStreams.push(streamName);
         });
 
         ManyTwitch.streams.setStreams(newStreams.join(','));
