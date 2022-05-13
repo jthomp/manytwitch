@@ -9,21 +9,14 @@
                type="hidden"
                value="{{stream}}"
                data-stream-name="{{stream}}">
-               
-        <input id="streams_{{stream}}" 
-                type="checkbox" 
-                name="streams[]" 
-                value="{{stream}}"
-                checked="checked"
-                data-stream-name="{{stream}}"
-                class="form-check-input me-1">
         <label for="streams_{{stream}}">{{stream}}</label>
       </div>
       <div class="float-end">
         <a href="javascript:;"
-           onclick=""
-           class="btn btn-danger"
-           title="Remove this stream.">
+           class="btn btn-danger delete-btn"
+           title="Remove this stream."
+           onclick="ManyTwitch.manager.removeFromTable('{{stream}}');"
+           data-stream-name="{{stream}}">
           <i class="fa fa-trash"></i>
         </a>
         <a href="javascript:;"
@@ -33,9 +26,9 @@
           <i class="far fa-comment-dots"></i>
         </a>
         <a href="https://www.twitch.tv/{{stream}}"
-            target="_blank"
-            title="Open this stream on Twitch."
-            class="btn btn-purple">
+           target="_blank"
+           title="Open this stream on Twitch."
+           class="btn btn-purple">
           <i class="fab fa-twitch"></i>
         </a>
       </div>

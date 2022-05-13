@@ -45,7 +45,7 @@ ManyTwitch.manager = {
     const streamManagerDefaultContent = document.getElementById('streams-manager-default-content');
 
     if (streamParm != '') {
-     log(`\t Adding streamParm ${streamParm}`);
+     log(`\t Adding ${streamParm}`);
       let newStream = streamParm != "" ? streamParm : newStreamField.value;
       let source = document.getElementById('streams-modal-new-stream-template').innerHTML.trim();
       let template = Handlebars.compile(source);
@@ -64,6 +64,15 @@ ManyTwitch.manager = {
     }
 
    log('ManyTwitch.manager.addToTable() - End');
+  },
+
+  removeFromTable(streamParm) {
+    log('ManyTwitch.manager.removeFromTable() - Begin');
+    if (streamParm != '') {
+      log(`\t Removing stream ${streamParm}`);
+      document.getElementById(`tr-${streamParm}`).remove();  
+    }
+    log('ManyTwitch.manager.removeFromTable() - End');
   }
 
 },
