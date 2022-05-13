@@ -138,7 +138,8 @@ ManyTwitch.streams = {
     }
 
     if (numStreams > 0) {
-      defaultContainer.style.display = 'none';
+      defaultContainer.style = "display: none !important;";
+      // defaultContainer.style.display = 'none';
       manage.style.display = 'block';
     } else {
       defaultContainer.style.display = 'block';
