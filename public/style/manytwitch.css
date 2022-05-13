@@ -45,11 +45,16 @@ a {
   opacity: 0.75;
 }
 
+#default-content-container {
+  height: 100%;
+  width: 100%;
+}
+
 #default {
   margin: 0 auto;
   display: block;
-  margin-top: 15rem;
-  max-width: 40rem;
+  /* margin-top: 15rem; */
+  width: 40rem !important;
   text-align: center;
 }
 
