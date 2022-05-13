@@ -66,6 +66,7 @@ ManyTwitch.manager = {
    log('ManyTwitch.manager.addToTable() - End');
   },
 
+  // remove stream to the stream manager table.
   removeFromTable(streamParm) {
     log('ManyTwitch.manager.removeFromTable() - Begin');
     if (streamParm != '') {
