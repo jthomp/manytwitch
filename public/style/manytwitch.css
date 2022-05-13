@@ -97,6 +97,11 @@ a {
   color:rgb(0, 0, 0);
 }
 
+#streams-modal table#streams-list tbody#streams-list-tbody tr td div.stream-row-container {
+  float: left; 
+  padding-top: 0.25rem
+}
+
 /* 
 #streams-modal table#streams-list tbody#streams-list-tbody tr:nth-child(odd) {
   background-color: var(--purple-bg-color);
