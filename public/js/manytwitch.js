@@ -7,16 +7,16 @@
 /**
  * Establish and define our namespaces.
 */
-const ManyTwitch = {};
-ManyTwitch['manager'] = {};
-ManyTwitch['streams'] = {};
-ManyTwitch['util'] = {};
+const MT = {};
+MT['manager'] = {};
+MT['streams'] = {};
+MT['util'] = {};
 
 /**
  * Recalculate the size of the streams if the window is resized.
  */
 window.onresize = () => {
-  return setTimeout(ManyTwitch.streams.handleResize(), 500);
+  return setTimeout(MT.streams.handleResize(), 500);
 };
 
 /**
@@ -30,7 +30,7 @@ log = (msg) => {
 };
 
 // methods for the stream manager modal.
-ManyTwitch.manager = {
+MT.manager = {
 
   /**
    * Toggles the add stream button on the stream manager modal.
@@ -50,7 +50,7 @@ ManyTwitch.manager = {
    * @param {String} streamParm The stream to add.
   */
   addToTable(streamParm) {
-   log('ManyTwitch.manager.addToTable() - Begin');
+   log('MT.manager.addToTable() - Begin');
 
     const streamsTable =   document.getElementById('streams-list-tbody');
     const newStreamField = document.getElementById('new_stream');
@@ -68,7 +68,7 @@ ManyTwitch.manager = {
       streamsTable.innerHTML += html;
       newStreamField.value = '';
       saveBtn.removeAttribute('disabled');
-      ManyTwitch.manager.toggleAddButton();
+      MT.manager.toggleAddButton();
       streamManagerDefaultContent.style.display = 'none';
     }
 
@@ -76,7 +76,7 @@ ManyTwitch.manager = {
       newStreamField.click();
     }
 
-   log('ManyTwitch.manager.addToTable() - End');
+   log('MT.manager.addToTable() - End');
   },
 
   /**
@@ -84,18 +84,18 @@ ManyTwitch.manager = {
    * @param {String} streamParm The stream to remove.
   */
   removeFromTable(streamParm) {
-    log('ManyTwitch.manager.removeFromTable() - Begin');
+    log('MT.manager.removeFromTable() - Begin');
     if (streamParm != '') {
       log(`\t Removing stream ${streamParm}`);
       document.getElementById(`tr-${streamParm}`).remove();  
     }
-    log('ManyTwitch.manager.removeFromTable() - End');
+    log('MT.manager.removeFromTable() - End');
   }
 
 },
 
 // methods to manage the streams.
-ManyTwitch.streams = {
+MT.streams = {
 
   /**
    * Returns an array of the streams stored in sessionStorage.
@@ -111,12 +111,12 @@ ManyTwitch.streams = {
    * @param {String} streamsParm The streams to store in sessionStorage.
   */
   setStreams(streamsParm) {
-    log('ManyTwitch.streams.setStreams() - Begin');
+    log('MT.streams.setStreams() - Begin');
 
     log(`\t streamsParm: ${streamsParm}`);
     window.sessionStorage.setItem('streams', streamsParm);
 
-    log('ManyTwitch.streams.setStreams() - End');
+    log('MT.streams.setStreams() - End');
   },
   
   /**
@@ -124,12 +124,12 @@ ManyTwitch.streams = {
    * @param {Boolean} reordered If the user reordered the streams, we need to reload them based on the given order.
   */
   update(reordered=false) {
-    log('ManyTwitch.streams.update() - Begin');
+    log('MT.streams.update() - Begin');
 
     const streamsContainer = document.getElementById('streams-container');
     const manage =           document.getElementById('manage-btn');
     const defaultContainer = document.getElementById('default-content-container');
-    let streamsArray = ManyTwitch.streams.getStreams();
+    let streamsArray = MT.streams.getStreams();
     let streamSpans = [];
     let numStreams = 0;
 
@@ -181,20 +181,20 @@ ManyTwitch.streams = {
       document.getElementById('streams-container').innerHTML = '';
     }
 
-    ManyTwitch.streams.handleResize();
-    ManyTwitch.streams.updateHistory();
+    MT.streams.handleResize();
+    MT.streams.updateHistory();
     
-    log('ManyTwitch.streams.update() - End');
+    log('MT.streams.update() - End');
   },
 
   /**
    * Handles resizing streams.
   */
   handleResize() {
-    log('ManyTwitch.streams.handleResize() - Begin');
+    log('MT.streams.handleResize() - Begin');
 
     const streamsContainer = document.getElementById('streams-container');
-    let numStreams = ManyTwitch.util.streamCount();
+    let numStreams = MT.util.streamCount();
     let innerWindowHeight = window.innerHeight - 48;
     let containerWidth = document.getElementById('container').clientWidth;
     let calculatedHeight = 0;
@@ -228,16 +228,16 @@ ManyTwitch.streams = {
 
     streamsContainer.style.paddingTop = `${containerPadding}px`;
     
-    log('ManyTwitch.streams.handleResize() - End');
+    log('MT.streams.handleResize() - End');
   },
 
   /**
    * Update the current URL to include all current streams.
   */
   updateHistory() {
-    log("ManyTwitch.streams.updateHistory() - Start");
+    log("MT.streams.updateHistory() - Start");
 
-    const streams = ManyTwitch.streams.getStreams();
+    const streams = MT.streams.getStreams();
     let newURL = '';
 
     streams.forEach(element => {
@@ -250,13 +250,13 @@ ManyTwitch.streams = {
       history.replaceState(null, "", "/");
     }
     
-    log("ManyTwitch.streams.updateHistory() - End");
+    log("MT.streams.updateHistory() - End");
   }
 
 },
 
 // utils used by the app.
-ManyTwitch.util = {
+MT.util = {
 
   /**
    * Returns a count of how many streams are stored in sessionStorage.
@@ -264,7 +264,7 @@ ManyTwitch.util = {
    * @return {Number} The number of streams.
   */
   streamCount() {
-    return ManyTwitch.streams.getStreams().length;
+    return MT.streams.getStreams().length;
   }
 
 };

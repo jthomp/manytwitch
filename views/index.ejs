@@ -28,8 +28,8 @@
       const streamManagerDefaultContent = document.getElementById('streams-manager-default-content');
 
       window.addEventListener('DOMContentLoaded', (event) => {
-        ManyTwitch.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
-        ManyTwitch.streams.update();
+        MT.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
+        MT.streams.update();
       });
 
       streamsModal.addEventListener('shown.bs.modal', (event) => {
@@ -38,13 +38,13 @@
           element.remove();
         });
 
-        Array.from(ManyTwitch.streams.getStreams()).forEach(element => {
-          ManyTwitch.manager.addToTable(element);
+        Array.from(MT.streams.getStreams()).forEach(element => {
+          MT.manager.addToTable(element);
         });
 
         newStreamField.focus();
 
-        if (ManyTwitch.util.streamCount() == 0) {
+        if (MT.util.streamCount() == 0) {
           addStreamBtn.setAttribute('disabled', 'disabled');
           saveBtn.setAttribute('disabled', 'disabled');
           streamManagerDefaultContent.style.display = 'block';
@@ -63,14 +63,14 @@
       saveBtn.addEventListener('click', (event) => {
 
         let streamsList = document.getElementsByClassName('streams-modal-table-tr');
-        let streams = ManyTwitch.streams.getStreams();
+        let streams = MT.streams.getStreams();
         let newStreams = [];
         const orderChangedElement = document.getElementById('order-changed');
 
         if (orderChangedElement.value == 'true') {
           console.log('Streams have been re-ordered. Resetting...');
-          ManyTwitch.streams.setStreams('');
-          streams = ManyTwitch.streams.getStreams(); // reset our var.
+          MT.streams.setStreams('');
+          streams = MT.streams.getStreams(); // reset our var.
         }
 
         Array.from(streamsList).forEach(element => {
@@ -78,8 +78,8 @@
           newStreams.push(streamName);
         });
 
-        ManyTwitch.streams.setStreams(newStreams.join(','));
-        ManyTwitch.streams.update(orderChangedElement.value);
+        MT.streams.setStreams(newStreams.join(','));
+        MT.streams.update(orderChangedElement.value);
         orderChangedElement.value = 'false';
       });
 
