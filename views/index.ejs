@@ -1,40 +1,40 @@
 <!doctype html>
 <html lang="en">
-  <%- include('head') %>
+  <%- include("head") %>
   <body>
     <div id="container">
-      <%- include('actionBar') %>
-      <%- include('defaultContent') %>
+      <%- include("actionBar") %>
+      <%- include("defaultContent") %>
       <div id="streams-container">
         &nbsp;
       </div>
     </div>
 
     <div id="stream-manager">
-      <%- include('streamManagerModal') %>
+      <%- include("streamManagerModal") %>
     </div>    
 
-    <%- include('newStreamTemplate') %>
-    <%- include('psodModal') %>
+    <%- include("newStreamTemplate") %>
+    <%- include("psodModal") %>
   
     <script src="/js/pwa.js"></script>
 
     <script type="text/javascript">
-      const streamsModal = document.getElementById('streams-modal');
-      const manageBtnActual = document.getElementById('manage-btn-actual');
-      const saveBtn = document.getElementById('save-btn');
-      const newStreamField = document.getElementById('new_stream');
-      const addStreamBtn = document.getElementById('add-stream-btn');
-      const streamManagerDefaultContent = document.getElementById('streams-manager-default-content');
+      const streamsModal = document.getElementById("streams-modal");
+      const manageBtnActual = document.getElementById("manage-btn-actual");
+      const saveBtn = document.getElementById("save-btn");
+      const newStreamField = document.getElementById("new_stream");
+      const addStreamBtn = document.getElementById("add-stream-btn");
+      const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
 
-      window.addEventListener('DOMContentLoaded', (event) => {
-        MT.streams.setStreams('<%= streamsFromParms %>'); // init session storage item.
+      window.addEventListener("DOMContentLoaded", (event) => {
+        MT.streams.setStreams("<%= streamsFromParms %>"); // init session storage item.
         MT.streams.update();
       });
 
-      streamsModal.addEventListener('shown.bs.modal', (event) => {
+      streamsModal.addEventListener("shown.bs.modal", (event) => {
 
-        Array.from(document.getElementsByClassName('streams-modal-table-tr')).forEach(element => {
+        Array.from(document.getElementsByClassName("streams-modal-table-tr")).forEach(element => {
           element.remove();
         });
 
@@ -45,31 +45,31 @@
         newStreamField.focus();
 
         if (MT.util.streamCount() == 0) {
-          addStreamBtn.setAttribute('disabled', 'disabled');
-          saveBtn.setAttribute('disabled', 'disabled');
-          streamManagerDefaultContent.style.display = 'block';
+          addStreamBtn.setAttribute("disabled", "disabled");
+          saveBtn.setAttribute("disabled", "disabled");
+          streamManagerDefaultContent.style.display = "block";
         } else {
-          saveBtn.removeAttribute('disabled');
-          streamManagerDefaultContent.style.display = 'none';
+          saveBtn.removeAttribute("disabled");
+          streamManagerDefaultContent.style.display = "none";
         }
 
       });
 
-      streamsModal.addEventListener('hidden.bs.modal', (event) => {
-        newStreamField.value = '';
-        addStreamBtn.setAttribute('disabled', 'disabled');
+      streamsModal.addEventListener("hidden.bs.modal", (event) => {
+        newStreamField.value = "";
+        addStreamBtn.setAttribute("disabled", "disabled");
       });
 
-      saveBtn.addEventListener('click', (event) => {
+      saveBtn.addEventListener("click", (event) => {
 
-        let streamsList = document.getElementsByClassName('streams-modal-table-tr');
+        let streamsList = document.getElementsByClassName("streams-modal-table-tr");
         let streams = MT.streams.getStreams();
         let newStreams = [];
-        const orderChangedElement = document.getElementById('order-changed');
+        const orderChangedElement = document.getElementById("order-changed");
 
-        if (orderChangedElement.value == 'true') {
-          console.log('Streams have been re-ordered. Resetting...');
-          MT.streams.setStreams('');
+        if (orderChangedElement.value == "true") {
+          console.log("Streams have been re-ordered. Resetting...");
+          MT.streams.setStreams("");
           streams = MT.streams.getStreams(); // reset our var.
         }
 
@@ -78,16 +78,16 @@
           newStreams.push(streamName);
         });
 
-        MT.streams.setStreams(newStreams.join(','));
+        MT.streams.setStreams(newStreams.join(","));
         MT.streams.update(orderChangedElement.value);
-        orderChangedElement.value = 'false';
+        orderChangedElement.value = "false";
       });
 
-      newStreamField.addEventListener('paste', (event) => {
+      newStreamField.addEventListener("paste", (event) => {
         if ($(this).length < 1) {
-          addStreamBtn.setAttribute('disabled', 'disabled');
+          addStreamBtn.setAttribute("disabled", "disabled");
         } else {
-          addStreamBtn.removeAttribute('disabled');
+          addStreamBtn.removeAttribute("disabled");
         }
       });
 
@@ -95,6 +95,6 @@
 
     <script defer src="/js/all.min.js"></script>
 
-    <%- include('analytics') %>
+    <%- include("analytics") %>
   </body>
 </html>
