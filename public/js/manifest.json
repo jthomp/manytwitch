@@ -6,7 +6,6 @@
   "scope": "/",
   "display": "standalone",
   "background_color": "rgb(0, 0, 0)",
-  "theme_color": "rgb(100, 65, 164)",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
