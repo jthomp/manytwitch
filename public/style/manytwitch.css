@@ -88,39 +88,39 @@ a {
 }
 
 #streams-modal input#new_stream,
-#streams-modal table#streams-list {
+#streams-modal table..streams-list-table {
   font-size: 1.25rem;
 }
 
-#streams-modal table#streams-list tbody#streams-list-tbody tr td {
+#streams-modal table.streams-list-table tbody tr td {
   transition: all 0.5s ease-out;
 }
 
-#streams-modal table#streams-list tbody#streams-list-tbody tr td:hover {
+#streams-modal table.streams-list-table tbody tr td:hover {
   background-color: rgb(200, 200, 200);
   color:rgb(0, 0, 0);
 }
 
-#streams-modal table#streams-list tbody#streams-list-tbody tr td div.stream-row-container {
+#streams-modal table.streams-list-table tbody tr td div.stream-row-container {
   float: left; 
   padding-top: 0.25rem
 }
 
 /* 
-#streams-modal table#streams-list tbody#streams-list-tbody tr:nth-child(odd) {
+#streams-modal table.streams-list-table tbody tr:nth-child(odd) {
   background-color: var(--purple-bg-color);
 }
 
-#streams-modal table#streams-list tbody#streams-list-tbody tr:nth-child(even) {
+#streams-modal table.streams-list-table tbody tr:nth-child(even) {
   background-color: var(--purple-bg-color-lighter);
 } 
 */
 
-#streams-modal table#streams-list tbody#streams-list-tbody tr td {
+#streams-modal table.streams-list-table tbody tr td {
   padding: 1rem;
 }
 
-#streams-modal table#streams-list tbody tr:last-of-type {
+#streams-modal table.streams-list-table tbody tr:last-of-type {
   border-bottom: transparent;
 }
 
