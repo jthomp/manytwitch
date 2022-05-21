@@ -28,7 +28,7 @@
       const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
 
       window.addEventListener("DOMContentLoaded", (event) => {
-        MT.streams.setStreams("<%= streamsFromParms %>"); // init session storage item.
+        MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
         MT.streams.update();
       });
 
@@ -40,6 +40,10 @@
 
         Array.from(MT.streams.getStreams()).forEach(element => {
           MT.manager.addToTable(element);
+        });
+
+        Array.from(MT.streams.getRecents()).forEach(element => {
+          MT.manager.addToRecentsTable(element);
         });
 
         newStreamField.focus();
@@ -70,7 +74,7 @@
         if (orderChangedElement.value == "true") {
           console.log("Streams have been re-ordered. Resetting...");
           MT.streams.setStreams("");
-          streams = MT.streams.getStreams(); // reset our var.
+          streams = MT.streams.getStreams(); // reload our streams.
         }
 
         Array.from(streamsList).forEach(element => {

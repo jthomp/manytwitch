@@ -3,7 +3,7 @@
   <tr id="tr-{{stream}}" 
       class="streams-modal-table-tr"
       data-stream-name="{{stream}}">
-    <td colspan="2">
+    <td colspan=2>
       <div class="stream-row-container">
         <input id="streams_{{stream}}"
                type="hidden"
@@ -34,6 +34,17 @@
       </div>
     </td>
   </tr>  
+</script>
+
+<script id="streams-modal-recent-stream-template"
+        type="text/x-handlebars-template">
+  <tr id="tr-recent-{{stream}}"
+      class="recent-streams-modal-table-tr"
+      data-recent-stream-name="{{stream}}">
+    <td colspan=2>
+      <label for="recent_streams_{{stream}}">{{stream}}</label>
+    </td>
+  </tr>
 </script>
 
 <script id="new-stream-template" 

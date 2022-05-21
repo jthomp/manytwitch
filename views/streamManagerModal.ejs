@@ -16,17 +16,17 @@
               name="new_stream_form">
           <div class="input-group mb-3">
             <input type="text" 
-                  name="new_stream" 
-                  id="new_stream" 
-                  value="" 
-                  placeholder="Add stream..." 
-                  class="form-control"
-                  onkeyup="MT.manager.toggleAddButton();"
-                  autocomplete="on"
-                  autocorrect="off"
-                  spellcheck="false"
-                  autocapitalize="none"
-                  autofocus />
+                   name="new_stream" 
+                   id="new_stream" 
+                   value="" 
+                   placeholder="Add stream..." 
+                   class="form-control"
+                   onkeyup="MT.manager.toggleAddButton();"
+                   autocomplete="on"
+                   autocorrect="off"
+                   spellcheck="false"
+                   autocapitalize="none"
+                   autofocus />
             <button type="button" 
                     class="btn btn-success" 
                     id="add-stream-btn" 
@@ -38,22 +38,14 @@
           </div>
          
         </form>
-        <table class="table
-                      table-striped
-                      stream-list"
-                id="streams-list">
-          <thead>
-            <tr>
-              <td>Stream name</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody id="streams-list-tbody">
-          </tbody>
-        </table>
+        
+        <%- include("streamManagerModalCurrentStreams") %>
+
         <div id="streams-manager-default-content">
           Add some streams!
         </div>
+
+        <%- include("streamManagerModalRecentStreams") %>
       </div>
     </div>
   </div>
@@ -66,6 +58,7 @@
 <script type="text/javascript">
 
   let streamsList = document.getElementById('streams-list-tbody');
+  let recentStreamsList = document.getElementById('recent-streams-list-tbody');
   let sortable = Sortable.create(streamsList, {
     animation: 100,
     draggable: '.streams-modal-table-tr',
