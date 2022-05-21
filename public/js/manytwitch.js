@@ -39,8 +39,15 @@ MT.manager = {
   addToRecentsTable(recentStreamParm="") {
     log("MT.manager.addToRecentsTable() - Begin");
     const recentStreamsTable = document.getElementById("recent-streams-list-tbody");
+
     if (recentStreamParm != "") {
-      // add to table.
+      // add to table via template.
+      let source = document.getElementById("streams-modal-new-recent-stream-template").innerHTML.trim();
+      let template = Handlebars.compile(source);
+      let context = { stream: recentStreamParm };
+      let html = template(context);
+
+      recentStreamsTable.innerHTML += html;
     }
     log("MT.manager.addToRecentsTable() - End");
   },
@@ -116,6 +123,12 @@ MT.streams = {
   */
   getRecentStreams() {
     let recents = window.localStorage.getItem("recents");
+    
+    // we may already have data in localStorage, look for it here.
+    if (typeof recents === typeof undefined) {
+      recents = window.localStorage.setItem("recents", "");
+    }
+
     return (recents == "") ? [] : recents.split(",");
   },
 
@@ -176,11 +189,11 @@ MT.streams = {
    * Set the value for the recents object in localStorage.
    * @param {String} streamsParm The list of streams to store in recents object in localStorage.
   */
-  setRecents(recentStreamsParm) {
-    log("MT.streams.setRecents() - Begin");
+  setRecentStreams(recentStreamsParm="") {
+    log("MT.streams.setRecentStreams() - Begin");
     log(`\t recentStreamsParm: ${recentStreamsParm}`);
     window.localStorage.setItem("recents", recentStreamsParm);
-    log("MT.streams.setRecents() - End");
+    log("MT.streams.setRecentStreams() - End");
   },
 
   /**
@@ -250,7 +263,7 @@ MT.streams = {
         window.localStorage.setItem("streams", "");
       }
 
-      MT.streams.setRecents(recentsArray); // save our recents array.
+      MT.streams.setRecentStreams(recentsArray); // save our recents array.
     }
 
     if (numStreams > 0) {

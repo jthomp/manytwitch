@@ -29,6 +29,7 @@
 
       window.addEventListener("DOMContentLoaded", (event) => {
         MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
+        MT.streams.setRecentStreams();
         MT.streams.update();
       });
 
@@ -42,7 +43,7 @@
           MT.manager.addToTable(element);
         });
 
-        Array.from(MT.streams.getRecents()).forEach(element => {
+        Array.from(MT.streams.getRecentStreams()).forEach(element => {
           MT.manager.addToRecentsTable(element);
         });
 
