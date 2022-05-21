@@ -43,14 +43,22 @@
       data-recent-stream-name="{{stream}}">
     <td colspan=2>
       <label for="recent_streams_{{stream}}">{{stream}}</label>
-      <a href="javascript:;"
-         class="btn btn-danger btn-sm delete-btn float-end"
-         title="Remove this stream."
-         onclick="MT.manager.removeFromRecentsTable('{{stream}}');"
-         data-stream-name="{{stream}}">
-        <i class="fa fa-trash"></i>
-      </a>
-
+      <div class="float-end">
+        <a href="javascript:;"
+           onclick="alert('add stream');"
+           class="btn btn-success btn-sm"
+           title="Add this stream to current streams."
+           data-stream-name="{{stream}}">
+          <i class="fa fa-plus">&nbsp;&nbsp;</i>
+        </a>
+        <a href="javascript:;"
+           onclick="MT.manager.removeFromRecentsTable('{{stream}}');"
+           class="btn btn-danger btn-sm delete-btn"
+           title="Remove this stream."
+           data-stream-name="{{stream}}">
+          <i class="fa fa-trash"></i>
+        </a>
+      </div>
     </td>
   </tr>
 </script>
