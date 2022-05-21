@@ -87,14 +87,32 @@ MT.manager = {
    },
 
   /**
+   * Removes a stream from the recents stream manager table, as well as localStorage.
+   * @param {String} recentStreamParm 
+  */
+  removeFromRecentsTable(recentStreamParm="") {
+    log("MT.manager.removeFromRecentsTable() - Begin");
+
+    if (recentStreamParm != "") {
+      log(`\t Removing stream ${recentStreamParm}`);
+      document.getElementById(`tr-${recentStreamParm}`).remove();
+      let currentRecentStreams = MT.streams.getRecentStreams();
+      let recentStreamParmIdx = currentRecentStreams.indexOf(recentStreamParm);
+      currentRecentStreams.splice(recentStreamParmIdx, 1);
+      MT.streams.setRecentStreams(currentRecentStreams);
+    }
+    log("MT.manager.removeFromRecentsTable() - End");
+  },
+
+  /**
    * Remove a given stream from the stream manager table.
    * @param {String} streamParm The stream to remove.
   */
-  removeFromTable(streamParm) {
+  removeFromTable(streamParm="") {
     log("MT.manager.removeFromTable() - Begin");
     if (streamParm != "") {
       log(`\t Removing stream ${streamParm}`);
-      document.getElementById(`tr-${streamParm}`).remove();  
+      document.getElementById(`tr-${streamParm}`).remove();
     }
     log("MT.manager.removeFromTable() - End");
   },

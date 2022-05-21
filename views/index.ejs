@@ -35,11 +35,12 @@
 
       streamsModal.addEventListener("show.bs.modal", (event) => {
         clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
-      });
-
-      streamsModal.addEventListener("shown.bs.modal", (event) => {
 
         Array.from(document.getElementsByClassName("streams-modal-table-tr")).forEach(element => {
+          element.remove();
+        });
+
+        Array.from(document.getElementsByClassName("recent-streams-modal-table-tr")).forEach(element => {
           element.remove();
         });
 
@@ -52,6 +53,10 @@
         Array.from(MT.streams.getRecentStreams()).forEach(element => {
           MT.manager.addToRecentsTable(element);
         });
+
+      });
+
+      streamsModal.addEventListener("shown.bs.modal", (event) => {
 
         newStreamField.focus();
 
