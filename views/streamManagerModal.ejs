@@ -8,7 +8,7 @@
       <div class="modal-header">
         <h4 class="modal-title">Streams</h4>
         <div class="pull-right">
-          <%- include('streamManagerModalActions') %>
+          <%- include("streamManagerModalActions") %>
         </div>
       </div>
       <div class="modal-body">
@@ -50,13 +50,13 @@
 
 <script type="text/javascript">
 
-  let streamsList = document.getElementById('streams-list-tbody');
-  let recentStreamsList = document.getElementById('recent-streams-list-tbody');
+  let streamsList = document.getElementById("streams-list-tbody");
+  let recentStreamsList = document.getElementById("recent-streams-list-tbody");
   let sortable = Sortable.create(streamsList, {
     animation: 100,
-    draggable: '.streams-modal-table-tr',
+    draggable: ".streams-modal-table-tr",
     onEnd: (evt) => {
-      document.getElementById('order-changed').value = "true";
+      document.getElementById("order-changed").value = "true";
     }
   });
 

@@ -33,6 +33,10 @@
         MT.streams.update();
       });
 
+      streamsModal.addEventListener("show.bs.modal", (event) => {
+        clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
+      });
+
       streamsModal.addEventListener("shown.bs.modal", (event) => {
 
         Array.from(document.getElementsByClassName("streams-modal-table-tr")).forEach(element => {
@@ -48,10 +52,6 @@
         Array.from(MT.streams.getRecentStreams()).forEach(element => {
           MT.manager.addToRecentsTable(element);
         });
-
-        let recentStreamsCount = MT.streams.getRecentStreams().length;
-        console.log(recentStreamsCount);
-        clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
 
         newStreamField.focus();
 
