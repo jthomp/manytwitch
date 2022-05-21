@@ -88,7 +88,7 @@ a {
 }
 
 #streams-modal input#new_stream,
-#streams-modal table..streams-list-table {
+#streams-modal table.streams-list-table {
   font-size: 1.25rem;
 }
 
