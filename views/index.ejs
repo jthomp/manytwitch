@@ -26,6 +26,7 @@
       const newStreamField = document.getElementById("new_stream");
       const addStreamBtn = document.getElementById("add-stream-btn");
       const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+      const clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
 
       window.addEventListener("DOMContentLoaded", (event) => {
         MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
@@ -38,13 +39,19 @@
           element.remove();
         });
 
+        // add our current streams to the streams table.
         Array.from(MT.streams.getStreams()).forEach(element => {
           MT.manager.addToTable(element);
         });
 
+        // add our recent streams to the recent streams table.
         Array.from(MT.streams.getRecentStreams()).forEach(element => {
           MT.manager.addToRecentsTable(element);
         });
+
+        let recentStreamsCount = MT.streams.getRecentStreams().length;
+        console.log(recentStreamsCount);
+        clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
 
         newStreamField.focus();
 
