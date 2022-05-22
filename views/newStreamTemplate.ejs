@@ -3,7 +3,7 @@
   <tr id="tr-{{stream}}" 
       class="streams-modal-table-tr"
       data-stream-name="{{stream}}">
-    <td colspan="2">
+    <td colspan=2>
       <div class="stream-row-container">
         <input id="streams_{{stream}}"
                type="hidden"
@@ -20,7 +20,7 @@
           <i class="fa fa-trash"></i>
         </a>
         <a href="javascript:;"
-           onclick="window.open('https://www.twitch.tv/popout/{{stream}}/chat', '', 'width=400,height=screen.height');"
+           onclick="window.open('https://www.twitch.tv/popout/{{stream}}/chat', '', 'width=300,height=screen.height');"
            class="btn btn-primary"
            title="Open a chat popout for this stream.">
           <i class="far fa-comment-dots"></i>
@@ -34,6 +34,33 @@
       </div>
     </td>
   </tr>  
+</script>
+
+<script id="streams-modal-new-recent-stream-template"
+        type="text/x-handlebars-template">
+  <tr id="tr-{{stream}}"
+      class="recent-streams-modal-table-tr"
+      data-recent-stream-name="{{stream}}">
+    <td colspan=2>
+      <label for="recent_streams_{{stream}}">{{stream}}</label>
+      <div class="float-end">
+        <a href="javascript:;"
+           onclick="alert('add stream');"
+           class="btn btn-success btn-sm"
+           title="Add this stream to current streams."
+           data-stream-name="{{stream}}">
+          <i class="fa fa-plus">&nbsp;&nbsp;</i>
+        </a>
+        <a href="javascript:;"
+           onclick="MT.manager.removeFromRecentsTable('{{stream}}');"
+           class="btn btn-danger btn-sm delete-btn"
+           title="Remove this stream."
+           data-stream-name="{{stream}}">
+          <i class="fa fa-trash"></i>
+        </a>
+      </div>
+    </td>
+  </tr>
 </script>
 
 <script id="new-stream-template" 

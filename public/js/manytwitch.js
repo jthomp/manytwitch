@@ -33,10 +33,30 @@ log = (msg) => {
 MT.manager = {
 
   /**
+   * Add a stream to the recent streams table in the stream manager.
+   * @param {String} recentStreamParm The stream to add to the recents table.
+   */
+  addToRecentsTable(recentStreamParm="") {
+    log("MT.manager.addToRecentsTable() - Begin");
+    const recentStreamsTable = document.getElementById("recent-streams-list-tbody");
+
+    if (recentStreamParm != "") {
+      // add to table via template.
+      let source = document.getElementById("streams-modal-new-recent-stream-template").innerHTML.trim();
+      let template = Handlebars.compile(source);
+      let context = { stream: recentStreamParm };
+      let html = template(context);
+
+      recentStreamsTable.innerHTML += html;
+    }
+    log("MT.manager.addToRecentsTable() - End");
+  },
+
+  /**
    * Add new stream to the stream manager table.
    * @param {String} streamParm The stream to add.
   */
-  addToTable(streamParm) {
+  addToTable(streamParm="") {
     log("MT.manager.addToTable() - Begin");
  
      const streamsTable =   document.getElementById("streams-list-tbody");
@@ -67,14 +87,42 @@ MT.manager = {
    },
 
   /**
+   * Removes a stream from the recents stream manager table, as well as localStorage.
+   * @param {String} recentStreamParm 
+  */
+  removeFromRecentsTable(recentStreamParm="", clearAll=false) {
+    log("MT.manager.removeFromRecentsTable() - Begin");
+
+    if (recentStreamParm != "") {
+      log(`\t Removing stream ${recentStreamParm}`);
+      document.getElementById(`tr-${recentStreamParm}`).remove();
+      let currentRecentStreams = MT.streams.getRecentStreams();
+      let recentStreamParmIdx = currentRecentStreams.indexOf(recentStreamParm);
+      currentRecentStreams.splice(recentStreamParmIdx, 1);
+      MT.streams.setRecentStreams(currentRecentStreams);
+    }
+
+    if (clearAll) {
+      MT.streams.setRecentStreams("");
+      document.getElementById("recent-streams-list-tbody").innerHTML = "";
+    }
+
+    if (MT.streams.getRecentStreams().length == 0) {
+      document.getElementById("clear-all-recent-streams-btn").style.display = "none";
+    }
+
+    log("MT.manager.removeFromRecentsTable() - End");
+  },
+
+  /**
    * Remove a given stream from the stream manager table.
    * @param {String} streamParm The stream to remove.
   */
-  removeFromTable(streamParm) {
+  removeFromTable(streamParm="") {
     log("MT.manager.removeFromTable() - Begin");
     if (streamParm != "") {
       log(`\t Removing stream ${streamParm}`);
-      document.getElementById(`tr-${streamParm}`).remove();  
+      document.getElementById(`tr-${streamParm}`).remove();
     }
     log("MT.manager.removeFromTable() - End");
   },
@@ -98,12 +146,28 @@ MT.manager = {
 MT.streams = {
 
   /**
-   * Returns an array of the streams stored in sessionStorage.
-   * @return {Array} The streams stored in sessionStorage.
+   * Returns an array of the recent streams stored in localStorage.
+   * @returns {Array} The recent streams stored in localStorage.
+  */
+  getRecentStreams() {
+    // we may already have data in localStorage, look for it here.
+    let recents = window.localStorage.getItem("recents");
+    
+    if (recents == null) {
+      window.localStorage.setItem("recents", "");
+      recents = window.localStorage.getItem("recents");
+    }
+
+    return (recents == "") ? [] : recents.split(",");
+  },
+
+  /**
+   * Returns an array of the streams stored in localStorage.
+   * @return {Array} The streams stored in localStorage.
   */
   getStreams() {
-    let sessionStorage = window.sessionStorage.getItem("streams");
-    return (sessionStorage == "") ? [] : sessionStorage.split(",");
+    let localStorage = window.localStorage.getItem("streams");
+    return (localStorage == "") ? [] : localStorage.split(",");
   },
 
   /**
@@ -151,20 +215,31 @@ MT.streams = {
   },
 
   /**
-   * Set the streams in sessionStorage with a collection of streams.
-   * @param {String} streamsParm The streams to store in sessionStorage.
+   * Set the value for the recents object in localStorage.
+   * @param {String} streamsParm The list of streams to store in recents object in localStorage.
+  */
+  setRecentStreams(recentStreamsParm="") {
+    log("MT.streams.setRecentStreams() - Begin");
+    log(`\t recentStreamsParm: ${recentStreamsParm}`);
+    window.localStorage.setItem("recents", recentStreamsParm);
+    log("MT.streams.setRecentStreams() - End");
+  },
+
+  /**
+   * Set the streams in localStorage with a collection of streams.
+   * @param {String} streamsParm The streams to store in localStorage.
   */
   setStreams(streamsParm) {
     log("MT.streams.setStreams() - Begin");
 
     log(`\t streamsParm: ${streamsParm}`);
-    window.sessionStorage.setItem("streams", streamsParm);
+    window.localStorage.setItem("streams", streamsParm);
 
     log("MT.streams.setStreams() - End");
   },
   
   /**
-   * Update the current streams stored in sessionStorage.
+   * Update the current streams stored in localStorage.
    * @param {Boolean} reordered If the user reordered the streams, we need to reload them based on the given order.
   */
   update(reordered=false) {
@@ -174,6 +249,7 @@ MT.streams = {
     const manage =           document.getElementById("manage-btn");
     const defaultContainer = document.getElementById("default-content-container");
     let streamsArray = MT.streams.getStreams();
+    let recentsArray = MT.streams.getRecentStreams();
     let streamSpans = [];
     let numStreams = 0;
 
@@ -184,6 +260,7 @@ MT.streams = {
 
         if (existing != null && reordered) {
           existing.remove();
+          recentsArray.push(element);
         }
 
         if (existing == null || reordered) {
@@ -212,8 +289,10 @@ MT.streams = {
       // sanity check.
       if (numStreams <= 0) {
         numStreams = 0;
-        window.sessionStorage.setItem("streams", "");
+        window.localStorage.setItem("streams", "");
       }
+
+      MT.streams.setRecentStreams(recentsArray); // save our recents array.
     }
 
     if (numStreams > 0) {
@@ -259,7 +338,7 @@ MT.streams = {
 MT.util = {
 
   /**
-   * Returns a count of how many streams are stored in sessionStorage.
+   * Returns a count of how many streams are stored in localStorage.
    * Warning: This does not reflect the state of the stream manager modal table.
    * @return {Number} The number of streams.
   */

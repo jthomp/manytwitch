@@ -26,21 +26,37 @@
       const newStreamField = document.getElementById("new_stream");
       const addStreamBtn = document.getElementById("add-stream-btn");
       const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+      const clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
 
       window.addEventListener("DOMContentLoaded", (event) => {
-        MT.streams.setStreams("<%= streamsFromParms %>"); // init session storage item.
+        MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
         MT.streams.update();
       });
 
-      streamsModal.addEventListener("shown.bs.modal", (event) => {
+      streamsModal.addEventListener("show.bs.modal", (event) => {
+        clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
 
         Array.from(document.getElementsByClassName("streams-modal-table-tr")).forEach(element => {
           element.remove();
         });
 
+        Array.from(document.getElementsByClassName("recent-streams-modal-table-tr")).forEach(element => {
+          element.remove();
+        });
+
+        // add our current streams to the streams table.
         Array.from(MT.streams.getStreams()).forEach(element => {
           MT.manager.addToTable(element);
         });
+
+        // add our recent streams to the recent streams table.
+        Array.from(MT.streams.getRecentStreams()).forEach(element => {
+          MT.manager.addToRecentsTable(element);
+        });
+
+      });
+
+      streamsModal.addEventListener("shown.bs.modal", (event) => {
 
         newStreamField.focus();
 
@@ -70,7 +86,7 @@
         if (orderChangedElement.value == "true") {
           console.log("Streams have been re-ordered. Resetting...");
           MT.streams.setStreams("");
-          streams = MT.streams.getStreams(); // reset our var.
+          streams = MT.streams.getStreams(); // reload our streams.
         }
 
         Array.from(streamsList).forEach(element => {
