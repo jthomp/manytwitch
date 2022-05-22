@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.7.0 - (05/21/2022)
+
+* Add recent streams list to the stream manager.
+
 ##### Version 1.6.2 - (05/13/2022)
 
 * Properly vertically and horizontally align default content.
