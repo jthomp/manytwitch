@@ -48,6 +48,8 @@ MT.manager = {
       let html = template(context);
 
       recentStreamsTable.innerHTML += html;
+
+      log(`MT.manager.addToRecentsTable() - Adding stream: ${recentStreamParm}`);
     }
     log("MT.manager.addToRecentsTable() - End");
   },
@@ -123,6 +125,8 @@ MT.manager = {
     if (streamParm != "") {
       log(`\t Removing stream ${streamParm}`);
       document.getElementById(`tr-${streamParm}`).remove();
+      let currentRecentStreams = MT.streams.getRecentStreams();
+      currentRecentStreams.push(streamParm);
     }
     log("MT.manager.removeFromTable() - End");
   },
