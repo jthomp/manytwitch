@@ -35,7 +35,7 @@ MT.manager = {
   /**
    * Add a stream to the recent streams table in the stream manager.
    * @param {String} recentStreamParm The stream to add to the recents table.
-   */
+  */
   addToRecentsTable(recentStreamParm="") {
     log("MT.manager.addToRecentsTable() - Begin");
     const recentStreamsTable = document.getElementById("recent-streams-list-tbody");
@@ -49,7 +49,7 @@ MT.manager = {
 
       recentStreamsTable.innerHTML += html;
 
-      log(`MT.manager.addToRecentsTable() - Adding stream: ${recentStreamParm}`);
+      log(`\t Adding stream: ${recentStreamParm}`);
     }
     log("MT.manager.addToRecentsTable() - End");
   },
@@ -122,12 +122,14 @@ MT.manager = {
   */
   removeFromTable(streamParm="") {
     log("MT.manager.removeFromTable() - Begin");
+
     if (streamParm != "") {
       log(`\t Removing stream ${streamParm}`);
       document.getElementById(`tr-${streamParm}`).remove();
       let currentRecentStreams = MT.streams.getRecentStreams();
       currentRecentStreams.push(streamParm);
     }
+
     log("MT.manager.removeFromTable() - End");
   },
 
@@ -224,8 +226,10 @@ MT.streams = {
   */
   setRecentStreams(recentStreamsParm="") {
     log("MT.streams.setRecentStreams() - Begin");
+
     log(`\t recentStreamsParm: ${recentStreamsParm}`);
     window.localStorage.setItem("recents", recentStreamsParm);
+
     log("MT.streams.setRecentStreams() - End");
   },
 
@@ -264,7 +268,6 @@ MT.streams = {
 
         if (existing != null && reordered) {
           existing.remove();
-          recentsArray.push(element);
         }
 
         if (existing == null || reordered) {
@@ -287,6 +290,7 @@ MT.streams = {
           log(`\t Removing ${streamName}`);
           document.getElementById(`stream-${streamName}-video`).remove();
           numStreams -= 1;
+          recentsArray.push(streamName);
         }
       });
 
