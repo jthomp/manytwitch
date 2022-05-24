@@ -1,14 +1,14 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 const app = express();
-const compression = require('compression');
+const compression = require("compression");
 const version = process.env.npm_package_version;
-// const buildId = process.env.HEROKU_RELEASE_VERSION || '0';
-const env = process.env.NODE_ENV || 'development';
+// const buildId = process.env.HEROKU_RELEASE_VERSION || "0";
+const env = process.env.NODE_ENV || "development";
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 app.use(compression({ level: 9 }));
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(
   "/webfonts",
@@ -30,10 +30,10 @@ app.use(
   express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/js"))
 );
 
-app.get('/*', function(req, res) {
+app.get("/*", function(req, res) {
   let streamsFromParms = [];
-  streamsFromParms = req.params['0'].split('/').filter(String);
-  res.render('index', {
+  streamsFromParms = req.params["0"].split("/").filter(String);
+  res.render("index", {
     streamsFromParms: streamsFromParms,
     version: version,
     env: env
