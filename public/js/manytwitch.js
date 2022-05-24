@@ -24,7 +24,8 @@ window.onresize = () => {
  * @param {String} msg The message to log to the console.
 */
 log = (msg) => {
-  if (window.console && window.console.log) {
+  const env = window.document.getElementsByTagName("body")[0].dataset.env;
+  if (window.console && window.console.log && env != "production") {
     window.console.log(msg);
   }
 };

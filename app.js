@@ -4,6 +4,7 @@ const app = express();
 const compression = require('compression');
 const version = process.env.npm_package_version;
 // const buildId = process.env.HEROKU_RELEASE_VERSION || '0';
+const env = process.env.NODE_ENV || 'development';
 
 app.set('view engine', 'ejs');
 app.use(compression({ level: 9 }));
@@ -34,7 +35,8 @@ app.get('/*', function(req, res) {
   streamsFromParms = req.params['0'].split('/').filter(String);
   res.render('index', {
     streamsFromParms: streamsFromParms,
-    version: version
+    version: version,
+    env: env
   });
 });
 
