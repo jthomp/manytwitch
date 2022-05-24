@@ -359,6 +359,7 @@ MT.util = {
     }
     catch(e) {
       log(e);
+      return false;
     }
   },
 
