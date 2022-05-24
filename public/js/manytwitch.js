@@ -94,11 +94,12 @@ MT.manager = {
   */
   removeFromRecentsTable(recentStreamParm="", clearAll=false) {
     log("MT.manager.removeFromRecentsTable() - Begin");
+
     let currentRecentStreams = MT.streams.getRecentStreams();
 
     if (recentStreamParm != "") {
       log(`\t Removing stream ${recentStreamParm}`);
-      document.getElementById(`tr-${recentStreamParm}`).remove();
+      document.getElementById(`tr-recent-${recentStreamParm}`).remove();
       let recentStreamParmIdx = currentRecentStreams.indexOf(recentStreamParm);
       currentRecentStreams.splice(recentStreamParmIdx, 1);
       MT.streams.setRecentStreams(currentRecentStreams);
