@@ -128,6 +128,7 @@ MT.manager = {
       document.getElementById(`tr-${streamParm}`).remove();
       let currentRecentStreams = MT.streams.getRecentStreams();
       currentRecentStreams.push(streamParm);
+      MT.streams.setRecentStreams(currentRecentStreams);
     }
 
     log("MT.manager.removeFromTable() - End");
@@ -344,6 +345,24 @@ MT.streams = {
 
 // utils used by the app.
 MT.util = {
+
+  /**
+   * Checks to see if localStorage API is available on this device.
+   * @return {Boolean} The result of the check for localStorage API availability.
+  */
+  checkForLocalStorageAPI(type) {
+    var storage;
+    try {
+      storage = window[type];
+      var x = "__storage_test__";
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+    }
+    catch(e) {
+      log(e);
+    }
+  },
 
   /**
    * Returns a count of how many streams are stored in localStorage.
