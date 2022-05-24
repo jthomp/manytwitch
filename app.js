@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const compression = require('compression');
-// const version = process.env.npm_package_version;
+const version = process.env.npm_package_version;
 // const buildId = process.env.HEROKU_RELEASE_VERSION || '0';
 
 app.set('view engine', 'ejs');
@@ -33,7 +33,8 @@ app.get('/*', function(req, res) {
   let streamsFromParms = [];
   streamsFromParms = req.params['0'].split('/').filter(String);
   res.render('index', {
-    streamsFromParms: streamsFromParms
+    streamsFromParms: streamsFromParms,
+    version: version
   });
 });
 
