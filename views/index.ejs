@@ -54,6 +54,15 @@
           MT.manager.addToRecentsTable(element);
         });
 
+        if (MT.util.streamCount() == 0) {
+          addStreamBtn.setAttribute("disabled", "disabled");
+          saveBtn.setAttribute("disabled", "disabled");
+          streamManagerDefaultContent.style.display = "block";
+        } else {
+          saveBtn.removeAttribute("disabled");
+          streamManagerDefaultContent.style.display = "none";
+        }
+
       });
 
       streamsModal.addEventListener("shown.bs.modal", (event) => {
