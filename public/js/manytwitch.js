@@ -258,7 +258,6 @@ MT.streams = {
     const manage =           document.getElementById("manage-btn");
     const defaultContainer = document.getElementById("default-content-container");
     let streamsArray = MT.streams.getStreams();
-    let recentsArray = MT.streams.getRecentStreams();
     let streamSpans = [];
     let numStreams = 0;
 
@@ -291,7 +290,6 @@ MT.streams = {
           log(`\t Removing ${streamName}`);
           document.getElementById(`stream-${streamName}-video`).remove();
           numStreams -= 1;
-          recentsArray.push(streamName);
         }
       });
 
@@ -300,8 +298,6 @@ MT.streams = {
         numStreams = 0;
         window.localStorage.setItem("streams", "");
       }
-
-      MT.streams.setRecentStreams(recentsArray); // save our recents array.
     }
 
     if (numStreams > 0) {
