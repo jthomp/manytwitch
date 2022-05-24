@@ -94,22 +94,21 @@ MT.manager = {
   */
   removeFromRecentsTable(recentStreamParm="", clearAll=false) {
     log("MT.manager.removeFromRecentsTable() - Begin");
+    let currentRecentStreams = MT.streams.getRecentStreams();
 
     if (recentStreamParm != "") {
       log(`\t Removing stream ${recentStreamParm}`);
       document.getElementById(`tr-${recentStreamParm}`).remove();
-      let currentRecentStreams = MT.streams.getRecentStreams();
       let recentStreamParmIdx = currentRecentStreams.indexOf(recentStreamParm);
       currentRecentStreams.splice(recentStreamParmIdx, 1);
       MT.streams.setRecentStreams(currentRecentStreams);
     }
 
-    if (clearAll) {
+    currentRecentStreams = MT.streams.getRecentStreams();
+
+    if (clearAll || currentRecentStreams.length == 0) {
       MT.streams.setRecentStreams("");
       document.getElementById("recent-streams-list-tbody").innerHTML = "";
-    }
-
-    if (MT.streams.getRecentStreams().length == 0) {
       document.getElementById("clear-all-recent-streams-btn").style.display = "none";
     }
 
