@@ -129,6 +129,7 @@ MT.manager = {
       let currentRecentStreams = MT.streams.getRecentStreams();
       currentRecentStreams.push(streamParm);
       MT.streams.setRecentStreams(currentRecentStreams);
+      MT.manager.addToRecentsTable(streamParm);
     }
 
     log("MT.manager.removeFromTable() - End");
