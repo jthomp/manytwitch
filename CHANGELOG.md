@@ -1,5 +1,11 @@
 # ManyTwitch Changelog
 
+##### Version 1.7.1 - (05/23/2022)
+
+* Make current and recent entries in the stream manager modal the same size.
+* Fix bugs where streams were not properly added to the recents list.
+* Styling tweaks and fixes.
+
 ##### Version 1.7.0 - (05/21/2022)
 
 * Add recent streams list to the stream manager.
