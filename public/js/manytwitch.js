@@ -8,9 +8,9 @@
  * Establish and define our namespaces.
 */
 const MT = {};
-MT["manager"] = {};
-MT["streams"] = {};
-MT["util"] = {};
+MT["manager"] = {};   // the stream manager modal.
+MT["streams"] = {};  // managing streams.
+MT["util"] = {};    // utils.
 
 /**
  * Recalculate the size of the streams if the window is resized.
