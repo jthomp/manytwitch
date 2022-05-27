@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.7.2 - (05/27/2022)
+
+* Don't allow duplicates in recent streams.
+
 ##### Version 1.7.1 - (05/23/2022)
 
 * Make current and recent entries in the stream manager modal the same size.
