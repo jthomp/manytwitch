@@ -40,16 +40,13 @@ MT.manager = {
   addToRecentsTable(recentStreamParm="") {
     log("MT.manager.addToRecentsTable() - Begin");
     const recentStreamsTable = document.getElementById("recent-streams-list-tbody");
-
     if (recentStreamParm != "") {
       // add to table via template.
       let source = document.getElementById("streams-modal-new-recent-stream-template").innerHTML.trim();
       let template = Handlebars.compile(source);
       let context = { stream: recentStreamParm };
       let html = template(context);
-
       recentStreamsTable.innerHTML += html;
-
       log(`\t Adding stream: ${recentStreamParm}`);
     }
     log("MT.manager.addToRecentsTable() - End");
@@ -229,10 +226,8 @@ MT.streams = {
   */
   setRecentStreams(recentStreamsParm="") {
     log("MT.streams.setRecentStreams() - Begin");
-
-    log(`\t recentStreamsParm: ${recentStreamsParm}`);
-    window.localStorage.setItem("recents", recentStreamsParm);
-
+    let newRecentStreamsParm = [...new Set(recentStreamsParm)].join(",");
+    window.localStorage.setItem("recents", newRecentStreamsParm);
     log("MT.streams.setRecentStreams() - End");
   },
 
