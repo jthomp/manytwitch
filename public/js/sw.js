@@ -5,6 +5,7 @@ const toCache = [
   '/js/handlebars.js',
   '/js/jquery.min.js',
   '/js/all.min.js',
+  '/js/Sortable.min.js',
   '/style/bootstrap.min.css',
   '/style/bootstrap-dark.min.css',
   '/style/all.min.css',
