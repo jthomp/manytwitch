@@ -3,6 +3,7 @@
 ##### Version 1.7.2 - (05/27/2022)
 
 * Don't allow duplicates in recent streams.
+* Tweaks, optimizations and dependency updates.
 
 ##### Version 1.7.1 - (05/23/2022)
 
