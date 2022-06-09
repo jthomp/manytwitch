@@ -166,14 +166,14 @@ MT.streams = {
   */
   getRecentStreams() {
     // we may already have data in localStorage, look for it here.
-    let recents = window.localStorage.getItem("recents").split(",").sort().toString();
+    let recents = window.localStorage.getItem("recents");
     
     if (recents == null) {
       window.localStorage.setItem("recents", "");
       recents = window.localStorage.getItem("recents");
     }
 
-    return (recents == "") ? [] : recents.split(",");
+    return (recents == "") ? [] : recents.split(",").sort().toString();
   },
 
   /**
