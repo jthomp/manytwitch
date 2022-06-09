@@ -186,7 +186,7 @@ MT.streams = {
   },
 
   /**
-   * Handles resizing streams.
+   * Handles resizing streams on the document.
   */
   handleResize() {
     log("MT.streams.handleResize() - Begin");
