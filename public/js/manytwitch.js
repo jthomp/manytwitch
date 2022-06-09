@@ -173,7 +173,7 @@ MT.streams = {
       recents = window.localStorage.getItem("recents");
     }
 
-    return (recents == "") ? [] : recents.sort();
+    return (recents == "") ? [] : recents.split(",").sort();
   },
 
   /**
