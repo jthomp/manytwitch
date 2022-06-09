@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.7.4 - (06/09/2022)
+
+* Fix padding issues on recents table.
+
 ##### Version 1.7.3 - (06/08/2022)
 
 * Sort the recents table. (Doesn't quite work when adding to the table, yet.)
