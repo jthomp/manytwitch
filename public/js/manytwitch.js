@@ -252,17 +252,6 @@ MT.streams = {
 
     log("MT.streams.setStreams() - End");
   },
-
-  /**
-   * Set the volume of all the video elements to 0.1.
-  */
-   setVolume() {
-    log("MT.streams.setVolume() - Begin");
-    Array.from(document.getElementsByTagName("video")).forEach(element => {
-      element.volume = 0.1;
-    });
-    log("MT.streams.setVolume() - End");
-  },
   
   /**
    * Update the current streams stored in localStorage.
@@ -328,7 +317,6 @@ MT.streams = {
 
     MT.streams.handleResize();
     MT.streams.updateHistory();
-    MT.streams.setVolume();
     
     log("MT.streams.update() - End");
   },

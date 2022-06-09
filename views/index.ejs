@@ -83,11 +83,6 @@
       streamsModal.addEventListener("hidden.bs.modal", (event) => {
         newStreamField.value = "";
         addStreamBtn.setAttribute("disabled", "disabled");
-
-        Array.from(document.getElementsByTagName("video")).forEach(element => {
-          console.debug(`setting volume for ${element}`);
-          element.volume = 0.1;
-        });
       });
 
       saveBtn.addEventListener("click", (event) => {
