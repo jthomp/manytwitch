@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.7.3 - (06/08/2022)
+
+* Sort the recents table. (Doesn't quite work when adding to the table, yet.)
+
 ##### Version 1.7.2 - (05/27/2022)
 
 * Don't allow duplicates in recent streams.

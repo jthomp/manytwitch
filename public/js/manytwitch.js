@@ -235,7 +235,7 @@ MT.streams = {
   */
   setRecentStreams(recentStreamsParm="") {
     log("MT.streams.setRecentStreams() - Begin");
-    let newRecentStreamsParm = [...new Set(recentStreamsParm)].join(",");
+    let newRecentStreamsParm = Array.from(new Set(recentStreamsParm)).sort().join(",");
     window.localStorage.setItem("recents", newRecentStreamsParm);
     log("MT.streams.setRecentStreams() - End");
   },
