@@ -83,6 +83,10 @@
       streamsModal.addEventListener("hidden.bs.modal", (event) => {
         newStreamField.value = "";
         addStreamBtn.setAttribute("disabled", "disabled");
+
+        // Array.from(document.getElementsByClassName("stream-iframe")).forEach(element => {
+        // });
+
       });
 
       saveBtn.addEventListener("click", (event) => {
