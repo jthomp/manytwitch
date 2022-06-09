@@ -85,7 +85,7 @@
         addStreamBtn.setAttribute("disabled", "disabled");
 
         Array.from(document.getElementsByTagName("video")).forEach(element => {
-          console.log(`setting volume for ${element}`);
+          console.debug(`setting volume for ${element}`);
           element.volume = 0.1;
         });
       });
