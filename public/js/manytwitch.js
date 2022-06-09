@@ -315,6 +315,10 @@ MT.streams = {
       document.getElementById("streams-container").innerHTML = '';
     }
 
+    Array.from(document.getElementsByTagName("video")).forEach(element => {
+      element.volume = 0.1;
+    });
+
     MT.streams.handleResize();
     MT.streams.updateHistory();
     
