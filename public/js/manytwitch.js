@@ -165,7 +165,6 @@ MT.streams = {
    * @returns {Array} The recent streams stored in localStorage.
   */
   getRecentStreams() {
-    // we may already have data in localStorage, look for it here.
     let recents = window.localStorage.getItem("recents");
     
     if (recents == null) {
