@@ -66,9 +66,7 @@
       });
 
       streamsModal.addEventListener("shown.bs.modal", (event) => {
-
         newStreamField.focus();
-
         if (MT.util.streamCount() == 0) {
           addStreamBtn.setAttribute("disabled", "disabled");
           saveBtn.setAttribute("disabled", "disabled");
@@ -77,7 +75,6 @@
           saveBtn.removeAttribute("disabled");
           streamManagerDefaultContent.style.display = "none";
         }
-
       });
 
       streamsModal.addEventListener("hidden.bs.modal", (event) => {
