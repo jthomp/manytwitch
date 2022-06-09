@@ -10,9 +10,8 @@
         Recent streams
         <a href="javascript:;"
            class="btn btn-default btn-danger float-end"
-           onclick="MT.manager.removeFromRecentsTable('', true);"
            title="Clear the list of recent streams."
-           id="clear-all-recent-streams-btn">
+           onclick="if(confirm('Are you sure?'))MT.manager.removeFromRecentsTable('', true);"           id="clear-all-recent-streams-btn">
           <i class="fa fa-trash"></i>&nbsp;Clear all
         </a>
       </th>
