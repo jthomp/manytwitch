@@ -93,7 +93,89 @@ MT.manager = {
      }
  
     log("MT.manager.addToTable() - End");
-   },
+  },
+
+  /**
+   * Various logic that needs to be done when the manager modal is hidden.
+  */
+  hidden() {
+    log("MT.manager.hidden() - Begin");
+
+    const newStreamField = document.getElementById("new_stream");
+    const addStreamBtn = document.getElementById("add-stream-btn");
+  
+    newStreamField.value = "";
+    addStreamBtn.setAttribute("disabled", "disabled");
+
+    log("MT.manager.hidden() - End");
+  },
+
+  /**
+   * Setup various elements on the manager modal before it's shown.
+  */
+  show() {
+    log("MT.manager.show() - Begin");
+
+    const saveBtn = document.getElementById("save-btn");
+    const addStreamBtn = document.getElementById("add-stream-btn");
+    const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+    const clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
+
+    clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
+
+    Array.from(document.getElementsByClassName("streams-modal-table-tr")).forEach(element => {
+      element.remove();
+    });
+
+    Array.from(document.getElementsByClassName("recent-streams-modal-table-tr")).forEach(element => {
+      element.remove();
+    });
+
+    // add our current streams to the streams table.
+    Array.from(MT.streams.getStreams()).forEach(element => {
+      MT.manager.addToTable(element);
+    });
+
+    // add our recent streams to the recent streams table.
+    Array.from(MT.streams.getRecentStreams()).forEach(element => {
+      MT.manager.addToRecentsTable(element);
+    });
+
+    if (MT.util.streamCount() == 0) {
+      addStreamBtn.setAttribute("disabled", "disabled");
+      saveBtn.setAttribute("disabled", "disabled");
+      streamManagerDefaultContent.style.display = "block";
+    } else {
+      saveBtn.removeAttribute("disabled");
+      streamManagerDefaultContent.style.display = "none";
+    }
+
+    log("MT.manager.show() - End");
+  },
+
+  /**
+   * Setup various elements on the manager modal after it's shown.
+  */
+  shown() {
+    log("MT.manager.shown() - Begin");
+
+    const addStreamBtn = document.getElementById("add-stream-btn");
+    const newStreamField = document.getElementById("new_stream");
+    const saveBtn = document.getElementById("save-btn");
+    const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+
+    newStreamField.focus();
+    if (MT.util.streamCount() == 0) {
+      addStreamBtn.setAttribute("disabled", "disabled");
+      saveBtn.setAttribute("disabled", "disabled");
+      streamManagerDefaultContent.style.display = "block";
+    } else {
+      saveBtn.removeAttribute("disabled");
+      streamManagerDefaultContent.style.display = "none";
+    }
+
+    log("MT.manager.shown() - End");
+  },
 
   /**
    * Removes a stream from the recents stream manager table, as well as localStorage.

@@ -23,70 +23,26 @@
     <script src="/js/pwa.js"></script>
 
     <script type="text/javascript">
-      const streamsModal = document.getElementById("streams-modal");
-      const manageBtnActual = document.getElementById("manage-btn-actual");
-      const saveBtn = document.getElementById("save-btn");
-      const newStreamField = document.getElementById("new_stream");
-      const addStreamBtn = document.getElementById("add-stream-btn");
-      const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
-      const clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
-
       window.addEventListener("DOMContentLoaded", (event) => {
         MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
         MT.streams.update();
       });
 
+      const streamsModal = document.getElementById("streams-modal");
+
       streamsModal.addEventListener("show.bs.modal", (event) => {
-        clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
-
-        Array.from(document.getElementsByClassName("streams-modal-table-tr")).forEach(element => {
-          element.remove();
-        });
-
-        Array.from(document.getElementsByClassName("recent-streams-modal-table-tr")).forEach(element => {
-          element.remove();
-        });
-
-        // add our current streams to the streams table.
-        Array.from(MT.streams.getStreams()).forEach(element => {
-          MT.manager.addToTable(element);
-        });
-
-        // add our recent streams to the recent streams table.
-        Array.from(MT.streams.getRecentStreams()).forEach(element => {
-          MT.manager.addToRecentsTable(element);
-        });
-
-        if (MT.util.streamCount() == 0) {
-          addStreamBtn.setAttribute("disabled", "disabled");
-          saveBtn.setAttribute("disabled", "disabled");
-          streamManagerDefaultContent.style.display = "block";
-        } else {
-          saveBtn.removeAttribute("disabled");
-          streamManagerDefaultContent.style.display = "none";
-        }
-
+        MT.manager.show();
       });
 
       streamsModal.addEventListener("shown.bs.modal", (event) => {
-        newStreamField.focus();
-        if (MT.util.streamCount() == 0) {
-          addStreamBtn.setAttribute("disabled", "disabled");
-          saveBtn.setAttribute("disabled", "disabled");
-          streamManagerDefaultContent.style.display = "block";
-        } else {
-          saveBtn.removeAttribute("disabled");
-          streamManagerDefaultContent.style.display = "none";
-        }
+        MT.manager.shown();
       });
 
       streamsModal.addEventListener("hidden.bs.modal", (event) => {
-        newStreamField.value = "";
-        addStreamBtn.setAttribute("disabled", "disabled");
+        MT.manager.hidden();
       });
 
-      saveBtn.addEventListener("click", (event) => {
-
+      document.getElementById("save-btn").addEventListener("click", (event) => {
         let streamsList = document.getElementsByClassName("streams-modal-table-tr");
         let streams = MT.streams.getStreams();
         let newStreams = [];
@@ -108,7 +64,7 @@
         orderChangedElement.value = "false";
       });
 
-      newStreamField.addEventListener("paste", (event) => {
+      document.getElementById("new_stream").addEventListener("paste", (event) => {
         if ($(this).length < 1) {
           addStreamBtn.setAttribute("disabled", "disabled");
         } else {
