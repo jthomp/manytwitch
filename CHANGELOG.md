@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.7.5 - (06/21/2022)
+
+* Security updates.
+
 ##### Version 1.7.4 - (06/09/2022)
 
 * Fix padding issues on recents table.
