@@ -64,14 +64,6 @@
         orderChangedElement.value = "false";
       });
 
-      document.getElementById("new_stream").addEventListener("paste", (event) => {
-        if ($(this).length < 1) {
-          addStreamBtn.setAttribute("disabled", "disabled");
-        } else {
-          addStreamBtn.removeAttribute("disabled");
-        }
-      });
-
     </script>
 
     <script defer src="/js/all.min.js"></script>

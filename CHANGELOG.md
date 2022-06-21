@@ -3,6 +3,7 @@
 ##### Version 1.7.5 - (06/21/2022)
 
 * Security updates.
+* Consolidate JS.
 
 ##### Version 1.7.4 - (06/09/2022)
 
