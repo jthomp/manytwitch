@@ -26,7 +26,7 @@
   "devDependencies": {
     "chromedriver": "^100.0.0",
     "faker": "^5.5.3",
-    "geckodriver": "1.2.4",
+    "geckodriver": "^1.2.4",
     "jake": ">=8.0.12",
     "jsdom": "19.0.0",
     "jsdom-global": "3.0.2",
