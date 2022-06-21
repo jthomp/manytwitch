@@ -3,6 +3,9 @@
   <%- include("head") %>
   <body data-env="<%- env %>">
     <div id="container">
+      <noscript>
+        <div class="alert alert-warning text-center">ManyTwitch works best with JavaScript enabled</div>
+      </noscript>
       <%- include("mainActionBar") %>
       <%- include("defaultContent") %>
       <div id="streams-container">
