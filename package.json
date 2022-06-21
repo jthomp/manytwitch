@@ -26,12 +26,13 @@
   "devDependencies": {
     "chromedriver": "^100.0.0",
     "faker": "^5.5.3",
-    "geckodriver": "^1.2.4",
+    "geckodriver": "^3.0.1",
     "jake": ">=8.0.12",
     "jsdom": "19.0.0",
     "jsdom-global": "3.0.2",
     "minimatch": ">=3.0.2",
     "mocha": "^9.2.2",
-    "nightwatch": "^1.2.4"
+    "nightwatch": "^2.2.2",
+    "got": "^12.1.0"
   }
 }
