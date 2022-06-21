@@ -20,6 +20,19 @@ window.onresize = () => {
 };
 
 /**
+ * Setup a listener for the new stream field on the manager modal.
+ */
+window.document.getElementById("new_stream").addEventListener("paste", (event) => {
+  const addStreamBtn = document.getElementById("add-stream-btn");
+
+  if ($(this).length < 1) {
+    addStreamBtn.setAttribute("disabled", "disabled");
+  } else {
+    addStreamBtn.removeAttribute("disabled");
+  }
+});
+
+/**
  * Passthrough for logging a message to the browser's console.
  * @param {String} msg The message to log to the console.
 */
