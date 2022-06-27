@@ -164,6 +164,10 @@ MT.manager = {
       streamManagerDefaultContent.style.display = "none";
     }
 
+    const mutedSettingCheckbox = document.getElementById("mutedSetting");
+    const mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
+    mutedSettingCheckbox.value = mutedSetting;
+
     log("MT.manager.show() - End");
   },
 
@@ -416,7 +420,7 @@ MT.streams = {
          log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById("new-stream-template").innerHTML.trim();
           let newStreamTemplate = Handlebars.compile(newStreamSource);
-          let muteSetting = JSON.parse(MT.settings.getSettings());
+          let muteSetting = JSON.parse(MT.settings.getSettings()).muted;
           let newStreamContext = { stream: element, muteSetting: muteSetting };
           let newStreamHTML = newStreamTemplate(newStreamContext);
           streamsContainer.innerHTML += newStreamHTML;
