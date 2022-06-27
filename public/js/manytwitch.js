@@ -271,7 +271,7 @@ MT.settings = {
       settings = window.localStorage.getItem("settings");
     }
 
-    return (settings == "") ? [] : settings.split(",").sort();
+    return (settings == "") ? [] : settings;
   },
 
   /**
@@ -416,7 +416,8 @@ MT.streams = {
          log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById("new-stream-template").innerHTML.trim();
           let newStreamTemplate = Handlebars.compile(newStreamSource);
-          let newStreamContext = { stream: element };
+          let muteSetting = JSON.parse(MT.settings.getSettings());
+          let newStreamContext = { stream: element, muteSetting: muteSetting };
           let newStreamHTML = newStreamTemplate(newStreamContext);
           streamsContainer.innerHTML += newStreamHTML;
         }
