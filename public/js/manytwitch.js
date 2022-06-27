@@ -8,9 +8,10 @@
  * Establish and define our namespaces.
 */
 const MT = {};
-MT["manager"] = {};   // the stream manager modal.
-MT["streams"] = {};  // managing streams.
-MT["util"] = {};    // utils.
+MT["manager"] = {};     // the stream manager modal.
+MT["streams"] = {};    // managing streams.
+MT["util"] = {};      // utils.
+MT["settings"] = {}; // user settings.
 
 /**
  * Recalculate the size of the streams if the window is resized.
@@ -248,6 +249,47 @@ MT.manager = {
     } else {
       addButton.setAttribute("disabled", "disabled");
     }
+  }
+
+},
+
+// methods to handle user settings.
+MT.settings = {
+
+  /**
+   * Returns an array of settings in localStorage.
+   * @returns {Array} The settings stored in localStorage.
+  */
+  getSettings() {
+    let settings = window.localStorage.getItem("settings");
+
+    if (settings == null) {
+      let muteSetting = {
+        "mute": "false"
+      }
+      window.localStorage.setItem("settings", muteSetting);
+      settings = window.localStorage.getItem("settings");
+    }
+
+    return (settings == "") ? [] : settings.split(",").sort();
+  },
+
+  /**
+   * Set the key and value of a setting.
+   * @param {String} key The name of the setting.
+   * @param {String} value The value of the setting.
+  */
+  setSetting(key="", value="") {
+    if (key != "" && value != "") {
+      let settingKeyValuePair = {
+        key: value
+      }
+      window.localStorage.setItem("settings", JSON.stringify(settingKeyValuePair));
+    }
+  },
+
+  toString() {
+    // ...
   }
 
 },
