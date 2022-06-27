@@ -125,7 +125,7 @@ a {
 }
 
 #streams-modal #streams-manager-default-content {
-  background-color: var(--purple-bg-color);
+  background-color: var(--purple-bg-color-lighter);
   text-align: center;
   padding: 1rem;
   font-size: 1.25em;
