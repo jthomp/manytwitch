@@ -456,6 +456,10 @@ MT.streams = {
       document.getElementById("streams-container").innerHTML = '';
     }
 
+    // save settings.
+    const mutedSettingCheckboxValue = document.getElementById("mutedSetting").value;
+    MT.settings.setSetting("muted", mutedSettingCheckboxValue);
+
     MT.streams.handleResize();
     MT.streams.updateHistory();
     
