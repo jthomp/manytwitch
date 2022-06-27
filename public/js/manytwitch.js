@@ -117,7 +117,7 @@ MT.manager = {
 
     const newStreamField = document.getElementById("new_stream");
     const addStreamBtn = document.getElementById("add-stream-btn");
-  
+
     newStreamField.value = "";
     addStreamBtn.setAttribute("disabled", "disabled");
 
@@ -166,7 +166,7 @@ MT.manager = {
 
     const mutedSettingCheckbox = document.getElementById("mutedSetting");
     const mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
-    mutedSettingCheckbox.value = mutedSetting;
+    mutedSettingCheckbox.checked = (mutedSetting == false);
 
     log("MT.manager.show() - End");
   },
@@ -286,8 +286,9 @@ MT.settings = {
   setSetting(key="", value="") {
     if (key != "" && value != "") {
       let settingKeyValuePair = {
-        key: value
+        [key]: value
       }
+      log(settingKeyValuePair);
       window.localStorage.setItem("settings", JSON.stringify(settingKeyValuePair));
     }
   },
@@ -453,7 +454,7 @@ MT.streams = {
     } else {
       defaultContainer.style.display = "block";
       manage.style.display = "none";
-      document.getElementById("streams-container").innerHTML = '';
+      document.getElementById("streams-container").innerHTML = "";
     }
 
     // save settings.
