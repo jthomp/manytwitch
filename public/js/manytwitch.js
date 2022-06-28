@@ -458,8 +458,8 @@ MT.streams = {
     }
 
     // save settings.
-    const mutedSettingCheckboxValue = document.getElementById("mutedSetting").value == "on";
-    MT.settings.setSetting("muted", mutedSettingCheckboxValue == "on" ? "true" : "false");
+    const mutedSettingCheckboxValue = document.getElementById("mutedSetting").value == true;
+    MT.settings.setSetting("muted", (mutedSettingCheckboxValue == true ? "true" : "false"));
 
     MT.streams.handleResize();
     MT.streams.updateHistory();
