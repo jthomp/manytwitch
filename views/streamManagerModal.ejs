@@ -41,13 +41,12 @@
         <%- include("streamManagerModalRecentStreams") %>
       </div>
       <div class="modal-footer">
-        Mute Streams on Start&nbsp;
+        Mute Streams&nbsp;
         <label class="switch">
           <input type="checkbox"
                  class="checkbox"
                  id="mutedSetting"
-                 name="mutedSetting"
-                 value="false">
+                 name="mutedSetting">
           <span class="toggle-thumb">
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" style="fill:#4ADE80;"><path d="M10 15.586L6.707 12.293 5.293 13.707 10 18.414 19.707 8.707 18.293 7.293z"></path></svg>
   
@@ -92,5 +91,9 @@
         break;
       }
     }
+  });
+
+  document.getElementById("mutedSetting").addEventListener("change", (event) => {
+    document.getElementById("save-btn").removeAttribute("disabled");
   });
 </script>
