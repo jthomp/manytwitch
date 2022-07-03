@@ -19,8 +19,7 @@
     "minimatch": ">= 3.0.2",
     "morgan": "~1.10.0",
     "nodemon": "^2.0.18",
-    "pwacompat": "^2.0.17",
-    "uuid": "^8.3.2"
+    "pwacompat": "^2.0.17"
   },
   "devDependencies": {
     "chromedriver": "^103.0.0",
