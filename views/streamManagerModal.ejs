@@ -40,6 +40,13 @@
         <%- include("streamManagerModalCurrentStreams") %>
         <%- include("streamManagerModalRecentStreams") %>
       </div>
+      <div class="modal-footer">
+        Mute Streams on Start&nbsp;
+        <input type="checkbox"
+               class="checkbox"
+               id="mutedSetting"
+               name="mutedSetting">
+      </div>
     </div>
   </div>
 </div>
@@ -56,7 +63,7 @@
     animation: 100,
     draggable: ".streams-modal-table-tr",
     onEnd: (evt) => {
-      document.getElementById("order-changed").value = "true";
+      document.getElementById("order-changed").checked = "true";
     }
   });
 
@@ -77,5 +84,9 @@
         break;
       }
     }
+  });
+
+  document.getElementById("mutedSetting").addEventListener("change", (event) => {
+    document.getElementById("save-btn").removeAttribute("disabled");
   });
 </script>

@@ -8,9 +8,10 @@
  * Establish and define our namespaces.
 */
 const MT = {};
-MT["manager"] = {};   // the stream manager modal.
-MT["streams"] = {};  // managing streams.
-MT["util"] = {};    // utils.
+MT["manager"] = {};     // the stream manager modal.
+MT["streams"] = {};    // managing streams.
+MT["util"] = {};      // utils.
+MT["settings"] = {}; // user settings.
 
 /**
  * Recalculate the size of the streams if the window is resized.
@@ -116,7 +117,7 @@ MT.manager = {
 
     const newStreamField = document.getElementById("new_stream");
     const addStreamBtn = document.getElementById("add-stream-btn");
-  
+
     newStreamField.value = "";
     addStreamBtn.setAttribute("disabled", "disabled");
 
@@ -162,6 +163,10 @@ MT.manager = {
       saveBtn.removeAttribute("disabled");
       streamManagerDefaultContent.style.display = "none";
     }
+
+    const mutedSettingCheckbox = document.getElementById("mutedSetting");
+    const mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
+    mutedSettingCheckbox.checked = mutedSetting;
 
     log("MT.manager.show() - End");
   },
@@ -248,6 +253,48 @@ MT.manager = {
     } else {
       addButton.setAttribute("disabled", "disabled");
     }
+  }
+
+},
+
+// methods to handle user settings.
+MT.settings = {
+
+  /**
+   * Returns an array of settings in localStorage.
+   * @returns {Array} The settings stored in localStorage.
+  */
+  getSettings() {
+    let settings = window.localStorage.getItem("settings");
+
+    if (settings == null) {
+      let muteSetting = {
+        "mute": "false"
+      }
+      window.localStorage.setItem("settings", muteSetting);
+      settings = window.localStorage.getItem("settings");
+    }
+
+    return (settings == "") ? [] : settings;
+  },
+
+  /**
+   * Set the key and value of a setting.
+   * @param {String} key The name of the setting.
+   * @param {String} value The value of the setting.
+  */
+  setSetting(key="", value="") {
+    if (key != "" && value != "") {
+      let settingKeyValuePair = {
+        [key]: value
+      }
+      log(settingKeyValuePair);
+      window.localStorage.setItem("settings", JSON.stringify(settingKeyValuePair));
+    }
+  },
+
+  toString() {
+    // ...
   }
 
 },
@@ -374,7 +421,8 @@ MT.streams = {
          log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById("new-stream-template").innerHTML.trim();
           let newStreamTemplate = Handlebars.compile(newStreamSource);
-          let newStreamContext = { stream: element };
+          let muteSetting = JSON.parse(MT.settings.getSettings()).muted;
+          let newStreamContext = { stream: element, muteSetting: muteSetting };
           let newStreamHTML = newStreamTemplate(newStreamContext);
           streamsContainer.innerHTML += newStreamHTML;
         }
@@ -406,8 +454,11 @@ MT.streams = {
     } else {
       defaultContainer.style.display = "block";
       manage.style.display = "none";
-      document.getElementById("streams-container").innerHTML = '';
+      document.getElementById("streams-container").innerHTML = "";
     }
+
+    // save settings.
+    MT.settings.setSetting("muted", document.getElementById("mutedSetting").checked == true);
 
     MT.streams.handleResize();
     MT.streams.updateHistory();
