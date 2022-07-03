@@ -1,14 +1,14 @@
 # ManyTwitch Changelog
 
-##### Version 1.8.0 - (06/xx/2022)
+##### Version 1.8.0 - (07/xx/2022)
 
 * Add support for settings.
 * Add muted setting.
 * Add muted setting toggle on stream manager modal.
 
-##### Version 1.7.6 - (~06/25/2022)
+##### Version 1.7.7 - (07/02/2022)
 
-* Security updates.
+* Add to recents table when adding to modal.
 
 ##### Version 1.7.5 - (06/21/2022)
 
