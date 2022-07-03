@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.7.7 - (07/02/2022)
+
+* Add to recents table when adding to modal.
+
 ##### Version 1.7.5 - (06/21/2022)
 
 * Security updates.
