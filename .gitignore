@@ -123,3 +123,6 @@ dist
 
 # nightwatch test output dir
 tests_output/
+
+# lighthouse reports
+*.report.html
