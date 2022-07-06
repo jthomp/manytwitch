@@ -170,7 +170,7 @@ MT.manager = {
     }
 
     const mutedSettingCheckbox = document.getElementById("mutedSetting");
-    const mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
+    let mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
     mutedSettingCheckbox.checked = mutedSetting;
 
     log("MT.manager.show() - End");
@@ -458,7 +458,8 @@ MT.streams = {
     }
 
     // save settings.
-    MT.settings.setSetting("muted", document.getElementById("mutedSetting").checked == true);
+    let mutedSettingValue = document.getElementById("mutedSetting").checked == true ? "true" : "false";
+    MT.settings.setSetting("muted", mutedSettingValue);
 
     MT.streams.handleResize();
     MT.streams.updateHistory();
