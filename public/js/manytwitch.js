@@ -187,7 +187,6 @@ MT.manager = {
     const saveBtn = document.getElementById("save-btn");
     const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
 
-    newStreamField.focus();
     if (MT.util.streamCount() == 0) {
       addStreamBtn.setAttribute("disabled", "disabled");
       saveBtn.setAttribute("disabled", "disabled");
