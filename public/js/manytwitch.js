@@ -183,7 +183,6 @@ MT.manager = {
     log("MT.manager.shown() - Begin");
 
     const addStreamBtn = document.getElementById("add-stream-btn");
-    const newStreamField = document.getElementById("new_stream");
     const saveBtn = document.getElementById("save-btn");
     const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
 
