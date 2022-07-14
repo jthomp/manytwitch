@@ -93,7 +93,7 @@ a {
 }
 
 #streams-modal table.streams-list-table tbody tr td {
-  transition: all 0.25s ease-out;
+  transition: all 0.15s ease-out;
 }
 
 #streams-modal table.streams-list-table tbody tr td:hover {
