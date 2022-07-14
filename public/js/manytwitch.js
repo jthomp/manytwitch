@@ -266,13 +266,13 @@ MT.settings = {
   getSettings() {
     let settings = window.localStorage.getItem("settings");
 
-    if (settings == null) {
-      let muteSetting = {
-        "muted": "false"
-      }
-      window.localStorage.setItem("settings", muteSetting);
-      settings = window.localStorage.getItem("settings");
-    }
+    // if (settings == null) {
+    //   let muteSetting = {
+    //     "muted": "false"
+    //   }
+    //   window.localStorage.setItem("settings", muteSetting);
+    //   settings = window.localStorage.getItem("settings");
+    // }
 
     return (settings == "") ? [] : settings;
   },
