@@ -268,7 +268,7 @@ MT.settings = {
 
     if (settings == null) {
       let muteSetting = {
-        "muted": "false"
+        "muted": "true"
       }
       window.localStorage.setItem("settings", muteSetting);
       settings = window.localStorage.getItem("settings");
