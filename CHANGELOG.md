@@ -1,6 +1,6 @@
 # ManyTwitch Changelog
 
-##### Version 1.8.0 - (07/xx/2022)
+##### Version 1.8.0 - (07/14/2022)
 
 * Add support for settings.
 * Add muted setting.
