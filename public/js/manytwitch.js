@@ -266,13 +266,13 @@ MT.settings = {
   getSettings() {
     let settings = window.localStorage.getItem("settings");
 
-    // if (settings == null) {
-    //   let muteSetting = {
-    //     "muted": "false"
-    //   }
-    //   window.localStorage.setItem("settings", muteSetting);
-    //   settings = window.localStorage.getItem("settings");
-    // }
+    if (settings == null) {
+      let muteSetting = {
+        "muted": "false"
+      }
+      window.localStorage.setItem("settings", muteSetting);
+      settings = window.localStorage.getItem("settings");
+    }
 
     return (settings == "") ? [] : settings;
   },
@@ -287,13 +287,8 @@ MT.settings = {
       let settingKeyValuePair = {
         [key]: value
       }
-      log(settingKeyValuePair);
       window.localStorage.setItem("settings", JSON.stringify(settingKeyValuePair));
     }
-  },
-
-  toString() {
-    // ...
   }
 
 },
