@@ -48,8 +48,8 @@
         let newStreams = [];
         const orderChangedElement = document.getElementById("order-changed");
 
-        if (orderChangedElement.value == "true") {
-          console.log("Streams have been re-ordered. Resetting...");
+        if (orderChangedElement.checked) {
+          console.debug("Streams have been re-ordered. Resetting...");
           MT.streams.setStreams("");
           streams = MT.streams.getStreams(); // reload our streams.
         }
@@ -60,8 +60,8 @@
         });
 
         MT.streams.setStreams(newStreams.join(","));
-        MT.streams.update(orderChangedElement.value);
-        orderChangedElement.value = "false";
+        MT.streams.update(orderChangedElement.checked);
+        orderChangedElement.checked = "false";
       });
 
     </script>

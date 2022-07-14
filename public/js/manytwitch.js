@@ -171,7 +171,7 @@ MT.manager = {
 
     const mutedSettingCheckbox = document.getElementById("mutedSetting");
     let mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
-    mutedSettingCheckbox.checked = mutedSetting;
+    mutedSettingCheckbox.checked = mutedSetting == "true";
 
     log("MT.manager.show() - End");
   },
