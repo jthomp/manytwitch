@@ -415,7 +415,12 @@ MT.streams = {
          log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById("new-stream-template").innerHTML.trim();
           let newStreamTemplate = Handlebars.compile(newStreamSource);
-          let muteSetting = JSON.parse(MT.settings.getSettings()).muted;
+          var muteSetting = false;
+
+          try {
+            muteSetting = JSON.parse(MT.settings.getSettings()).muted;
+          } catch {};
+
           let newStreamContext = { stream: element, muteSetting: muteSetting };
           let newStreamHTML = newStreamTemplate(newStreamContext);
           streamsContainer.innerHTML += newStreamHTML;
