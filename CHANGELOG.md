@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.8.1 - (07/15/2022)
+
+* Security updates.
+
 ##### Version 1.8.0 - (07/14/2022)
 
 * Add support for settings.
