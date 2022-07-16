@@ -173,6 +173,12 @@ MT.manager = {
     let mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
     mutedSettingCheckbox.checked = mutedSetting == "true";
 
+    const isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
+    if (!isMobile) {
+      MT.settings.setSetting("muted", "true"); // force mute setting to true on mobile.
+      document.getElementById("mute-setting-checkbox-container").style.display = "none";
+    }
+
     log("MT.manager.show() - End");
   },
 

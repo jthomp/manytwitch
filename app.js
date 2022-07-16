@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const compression = require("compression");
+const userAgent = require('express-useragent');
+
 const version = process.env.npm_package_version;
 // const buildId = process.env.HEROKU_RELEASE_VERSION || "0";
 const env = process.env.NODE_ENV || "development";
@@ -30,13 +32,20 @@ app.use(
   express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/js"))
 );
 
+app.use(
+  "/js",
+  express.static(path.join(__dirname, "node_modules/express-useragent/lib"))
+);
+
+app.use(userAgent.express());
 app.get("/*", function(req, res) {
   let streamsFromParms = [];
   streamsFromParms = req.params["0"].split("/").filter(String);
   res.render("index", {
     streamsFromParms: streamsFromParms,
     version: version,
-    env: env
+    env: env,
+    isMobile: req.useragent.isMobile
   });
 });
 
