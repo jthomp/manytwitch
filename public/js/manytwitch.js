@@ -169,14 +169,13 @@ MT.manager = {
       streamManagerDefaultContent.style.display = "none";
     }
 
-    const mutedSettingCheckbox = document.getElementById("mutedSetting");
-    let mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
-
     const isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
     if (isMobile) {
       MT.settings.setSetting("muted", "true"); // force mute setting to true on mobile.
       document.querySelector("#streams-modal .modal-footer").style.display = "none";
     } else {
+      const mutedSettingCheckbox = document.getElementById("mutedSetting");
+      let mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
       mutedSettingCheckbox.checked = mutedSetting == "true";
     }
 
