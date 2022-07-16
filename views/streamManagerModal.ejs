@@ -67,7 +67,7 @@
   let sortable = Sortable.create(streamsList, {
     animation: 100,
     draggable: ".streams-modal-table-tr",
-    onEnd: (evt) => {
+    onEnd: (event) => {
       document.getElementById("order-changed").checked = "true";
     }
   });
