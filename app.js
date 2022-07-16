@@ -46,7 +46,7 @@ app.get("/*", function(req, res) {
     version: version,
     env: env,
     isMobile: req.useragent.isMobile,
-    builId: buildId
+    buildId: buildId
   });
 });
 
