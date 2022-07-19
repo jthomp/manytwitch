@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.8.3 - (07/18/2022)
+
+* Security updates.
+
 ##### Version 1.8.2 - (07/16/2022)
 
 * Hide mute setting checkbox on mobile (and force setting to true.)
