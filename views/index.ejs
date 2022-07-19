@@ -55,13 +55,12 @@
         }
 
         Array.from(streamsList).forEach(element => {
-          let streamName = element.dataset.streamName;
-          newStreams.push(streamName);
+          newStreams.push(element.dataset.streamName);
         });
 
         MT.streams.setStreams(newStreams.join(","));
         MT.streams.update(orderChangedElement.checked);
-        orderChangedElement.checked = "false";
+        orderChangedElement.checked = false;
       });
 
     </script>
