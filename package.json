@@ -18,19 +18,14 @@
     "express-useragent": "^1.0.15",
     "http-errors": "~2.0.0",
     "morgan": "~1.10.0",
-    "nodemon": "^2.0.18",
     "pwacompat": "^2.0.17"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.3.0",
-    "chromedriver": "^103.0.0",
-    "geckodriver": "^3.0.1",
     "got": ">=12.1.0",
     "jake": ">=10.8.5",
     "jsdom": "20.0.0",
     "jsdom-global": "3.0.2",
-    "minimatch": ">=5.1.0",
-    "mocha": "^10.0.0",
-    "nightwatch": "^2.2.2"
+    "minimatch": ">=5.1.0"
   }
 }
