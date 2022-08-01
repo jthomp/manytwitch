@@ -23,7 +23,7 @@ window.onresize = () => {
 
 /**
  * Setup a listener for the new stream field on the manager modal.
- */
+*/
 window.document.getElementById("new_stream").addEventListener("paste", (event) => {
   const addStreamBtn = document.getElementById("add-stream-btn");
 
