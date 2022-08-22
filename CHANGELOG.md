@@ -1,5 +1,10 @@
 # ManyTwitch Changelog
 
+##### Version 1.8.4 - (08/22/2022)
+
+* Dependency and security updates.
+* Shorten default content.
+
 ##### Version 1.8.3 - (07/18/2022)
 
 * Security updates.
