@@ -10,7 +10,6 @@ describe('Load the homepage', function() {
           .assert.textContains('#default', "Let's Watch!")
           .assert.textContains('#default', 'PSOD Notice')
           .assert.textContains('#default', 'By Antillian')
-          .assert.textContains('#disclaimer', 'ManyTwitch is not affiliated with Twitch or Amazon.')
           .end();
 
   });
