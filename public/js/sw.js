@@ -1,9 +1,10 @@
 const cacheName = 'manytwitch-cache';
 const toCache = [
-  '/js/manytwitch.js',
+  '/js/bootstrap.min.js',
   '/js/handlebars.js',
   '/js/all.min.js',
   '/js/Sortable.min.js',
+  '/js/manytwitch.js',
   '/style/bootstrap-dark.min.css',
   '/style/all.min.css',
   '/style/manytwitch.css'
