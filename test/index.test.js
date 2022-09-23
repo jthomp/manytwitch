@@ -8,7 +8,6 @@ describe('Load the homepage', function() {
           .assert.not.visible('#streams-container')
           .assert.textContains('#default', 'Welcome to ManyTwitch')
           .assert.textContains('#default', "Let's Watch!")
-          .assert.textContains('#default', 'PSOD Notice')
           .assert.textContains('#default', 'By Antillian')
           .end();
 

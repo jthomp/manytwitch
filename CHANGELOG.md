@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.8.6 - (09/23/2022)
+
+* Remove PSOD Modal.
+
 ##### Version 1.8.5 - (08/25/2022)
 
 * UI tweaks.
