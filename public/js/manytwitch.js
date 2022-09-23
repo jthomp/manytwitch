@@ -101,11 +101,6 @@ MT.manager = {
        saveBtn.removeAttribute("disabled");
        MT.manager.toggleAddButton();
        streamManagerDefaultContent.style.display = "none";
-
-       let currentRecentStreams = MT.streams.getRecentStreams();
-       currentRecentStreams.push(streamParm);
-       MT.streams.setRecentStreams(currentRecentStreams);
-       MT.manager.addToRecentsTable(streamParm); 
      }
  
      if (document.getElementById("streams-modal").style.display == "block") {
@@ -243,6 +238,10 @@ MT.manager = {
     if (streamParm != "") {
       log(`\t Removing stream ${streamParm}`);
       document.getElementById(`tr-${streamParm}`).remove();
+       let currentRecentStreams = MT.streams.getRecentStreams();
+       currentRecentStreams.push(streamParm);
+       MT.streams.setRecentStreams(currentRecentStreams);
+       MT.manager.addToRecentsTable(streamParm);
     }
 
     log("MT.manager.removeFromTable() - End");

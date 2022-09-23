@@ -3,6 +3,7 @@
 ##### Version 1.8.6 - (09/23/2022)
 
 * Remove PSOD Modal.
+* Fix bug where loading stream manager re-added recent streams. (In other words, clearing recent streams now does what it's expected.)
 
 ##### Version 1.8.5 - (08/25/2022)
 
