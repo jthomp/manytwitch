@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.8.7 - (09/27/2022)
+
+* Add button for clicking and dragging streams.
+
 ##### Version 1.8.6 - (09/23/2022)
 
 * Remove PSOD Modal.
