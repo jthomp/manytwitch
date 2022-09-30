@@ -1,5 +1,10 @@
 # ManyTwitch Changelog
 
+##### Version 1.8.8 - (09/30/2022)
+
+* Swap out some icons.
+* Remove muted setting (for now.)
+
 ##### Version 1.8.7 - (09/27/2022)
 
 * Add button for clicking and dragging streams.

@@ -40,15 +40,7 @@
         <%- include("streamManagerModalCurrentStreams") %>
         <%- include("streamManagerModalRecentStreams") %>
       </div>
-      <div class="modal-footer">
-        <label for="mutedSetting">
-          Mute Streams on Start&nbsp;
-        </label>
-        <input type="checkbox"
-               class="checkbox"
-               id="mutedSetting"
-               name="mutedSetting"
-               autocomplete="off" />  
+      <div class="modal-footer" style="display: none;">
       </div>
     </div>
   </div>
@@ -87,9 +79,5 @@
         break;
       }
     }
-  });
-
-  document.getElementById("mutedSetting").addEventListener("change", (event) => {
-    document.getElementById("save-btn").removeAttribute("disabled");
   });
 </script>

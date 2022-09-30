@@ -165,16 +165,6 @@ MT.manager = {
       streamManagerDefaultContent.style.display = "none";
     }
 
-    const isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
-    if (isMobile) {
-      MT.settings.setSetting("muted", "true"); // force mute setting to true on mobile.
-      document.querySelector("#streams-modal .modal-footer").style.display = "none";
-    } else {
-      const mutedSettingCheckbox = document.getElementById("mutedSetting");
-      let mutedSetting = JSON.parse(MT.settings.getSettings()).muted;
-      mutedSettingCheckbox.checked = mutedSetting == "true";
-    }
-
     log("MT.manager.show() - End");
   },
 
@@ -271,15 +261,6 @@ MT.settings = {
   */
   getSettings() {
     let settings = window.localStorage.getItem("settings");
-
-    if (settings == null) {
-      let muteSetting = {
-        "muted": "true"
-      }
-      window.localStorage.setItem("settings", muteSetting);
-      settings = window.localStorage.getItem("settings");
-    }
-
     return (settings == "") ? [] : settings;
   },
 
@@ -421,13 +402,7 @@ MT.streams = {
          log(`\t Adding new stream: ${element}`);
           let newStreamSource = document.getElementById("new-stream-template").innerHTML.trim();
           let newStreamTemplate = Handlebars.compile(newStreamSource);
-          var muteSetting = false;
-
-          try {
-            muteSetting = JSON.parse(MT.settings.getSettings()).muted;
-          } catch {};
-
-          let newStreamContext = { stream: element, muteSetting: muteSetting };
+          let newStreamContext = { stream: element };
           let newStreamHTML = newStreamTemplate(newStreamContext);
           streamsContainer.innerHTML += newStreamHTML;
         }
@@ -461,10 +436,6 @@ MT.streams = {
       manage.style.display = "none";
       document.getElementById("streams-container").innerHTML = "";
     }
-
-    // save settings.
-    let mutedSettingValue = document.getElementById("mutedSetting").checked == true ? "true" : "false";
-    MT.settings.setSetting("muted", mutedSettingValue);
 
     MT.streams.handleResize();
     MT.streams.updateHistory();
