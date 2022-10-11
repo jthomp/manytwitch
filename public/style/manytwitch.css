@@ -24,6 +24,10 @@ a {
   text-decoration: none !important;
 }
 
+.strong {
+  font-weight: bold;
+}
+
 .btn-purple {
   background-color: var(--purple-bg-color) !important;
   color: rgb(255, 255, 255) !important;
