@@ -1,12 +1,13 @@
 {
   "name": "ManyTwitch",
+  "description": "Watch multiple Twitch streams on your device.",
   "short_name": "ManyTwitch",
   "lang": "en-US",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "theme_color": "rgb(0, 0, 0)",
-  "background_color": "rgb(0, 0, 0)",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
