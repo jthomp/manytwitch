@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.9.0 - (xx/xx/2022)
+
+* Add donate button.
+
 ##### Version 1.8.8 - (09/30/2022)
 
 * Swap out some icons.
