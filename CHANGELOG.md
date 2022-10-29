@@ -1,6 +1,12 @@
 # ManyTwitch Changelog
 
-##### Version 1.9.0 - (xx/xx/2022)
+##### Version 1.9.1 - (10/29/2022)
+
+* Tweaks for donate modal.
+* Add logic for toggling drag buttons.
+* Other tweaks and refactoring.
+
+##### Version 1.9.0 - (10/27/2022)
 
 * Add donate button.
 
