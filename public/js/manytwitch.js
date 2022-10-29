@@ -106,6 +106,8 @@ MT.manager = {
      if (document.getElementById("streams-modal").style.display == "block") {
        newStreamField.click();
      }
+
+     MT.manager.toggleDragButtons();
  
     log("MT.manager.addToTable() - End");
   },
@@ -123,6 +125,55 @@ MT.manager = {
     addStreamBtn.setAttribute("disabled", "disabled");
 
     log("MT.manager.hidden() - End");
+  },
+
+  /**
+   * Removes a stream from the recents stream manager table, as well as localStorage.
+   * @param {String} recentStreamParm 
+  */
+   removeFromRecentsTable(recentStreamParm="", clearAll=false) {
+    log("MT.manager.removeFromRecentsTable() - Begin");
+
+    let currentRecentStreams = MT.streams.getRecentStreams();
+
+    if (recentStreamParm != "") {
+      log(`\t Removing stream ${recentStreamParm}`);
+      document.getElementById(`tr-recent-${recentStreamParm}`).remove();
+      let recentStreamParmIdx = currentRecentStreams.indexOf(recentStreamParm);
+      currentRecentStreams.splice(recentStreamParmIdx, 1);
+      MT.streams.setRecentStreams(currentRecentStreams);
+    }
+
+    currentRecentStreams = MT.streams.getRecentStreams();
+
+    if (clearAll || currentRecentStreams.length == 0) {
+      MT.streams.setRecentStreams("");
+      document.getElementById("recent-streams-list-tbody").innerHTML = "";
+      document.getElementById("clear-all-recent-streams-btn").style.display = "none";
+    }
+
+    log("MT.manager.removeFromRecentsTable() - End");
+  },
+
+  /**
+   * Remove a given stream from the stream manager table.
+   * @param {String} streamParm The stream to remove.
+  */
+  removeFromTable(streamParm="") {
+    log("MT.manager.removeFromTable() - Begin");
+
+    if (streamParm != "") {
+      log(`\t Removing stream ${streamParm}`);
+      document.getElementById(`tr-${streamParm}`).remove();
+       let currentRecentStreams = MT.streams.getRecentStreams();
+       currentRecentStreams.push(streamParm);
+       MT.streams.setRecentStreams(currentRecentStreams);
+       MT.manager.addToRecentsTable(streamParm);
+    }
+
+    MT.manager.toggleDragButtons();
+
+    log("MT.manager.removeFromTable() - End");
   },
 
   /**
@@ -191,53 +242,6 @@ MT.manager = {
   },
 
   /**
-   * Removes a stream from the recents stream manager table, as well as localStorage.
-   * @param {String} recentStreamParm 
-  */
-  removeFromRecentsTable(recentStreamParm="", clearAll=false) {
-    log("MT.manager.removeFromRecentsTable() - Begin");
-
-    let currentRecentStreams = MT.streams.getRecentStreams();
-
-    if (recentStreamParm != "") {
-      log(`\t Removing stream ${recentStreamParm}`);
-      document.getElementById(`tr-recent-${recentStreamParm}`).remove();
-      let recentStreamParmIdx = currentRecentStreams.indexOf(recentStreamParm);
-      currentRecentStreams.splice(recentStreamParmIdx, 1);
-      MT.streams.setRecentStreams(currentRecentStreams);
-    }
-
-    currentRecentStreams = MT.streams.getRecentStreams();
-
-    if (clearAll || currentRecentStreams.length == 0) {
-      MT.streams.setRecentStreams("");
-      document.getElementById("recent-streams-list-tbody").innerHTML = "";
-      document.getElementById("clear-all-recent-streams-btn").style.display = "none";
-    }
-
-    log("MT.manager.removeFromRecentsTable() - End");
-  },
-
-  /**
-   * Remove a given stream from the stream manager table.
-   * @param {String} streamParm The stream to remove.
-  */
-  removeFromTable(streamParm="") {
-    log("MT.manager.removeFromTable() - Begin");
-
-    if (streamParm != "") {
-      log(`\t Removing stream ${streamParm}`);
-      document.getElementById(`tr-${streamParm}`).remove();
-       let currentRecentStreams = MT.streams.getRecentStreams();
-       currentRecentStreams.push(streamParm);
-       MT.streams.setRecentStreams(currentRecentStreams);
-       MT.manager.addToRecentsTable(streamParm);
-    }
-
-    log("MT.manager.removeFromTable() - End");
-  },
-
-  /**
    * Toggles the add stream button on the stream manager modal.
   */
   toggleAddButton() {
@@ -248,6 +252,17 @@ MT.manager = {
     } else {
       addButton.setAttribute("disabled", "disabled");
     }
+  },
+
+  /**
+   * Show/hide drag buttons on the stream manage modal table.
+   */
+   toggleDragButtons() {
+    let streamsRowsOnTableCount = document.getElementsByClassName("streams-modal-table-tr").length;
+
+    Array.from(document.getElementsByClassName("drag-btn")).forEach(element => {
+      element.style.display = (streamsRowsOnTableCount < 2) ? "none" : "inline-block";
+    });
   }
 
 },
