@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.9.2 - (11/13/2022)
+
+* Lots of little tweaks.
+
 ##### Version 1.9.1 - (10/29/2022)
 
 * Tweaks for donate modal.
