@@ -238,6 +238,8 @@ MT.manager = {
       streamManagerDefaultContent.style.display = "none";
     }
 
+    document.getElementById("new_stream").focus();
+
     log("MT.manager.shown() - End");
   },
 
