@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const compression = require("compression");
-const userAgent = require('express-useragent');
+const userAgent = require("express-useragent");
 
 const version = process.env.npm_package_version;
 const buildId = process.env.HEROKU_RELEASE_VERSION || "0";

@@ -147,3 +147,12 @@ a {
 #version-information {
   display: none;
 }
+
+#mobile-notice {
+  margin-top: 4vh;
+  font-size: 0.8em;
+  background-color: #333;
+  border-radius: 1em;
+  color: #fff;
+  padding: 0.8em;
+}
