@@ -51,7 +51,6 @@
         const orderChangedElement = document.getElementById("order-changed");
 
         if (orderChangedElement.checked) {
-          console.debug("Streams have been re-ordered. Resetting...");
           MT.streams.setStreams("");
           streams = MT.streams.getStreams(); // reload our streams.
         }
