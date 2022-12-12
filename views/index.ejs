@@ -22,6 +22,9 @@
     <script src="/js/pwa.js"></script>
 
     <script type="text/javascript">
+
+      const manageBtn = document.getElementById("manage-btn");
+
       window.addEventListener("DOMContentLoaded", (event) => {
         MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
         MT.streams.update();
@@ -62,6 +65,13 @@
         orderChangedElement.checked = false;
       });
 
+      manageBtn.addEventListener("mouseenter", (event) => {
+        manageBtn.style.opacity = 1.0;
+      });
+
+      manageBtn.addEventListener("mouseleave", (event) => {
+        manageBtn.style.opacity = 0.6;
+      });
     </script>
 
     <script defer src="/js/all.min.js"></script>
