@@ -52,8 +52,8 @@ a {
   top: 0.5rem;
 }
 
-#container #manage-btn button {
-  opacity: 0.6;
+#container #manage-btn {
+  opacity: 0.5;
 }
 
 #default-content-container {
