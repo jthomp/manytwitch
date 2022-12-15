@@ -13,10 +13,10 @@
 <br />
 <br />
 
-<div class="collapse"
-     id="recents-table-container">
+<div id="recents-table-container"
+     class="collapse">
   <table id="recents-table"
-        class="table
+         class="table
                 table-striped
                 streams-list-table">
     <thead>
@@ -24,9 +24,10 @@
         <th colspan=2>
           Recent streams
           <a href="javascript:;"
-            class="btn btn-default btn-danger float-end"
-            title="Clear the list of recent streams."
-            onclick="if(confirm('Are you sure?'))MT.manager.removeFromRecentsTable('', true);"           id="clear-all-recent-streams-btn">
+             id="clear-all-recent-streams-btn"
+             class="btn btn-default btn-danger float-end"
+             title="Clear the list of recent streams."
+             onclick="if(confirm('Are you sure?'))MT.manager.removeFromRecentsTable('', true);">
             <i class="fa fa-trash"></i>&nbsp;&nbsp;Clear all
           </a>
         </th>
