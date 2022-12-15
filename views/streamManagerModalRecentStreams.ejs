@@ -1,22 +1,38 @@
 <br />
 
-<table id="recents-table"
-       class="table
-              table-striped
-              streams-list-table">
-  <thead>
-    <tr>
-      <th colspan=2>
-        Recent streams
-        <a href="javascript:;"
-           class="btn btn-default btn-danger float-end"
-           title="Clear the list of recent streams."
-           onclick="if(confirm('Are you sure?'))MT.manager.removeFromRecentsTable('', true);"           id="clear-all-recent-streams-btn">
-          <i class="fa fa-trash"></i>&nbsp;&nbsp;Clear all
-        </a>
-      </th>
-    </tr>
-  </thead>
-  <tbody id="recent-streams-list-tbody">
-  </tbody>
-</table>
+<button class="btn btn-default btn-secondary float-end" 
+        type="button"
+        title="Toggle the recent streams list."
+        data-bs-toggle="collapse" 
+        data-bs-target="#recents-table-container" 
+        aria-expanded="false" 
+        aria-controls="recents-table-container">
+  <i class="fa-solid fa-caret-down"></i>&nbsp;&nbsp;Toggle Recents
+</button>
+
+<br />
+<br />
+
+<div class="collapse"
+     id="recents-table-container">
+  <table id="recents-table"
+        class="table
+                table-striped
+                streams-list-table">
+    <thead>
+      <tr>
+        <th colspan=2>
+          Recent streams
+          <a href="javascript:;"
+            class="btn btn-default btn-danger float-end"
+            title="Clear the list of recent streams."
+            onclick="if(confirm('Are you sure?'))MT.manager.removeFromRecentsTable('', true);"           id="clear-all-recent-streams-btn">
+            <i class="fa fa-trash"></i>&nbsp;&nbsp;Clear all
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="recent-streams-list-tbody">
+    </tbody>
+  </table>
+</div>
