@@ -85,13 +85,17 @@
   });
 
   const recentStreamsListContainer = document.getElementById("recents-table-container");
-  let toggleButton = document.getElementById("toggle-button");
+  const toggleButton = document.getElementById("toggle-button");
 
-  recentStreamsListContainer.addEventListener("shown.bs.collapse", (event) => {
-    // ...
+
+  toggleButton.addEventListener("click", (event) => {
+    let value = toggleButton.innerText;
+
+    if (value == "Show Recents") {
+      toggleButton.innerText = "Hide Recents";
+    } else {
+      toggleButton.innerText = "Show Recents";
+    }
   });
 
-  recentStreamsListContainer.addEventListener("hidden.bs.collapse", (event) => {
-    // ...
-  });
 </script>
