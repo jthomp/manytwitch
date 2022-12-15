@@ -101,6 +101,9 @@ MT.manager = {
        saveBtn.removeAttribute("disabled");
        MT.manager.toggleAddButton();
        streamManagerDefaultContent.style.display = "none";
+
+       // add to the recents table
+       MT.manager.addToRecentsTable(newStream);
      }
  
      if (document.getElementById("streams-modal").style.display == "block") {
