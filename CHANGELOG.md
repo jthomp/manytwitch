@@ -3,6 +3,7 @@
 ##### Version 1.9.3 - (12/19/2022)
 
 * Add toggle for showing/hiding recent streams in the manager modal.
+* Streams are added to recents when they are added to the current streams table.
 
 ##### Version 1.9.2 - (11/13/2022)
 
