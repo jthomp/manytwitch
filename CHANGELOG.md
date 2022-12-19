@@ -1,5 +1,9 @@
 # ManyTwitch Changelog
 
+##### Version 1.9.3 - (12/19/2022)
+
+* Add toggle for showing/hiding recent streams in the manager modal.
+
 ##### Version 1.9.2 - (11/13/2022)
 
 * Lots of little tweaks.
