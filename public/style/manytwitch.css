@@ -156,3 +156,8 @@ a {
   color: #fff;
   padding: 0.8em;
 }
+
+#streams-modal .modal-footer {
+  justify-content: center;
+  font-size: 0.8em;
+}
