@@ -103,8 +103,11 @@ MT.manager = {
        streamManagerDefaultContent.style.display = "none";
 
        // add to the recents table
-       MT.manager.addToRecentsTable(newStream);
-     }
+       let currentRecentStreams = MT.streams.getRecentStreams();
+       currentRecentStreams.push(streamParm);
+       MT.streams.setRecentStreams(currentRecentStreams);
+       MT.manager.addToRecentsTable(streamParm);
+      }
  
      if (document.getElementById("streams-modal").style.display == "block") {
        newStreamField.click();
