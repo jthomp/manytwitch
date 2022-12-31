@@ -297,7 +297,11 @@ MT.settings = {
 	  let settingKeyValuePair = {
 		[key]: value
 	  }
-	  window.localStorage.setItem("settings", JSON.stringify(settingKeyValuePair));
+	  try {
+		window.localStorage.setItem("settings", JSON.stringify(settingKeyValuePair));
+	  } catch {
+		// bail out.
+	  }
 	}
   }
 
@@ -314,8 +318,12 @@ MT.streams = {
 	let recents = window.localStorage.getItem("recents");
 	
 	if (recents == null) {
-	  window.localStorage.setItem("recents", "");
-	  recents = window.localStorage.getItem("recents");
+		try {
+			window.localStorage.setItem("recents", "");
+			recents = window.localStorage.getItem("recents");
+		} catch {
+			// error setting recents; bail out.
+		}
 	}
 
 	return (recents == "") ? [] : recents.split(",").sort();
@@ -381,7 +389,11 @@ MT.streams = {
   setRecentStreams(recentStreamsParm="") {
 	log("MT.streams.setRecentStreams() - Begin");
 	let newRecentStreamsParm = Array.from(new Set(recentStreamsParm)).sort().join(",");
-	window.localStorage.setItem("recents", newRecentStreamsParm);
+	try {
+		window.localStorage.setItem("recents", newRecentStreamsParm);
+	} catch {
+		// bail out.
+	}
 	log("MT.streams.setRecentStreams() - End");
   },
 
@@ -393,7 +405,11 @@ MT.streams = {
 	log("MT.streams.setStreams() - Begin");
 
 	log(`\t streamsParm: ${streamsParm}`);
-	window.localStorage.setItem("streams", streamsParm);
+	try {
+		window.localStorage.setItem("streams", streamsParm);
+	} catch {
+		// bail out.
+	}
 
 	log("MT.streams.setStreams() - End");
   },
@@ -447,7 +463,12 @@ MT.streams = {
 	  // sanity check.
 	  if (numStreams <= 0) {
 		numStreams = 0;
-		window.localStorage.setItem("streams", "");
+
+		try {
+			window.localStorage.setItem("streams", "");
+		} catch {
+			// bail out.
+		}
 	  }
 	}
 
