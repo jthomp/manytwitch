@@ -29,9 +29,7 @@
 		MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
 		MT.streams.update();
 
-		const deviceIsMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
-
-		if (deviceIsMobile) {
+		if (document.getElementsByTagName("body")[0].dataset.mobile == "true") {
 			document.getElementById("stream-manager-modal-footer").style.display = "none";
 			document.getElementById("mobile-notice").style.display = "block";
 		}
