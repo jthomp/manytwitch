@@ -1,26 +1,26 @@
 {
-  "name": "ManyTwitch",
-  "description": "Watch multiple Twitch streams on your device.",
-  "short_name": "ManyTwitch",
-  "lang": "en-US",
-  "start_url": "/",
-  "scope": "/",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "orientation": "portrait-primary",
-  "prefer_related_applications": false,
-  "icons": [
-    {
-      "src": "/../images/apple-touch-icon.png",
-      "type": "image/png", 
-      "sizes": "192x192"
-    },
-    {
-      "src": "/../images/maskable_icon.png",
-      "sizes": "196x196",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+	"name": "ManyTwitch",
+	"description": "Watch multiple Twitch streams on your device.",
+	"short_name": "ManyTwitch",
+	"lang": "en-US",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#000000",
+	"orientation": "portrait-primary",
+	"prefer_related_applications": false,
+	"icons": [
+		{
+			"src": "/../images/apple-touch-icon.png",
+			"type": "image/png", 
+			"sizes": "192x192"
+		},
+		{
+			"src": "/../images/maskable_icon.png",
+			"sizes": "196x196",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	]
 }
