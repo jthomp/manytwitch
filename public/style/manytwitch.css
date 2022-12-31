@@ -149,6 +149,7 @@ a {
 }
 
 #mobile-notice {
+  display: none;
   margin-top: 1vh;
   font-size: 0.8em;
   background-color: #333;

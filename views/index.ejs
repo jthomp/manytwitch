@@ -31,10 +31,9 @@
 
 		const deviceIsMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
 
-		if (!deviceIsMobile) {
-		  document.getElementById("mobile-notice").style.display = "none";
-		} else {
-		  document.getElementById("stream-manager-modal-footer").style.display = "none"
+		if (deviceIsMobile) {
+			document.getElementById("stream-manager-modal-footer").style.display = "none";
+			document.getElementById("mobile-notice").style.display = "block";
 		}
 	  });
 
