@@ -1,5 +1,11 @@
 # ManyTwitch Changelog
 
+##### Version 1.9.5 - (12/31/2022)
+
+* Fix favicon.
+* Lots of tweaks and bug fixes.
+* Dependency updates.
+
 ##### Version 1.9.4 - (12/29/2022)
 
 * Modal size changes depending on device.
