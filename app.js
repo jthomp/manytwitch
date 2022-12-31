@@ -42,11 +42,11 @@ app.get("/*", function(req, res) {
   let streamsFromParms = [];
   streamsFromParms = req.params["0"].split("/").filter(String);
   res.render("index", {
-    streamsFromParms: streamsFromParms,
-    version: version,
-    env: env,
-    isMobile: req.useragent.isMobile,
-    buildId: buildId
+	streamsFromParms: streamsFromParms,
+	version: version,
+	env: env,
+	isMobile: req.useragent.isMobile,
+	buildId: buildId
   });
 });
 
