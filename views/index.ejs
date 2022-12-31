@@ -22,15 +22,24 @@
     <script src="/js/pwa.js"></script>
 
     <script type="text/javascript">
-
       const manageBtn = document.getElementById("manage-btn");
+      const streamsModal = document.getElementById("streams-modal");
 
       window.addEventListener("DOMContentLoaded", (event) => {
         MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
         MT.streams.update();
-      });
 
-      const streamsModal = document.getElementById("streams-modal");
+        const deviceIsMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
+
+        if (!deviceIsMobile) {
+          document.getElementById("mobile-notice").style.display = "none";
+        }
+
+        if (deviceIsMobile) {
+          document.getElementById("stream-manager-modal-footer").style.display = "none"
+        }
+
+      });
 
       streamsModal.addEventListener("show.bs.modal", (event) => {
         MT.manager.show();
