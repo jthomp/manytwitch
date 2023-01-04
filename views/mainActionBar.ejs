@@ -1,10 +1,18 @@
 <div id="manage-btn">
-  <button id="manage-btn-actual"
-		  type="button"
-		  class="btn btn-sm btn-purple"
-		  data-bs-toggle="modal"
-		  data-bs-target="#streams-modal"
-		  title="Manage the streams you are currently watching.">
-	<i class="fa fa-gear"></i>
+	<button id="refresh" 
+			type="button" 
+			class="btn btn-sm btn-purple" 
+			title="Refresh all streams."
+			onclick="window.location.reload();">
+		<i class="fas fa-sync"></i>
+	</button>
+	
+	<button id="manage-btn-actual"
+			type="button"
+			class="btn btn-sm btn-purple"
+			data-bs-toggle="modal"
+			data-bs-target="#streams-modal"
+			title="Manage the streams you are currently watching.">
+		<i class="fa fa-gear"></i>
   </button>
 </div>
