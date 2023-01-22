@@ -126,7 +126,7 @@
 
 		console.log(terms.length > 0);
 		if (terms.length > 0) {
-			for (i = 0; i < terms.length; i++) {
+			for (i=0; i<terms.length; i++) {
 				list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML='';">${terms[i]}</li>`;
 			}
 			autoCompleteResultsList.innerHTML = `<ul>${list}</ul>`;

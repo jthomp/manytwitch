@@ -132,9 +132,9 @@ a {
 #streams-modal #streams-manager-default-content {
   	background-color: var(--purple-bg-color-lighter);
   	text-align: center;
-  	padding: 0.8rem;
-  	font-size: 1.25em;
-	border-radius: 0.5rem;
+  	padding: 0.5rem;
+  	font-size: 1em;
+	border-radius: 0.25rem;
 }
 
 #footer {
@@ -188,7 +188,7 @@ a {
 	color: rgb(33, 37, 41);
 	text-align: left;
 	list-style: none;
-	background-color: rgb(25, 255, 255);
+	background-color: rgb(255, 255, 255);
 	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, .15);
 	border-radius: .25rem;
@@ -205,6 +205,11 @@ a {
 	white-space: nowrap;
 	background-color: transparent;
 	border: 0;
+}
+
+#streams-modal #autocomplete-results ul li:hover {
+	cursor: pointer;
+	background-color:rgb(170, 170, 170);
 }
 
 /* autocomplete */
