@@ -123,10 +123,17 @@
 		autoCompleteResultsList.innerHTML = "";
 		let list = "";
 		let terms = autocomplete(val, MT.streams.getRecentStreams());
-		for (i=0; i<terms.length; i++) {
-			list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML='';">${terms[i]}</li>`;
+
+		console.log(terms.length > 0);
+		if (terms.length > 0) {
+			for (i = 0; i < terms.length; i++) {
+				list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML='';">${terms[i]}</li>`;
+			}
+			autoCompleteResultsList.innerHTML = `<ul>${list}</ul>`;
+		} else {
+			autoCompleteResultsList.innerHTML = "";
+			autoCompleteResultsList.style.display = "none";
 		}
-		autoCompleteResultsList.innerHTML = `<ul>${list}</ul>`;
 	}
 
 </script>
