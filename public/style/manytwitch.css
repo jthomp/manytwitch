@@ -6,163 +6,210 @@
 */
 
 :root {
-  --purple-bg-color: rgb(145, 70, 255);
-  --purple-bg-color-lighter: rgb(159, 138, 199);
-  --purple-bg-color-hover: rgb(159, 138, 199);
-  --purple-form-control-focus: rgb(182, 101, 226);
+	--purple-bg-color: rgb(145, 70, 255);
+	--purple-bg-color-lighter: rgb(159, 138, 199);
+  	--purple-bg-color-hover: rgb(159, 138, 199);
+  	--purple-form-control-focus: rgb(182, 101, 226);
 }
 
 .table> :not(:first-child) {
-  border-top: 1px solid currentColor !important;
+	border-top: 1px solid currentColor !important;
 }
 
 * {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 html, body {
-  background-color: rgb(0, 0, 0);
+	background-color: rgb(0, 0, 0);
 }
 
 a {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 .strong {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .btn-purple {
-  background-color: var(--purple-bg-color) !important;
-  color: rgb(255, 255, 255) !important;
+	background-color: var(--purple-bg-color) !important;
+  	color: rgb(255, 255, 255) !important;
 }
 
 .btn-purple:hover {
-  background-color: var(--purple-bg-color-hover) !important;
-  color: rgb(255, 255, 255) !important;
-  text-decoration: none !important;
+  	background-color: var(--purple-bg-color-hover) !important;
+  	color: rgb(255, 255, 255) !important;
+  	text-decoration: none !important;
 }
 
 #container {
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
+  	margin: 0 auto;
+  	width: 100%;
+  	height: 100%;
 }
 
 #container #manage-btn {
-  display: none;
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
+  	display: none;
+  	position: absolute;
+  	right: 0.5rem;
+  	top: 0.5rem;
 }
 
 #container #manage-btn {
-  opacity: 0.5;
+  	opacity: 0.5;
 }
 
 #default-content-container {
-  height: 100%;
-  width: 100%;
+  	height: 100%;
+  	width: 100%;
 }
 
 #default {
-  margin: 0 auto;
-  display: block;
-  text-align: center;
-  min-width: 40%;
+  	margin: 0 auto;
+  	display: block;
+  	text-align: center;
+  	min-width: 40%;
 }
 
 #default a {
-  color: var(--purple-bg-color-lighter);
+  	color: var(--purple-bg-color-lighter);
 }
 
 #default button {
-  padding: 1rem;
-  font-size: 1.75em;
+  	padding: 1rem;
+  	font-size: 1.75em;
 }
 
 #streams-container {
-  background-color: rgb(0, 0, 0);
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  text-align: center;
+  	background-color: rgb(0, 0, 0);
+  	margin: 0;
+  	padding: 0;
+  	width: 100%;
+  	text-align: center;
 }
 
 #streams-container div {
-  display: inline-block;
+  	display: inline-block;
 }
 
 #streams-container iframe {
-  border: none;
+	border: none;
 }
 
 #streams-modal input#new_stream.form-control:focus {
-  border-color: var(--purple-form-control-focus) !important;
-  box-shadow: 0 0 0 0.2rem rgba(124, 31, 246, 0.25);
+  	border-color: var(--purple-form-control-focus) !important;
+  	box-shadow: 0 0 0 0.2rem rgba(124, 31, 246, 0.25);
 }
 
 #streams-modal input#new_stream,
 #streams-modal table.streams-list-table {
-  font-size: 1.25rem;
+  	font-size: 1.25rem;
 }
 
 #streams-modal table.streams-list-table tbody tr td {
-  transition: all 0.15s ease-out;
+  	transition: all 0.15s ease-out;
 }
 
 #streams-modal table.streams-list-table tbody tr td:hover {
-  background-color: rgb(200, 200, 200);
-  color:rgb(0, 0, 0);
+  	background-color: rgb(200, 200, 200);
+  	color:rgb(0, 0, 0);
 }
 
 #streams-modal table.streams-list-table tbody tr td div.stream-row-container {
-  float: left; 
-  padding-top: 0.25rem
+  	float: left; 
+  	padding-top: 0.25rem
 }
 
 #streams-modal table.streams-list-table tbody tr td {
-  padding: 1rem;
+  	padding: 1rem;
 }
 
 #streams-modal table.streams-list-table tbody tr:last-of-type {
-  border-bottom: transparent;
+  	border-bottom: transparent;
 }
 
 #streams-modal #streams-manager-default-content {
-  background-color: var(--purple-bg-color-lighter);
-  text-align: center;
-  padding: 1rem;
-  font-size: 1.25em;
+  	background-color: var(--purple-bg-color-lighter);
+  	text-align: center;
+  	padding: 0.8rem;
+  	font-size: 1.25em;
+	border-radius: 0.5rem;
 }
 
 #footer {
-  text-align: center;
+  	text-align: center;
 }
 
 #disclaimer {
-  width: 100%; 
-  text-align: center; 
-  margin: 0 auto; 
-  font-size: 0.8em;
-  color: rgb(170, 170, 170);
+  	width: 100%; 
+  	text-align: center; 
+  	margin: 0 auto; 
+  	font-size: 0.8em;
+  	color: rgb(170, 170, 170);
 }
 
 #version-information {
-  display: none;
+  	display: none;
 }
 
 #mobile-notice {
-  display: none;
-  margin-top: 1vh;
-  font-size: 0.8em;
-  background-color: #333;
-  border-radius: 1em;
-  color: #fff;
-  padding: 0.8em;
+  	display: none;
+  	margin-top: 1vh;
+  	font-size: 0.8em;
+  	background-color: #333;
+  	border-radius: 1em;
+  	color: #fff;
+  	padding: 0.8em;
 }
 
 #streams-modal .modal-footer {
-  justify-content: center;
-  font-size: 0.8em;
+  	justify-content: center;
+  	font-size: 0.8em;
 }
+
+/* autocomplete */
+
+#streams-modal #autocomplete-results {
+	/* background-color: rgb(255, 255, 255); */
+	color :rgb(0, 0, 0);
+	/* padding: 0.5em; */
+	display: none;
+	/* border-radius: 0.5rem; */
+	width: 100%;
+	/* margin: 0 auto; */
+}
+
+#streams-modal #autocomplete-results ul {
+	position: absolute;
+	/* top: 100%; */
+	/* left: 0; */
+	z-index: 1000;
+	float: left;
+	min-width: 10rem;
+	padding: .5rem 0;
+	margin: .125rem 0 0;
+	font-size: 1rem;
+	color: #212529;
+	text-align: left;
+	list-style: none;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, .15);
+	border-radius: .25rem;
+}
+
+#streams-modal #autocomplete-results ul li {
+	display: block;
+	width: 100%;
+	padding: .25rem 1.5rem;
+	clear: both;
+	font-weight: 400;
+	color: #212529;
+	text-align: inherit;
+	white-space: nowrap;
+	background-color: transparent;
+	border: 0;
+}
+
+/* autocomplete */

@@ -59,6 +59,7 @@
 <script type="text/javascript">
 
 	let newStreamInput = document.getElementById("new_stream");
+	let autoCompleteResultsList = document.getElementById("autocomplete-results");
 	let streamsList = document.getElementById("streams-list-tbody");
   	let recentStreamsList = document.getElementById("recent-streams-list-tbody");
   	let sortable = Sortable.create(streamsList, {
@@ -118,15 +119,14 @@
 	}
 
 	function showAutocompleteResults(val="") {
-		console.log(`val: ${val}`);
-		let res = document.getElementById("autocomplete-results");
-		res.innerHTML = "";
+		autoCompleteResultsList.style.display = "block";
+		autoCompleteResultsList.innerHTML = "";
 		let list = "";
 		let terms = autocomplete(val, MT.streams.getRecentStreams());
 		for (i=0; i<terms.length; i++) {
-			list += `<li>${terms[i]}</li>`;
+			list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML='';">${terms[i]}</li>`;
 		}
-		res.innerHTML = `<ul>${list}</ul>`;
+		autoCompleteResultsList.innerHTML = `<ul>${list}</ul>`;
 	}
 
 </script>
