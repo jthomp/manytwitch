@@ -1,99 +1,139 @@
 <div id="streams-modal" 
-	 class="modal fade" 
-	 tabindex="-1" 
-	 role="dialog">
-  <div class="modal-dialog modal-dialog-scrollable <%- isMobile ? 'modal-fullscreen' : 'modal-xl modal-dialog-centered' %>" 
-	   role="document">
-	<div class="modal-content">
-	  <div class="modal-header">
-		<h4 class="modal-title">Manage Streams</h4>
-		<div class="pull-right">
-			<%- include("streamManagerModalActionBar") %>
+		class="modal fade" 
+	 	tabindex="-1" 
+	 	role="dialog">
+  	<div class="modal-dialog modal-dialog-scrollable <%- isMobile ? 'modal-fullscreen' : 'modal-xl modal-dialog-centered' %>" 
+		role="document">
+		<div class="modal-content">
+	  		<div class="modal-header">
+				<h4 class="modal-title">Manage Streams</h4>
+				<div class="pull-right">
+					<%- include("streamManagerModalActionBar") %>
+				</div>
+	  		</div>
+	  		<div class="modal-body">
+				<form id="new_stream_form" 
+			  			name="new_stream_form">
+		  			<div class="input-group mb-3">
+						<input type="text" 
+				   				name="new_stream" 
+				   				id="new_stream" 
+				   				value="" 
+				   				placeholder="Twitch username" 
+				   				class="form-control"
+				   				onkeyup="MT.manager.toggleAddButton();"
+				   				autocomplete="off"
+				   				autocorrect="off"
+				   				spellcheck="false"
+				   				autocapitalize="none"
+				   				autofocus />
+						<button type="button" 
+								class="btn btn-success" 
+								id="add-stream-btn" 
+								onclick="MT.manager.addToTable(document.getElementById('new_stream').value);"
+								title="Add a new stream."
+								disabled=disabled>
+			  				<i class="fa fa-plus"></i>
+						</button>
+		  			</div>
+				</form>
+				<div id="autocomplete-results">
+				</div>     
+				<%- include("streamManagerModalActiveStreams") %>
+				<%- include("streamManagerModalRecentStreams") %>
+	  		</div>
+	  		<div id="stream-manager-modal-footer"
+		   		class="modal-footer text-muted">
+				<i class="fa fa-lightbulb"></i>&nbsp;&nbsp;Tip: Ctrl+S or Cmd+S to save and close this dialog.
+	  		</div>
 		</div>
-	  </div>
-	  <div class="modal-body">
-		<form id="new_stream_form" 
-			  name="new_stream_form">
-		  <div class="input-group mb-3">
-			<input type="text" 
-				   name="new_stream" 
-				   id="new_stream" 
-				   value="" 
-				   placeholder="Twitch username" 
-				   class="form-control"
-				   onkeyup="MT.manager.toggleAddButton();"
-				   autocomplete="on"
-				   autocorrect="off"
-				   spellcheck="false"
-				   autocapitalize="none"
-				   autofocus />
-			<button type="button" 
-					class="btn btn-success" 
-					id="add-stream-btn" 
-					onclick="MT.manager.addToTable(document.getElementById('new_stream').value);"
-					title="Add a new stream."
-					disabled=disabled>
-			  <i class="fa fa-plus"></i>
-			</button>
-		  </div>
-		</form>        
-		<%- include("streamManagerModalActiveStreams") %>
-		<%- include("streamManagerModalRecentStreams") %>
-	  </div>
-	  <div id="stream-manager-modal-footer"
-		   class="modal-footer text-muted">
-		<i class="fa fa-lightbulb"></i>&nbsp;&nbsp;Tip: Ctrl+S or Cmd+S to save and close this dialog.
-	  </div>
-	</div>
-  </div>
+  	</div>
 </div>
 
 <input type="hidden"
-	   id="order-changed"
-	   value="false" />
+		id="order-changed"
+		value="false" />
 
 <%- include("donateModal") %>
 
 <script type="text/javascript">
 
-  let streamsList = document.getElementById("streams-list-tbody");
-  let recentStreamsList = document.getElementById("recent-streams-list-tbody");
-  let sortable = Sortable.create(streamsList, {
+	let newStreamInput = document.getElementById("new_stream");
+	let autoCompleteResultsList = document.getElementById("autocomplete-results");
+	let streamsList = document.getElementById("streams-list-tbody");
+  	let recentStreamsList = document.getElementById("recent-streams-list-tbody");
+  	let sortable = Sortable.create(streamsList, {
 					animation: 100,
 					draggable: ".streams-modal-table-tr",
 					onEnd: (event) => {
 	  					document.getElementById("order-changed").checked = true;
 					}
-  });
+  	});
 
-  document.getElementById("new_stream").addEventListener("keypress", (event) => {
-	if (event.keyCode == 13) {
-	  document.getElementById("add-stream-btn").click();
-	  event.preventDefault();
-	  return false;
+  	newStreamInput.addEventListener("keypress", (event) => {
+		let value = document.getElementById
+		if (event.keyCode == 13) {
+	  		document.getElementById("add-stream-btn").click();
+	  		event.preventDefault();
+	  		return false;
+		}
+
+		// do autocomplete stuff here.
+		showAutocompleteResults(newStreamInput.value);
+  	});
+
+  	document.addEventListener("keydown", (event) => {
+		if (event.ctrlKey || event.metaKey) {
+	  		switch (String.fromCharCode(event.which).toLowerCase()) {
+	  			case "s":
+					event.preventDefault();
+					document.getElementById("save-btn").click();
+					break;
+	  		}
+		}
+  	});
+
+  	const recentStreamsListContainer = document.getElementById("recents-table-container");
+  	const toggleButton = document.getElementById("toggle-button");
+
+  	recentStreamsListContainer.addEventListener("show.bs.collapse", (event) => {
+		toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-up'></i>&nbsp;&nbsp;Hide Recents";
+  	});
+
+  	recentStreamsListContainer.addEventListener("hide.bs.collapse", (event) => {
+		toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-down'></i>&nbsp;&nbsp;Show Recents";
+  	});
+
+	function autocomplete(input="", recentStreamsArray=[]) {
+		if (input == "") {
+			return [];
+		}
+
+		let reg = new RegExp(input);
+
+		return recentStreamsArray.filter(function(term) {
+			if (term.match(reg)) {
+				return term;
+			}
+		});
 	}
-  });
 
-  document.addEventListener("keydown", (event) => {
-	if (event.ctrlKey || event.metaKey) {
-	  switch (String.fromCharCode(event.which).toLowerCase()) {
-	  case "s":
-		event.preventDefault();
-		document.getElementById("save-btn").click();
-		break;
-	  }
+	function showAutocompleteResults(val="") {
+		autoCompleteResultsList.style.display = "block";
+		autoCompleteResultsList.innerHTML = "";
+		let list = "";
+		let terms = autocomplete(val, MT.streams.getRecentStreams());
+
+		console.log(terms.length > 0);
+		if (terms.length > 0) {
+			for (i=0; i<terms.length; i++) {
+				list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML='';">${terms[i]}</li>`;
+			}
+			autoCompleteResultsList.innerHTML = `<ul>${list}</ul>`;
+		} else {
+			autoCompleteResultsList.innerHTML = "";
+			autoCompleteResultsList.style.display = "none";
+		}
 	}
-  });
-
-  const recentStreamsListContainer = document.getElementById("recents-table-container");
-  const toggleButton = document.getElementById("toggle-button");
-
-  recentStreamsListContainer.addEventListener("show.bs.collapse", (event) => {
-	toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-up'></i>&nbsp;&nbsp;Hide Recents";
-  });
-
-  recentStreamsListContainer.addEventListener("hide.bs.collapse", (event) => {
-	toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-down'></i>&nbsp;&nbsp;Show Recents";
-  });
 
 </script>

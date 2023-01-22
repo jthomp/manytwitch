@@ -126,9 +126,12 @@ MT.manager = {
 
 	const newStreamField = document.getElementById("new_stream");
 	const addStreamBtn = document.getElementById("add-stream-btn");
+	const autocompleteResultsList = document.getElementById("autocomplete-results");
 
 	newStreamField.value = "";
 	addStreamBtn.setAttribute("disabled", "disabled");
+	autocompleteResultsList.innerHTML = "";
+	autocompleteResultsList.style.display = "none";
 
 	log("MT.manager.hidden() - End");
   },
