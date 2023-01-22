@@ -1,5 +1,12 @@
 # ManyTwitch Changelog
 
+##### Version 1.10.0 - (01/22/2023)
+
+* Add autocomplete.
+* Tweaks to stream manager modal default content.
+* Tweaks and bug fixes.
+* Dependency updates.
+
 ##### Version 1.9.5 - (12/31/2022)
 
 * Fix favicon.
