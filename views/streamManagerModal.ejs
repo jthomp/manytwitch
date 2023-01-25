@@ -127,7 +127,7 @@
 		console.log(terms.length > 0);
 		if (terms.length > 0) {
 			for (i=0; i<terms.length; i++) {
-				list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML='';">${terms[i]}</li>`;
+				list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML='';newStreamInput.focus();">${terms[i]}</li>`;
 			}
 			autoCompleteResultsList.innerHTML = `<ul>${list}</ul>`;
 		} else {
