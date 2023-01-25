@@ -58,6 +58,7 @@
 
 <script type="text/javascript">
 
+	let addStreamBtn = document.getElementById("add-stream-btn");
 	let newStreamInput = document.getElementById("new_stream");
 	let autoCompleteResultsList = document.getElementById("autocomplete-results");
 	let streamsList = document.getElementById("streams-list-tbody");
@@ -126,7 +127,7 @@
 
 		if (terms.length > 0) {
 			for (i=0; i<terms.length; i++) {
-				list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML=''; newStreamInput.focus();">${terms[i]}</li>`;
+				list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML=''; newStreamInput.focus(); addStreamBtn.click();">${terms[i]}</li>`;
 			}
 			autoCompleteResultsList.innerHTML = `<ul>${list}</ul>`;
 		}
