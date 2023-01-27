@@ -142,10 +142,9 @@ MT.manager = {
   openFollowingWindow() {
 	let followingWindow = window.open("https://www.twitch.tv/directory/following/live", "_blank");
 	const isMobile = document.getElementsByTagName("body")[0].dataset.mobile;
-	log(isMobile);
 
 	if (isMobile) {
-		followingWindow.close();
+		// followingWindow.close();
 	}
   },  
 
