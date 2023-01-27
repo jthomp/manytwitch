@@ -1,80 +1,80 @@
 <script id="streams-modal-new-stream-template" 
 		type="text/x-handlebars-template">
-  <tr id="tr-{{stream}}" 
-	  class="streams-modal-table-tr"
-	  data-stream-name="{{stream}}">
-	<td colspan=2>
-	  <div class="stream-row-container">
-		<input id="streams_{{stream}}"
-			   type="hidden"
-			   value="{{stream}}"
-			   data-stream-name="{{stream}}">
-		<label for="streams_{{stream}}">{{stream}}</label>
-	  </div>
-	  <div class="float-end">
-		<button class="btn btn-secondary drag-btn"
-				title="Click and drag to re-order streams."
-				onclick="return false;"
-				style="cursor: grab;">
-		  <i class="fa-solid fa-up-down-left-right"></i>
-		</button>
-		<a href="javascript:;"
-		   onclick="window.open('https://www.twitch.tv/{{stream}}/chat?popout=true', '', 'width=300,height=screen.height');"
-		   class="btn btn-primary"
-		   title="Open a chat popout for this stream.">
-		  <i class="far fa-comment-dots"></i>
-		</a>
-		<a href="javascript:;"
-		   class="btn btn-danger delete-btn"
-		   title="Remove this stream."
-		   onclick="MT.manager.removeFromTable('{{stream}}');"
-		   data-stream-name="{{stream}}">
-		  <i class="fa fa-trash"></i>
-		</a>
-	  </div>
-	</td>
-  </tr>  
+	<tr id="tr-{{stream}}" 
+		class="streams-modal-table-tr"
+	  	data-stream-name="{{stream}}">
+		<td colspan=2>
+	  		<div class="stream-row-container">
+				<input id="streams_{{stream}}"
+			   			type="hidden"
+			   			value="{{stream}}"
+			   			data-stream-name="{{stream}}">
+				<label for="streams_{{stream}}">{{stream}}</label>
+	  		</div>
+	  		<div class="float-end">
+				<button class="btn btn-secondary drag-btn"
+					title="Click and drag to re-order streams."
+					onclick="return false;"
+					style="cursor: grab;">
+		  			<i class="fa-solid fa-up-down-left-right"></i>
+				</button>
+				<a href="javascript:;"
+		   			onclick="window.open('https://www.twitch.tv/{{stream}}/chat?popout=true', '', 'width=300,height=screen.height');"
+		   			class="btn btn-primary"
+		   			title="Open a chat popout for this stream.">
+		  			<i class="far fa-comment-dots"></i>
+				</a>
+				<a href="javascript:;"
+		   			class="btn btn-danger delete-btn"
+		   			title="Remove this stream."
+		   			onclick="MT.manager.removeFromTable('{{stream}}');"
+		   			data-stream-name="{{stream}}">
+					<i class="fa fa-trash"></i>
+				</a>
+	  		</div>
+		</td>
+  	</tr>  
 </script>
 
 <script id="streams-modal-new-recent-stream-template"
 		type="text/x-handlebars-template">
-  <tr id="tr-recent-{{stream}}"
-	  class="recent-streams-modal-table-tr"
-	  data-recent-stream-name="{{stream}}">
-	<td colspan=2>
-	  <div class="stream-row-container">
-		<label for="recent_streams_{{stream}}">{{stream}}</label>
-	  </div>
-	  <div class="float-end">
-		<a href="javascript:;"
-		   onclick="MT.manager.addToTable('{{stream}}');"
-		   class="btn btn-default btn-success"
-		   title="Add this stream to current streams."
-		   data-stream-name="{{stream}}">
-		  <i class="fa fa-plus">&nbsp;&nbsp;</i>
-		</a>
-		<a href="javascript:;"
-		   onclick="MT.manager.removeFromRecentsTable('{{stream}}');"
-		   class="btn btn-default btn-danger delete-btn"
-		   title="Remove this stream."
-		   data-stream-name="{{stream}}">
-		  <i class="fa fa-trash"></i>
-		</a>
-	  </div>
-	</td>
-  </tr>
+	<tr id="tr-recent-{{stream}}"
+		class="recent-streams-modal-table-tr"
+	  	data-recent-stream-name="{{stream}}">
+		<td colspan=2>
+	  		<div class="stream-row-container">
+				<label for="recent_streams_{{stream}}">{{stream}}</label>
+	  		</div>
+	  		<div class="float-end">
+				<a href="javascript:;"
+		   			onclick="MT.manager.addToTable('{{stream}}');"
+		   			class="btn btn-default btn-success"
+		   			title="Add this stream to current streams."
+		   			data-stream-name="{{stream}}">
+		  			<i class="fa fa-plus">&nbsp;&nbsp;</i>
+				</a>
+				<a href="javascript:;"
+					onclick="MT.manager.removeFromRecentsTable('{{stream}}');"
+		   			class="btn btn-default btn-danger delete-btn"
+		   			title="Remove this stream."
+		   			data-stream-name="{{stream}}">
+		  			<i class="fa fa-trash"></i>
+				</a>
+	  		</div>
+		</td>
+	</tr>
 </script>
 
 <script id="new-stream-template" 
 		type="text/x-handlebars-template">
-  <span id="stream-{{stream}}-video"
-		class="stream"
-		data-stream-name="{{stream}}">
-	<iframe src="https://player.twitch.tv/?channel={{stream}}&parent=www.manytwitch.app"
+  	<span id="stream-{{stream}}-video"
+			class="stream"
+			data-stream-name="{{stream}}">
+		<iframe src="https://player.twitch.tv/?channel={{stream}}&parent=www.manytwitch.app"
 			allowfullscreen="true"
 			scrolling="no"
 			class="stream-iframe"
 			title="{{stream}}">
-	</iframe>
-  </span>
+		</iframe>
+	</span>
 </script>

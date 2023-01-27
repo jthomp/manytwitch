@@ -1,87 +1,87 @@
 <!doctype html>
 <html lang="en">
-  <%- include("head") %>
-  <body data-env="<%- env %>" data-mobile="<%- isMobile %>">
-	<div id="container">
-	  <noscript>
-		<div class="alert alert-danger strong text-center">ManyTwitch works best with JavaScript enabled</div>
-	  </noscript>
-	  <%- include("mainActionBar") %>
-	  <%- include("defaultContent") %>
-	  <div id="streams-container">
-		&nbsp;
-	  </div>
-	</div>
+	<%- include("head") %>
+  	<body data-env="<%- env %>" data-mobile="<%- isMobile %>">
+		<div id="container">
+	  		<noscript>
+				<div class="alert alert-danger strong text-center">ManyTwitch works best with JavaScript enabled</div>
+	  		</noscript>
+	  		<%- include("mainActionBar") %>
+	  		<%- include("defaultContent") %>
+	  		<div id="streams-container">
+				&nbsp;
+	  		</div>
+		</div>
 
-	<div id="stream-manager">
-	  <%- include("streamManagerModal") %>
-	</div>    
+		<div id="stream-manager">
+	  		<%- include("streamManagerModal") %>
+		</div>    
 
-	<%- include("newStreamTemplate") %>
+		<%- include("newStreamTemplate") %>
   
-	<script src="/js/pwa.js"></script>
+		<script src="/js/pwa.js"></script>
 
-	<script type="text/javascript">
-	  const manageBtn = document.getElementById("manage-btn");
-	  const streamsModal = document.getElementById("streams-modal");
+		<script type="text/javascript">
+	  		const manageBtn = document.getElementById("manage-btn");
+	  		const streamsModal = document.getElementById("streams-modal");
 
-	  window.addEventListener("DOMContentLoaded", (event) => {
-		MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
-		MT.streams.update();
+	  		window.addEventListener("DOMContentLoaded", (event) => {
+				MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
+				MT.streams.update();
 
-		if (document.getElementsByTagName("body")[0].dataset.mobile == "true") {
-			document.getElementById("stream-manager-modal-footer").style.display = "none";
-			document.getElementById("mobile-notice").style.display = "block";
-		}
-	  });
+				if (document.getElementsByTagName("body")[0].dataset.mobile == "true") {
+					document.getElementById("stream-manager-modal-footer").style.display = "none";
+					document.getElementById("mobile-notice").style.display = "block";
+				}
+	  		});
 
-	  streamsModal.addEventListener("show.bs.modal", (event) => {
-		MT.manager.show();
-	  });
+	  		streamsModal.addEventListener("show.bs.modal", (event) => {
+				MT.manager.show();
+	  		});
 
-	  streamsModal.addEventListener("shown.bs.modal", (event) => {
-		MT.manager.shown();
-	  });
+	  		streamsModal.addEventListener("shown.bs.modal", (event) => {
+				MT.manager.shown();
+	  		});
 
-	  streamsModal.addEventListener("hidden.bs.modal", (event) => {
-		MT.manager.hidden();
-	  });
+	  		streamsModal.addEventListener("hidden.bs.modal", (event) => {
+				MT.manager.hidden();
+	  		});
 
-	  document.getElementById("save-btn").addEventListener("click", (event) => {
-		let streamsList = document.getElementsByClassName("streams-modal-table-tr");
-		let streams = MT.streams.getStreams();
-		let newStreams = [];
-		const orderChangedElement = document.getElementById("order-changed");
+	  		document.getElementById("save-btn").addEventListener("click", (event) => {
+				let streamsList = document.getElementsByClassName("streams-modal-table-tr");
+				let streams = MT.streams.getStreams();
+				let newStreams = [];
+				const orderChangedElement = document.getElementById("order-changed");
 
-		if (orderChangedElement.checked) {
-		  MT.streams.setStreams("");
-		  streams = MT.streams.getStreams(); // reload our streams.
-		}
+				if (orderChangedElement.checked) {
+		  			MT.streams.setStreams("");
+		  			streams = MT.streams.getStreams(); // reload our streams.
+				}
 
-		Array.from(streamsList).forEach(element => {
-		  newStreams.push(element.dataset.streamName);
-		});
+				Array.from(streamsList).forEach(element => {
+		  			newStreams.push(element.dataset.streamName);
+				});
 
-		MT.streams.setStreams(newStreams.join(","));
-		MT.streams.update(orderChangedElement.checked);
-		orderChangedElement.checked = false;
-	  });
+				MT.streams.setStreams(newStreams.join(","));
+				MT.streams.update(orderChangedElement.checked);
+				orderChangedElement.checked = false;
+	  		});
 
-	  manageBtn.addEventListener("mouseenter", (event) => {
-		manageBtn.style.opacity = 1.0;
-	  });
+	  		manageBtn.addEventListener("mouseenter", (event) => {
+				manageBtn.style.opacity = 1.0;
+	  		});
 
-	  manageBtn.addEventListener("mouseleave", (event) => {
-		manageBtn.style.opacity = 0.5;
-	  });
-	</script>
+	  		manageBtn.addEventListener("mouseleave", (event) => {
+				manageBtn.style.opacity = 0.5;
+	  		});
+		</script>
 
-	<script defer src="/js/all.min.js"></script>
+		<script defer src="/js/all.min.js"></script>
 
-	<%- include("analytics") %>
+		<%- include("analytics") %>
 
-	<div id="version-information">
-	  Version <%- version %> (<%- buildId %>)
-	</div>
-  </body>
+		<div id="version-information">
+	  		Version <%- version %> (<%- buildId %>)
+		</div>
+  	</body>
 </html>
