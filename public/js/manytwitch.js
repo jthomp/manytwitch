@@ -144,7 +144,7 @@ MT.manager = {
 	const isMobile = document.getElementsByTagName("body")[0].dataset.mobile;
 
 	if (isMobile) {
-		// followingWindow.close();
+		followingWindow.close();
 	}
   },  
 
