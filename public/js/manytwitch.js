@@ -137,6 +137,19 @@ MT.manager = {
   },
 
   /**
+   * Opens a new window to the creators the user is following.
+   */
+  openFollowingWindow() {
+	let followingWindow = window.open("https://www.twitch.tv/directory/following/live", "_blank");
+	const isMobile = document.getElementsByTagName("body")[0].dataset.mobile;
+	log(isMobile);
+
+	if (isMobile) {
+		followingWindow.close();
+	}
+  },  
+
+  /**
    * Removes a stream from the recents stream manager table, as well as localStorage.
    * @param {String} recentStreamParm 
   */
