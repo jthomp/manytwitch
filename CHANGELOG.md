@@ -1,5 +1,11 @@
 # ManyTwitch Changelog
 
+##### Version 1.10.1 - (01/27/2023)
+
+* Tweaks to autocomplete items.
+* Syntax tweaks.
+* Automatically close window opened when tapping button to open Twitch to the live creators page on mobile.
+
 ##### Version 1.10.0 - (01/22/2023)
 
 * Add autocomplete.
