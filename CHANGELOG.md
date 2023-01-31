@@ -1,5 +1,10 @@
 # ManyTwitch Changelog
 
+##### Version 1.10.2 - (01/30/2023)
+
+* Tweaks and optimizations.
+* Instantiate sortable on modal load.
+
 ##### Version 1.10.1 - (01/27/2023)
 
 * Tweaks to autocomplete items.
