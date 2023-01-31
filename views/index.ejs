@@ -19,7 +19,7 @@
 
 		<%- include("newStreamTemplate") %>
   
-		<script src="/js/pwa.js"></script>
+		<script defer src="/js/pwa.js"></script>
 
 		<script type="text/javascript">
 	  		const manageBtn = document.getElementById("manage-btn");
@@ -76,12 +76,11 @@
 	  		});
 		</script>
 
-		<script defer src="/js/all.min.js"></script>
-
-		<%- include("analytics") %>
-
 		<div id="version-information">
 	  		Version <%- version %> (<%- buildId %>)
 		</div>
+
+		<%- include("analytics") %>
+		<script defer src="/js/all.min.js"></script>
   	</body>
 </html>

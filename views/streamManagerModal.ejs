@@ -61,15 +61,7 @@
 	let addStreamBtn = document.getElementById("add-stream-btn");
 	let newStreamInput = document.getElementById("new_stream");
 	let autoCompleteResultsList = document.getElementById("autocomplete-results");
-	let streamsList = document.getElementById("streams-list-tbody");
   	let recentStreamsList = document.getElementById("recent-streams-list-tbody");
-  	let sortable = Sortable.create(streamsList, {
-					animation: 100,
-					draggable: ".streams-modal-table-tr",
-					onEnd: (event) => {
-	  					document.getElementById("order-changed").checked = true;
-					}
-  	});
 
   	newStreamInput.addEventListener("keypress", (event) => {
 		if (event.keyCode == 13) {
