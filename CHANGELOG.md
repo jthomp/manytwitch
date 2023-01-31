@@ -1,4 +1,4 @@
-# ManyTwitch Changelog
+# Changelog
 
 ##### Version 1.10.2 - (01/30/2023)
 
