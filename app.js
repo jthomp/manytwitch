@@ -3,7 +3,6 @@ const path = require("path");
 const app = express();
 const compression = require("compression");
 const userAgent = require("express-useragent");
-
 const version = process.env.npm_package_version;
 const buildId = process.env.HEROKU_RELEASE_VERSION || "0";
 const env = process.env.NODE_ENV || "development";
@@ -13,41 +12,41 @@ app.use(compression({ level: 9 }));
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(
-  "/webfonts",
-  express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/webfonts"))
+	"/webfonts",
+  	express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/webfonts"))
 );
 
 app.use(
-  "/style",
-  express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/css"))
+	"/style",
+  	express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/css"))
 );
 
 app.use(
-  "/js",
-  express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+	"/js",
+  	express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
 );
 
 app.use(
-  "/js",
-  express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/js"))
+	"/js",
+  	express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/js"))
 );
 
 app.use(
-  "/js",
-  express.static(path.join(__dirname, "node_modules/express-useragent/lib"))
+	"/js",
+  	express.static(path.join(__dirname, "node_modules/express-useragent/lib"))
 );
 
 app.use(userAgent.express());
 app.get("/*", function(req, res) {
-  let streamsFromParms = [];
-  streamsFromParms = req.params["0"].split("/").filter(String);
-  res.render("index", {
-	streamsFromParms: streamsFromParms,
-	version: version,
-	env: env,
-	isMobile: req.useragent.isMobile,
-	buildId: buildId
-  });
+	let streamsFromParms = [];
+  	streamsFromParms = req.params["0"].split("/").filter(String);
+  	res.render("index", {
+		streamsFromParms: streamsFromParms,
+		version: version,
+		env: env,
+		isMobile: req.useragent.isMobile,
+		buildId: buildId
+  	});
 });
 
 module.exports = app;
