@@ -25,9 +25,7 @@
 				   				autocomplete="off"
 				   				autocorrect="off"
 				   				spellcheck="false"
-				   				autocapitalize="none"
-				   				autofocus
-								onclick="document.getElementById('new_stream').focus();" />
+				   				autocapitalize="none" />
 						<button type="button" 
 								class="btn btn-success" 
 								id="add-stream-btn" 
@@ -118,7 +116,7 @@
 
 		if (terms.length > 0) {
 			for (i=0; i<terms.length; i++) {
-				list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML=''; newStreamInput.focus(); addStreamBtn.click();">${terms[i]}</li>`;
+				list += `<li onclick="newStreamInput.value='${terms[i]}'; autoCompleteResultsList.style.display= 'none'; autoCompleteResultsList.innerHTML=''; addStreamBtn.click();">${terms[i]}</li>`;
 			}
 			autoCompleteResultsList.innerHTML = `<ul>${list}</ul>`;
 		}
