@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
 	<%- include("head") %>
-  	<body data-env="<%- env %>" data-mobile="<%- isMobile %>">
+	<body data-env="<%- env %>" 
+			data-mobile="<%- isMobile %>"
+			onmouseenter="document.getElementById('manage-btn-btns').style.display='block';">
 		<div id="container">
 	  		<noscript>
 				<div class="alert alert-danger strong text-center">ManyTwitch works best with JavaScript enabled</div>
@@ -23,7 +25,9 @@
 
 		<script type="text/javascript">
 	  		const manageBtn = document.getElementById("manage-btn");
+			const manageBtnBtns = document.getElementById("manage-btn-btns");
 	  		const streamsModal = document.getElementById("streams-modal");
+			const body = document.getElementsByTagName("body")[0];
 
 	  		window.addEventListener("DOMContentLoaded", (event) => {
 				MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
@@ -33,6 +37,22 @@
 					document.getElementById("stream-manager-modal-footer").style.display = "none";
 					document.getElementById("mobile-notice").style.display = "block";
 				}
+
+				manageBtn.addEventListener("mouseleave", (event) => {
+					setTimeout(() => {
+						manageBtnBtns.style.display = "none";
+					}, 10000);
+				});
+
+				body.addEventListener("touchstart", (event) => {
+					manageBtnBtns.style.display = "block";
+				});
+
+				body.addEventListener("touchend", (event) => {
+					setTimeout(() => {
+						manageBtnBtns.style.display = "none";
+					}, 10000);
+				});
 	  		});
 
 	  		streamsModal.addEventListener("show.bs.modal", (event) => {
