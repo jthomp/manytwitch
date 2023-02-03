@@ -1,5 +1,9 @@
 # Changelog
 
+##### Version 1.11.0 - (02/02/2023)
+
+* Hide main UI buttons when not in use.
+
 ##### Version 1.10.2 - (01/30/2023)
 
 * Tweaks and optimizations.
