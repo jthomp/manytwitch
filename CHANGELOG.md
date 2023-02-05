@@ -1,5 +1,9 @@
 # Changelog
 
+##### Version 1.11.1 - (02/05/2023)
+
+* Show an alert when adding a stream to the table.
+
 ##### Version 1.11.0 - (02/02/2023)
 
 * Hide main UI buttons when not in use.
