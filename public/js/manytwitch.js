@@ -113,7 +113,7 @@ MT.manager = {
 	   newStreamField.click();
 	 }
 
-	 MT.manager.triggerAlert(streamParm);
+	 // MT.manager.triggerAlert(streamParm);
 
 	 MT.manager.toggleDragButtons();
  
@@ -301,7 +301,6 @@ MT.manager = {
    * Trigger an alert upon adding a stream.
    */
   triggerAlert(streamName="") {
-	log("START");
 	const wrapper = document.createElement("div");
 	const placeHolder = document.getElementById("alert-placeholder");
 
@@ -316,7 +315,6 @@ MT.manager = {
 
 	setTimeout(() => {
 		document.getElementById("dismiss-alert-btn").click();
-		log("END");
 	}, 3000);
   }
 
