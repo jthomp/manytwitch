@@ -113,6 +113,8 @@ MT.manager = {
 	   newStreamField.click();
 	 }
 
+	 MT.manager.triggerAlert(streamParm);
+
 	 MT.manager.toggleDragButtons();
  
 	log("MT.manager.addToTable() - End");
@@ -293,6 +295,29 @@ MT.manager = {
 	Array.from(document.getElementsByClassName("drag-btn")).forEach(element => {
 	  element.style.display = (streamsRowsOnTableCount < 2) ? "none" : "inline-block";
 	});
+  },
+
+  /** 
+   * Trigger an alert upon adding a stream.
+   */
+  triggerAlert(streamName="") {
+	log("START");
+	const wrapper = document.createElement("div");
+	const placeHolder = document.getElementById("alert-placeholder");
+
+	wrapper.innerHTML = [
+		"<div class='alert alert-success alert-dismissable fade show' role='alert'>",
+		`<strong>${streamName} added!</strong>`,
+		"<button id='dismiss-alert-btn' type='button' class='btn-close float-end' data-bs-dismiss='alert' aria-label='Close'></button>",
+		"</div>"
+	].join("");
+
+	placeHolder.append(wrapper);
+
+	setTimeout(() => {
+		document.getElementById("dismiss-alert-btn").click();
+		log("END");
+	}, 3000);
   }
 
 },
