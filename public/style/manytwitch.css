@@ -168,6 +168,13 @@ a {
   	font-size: 0.8em;
 }
 
+#streams-modal #alert-placeholder {
+	z-index: 9999;
+	position: absolute;
+	float: left;
+	width: 96%;
+}
+
 /* autocomplete */
 
 #streams-modal #autocomplete-results {
