@@ -172,7 +172,8 @@ a {
 	z-index: 9999;
 	position: absolute;
 	float: left;
-	width: 96%;
+	width: 100%;
+	left: 0;
 }
 
 /* autocomplete */
