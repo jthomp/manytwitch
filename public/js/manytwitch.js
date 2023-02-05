@@ -82,7 +82,8 @@ MT.manager = {
   */
   addToTable(streamParm="") {
 	log("MT.manager.addToTable() - Begin");
- 
+	
+	const streamManagerModal = document.getElementById("streams-modal");
 	 const streamsTable =   document.getElementById("streams-list-tbody");
 	 const newStreamField = document.getElementById("new_stream");
 	 const saveBtn =        document.getElementById("save-btn");
@@ -113,9 +114,11 @@ MT.manager = {
 	   newStreamField.click();
 	 }
 
-	 // MT.manager.triggerAlert(streamParm);
-
 	 MT.manager.toggleDragButtons();
+
+	 if (streamManagerModal.style.display == "block") {
+	 	MT.manager.triggerAlert(streamParm);
+	 }
  
 	log("MT.manager.addToTable() - End");
   },
