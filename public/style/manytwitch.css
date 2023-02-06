@@ -176,6 +176,10 @@ a {
 	left: 0;
 }
 
+#alert-placeholder div.alert {
+	border-radius: 0 !important;
+}
+
 /* autocomplete */
 
 #streams-modal #autocomplete-results {
