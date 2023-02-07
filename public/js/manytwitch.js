@@ -8,7 +8,7 @@
 /**
  	* Establish and define our namespaces.
 */
-const MT = {};
+let MT = {};
 MT["manager"] = {};     // the stream manager modal.
 MT["streams"] = {};    // managing streams.
 MT["util"] = {};      // utils.
@@ -25,7 +25,7 @@ window.onresize = () => {
 	* Setup a listener for the new stream field on the manager modal.
 */
 window.document.getElementById("new_stream").addEventListener("paste", (event) => {
-	const addStreamBtn = document.getElementById("add-stream-btn");
+	let addStreamBtn = document.getElementById("add-stream-btn");
 
 	if ($(this).length < 1) {
 		addStreamBtn.setAttribute("disabled", "disabled");
@@ -39,7 +39,7 @@ window.document.getElementById("new_stream").addEventListener("paste", (event) =
  	* @param {String} msg The message to log to the console.
 */
 log = (msg) => {
-	const env = window.document.getElementsByTagName("body")[0].dataset.env;
+	let env = window.document.getElementsByTagName("body")[0].dataset.env;
   	if (window.console && window.console.log && env != "production") {
 		window.console.log(msg);
   	}
@@ -56,6 +56,7 @@ MT.manager = {
 		log("MT.manager.addToRecentsTable() - Begin");
 
 		const recentStreamsTable = document.getElementById("recent-streams-list-tbody");
+
 		if (recentStreamParm != "") {
 	  		let existing = document.getElementById(`tr-recent-${recentStreamParm}`);
 
@@ -83,15 +84,15 @@ MT.manager = {
   	addToTable(streamParm="") {
 		log("MT.manager.addToTable() - Begin");
 	
-		let streamManagerModal = document.getElementById("streams-modal");
-	 	let streamsTable =   document.getElementById("streams-list-tbody");
-	 	let newStreamField = document.getElementById("new_stream");
-	 	let saveBtn =        document.getElementById("save-btn");
-	 	let streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+		const streamManagerModal = 			document.getElementById("streams-modal");
+	 	const streamsTable =   				document.getElementById("streams-list-tbody");
+	 	const newStreamField = 				document.getElementById("new_stream");
+	 	const saveBtn =        				document.getElementById("save-btn");
+	 	const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
  
 	 	if (streamParm != "") {
 	  		log(`\t Adding ${streamParm}`);
-	   		let newStream = streamParm != "" ? streamParm : newStreamField.value;
+	   		let newStream = streamParm;
 	   		let source = document.getElementById("streams-modal-new-stream-template").innerHTML.trim();
 	   		let template = Handlebars.compile(source);
 	   		let context = { stream: newStream };
@@ -124,8 +125,8 @@ MT.manager = {
 		// clear autocomplete.
 		let autoCompleteResultsList = document.getElementById("autocomplete-results");
 
-		if (autocompleteResultsList.style.display == "block") {
-			autocompleteResultsList.innerHTML = "";
+		if (autoCompleteResultsList.style.display == "block") {
+			autoCompleteResultsList.innerHTML = "";
 			autoCompleteResultsList.style.display = "none";
 		}
  
@@ -138,9 +139,9 @@ MT.manager = {
 	hidden() {
 		log("MT.manager.hidden() - Begin");
 
-		const newStreamField = document.getElementById("new_stream");
-		const addStreamBtn = document.getElementById("add-stream-btn");
-		const autocompleteResultsList = document.getElementById("autocomplete-results");
+		let newStreamField = document.getElementById("new_stream");
+		let addStreamBtn = document.getElementById("add-stream-btn");
+		let autocompleteResultsList = document.getElementById("autocomplete-results");
 
 		newStreamField.value = "";
 		addStreamBtn.setAttribute("disabled", "disabled");
@@ -154,8 +155,8 @@ MT.manager = {
    		* Opens a new window to the creators the user is following.
    	*/
   	openFollowingWindow() {
-		const followingWindow = window.open("https://www.twitch.tv/directory/following/live", "_blank");
-		const isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
+		let followingWindow = window.open("https://www.twitch.tv/directory/following/live", "_blank");
+		let isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
 
 		if (isMobile) {
 			followingWindow.close();
@@ -217,11 +218,11 @@ MT.manager = {
   	show() {
 		log("MT.manager.show() - Begin");
 
-		const saveBtn = document.getElementById("save-btn");
-		const addStreamBtn = document.getElementById("add-stream-btn");
-		const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
-		const clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
-		const streamsList = document.getElementById("streams-list-tbody");
+		let saveBtn = document.getElementById("save-btn");
+		let addStreamBtn = document.getElementById("add-stream-btn");
+		let streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+		let clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
+		let streamsList = document.getElementById("streams-list-tbody");
 
 		clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
 
@@ -269,9 +270,9 @@ MT.manager = {
   	shown() {
 		log("MT.manager.shown() - Begin");
 
-		const addStreamBtn = document.getElementById("add-stream-btn");
-		const saveBtn = document.getElementById("save-btn");
-		const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+		let addStreamBtn = document.getElementById("add-stream-btn");
+		let saveBtn = document.getElementById("save-btn");
+		let streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
 
 		if (MT.util.streamCount() == 0) {
 	  		addStreamBtn.setAttribute("disabled", "disabled");
@@ -289,8 +290,8 @@ MT.manager = {
    		* Toggles the add stream button on the stream manager modal.
   	*/
   	toggleAddButton() {
-		const newStreamInput = document.getElementById("new_stream");
-		const addButton =      document.getElementById("add-stream-btn");
+		let newStreamInput = document.getElementById("new_stream");
+		let addButton =      document.getElementById("add-stream-btn");
 
 		if (newStreamInput.value.length > 0) {
 	  		addButton.removeAttribute("disabled");
@@ -314,8 +315,8 @@ MT.manager = {
    		* Trigger an alert upon adding a stream.
    	*/
   	triggerAlert(streamName="") {
-		const wrapper = document.createElement("div");
-		const placeHolder = document.getElementById("alert-placeholder");
+		let wrapper = document.createElement("div");
+		let placeHolder = document.getElementById("alert-placeholder");
 
 		wrapper.innerHTML = [
 			"<div class='alert alert-success alert-dismissable fade show' role='alert'>",
@@ -402,7 +403,7 @@ MT.streams = {
   	handleResize() {
 		log("MT.streams.handleResize() - Begin");
 
-		const streamsContainer = document.getElementById("streams-container");
+		let streamsContainer = document.getElementById("streams-container");
 		let numStreams = MT.util.streamCount();
 		let innerWindowHeight = window.innerHeight - 48;
 		let containerWidth = document.getElementById("container").clientWidth;
@@ -479,9 +480,9 @@ MT.streams = {
   	update(reordered=false) {
 		log("MT.streams.update() - Begin");
 
-		const streamsContainer = document.getElementById("streams-container");
-		const manage =           document.getElementById("manage-btn");
-		const defaultContainer = document.getElementById("default-content-container");
+		let streamsContainer = document.getElementById("streams-container");
+		let manage =           document.getElementById("manage-btn");
+		let defaultContainer = document.getElementById("default-content-container");
 		let streamsArray = MT.streams.getStreams();
 		let streamSpans = [];
 		let numStreams = 0;
@@ -524,9 +525,7 @@ MT.streams = {
 
 				try {
 					window.localStorage.setItem("streams", "");
-				} catch {
-					// bail out.
-				}
+				} catch {}
 	  		}
 		}
 
@@ -571,24 +570,6 @@ MT.streams = {
 
 // utils used by the app.
 MT.util = {
-
-  	/**
-   		* Checks to see if localStorage API is available on this device.
-   		* @return {Boolean} The result of the check for localStorage API availability.
-  	*/
-  	checkForLocalStorageAPI(type) {
-		var storage;
-		try {
-	  		storage = window[type];
-	  		var x = "__storage_test__";
-	  		storage.setItem(x, x);
-	  		storage.removeItem(x);
-	  		return true;
-		} catch(e) {
-	  		log(e);
-	  		return false;
-		}
-  	},
 
   	/**
    		* Returns a count of how many streams are stored in localStorage.
