@@ -116,10 +116,12 @@ MT.manager = {
 
 	 	MT.manager.toggleDragButtons();
 
+		// show alert.
 	 	if (streamManagerModal.style.display == "block") {
 	 		MT.manager.triggerAlert(streamParm);
 	 	}
 
+		// clear autocomplete.
 		const autoCompleteResultsList = document.getElementById("autocomplete-results");
 
 		if (autocompleteResultsList.style.display == "block") {
