@@ -57,6 +57,7 @@
 
 <script type="text/javascript">
 
+	const streamsModal = document.getElementById("streams-modal");
 	const addStreamBtn = document.getElementById("add-stream-btn");
 	const newStreamInput = document.getElementById("new_stream");
 	const autoCompleteResultsList = document.getElementById("autocomplete-results");
@@ -74,7 +75,7 @@
 		showAutocompleteResults(newStreamInput.value);
   	});
 
-  	document.addEventListener("keydown", (event) => {
+  	streamsModal.addEventListener("keydown", (event) => {
 		if (event.ctrlKey || event.metaKey) {
 	  		switch (String.fromCharCode(event.which).toLowerCase()) {
 	  			case "s":
