@@ -218,11 +218,11 @@ MT.manager = {
   	show() {
 		log("MT.manager.show() - Begin");
 
-		let saveBtn = document.getElementById("save-btn");
-		let addStreamBtn = document.getElementById("add-stream-btn");
-		let streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
-		let clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
-		let streamsList = document.getElementById("streams-list-tbody");
+		const saveBtn = document.getElementById("save-btn");
+		const addStreamBtn = document.getElementById("add-stream-btn");
+		const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+		const clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
+		const streamsList = document.getElementById("streams-list-tbody");
 
 		clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
 
@@ -270,9 +270,9 @@ MT.manager = {
   	shown() {
 		log("MT.manager.shown() - Begin");
 
-		let addStreamBtn = document.getElementById("add-stream-btn");
-		let saveBtn = document.getElementById("save-btn");
-		let streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+		const addStreamBtn = document.getElementById("add-stream-btn");
+		const saveBtn = document.getElementById("save-btn");
+		const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
 
 		if (MT.util.streamCount() == 0) {
 	  		addStreamBtn.setAttribute("disabled", "disabled");
@@ -290,8 +290,8 @@ MT.manager = {
    		* Toggles the add stream button on the stream manager modal.
   	*/
   	toggleAddButton() {
-		let newStreamInput = document.getElementById("new_stream");
-		let addButton =      document.getElementById("add-stream-btn");
+		const newStreamInput = document.getElementById("new_stream");
+		const addButton =      document.getElementById("add-stream-btn");
 
 		if (newStreamInput.value.length > 0) {
 	  		addButton.removeAttribute("disabled");
@@ -315,8 +315,8 @@ MT.manager = {
    		* Trigger an alert upon adding a stream.
    	*/
   	triggerAlert(streamName="") {
-		let wrapper = document.createElement("div");
-		let placeHolder = document.getElementById("alert-placeholder");
+		const wrapper = document.createElement("div");
+		const placeHolder = document.getElementById("alert-placeholder");
 
 		wrapper.innerHTML = [
 			"<div class='alert alert-success alert-dismissable fade show' role='alert'>",
@@ -403,7 +403,7 @@ MT.streams = {
   	handleResize() {
 		log("MT.streams.handleResize() - Begin");
 
-		let streamsContainer = document.getElementById("streams-container");
+		const streamsContainer = document.getElementById("streams-container");
 		let numStreams = MT.util.streamCount();
 		let innerWindowHeight = window.innerHeight - 48;
 		let containerWidth = document.getElementById("container").clientWidth;
@@ -480,9 +480,9 @@ MT.streams = {
   	update(reordered=false) {
 		log("MT.streams.update() - Begin");
 
-		let streamsContainer = document.getElementById("streams-container");
-		let manage =           document.getElementById("manage-btn");
-		let defaultContainer = document.getElementById("default-content-container");
+		const streamsContainer = document.getElementById("streams-container");
+		const manage =           document.getElementById("manage-btn");
+		const defaultContainer = document.getElementById("default-content-container");
 		let streamsArray = MT.streams.getStreams();
 		let streamSpans = [];
 		let numStreams = 0;
