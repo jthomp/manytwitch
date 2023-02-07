@@ -83,11 +83,11 @@ MT.manager = {
   	addToTable(streamParm="") {
 		log("MT.manager.addToTable() - Begin");
 	
-		const streamManagerModal = document.getElementById("streams-modal");
-	 	const streamsTable =   document.getElementById("streams-list-tbody");
-	 	const newStreamField = document.getElementById("new_stream");
-	 	const saveBtn =        document.getElementById("save-btn");
-	 	const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+		let streamManagerModal = document.getElementById("streams-modal");
+	 	let streamsTable =   document.getElementById("streams-list-tbody");
+	 	let newStreamField = document.getElementById("new_stream");
+	 	let saveBtn =        document.getElementById("save-btn");
+	 	let streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
  
 	 	if (streamParm != "") {
 	  		log(`\t Adding ${streamParm}`);
@@ -122,7 +122,7 @@ MT.manager = {
 	 	}
 
 		// clear autocomplete.
-		const autoCompleteResultsList = document.getElementById("autocomplete-results");
+		let autoCompleteResultsList = document.getElementById("autocomplete-results");
 
 		if (autocompleteResultsList.style.display == "block") {
 			autocompleteResultsList.innerHTML = "";
