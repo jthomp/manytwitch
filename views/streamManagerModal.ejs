@@ -61,6 +61,8 @@
 	const newStreamInput = document.getElementById("new_stream");
 	const autoCompleteResultsList = document.getElementById("autocomplete-results");
   	const recentStreamsList = document.getElementById("recent-streams-list-tbody");
+	const recentStreamsListContainer = document.getElementById("recents-table-container");
+	const toggleButton = document.getElementById("toggle-button");
 
   	newStreamInput.addEventListener("keypress", (event) => {
 		if (event.keyCode == 13) {
@@ -82,9 +84,6 @@
 	  		}
 		}
   	});
-
-  	const recentStreamsListContainer = document.getElementById("recents-table-container");
-  	const toggleButton = document.getElementById("toggle-button");
 
   	recentStreamsListContainer.addEventListener("show.bs.collapse", (event) => {
 		toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-up'></i>&nbsp;&nbsp;Hide Recents";
