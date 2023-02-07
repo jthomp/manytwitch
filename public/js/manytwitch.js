@@ -119,6 +119,13 @@ MT.manager = {
 	 	if (streamManagerModal.style.display == "block") {
 	 		MT.manager.triggerAlert(streamParm);
 	 	}
+
+		const autoCompleteResultsList = document.getElementById("autocomplete-results");
+
+		if (autocompleteResultsList.style.display == "block") {
+			autocompleteResultsList.innerHTML = "";
+			autoCompleteResultsList.style.display = "none";
+		}
  
 		log("MT.manager.addToTable() - End");
   	},
