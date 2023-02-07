@@ -68,6 +68,17 @@
 				MT.manager.hidden();
 	  		});
 
+			streamsModal.addEventListener("keydown", (event) => {
+				if (event.ctrlKey || event.metaKey) {
+					switch (String.fromCharCode(event.which).toLowerCase()) {
+						case "s":
+							event.preventDefault();
+							document.getElementById("save-btn").click();
+							break;
+					}
+				}
+			});
+
 	  		document.getElementById("save-btn").addEventListener("click", (event) => {
 				let streamsList = document.getElementsByClassName("streams-modal-table-tr");
 				let streams = MT.streams.getStreams();
