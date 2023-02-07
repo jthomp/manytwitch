@@ -43,6 +43,18 @@ a {
   	text-decoration: none !important;
 }
 
+#alert-placeholder {
+	z-index: 9999;
+	position: absolute;
+	float: left;
+	width: 100%;
+	left: 0;
+}
+
+#alert-placeholder div.alert {
+	border-radius: 0 !important;
+}
+
 #container {
   	margin: 0 auto;
   	width: 100%;
@@ -166,14 +178,6 @@ a {
 #streams-modal .modal-footer {
   	justify-content: center;
   	font-size: 0.8em;
-}
-
-#alert-placeholder {
-	z-index: 9999;
-	position: absolute;
-	float: left;
-	width: 100%;
-	left: 0;
 }
 
 /* autocomplete */
