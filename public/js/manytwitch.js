@@ -223,6 +223,7 @@ MT.manager = {
 		const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
 		const clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
 		const streamsList = document.getElementById("streams-list-tbody");
+		const newStreamInput = document.getElementById("new_stream");
 
 		clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
 
@@ -260,6 +261,8 @@ MT.manager = {
 	  						document.getElementById("order-changed").checked = true;
 						}
   		});
+
+		newStreamInput.focus();
 
 		log("MT.manager.show() - End");
   	},
