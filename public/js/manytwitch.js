@@ -223,7 +223,6 @@ MT.manager = {
 		const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
 		const clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
 		const streamsList = document.getElementById("streams-list-tbody");
-		const newStreamInput = document.getElementById("new_stream");
 
 		clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
 
@@ -262,8 +261,6 @@ MT.manager = {
 						}
   		});
 
-		newStreamInput.focus();
-
 		log("MT.manager.show() - End");
   	},
 
@@ -276,6 +273,7 @@ MT.manager = {
 		const addStreamBtn = document.getElementById("add-stream-btn");
 		const saveBtn = document.getElementById("save-btn");
 		const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+		const newStreamInput = document.getElementById("new_stream");
 
 		if (MT.util.streamCount() == 0) {
 	  		addStreamBtn.setAttribute("disabled", "disabled");
@@ -285,6 +283,8 @@ MT.manager = {
 	  		saveBtn.removeAttribute("disabled");
 	  		streamManagerDefaultContent.style.display = "none";
 		}
+
+		newStreamInput.focus();
 
 		log("MT.manager.shown() - End");
   	},
