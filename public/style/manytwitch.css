@@ -12,6 +12,10 @@
   	--purple-form-control-focus: rgb(182, 101, 226);
 }
 
+a {
+	color: lightblue !important;
+}
+
 .table> :not(:first-child) {
 	border-top: 1px solid currentColor !important;
 }
