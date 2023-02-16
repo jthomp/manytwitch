@@ -145,6 +145,10 @@ a {
   	border-bottom: transparent;
 }
 
+#streams-modal table.streams-list-table tbody a {
+	color: rgb(255, 255, 255) !important;
+}
+
 #streams-modal #streams-manager-default-content {
   	background-color: var(--purple-bg-color-lighter);
   	text-align: center;
