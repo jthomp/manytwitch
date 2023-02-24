@@ -26,8 +26,9 @@ window.onresize = () => {
 */
 window.document.getElementById("new_stream").addEventListener("paste", (event) => {
 	let addStreamBtn = document.getElementById("add-stream-btn");
+	let newStreamField = document.getElementById("new_stream");
 
-	if ($(this).length < 1) {
+	if (newStreamField.value.length < 1) {
 		addStreamBtn.setAttribute("disabled", "disabled");
   	} else {
 		addStreamBtn.removeAttribute("disabled");
