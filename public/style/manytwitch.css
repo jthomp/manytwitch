@@ -13,7 +13,7 @@
 }
 
 a {
-	color: lightblue !important;
+	color: rgb(255, 255, 255) !important;
 }
 
 .table> :not(:first-child) {
@@ -143,10 +143,6 @@ a {
 
 #streams-modal table.streams-list-table tbody tr:last-of-type {
   	border-bottom: transparent;
-}
-
-#streams-modal table.streams-list-table tbody a {
-	color: rgb(255, 255, 255) !important;
 }
 
 #streams-modal #streams-manager-default-content {
