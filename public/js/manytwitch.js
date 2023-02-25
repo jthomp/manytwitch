@@ -130,6 +130,8 @@ MT.manager = {
 			autoCompleteResultsList.innerHTML = "";
 			autoCompleteResultsList.style.display = "none";
 		}
+
+		MT.manager.initSortable();
  
 		log("MT.manager.addToTable() - End");
   	},
@@ -151,6 +153,24 @@ MT.manager = {
 
 		log("MT.manager.hidden() - End");
   	},
+
+	/**
+   		* Make active streams list sortable.
+  	*/
+	initSortable() {
+		log("MT.manager.initSortable() - Begin");
+
+		const streamsList = document.getElementById("streams-list-tbody");
+  		Sortable.create(streamsList, {
+						animation: 100,
+						draggable: ".streams-modal-table-tr",
+						onEnd: (event) => {
+	  						document.getElementById("order-changed").checked = true;
+						}
+  		});
+
+		log("MT.manager.initSortable() - End");
+	},
 
 	/**
    		* Opens a new window to the creators the user is following.
@@ -223,7 +243,6 @@ MT.manager = {
 		const addStreamBtn = document.getElementById("add-stream-btn");
 		const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
 		const clearAllRecentStreamsBtn = document.getElementById("clear-all-recent-streams-btn");
-		const streamsList = document.getElementById("streams-list-tbody");
 
 		clearAllRecentStreamsBtn.style.display = (MT.streams.getRecentStreams().length > 0) ? "block" : "none";
 
@@ -254,14 +273,6 @@ MT.manager = {
 	  		streamManagerDefaultContent.style.display = "none";
 		}
 
-  		Sortable.create(streamsList, {
-						animation: 100,
-						draggable: ".streams-modal-table-tr",
-						onEnd: (event) => {
-	  						document.getElementById("order-changed").checked = true;
-						}
-  		});
-
 		log("MT.manager.show() - End");
   	},
 
@@ -286,6 +297,8 @@ MT.manager = {
 		}
 
 		newStreamInput.focus();
+
+		MT.manager.initSortable();
 
 		log("MT.manager.shown() - End");
   	},
