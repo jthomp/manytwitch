@@ -59,25 +59,25 @@
 	const addStreamBtn = document.getElementById("add-stream-btn");
 	const newStreamInput = document.getElementById("new_stream");
 	const autoCompleteResultsList = document.getElementById("autocomplete-results");
-  	const recentStreamsList = document.getElementById("recent-streams-list-tbody");
+  const recentStreamsList = document.getElementById("recent-streams-list-tbody");
 	const recentStreamsListContainer = document.getElementById("recents-table-container");
 	const toggleButton = document.getElementById("toggle-button");
 
   	newStreamInput.addEventListener("keypress", (event) => {
-		if (event.keyCode == 13) {
+			if (event.keyCode == 13) {
 	  		document.getElementById("add-stream-btn").click();
 	  		event.preventDefault();
 	  		return false;
-		}
-		showAutocompleteResults(newStreamInput.value);
+			}
+			showAutocompleteResults(newStreamInput.value);
   	});
 
   	recentStreamsListContainer.addEventListener("show.bs.collapse", (event) => {
-		toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-up'></i>&nbsp;&nbsp;Hide Recents";
+			toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-up'></i>&nbsp;&nbsp;Hide Recents";
   	});
 
   	recentStreamsListContainer.addEventListener("hide.bs.collapse", (event) => {
-		toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-down'></i>&nbsp;&nbsp;Show Recents";
+			toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-down'></i>&nbsp;&nbsp;Show Recents";
   	});
 
 	function autocomplete(input="", recentStreamsArray=[]) {

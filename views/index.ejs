@@ -2,35 +2,35 @@
 <html lang="en">
 	<%- include("head") %>
 	<body data-env="<%- env %>" 
-			data-mobile="<%- isMobile %>"
-			onmouseenter="document.getElementById('manage-btn-btns').style.display='block';">
+				data-mobile="<%- isMobile %>"
+				onmouseenter="document.getElementById('manage-btn-btns').style.display='block';">
 		<div id="alert-placeholder"></div>
 		<div id="container">
-	  		<noscript>
+			<noscript>
 				<div class="alert alert-danger strong text-center">ManyTwitch works best with JavaScript enabled</div>
-	  		</noscript>
-	  		<%- include("mainActionBar") %>
-	  		<%- include("defaultContent") %>
-	  		<div id="streams-container">
+			</noscript>
+			<%- include("mainActionBar") %>
+			<%- include("defaultContent") %>
+			<div id="streams-container">
 				&nbsp;
-	  		</div>
+			</div>
 		</div>
 
 		<div id="stream-manager">
-	  		<%- include("streamManagerModal") %>
+			<%- include("streamManagerModal") %>
 		</div>    
 
 		<%- include("newStreamTemplate") %>
-  
+	
 		<script defer src="/js/pwa.js"></script>
 
 		<script type="text/javascript">
-	  		const manageBtn = document.getElementById("manage-btn");
+			const manageBtn = document.getElementById("manage-btn");
 			const manageBtnBtns = document.getElementById("manage-btn-btns");
-	  		const streamsModal = document.getElementById("streams-modal");
+			const streamsModal = document.getElementById("streams-modal");
 			const body = document.getElementsByTagName("body")[0];
 
-	  		window.addEventListener("DOMContentLoaded", (event) => {
+			window.addEventListener("DOMContentLoaded", (event) => {
 				MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
 				MT.streams.update();
 
@@ -54,19 +54,19 @@
 						manageBtnBtns.style.display = "none";
 					}, 10000);
 				});
-	  		});
+			});
 
-	  		streamsModal.addEventListener("show.bs.modal", (event) => {
+			streamsModal.addEventListener("show.bs.modal", (event) => {
 				MT.manager.show();
-	  		});
+			});
 
-	  		streamsModal.addEventListener("shown.bs.modal", (event) => {
+			streamsModal.addEventListener("shown.bs.modal", (event) => {
 				MT.manager.shown();
-	  		});
+			});
 
-	  		streamsModal.addEventListener("hidden.bs.modal", (event) => {
+			streamsModal.addEventListener("hidden.bs.modal", (event) => {
 				MT.manager.hidden();
-	  		});
+			});
 
 			streamsModal.addEventListener("keydown", (event) => {
 				if (event.ctrlKey || event.metaKey) {
@@ -79,38 +79,34 @@
 				}
 			});
 
-	  		document.getElementById("save-btn").addEventListener("click", (event) => {
+			document.getElementById("save-btn").addEventListener("click", (event) => {
 				let streamsList = document.getElementsByClassName("streams-modal-table-tr");
 				let streams = MT.streams.getStreams();
 				let newStreams = [];
 				const orderChangedElement = document.getElementById("order-changed");
 
 				if (orderChangedElement.checked) {
-		  			MT.streams.setStreams("");
-		  			streams = MT.streams.getStreams(); // reload our streams.
+					MT.streams.setStreams("");
+					streams = MT.streams.getStreams(); // reload our streams.
 				}
 
 				Array.from(streamsList).forEach(element => {
-		  			newStreams.push(element.dataset.streamName);
+						newStreams.push(element.dataset.streamName);
 				});
 
 				MT.streams.setStreams(newStreams.join(","));
 				MT.streams.update(orderChangedElement.checked);
 				orderChangedElement.checked = false;
-	  		});
+			});
 
-	  		manageBtn.addEventListener("mouseenter", (event) => {
+			manageBtn.addEventListener("mouseenter", (event) => {
 				manageBtn.style.opacity = 1.0;
-	  		});
+			});
 
-	  		manageBtn.addEventListener("mouseleave", (event) => {
+			manageBtn.addEventListener("mouseleave", (event) => {
 				manageBtn.style.opacity = 0.5;
-	  		});
+			});
 		</script>
-
-		<div id="version-information">
-	  		Version <%- version %> (<%- buildId %>)
-		</div>
 
 		<%- include("analytics") %>
 		<script defer src="/js/bootstrap.min.js"></script>
@@ -119,5 +115,5 @@
 		<script defer src="/js/express-useragent.min.js"></script>
 		<script defer src="/js/Sortable.min.js"></script>
 		<script defer src="/js/all.min.js"></script>
-  	</body>
+	</body>
 </html>
