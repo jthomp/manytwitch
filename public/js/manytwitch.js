@@ -30,9 +30,9 @@ window.document.getElementById("new_stream").addEventListener("paste", (event) =
 
 	if (newStreamField.value.length < 1) {
 		addStreamBtn.setAttribute("disabled", "disabled");
-		} else {
+	} else {
 		addStreamBtn.removeAttribute("disabled");
-		}
+	}
 });
 
 /**
