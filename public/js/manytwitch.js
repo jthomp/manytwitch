@@ -1,7 +1,7 @@
 /**
 	* ManyTwitch
  	* Copyright (C) Justin Thompson (Antillian)
- 	* https://www.twitter.com/antillian_
+	* https://www.github.com/jthomp
  	* ManyTwitch is not affiliated with Twitch or Amazon
 */
 
