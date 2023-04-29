@@ -41,7 +41,10 @@ a {
 .btn-purple:hover {
   	color: rgb(255, 255, 255) !important;
   	text-decoration: none !important;
-		box-shadow: 5px 5px var(--purple-bg-color-hover);
+}
+
+#default .btn-purple:hover {
+	box-shadow: 5px 5px var(--purple-bg-color-hover) !important;
 }
 
 #alert-placeholder {
