@@ -34,13 +34,14 @@ a {
 
 .btn-purple {
 	background-color: var(--purple-bg-color) !important;
-  	color: rgb(255, 255, 255) !important;
+  color: rgb(255, 255, 255) !important;
+	border-radius: 2px !important;
 }
 
 .btn-purple:hover {
-  	background-color: var(--purple-bg-color-hover) !important;
   	color: rgb(255, 255, 255) !important;
   	text-decoration: none !important;
+		box-shadow: 5px 5px var(--purple-bg-color-hover);
 }
 
 #alert-placeholder {
