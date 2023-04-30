@@ -35,13 +35,16 @@ a {
 .btn-purple {
 	background-color: var(--purple-bg-color) !important;
   color: rgb(255, 255, 255) !important;
-	border-radius: 2px !important;
 }
 
 .btn-purple:hover {
   	color: rgb(255, 255, 255) !important;
   	text-decoration: none !important;
 		background-color: var(--purple-bg-color-hover) !important;
+}
+
+#default .btn-purple {
+	border-radius: 2px !important;
 }
 
 #default .btn-purple:hover {
