@@ -230,7 +230,8 @@ a {
 
 #streams-modal #autocomplete-results ul li:hover {
 	cursor: pointer;
-	background-color:rgb(200, 200, 200);
+	background-color: var(--purple-bg-color-hover);
+	color: rgb(255, 255, 255);
 }
 
 /* autocomplete */
