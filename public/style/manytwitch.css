@@ -43,11 +43,6 @@ a {
 	background-color: var(--purple-bg-color-hover) !important;
 }
 
-.dragging {
-	cursor: grabbing !important;
-	cursor: -webkit-grabbing !important;
-}
-
 #default .btn-purple {
 	border-radius: 2px !important;
 }
@@ -153,10 +148,6 @@ a {
 
 #streams-modal table.streams-list-table tbody tr:last-of-type {
 	border-bottom: transparent;
-}
-
-#streams-modal table.streams-list-table tbody tr td button.drag-btn {
-	cursor: grab;
 }
 
 #streams-modal #streams-manager-default-content {
