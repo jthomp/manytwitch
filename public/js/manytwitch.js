@@ -162,11 +162,11 @@ MT.manager = {
 
 		const streamsList = document.getElementById("streams-list-tbody");
 			Sortable.create(streamsList, {
-						animation: 100,
-						draggable: ".streams-modal-table-tr",
-						onEnd: (event) => {
-								document.getElementById("order-changed").checked = true;
-						}
+					animation: 100,
+					draggable: ".streams-modal-table-tr",
+					onEnd: (event) => {
+						document.getElementById("order-changed").checked = true;
+					}
 			});
 
 		log("MT.manager.initSortable() - End");

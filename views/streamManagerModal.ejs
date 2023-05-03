@@ -63,22 +63,22 @@
 	const recentStreamsListContainer = document.getElementById("recents-table-container");
 	const toggleButton = document.getElementById("toggle-button");
 
-  	newStreamInput.addEventListener("keypress", (event) => {
-			if (event.keyCode == 13) {
-	  		document.getElementById("add-stream-btn").click();
-	  		event.preventDefault();
-	  		return false;
-			}
-			showAutocompleteResults(newStreamInput.value);
-  	});
+	newStreamInput.addEventListener("keypress", (event) => {
+		if (event.keyCode == 13) {
+			document.getElementById("add-stream-btn").click();
+			event.preventDefault();
+			return false;
+		}
+		showAutocompleteResults(newStreamInput.value);
+	});
 
-  	recentStreamsListContainer.addEventListener("show.bs.collapse", (event) => {
-			toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-up'></i>&nbsp;&nbsp;Hide Recents";
-  	});
+	recentStreamsListContainer.addEventListener("show.bs.collapse", (event) => {
+		toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-up'></i>&nbsp;&nbsp;Hide Recents";
+	});
 
-  	recentStreamsListContainer.addEventListener("hide.bs.collapse", (event) => {
-			toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-down'></i>&nbsp;&nbsp;Show Recents";
-  	});
+	recentStreamsListContainer.addEventListener("hide.bs.collapse", (event) => {
+		toggleButton.innerHTML = "<i class='fa fa-solid fa-caret-down'></i>&nbsp;&nbsp;Show Recents";
+	});
 
 	function autocomplete(input="", recentStreamsArray=[]) {
 		if (input == "") {

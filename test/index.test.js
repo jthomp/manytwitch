@@ -17,7 +17,7 @@ describe('Load the homepage', function() {
 	browser
 		  .url('http://localhost:8080/arcus')
 		  .assert.not.visible('#default')
-		  .assert.not.visible('#disclaimer')
+		  .assert.not.visible('#created')
 		  .assert.visible('#manage-btn')
 		  .assert.visible('span#stream-arcus-video')
 		  .end();
@@ -28,7 +28,7 @@ describe('Load the homepage', function() {
 	browser
 		  .url('http://localhost:8080/arcus/lackattack')
 		  .assert.not.visible('#default')
-		  .assert.not.visible('#disclaimer')
+		  .assert.not.visible('#created')
 		  .assert.visible('#manage-btn')
 		  .assert.visible('span#stream-arcus-video')
 		  .assert.visible('span#stream-lackattack-video')
