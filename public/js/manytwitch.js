@@ -346,7 +346,7 @@ MT.manager = {
 
 		setTimeout(() => {
 			document.getElementById("dismiss-alert-btn").click();
-		}, 3000);
+		}, 2000);
 		}
 
 },
