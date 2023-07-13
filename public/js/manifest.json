@@ -3,7 +3,7 @@
 	"description": "Watch multiple Twitch streams on your device.",
 	"short_name": "ManyTwitch",
 	"lang": "en-US",
-	"start_url": "/",
+	"start_url": "https://www.manytwitch.app",
 	"scope": "/",
 	"display": "standalone",
 	"theme_color": "#000000",
