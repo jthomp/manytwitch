@@ -336,7 +336,7 @@ MT.manager = {
 		const placeHolder = document.getElementById("alert-placeholder");
 
 		wrapper.innerHTML = [
-			"<div class='alert alert-success alert-dismissable fade show' role='alert'>",
+			"<div class='alert btn-purple alert-dismissable fade show' role='alert'>",
 			`<strong>${streamName} added!</strong>`,
 			"<button id='dismiss-alert-btn' type='button' class='btn-close float-end' data-bs-dismiss='alert' aria-label='Close'></button>",
 			"</div>"
