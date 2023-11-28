@@ -12,12 +12,6 @@
 				<label for="streams_{{stream}}">{{stream}}</label>
 				</div>
 				<div class="float-end">
-				<button class="btn btn-secondary drag-btn"
-								title="Click and drag to re-order streams."
-								onclick="return false;"
-								style="cursor: grab;">
-						<i class="fa-solid fa-up-down-left-right"></i>
-				</button>
 				<a href="javascript:;"
 						 onclick="window.open('https://www.twitch.tv/{{stream}}/chat?popout=true', '', 'width=300,height=screen.height');"
 						 class="btn btn-primary"
@@ -25,10 +19,10 @@
 						<i class="far fa-comment-dots"></i>
 				</a>
 				<a href="javascript:;"
-						 class="btn btn-danger delete-btn"
-						 title="Remove this stream."
-						 onclick="MT.manager.removeFromTable('{{stream}}');"
-						 data-stream-name="{{stream}}">
+					 class="btn btn-danger delete-btn"
+					 title="Remove this stream."
+					 onclick="MT.manager.removeFromTable('{{stream}}');"
+					 data-stream-name="{{stream}}">
 					<i class="fa fa-trash"></i>
 				</a>
 				</div>

@@ -116,8 +116,6 @@ MT.manager = {
 		 		newStreamField.click();
 	 	}
 
-	 	MT.manager.toggleDragButtons();
-
 		// show alert.
 	 	if (streamManagerModal.style.display == "block") {
 	 		MT.manager.triggerAlert(streamParm);
@@ -228,8 +226,6 @@ MT.manager = {
 		 		MT.manager.addToRecentsTable(streamParm);
 		}
 
-		MT.manager.toggleDragButtons();
-
 		log("MT.manager.removeFromTable() - End");
 		},
 
@@ -315,17 +311,6 @@ MT.manager = {
 		} else {
 				addButton.setAttribute("disabled", "disabled");
 		}
-		},
-
-		/**
-	 		* Show/hide drag buttons on the stream manage modal table.
-	 	*/
-	 	toggleDragButtons() {
-		let streamsRowsOnTableCount = document.getElementsByClassName("streams-modal-table-tr").length;
-
-		Array.from(document.getElementsByClassName("drag-btn")).forEach(element => {
-				element.style.display = (streamsRowsOnTableCount < 2) ? "none" : "inline-block";
-		});
 		},
 
 		/** 
