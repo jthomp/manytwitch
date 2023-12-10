@@ -14,32 +14,31 @@
 				<div class="modal-body">
 					<form id="new_stream_form" 
 								name="new_stream_form">
-							<div class="input-group mb-3">
-								<input type="text"
-											 name="new_stream"
-											 id="new_stream"
-											 value=""
-											 placeholder="Twitch username"
-											 class="form-control"
-											 onkeyup="MT.manager.toggleAddButton();"
-											 autocomplete="off"
-											 autocorrect="off"
-											 spellcheck="false"
-											 autocapitalize="none" />
-								<button type="button"
-												class="btn btn-success"
-												id="add-stream-btn"
-												onclick="MT.manager.addToTable(document.getElementById('new_stream').value);"
-												title="Add a new stream."
-												disabled>
-										<i class="fa fa-plus"></i>
-								</button>
-							</div>
+						<div class="input-group mb-3">
+							<input type="text"
+											name="new_stream"
+											id="new_stream"
+											value=""
+											placeholder="Twitch username"
+											class="form-control"
+											onkeyup="MT.manager.toggleAddButton();"
+											autocomplete="off"
+											autocorrect="off"
+											spellcheck="false"
+											autocapitalize="none" />
+							<button type="button"
+											class="btn btn-success"
+											id="add-stream-btn"
+											onclick="MT.manager.addToTable(document.getElementById('new_stream').value);"
+											title="Add a new stream."
+											disabled>
+									<i class="fa fa-plus"></i>
+							</button>
+						</div>
 					</form>
 					<div id="autocomplete-results"></div>
-						<%- include("streamManagerModalActiveStreams") %>
-						<%- include("streamManagerModalRecentStreams") %>
-					</div>
+					<%- include("streamManagerModalActiveStreams") %>
+					<%- include("streamManagerModalRecentStreams") %>
 					<div id="stream-manager-modal-footer"
 							 class="modal-footer text-muted">
 						<i class="fa fa-lightbulb"></i>
