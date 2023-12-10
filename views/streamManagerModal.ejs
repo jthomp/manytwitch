@@ -15,23 +15,23 @@
 					<form id="new_stream_form" 
 								name="new_stream_form">
 							<div class="input-group mb-3">
-								<input type="text" 
-											name="new_stream" 
-											id="new_stream" 
-											value="" 
-											placeholder="Twitch username" 
-											class="form-control"
-											onkeyup="MT.manager.toggleAddButton();"
-											autocomplete="off"
-											autocorrect="off"
-											spellcheck="false"
-											autocapitalize="none" />
-								<button type="button" 
-										class="btn btn-success" 
-										id="add-stream-btn" 
-										onclick="MT.manager.addToTable(document.getElementById('new_stream').value);"
-										title="Add a new stream."
-										disabled=disabled>
+								<input type="text"
+											 name="new_stream"
+											 id="new_stream"
+											 value=""
+											 placeholder="Twitch username"
+											 class="form-control"
+											 onkeyup="MT.manager.toggleAddButton();"
+											 autocomplete="off"
+											 autocorrect="off"
+											 spellcheck="false"
+											 autocapitalize="none" />
+								<button type="button"
+												class="btn btn-success"
+												id="add-stream-btn"
+												onclick="MT.manager.addToTable(document.getElementById('new_stream').value);"
+												title="Add a new stream."
+												disabled>
 										<i class="fa fa-plus"></i>
 								</button>
 							</div>
@@ -41,8 +41,9 @@
 						<%- include("streamManagerModalRecentStreams") %>
 					</div>
 					<div id="stream-manager-modal-footer"
-							class="modal-footer text-muted">
-						<i class="fa fa-lightbulb"></i>&nbsp;&nbsp;Tip: Ctrl+S or Cmd+S to save and close this window.
+							 class="modal-footer text-muted">
+						<i class="fa fa-lightbulb"></i>
+						&nbsp;&nbsp;Tip: Ctrl+S or Cmd+S to save and close this window.
 					</div>
 				</div>
 		</div>
