@@ -1,41 +1,37 @@
 <div id="default-content-container"
-		 class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-  	<div id="default"
-	   		 class="card border-secondary mb-3">
-			<h3 class="card-header">Welcome to ManyTwitch</h3>
-			<div class="card-body">
-	  		<div class="card-text">
-					<div class="d-grid gap-2">
-						<button type="button"
-										class="btn btn-lg btn-purple"
-										data-bs-toggle="modal"
-										data-bs-target="#streams-modal"
-										title="Let's-a go!">
-							<i class="fa-solid fa-tv"></i>
-							&nbsp;Let's Watch!
-						</button>
-					</div>
-	  		</div>
-			</div>
-			<p class="lead" 
-				 style="padding: 0 20px;">
-				Watch multiple Twitch streams on your device.
-			</p>
-  	</div>
+     class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div id="default"
+          class="card border-secondary mb-3">
+      <h3 class="card-header">Welcome to ManyTwitch</h3>
+      <div class="card-body">
+        <div class="card-text">
+          <p class="lead" style="padding: 0 20px;">
+            Watch multiple Twitch streams on your device.
+          </p> 
+          <div class="d-grid gap-2">
+            <button type="button"
+                    class="btn btn-lg btn-purple"
+                    data-bs-toggle="modal"
+                    data-bs-target="#streams-modal"
+                    title="Let's-a go!">
+              <i class="fa-solid fa-tv"></i>
+              &nbsp;Let's Watch!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  	<div id="created" class="text-muted">
-	   	Created by
-	   	<a href="https://mastodon.social/@antillian" 
-					target="_blank" 
-					title="antillian on Mastodon."
-					style="text-decoration: underline dashed !important;"
-					rel="me">
-				antillian
-			</a>
-  	</div>
-
-		<div id="version-information" class="text-muted">
-			(<%- buildId %>)
-		</div>
+    <div id="created" class="text-muted">
+      (<%- buildId %>)
+      &bull;
+      Created by
+       <a href="https://mastodon.social/@antillian" 
+          target="_blank" 
+          title="antillian on Mastodon."
+          rel="me">
+        antillian
+      </a>
+    </div>
 
 </div>

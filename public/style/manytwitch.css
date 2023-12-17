@@ -170,10 +170,6 @@ a {
 	color: rgb(170, 170, 170);
 }
 
-#version-information {
-	font-size: 0.5em;
-}
-
 #streams-modal .modal-footer {
 	justify-content: center;
 	font-size: 0.8em;
