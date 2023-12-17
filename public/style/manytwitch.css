@@ -49,7 +49,7 @@ a {
 
 #default .btn-purple:hover {
 	background-color: var(--purple-bg-color) !important;
-	box-shadow: 5px 5px var(--purple-bg-color-hover) !important;
+	box-shadow: -5px 5px var(--purple-bg-color-hover) !important;
 }
 
 #alert-placeholder {
