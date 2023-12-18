@@ -35,6 +35,8 @@ app.use(
   	express.static(path.join(__dirname, "node_modules/express-useragent/lib"))
 );
 
+
+// TODO: find instances where isMobile is used. 
 app.use(userAgent.express());
 app.get("/*", function(req, res) {
 	let streamsFromParms = [];
