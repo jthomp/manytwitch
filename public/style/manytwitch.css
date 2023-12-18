@@ -195,7 +195,7 @@ a {
 	color: rgb(33, 37, 41);
 	text-align: left;
 	list-style: none;
-	background-color: rgb(255, 255, 255);
+	background-color: var(--bs-dark);
 	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, .15);
 	border-radius: .25rem;
@@ -207,7 +207,7 @@ a {
 	padding: .25rem 1.5rem;
 	clear: both;
 	font-weight: 400;
-	color: rgb(33, 37, 41);
+	color: rgb(255, 255, 255);
 	text-align: inherit;
 	white-space: nowrap;
 	background-color: transparent;
