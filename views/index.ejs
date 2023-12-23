@@ -35,10 +35,6 @@
 				MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
 				MT.streams.update();
 
-				if (document.getElementsByTagName("body")[0].dataset.mobile == "true") {
-					document.getElementById("stream-manager-modal-footer").style.display = "none";
-				}
-
 				manageBtn.addEventListener("mouseleave", (event) => {
 					setTimeout(() => {
 						manageBtnBtns.style.display = "none";
