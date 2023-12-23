@@ -132,6 +132,10 @@ a {
 	transition: all 0.15s ease-out;
 }
 
+#streams-modal table.streams-list-table tbody tr:nth-child(even) {
+	background-color: rgb(100, 100, 100);
+}
+
 #streams-modal table.streams-list-table tbody tr td:hover {
 	background-color: rgb(200, 200, 200);
 	color:rgb(0, 0, 0);
