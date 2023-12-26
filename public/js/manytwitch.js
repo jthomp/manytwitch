@@ -62,7 +62,7 @@ MT.manager = {
 			let existing = document.getElementById(`tr-recent-${recentStreamParm}`);
 
 			if (existing != null) {
-				log(`\t Skipping adding stream: ${recentStreamParm}`);
+				log(`\t Skipping adding existing stream: ${recentStreamParm}`);
 			} else {
 				// add to table via template.
 				let source = document.getElementById("streams-modal-new-recent-stream-template").innerHTML.trim();
@@ -70,7 +70,7 @@ MT.manager = {
 				let context = { stream: recentStreamParm };
 				let html = template(context);
 				recentStreamsTable.innerHTML += html;
-				log(`\t Adding stream: ${recentStreamParm}`);
+				log(`\t Added stream: ${recentStreamParm}`);
 			}
 		}
 
@@ -84,10 +84,10 @@ MT.manager = {
 	addToTable(streamParm="") {
 		log("MT.manager.addToTable() - Begin");
 	
-		const streamManagerModal = 		document.getElementById("streams-modal");
-	 	const streamsTable =   				document.getElementById("streams-list-tbody");
-	 	const newStreamField = 				document.getElementById("new_stream");
-	 	const saveBtn =        				document.getElementById("save-btn");
+		const streamManagerModal 					= document.getElementById("streams-modal");
+	 	const streamsTable								= document.getElementById("streams-list-tbody");
+	 	const newStreamField 							= document.getElementById("new_stream");
+	 	const saveBtn 										= document.getElementById("save-btn");
 	 	const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
  
 	 	if (streamParm != "") {
@@ -104,7 +104,7 @@ MT.manager = {
 			MT.manager.toggleAddButton();
 			streamManagerDefaultContent.style.display = "none";
 
-			// add to the recents table
+			// add to the recents table.
 			let currentRecentStreams = MT.streams.getRecentStreams();
 			currentRecentStreams.push(streamParm);
 			MT.streams.setRecentStreams(currentRecentStreams);
