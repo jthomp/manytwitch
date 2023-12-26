@@ -12,31 +12,29 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(
 	"/webfonts",
-  	express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/webfonts"))
+  express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/webfonts"))
 );
 
 app.use(
 	"/style",
-  	express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/css"))
+  express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/css"))
 );
 
 app.use(
 	"/js",
-  	express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
 );
 
 app.use(
 	"/js",
-  	express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/js"))
+  express.static(path.join(__dirname, "node_modules/@fortawesome/fontawesome-free/js"))
 );
 
 app.use(
 	"/js",
-  	express.static(path.join(__dirname, "node_modules/express-useragent/lib"))
+  express.static(path.join(__dirname, "node_modules/express-useragent/lib"))
 );
 
-
-// TODO: find instances where isMobile is used. 
 app.use(userAgent.express());
 app.get("/*", function(req, res) {
 	let streamsFromParms = [];
