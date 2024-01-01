@@ -12,19 +12,25 @@
 				<label for="streams_{{stream}}">{{stream}}</label>
 				</div>
 				<div class="float-end">
-				<a href="javascript:;"
-						 onclick="window.open('https://www.twitch.tv/{{stream}}/chat?popout=true', '', 'width=300,height=screen.height');"
-						 class="btn  btn-primary"
-						 title="Open a chat popout for this stream.">
+					<a href="javascript:;"
+						onclick="window.open('https://www.twitch.tv/{{stream}}/chat?popout=true', '', 'width=300,height=screen.height');"
+						class="btn btn-primary"
+						title="Open a chat popout for this stream.">
 						<i class="far fa-comment-dots"></i>
-				</a>
-				<a href="javascript:;"
-					 class="btn  btn-danger delete-btn"
-					 title="Remove this stream."
-					 onclick="MT.manager.removeFromTable('{{stream}}');"
-					 data-stream-name="{{stream}}">
-					<i class="fa fa-trash"></i>
-				</a>
+					</a>
+					<a href="javascript:;"
+						 onclick="window.open('https://www.twitch.tv/{{stream}}/');"
+						 class="btn btn-secondary"
+						 title="Open this creator's profile page.">
+						<i class="far fa-user"></i>
+					</a>
+					<a href="javascript:;"
+						 class="btn btn-danger delete-btn"
+						 title="Remove this stream."
+						 onclick="MT.manager.removeFromTable('{{stream}}');"
+						 data-stream-name="{{stream}}">
+						<i class="fa fa-trash"></i>
+					</a>
 				</div>
 		</td>
 		</tr>  
