@@ -6,16 +6,16 @@
 		<td colspan=2>
 			<div class="stream-row-container">
 				<input id="streams_{{stream}}"
-							type="hidden"
-							value="{{stream}}"
-							data-stream-name="{{stream}}">
-					<label for="streams_{{stream}}">{{stream}}</label>
+								type="hidden"
+								value="{{stream}}"
+								data-stream-name="{{stream}}">
+				<label for="streams_{{stream}}">{{stream}}</label>
 			</div>
 			<div class="float-end">
 				<a href="javascript:;"
-					onclick="window.open('https://www.twitch.tv/{{stream}}/chat?popout=true', '', 'width=300,height=screen.height');"
-					class="btn btn-primary"
-					title="Open a chat popout for this stream.">
+						onclick="window.open('https://www.twitch.tv/{{stream}}/chat?popout=true', '', 'width=300,height=screen.height');"
+						class="btn btn-primary"
+						title="Open a chat popout for this stream.">
 					<i class="far fa-comment-dots"></i>
 				</a>
 				<a href="javascript:;"
@@ -25,10 +25,10 @@
 					<i class="far fa-user"></i>
 				</a>
 				<a href="javascript:;"
-						class="btn btn-danger delete-btn"
-						title="Remove this stream."
-						onclick="MT.manager.removeFromTable('{{stream}}');"
-						data-stream-name="{{stream}}">
+					class="btn btn-danger delete-btn"
+					title="Remove this stream."
+					onclick="MT.manager.removeFromTable('{{stream}}');"
+					data-stream-name="{{stream}}">
 					<i class="fa fa-trash"></i>
 				</a>
 			</div>
