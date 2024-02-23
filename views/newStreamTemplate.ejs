@@ -14,19 +14,22 @@
 			<div class="float-end">
 				<a href="javascript:;"
 					 onclick="window.open('https://www.twitch.tv/{{stream}}/chat?popout=true', '', 'width=300,height=screen.height');"
-					class="btn btn-primary"
-					title="Open a chat popout for this stream.">
+					 class="btn btn-primary"
+					 title="Open a chat popout for this stream."
+					 aria-label="Open a chat popout for this stream.">
 					<i class="far fa-comment-dots"></i>
 				</a>
 				<a href="javascript:;"
 					 onclick="window.open('https://www.twitch.tv/{{stream}}/');"
 					 class="btn btn-purple"
-					 title="Open this creator's profile page.">
+					 title="Open this creator's profile page."
+					 aria-label="Open this creator's profile page.">
 					<i class="far fa-user"></i>
 				</a>
 				<a href="javascript:;"
 					 class="btn btn-danger delete-btn"
 					 title="Remove this stream."
+					 aria-label="Remove this stream."
 					 onclick="MT.manager.removeFromTable('{{stream}}');"
 					 data-stream-name="{{stream}}">
 					<i class="fa fa-trash"></i>
@@ -49,7 +52,8 @@
 				<a href="javascript:;"
 						onclick="MT.manager.addToTable('{{stream}}');"
 						class="btn btn-success"
-						title="Add this stream to current streams."
+						title="Add this stream to your current streams."
+						aria-label="Add this stream to your current streams."
 						data-stream-name="{{stream}}">
 					<i class="fa fa-plus">&nbsp;&nbsp;</i>
 				</a>
@@ -57,6 +61,7 @@
 					 onclick="MT.manager.removeFromRecentsTable('{{stream}}');"
 					 class="btn btn-danger delete-btn"
 					 title="Remove this stream."
+					 aria-label="Remove this stream."
 					 data-stream-name="{{stream}}">
 					<i class="fa fa-trash"></i>
 				</a>
@@ -68,13 +73,13 @@
 <script id="new-stream-template" 
 		type="text/x-handlebars-template">
 		<span id="stream-{{stream}}-video"
-			class="stream"
-			data-stream-name="{{stream}}">
+					class="stream"
+					data-stream-name="{{stream}}">
 		<iframe src="https://player.twitch.tv/?channel={{stream}}&parent=www.manytwitch.app"
-			allowfullscreen="true"
-			scrolling="no"
-			class="stream-iframe"
-			title="{{stream}}">
+						allowfullscreen="true"
+						scrolling="no"
+						class="stream-iframe"
+						title="{{stream}}">
 		</iframe>
 	</span>
 </script>
