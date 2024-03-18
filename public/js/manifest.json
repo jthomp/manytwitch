@@ -3,6 +3,7 @@
 	"description": "Watch multiple Twitch streams on your device.",
 	"short_name": "ManyTwitch",
 	"lang": "en-US",
+	"author": "Antillian",
 	"start_url": "https://www.manytwitch.app",
 	"scope": "/",
 	"display": "standalone",

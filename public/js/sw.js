@@ -44,3 +44,25 @@ self.addEventListener('activate', (event) => {
 		})
 	);
 });
+
+self.addEventListener('message', async (event) => {
+  if (event.data && event.data.type === 'CHECK_FOR_UPDATES') {
+    const updateAvailable = await checkForUpdates(); // Function to check for updates
+    if (updateAvailable) {
+      self.clients.matchAll().then(clients => {
+        clients.forEach(client => client.postMessage({ type: 'UPDATE_AVAILABLE' }));
+      });
+    }
+  }
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    self.clients.claim().then(() => {
+      self.clients.matchAll().then(clients => {
+        clients.forEach(client => client.postMessage({ type: 'INSTALL_UPDATE' }));
+      });
+    })
+  );
+});
