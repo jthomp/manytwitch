@@ -9,10 +9,10 @@
  	* Establish and define our namespaces.
 */
 let MT = {};
-MT["manager"] = {};     // the stream manager modal.
-MT["streams"] = {};    // managing streams.
-MT["util"] = {};      // utils.
-MT["settings"] = {}; // user settings.
+MT["manager"] = {}; // the stream manager modal.
+MT["streams"] = {}; // managing streams.
+MT["util"] = {}; // misc. utils.
+MT["settings"] = {}; // user settings (currently unused.)
 
 /**
 	* Recalculate the size of the streams if the window is resized.
@@ -174,7 +174,7 @@ MT.manager = {
 	*/
 	openFollowingWindow() {
 		let followingWindow = window.open("https://www.twitch.tv/directory/following/live", "_blank");
-		let isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
+	let isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
 
 		if (isMobile) {
 			// we do this because in some instances, a blank white screen is left when opening a new window. 
