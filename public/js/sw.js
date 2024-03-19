@@ -3,7 +3,6 @@ const toCache = [
 	'/js/bootstrap.min.js',
 	'/js/handlebars.js',
 	'/js/all.min.js',
-	'/js/Sortable.min.js',
 	'/js/manytwitch.js',
 	'/style/bootstrap-dark.min.css',
 	'/style/all.min.css',
