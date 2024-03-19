@@ -177,6 +177,7 @@ MT.manager = {
 		let isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
 
 		if (isMobile) {
+			// we do this because in some instances, a blank white screen is left when opening a new window. 
 			followingWindow.close();
 		}
 	},  
