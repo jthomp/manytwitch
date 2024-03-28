@@ -386,40 +386,21 @@ MT.streams = {
 		log("MT.streams.handleResize() - Begin");
 
 		const streamsContainer = document.getElementById("streams-container");
-		let numStreams = MT.util.streamCount();
-		let innerWindowHeight = window.innerHeight - 48;
-		let containerWidth = document.getElementById("container").clientWidth;
-		let calculatedHeight = 0;
-		let calculatedWidth = 0;
-		let containerPadding = 0;
+		const container = document.getElementById("container");
+		const innerWindowHeight = window.innerHeight - 48;
+		const numStreams = MT.util.streamCount();
+		const iframeWidth = Math.floor((container.clientWidth - 8) / Math.ceil(numStreams / 2));
+		const iframeHeight = Math.floor(iframeWidth * 9/16);
+		const containerPadding = ((innerWindowHeight - iframeHeight * Math.ceil(numStreams / 2))/2) + 16;
 
-		streamsContainer.width = containerWidth;
+		streamsContainer.style.width = `${container.clientWidth}px`;
+		streamsContainer.style.paddingTop = `${containerPadding}px`;
 
-		for (let perRow=1; perRow<=numStreams; perRow++) {
-			let numRows = Math.ceil(numStreams / perRow);
-			let maxWidth = Math.floor(containerWidth / perRow) - 8;
-			let maxHeight = Math.floor(innerWindowHeight / numRows) - 8;
-
-			if (maxWidth * 9/16 < maxHeight) {
-				maxHeight = maxWidth * 9/16;
-			} else {
-				maxWidth = maxHeight * 16/9;
-			}
-
-			if (maxWidth > calculatedWidth) {
-				calculatedWidth = maxWidth;
-				calculatedHeight = maxHeight;
-				containerPadding = ((innerWindowHeight - numRows * maxHeight)/2) + 16;
-			}
-		}
-	
 		Array.from(document.getElementsByClassName("stream-iframe")).forEach(element => {
-			element.height = Math.floor(calculatedHeight);
-			element.width = Math.floor(calculatedWidth);
+			element.height = iframeHeight;
+			element.width = iframeWidth;
 		});
 
-		streamsContainer.style.paddingTop = `${containerPadding}px`;
-	
 		log("MT.streams.handleResize() - End");
 	},
 
