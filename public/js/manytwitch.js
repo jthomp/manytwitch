@@ -1,12 +1,13 @@
 /**
-	* ManyTwitch
- 	* Copyright (C) Justin Thompson (Antillian)
-	* https://www.github.com/jthomp
- 	* ManyTwitch is not affiliated with Twitch or Amazon
+* ManyTwitch
+* Copyright (C) Justin Thompson (Antillian)
+* https://www.github.com/jthomp
+* ManyTwitch allows you to watch multiple Twitch streams on your device.
+* ManyTwitch is not affiliated with Twitch or Amazon
 */
 
 /**
- 	* Establish and define our namespaces.
+* Establish and define our namespaces.
 */
 let MT = {};
 MT["manager"] = {}; // the stream manager modal.
@@ -15,14 +16,14 @@ MT["util"] = {}; // misc. utils.
 MT["settings"] = {}; // user settings (currently unused.)
 
 /**
-	* Recalculate the size of the streams if the window is resized.
+* Recalculate the size of the streams if the window is resized.
 */
 window.onresize = () => {
 	return setTimeout(MT.streams.handleResize(), 500);
 };
 
 /**
-	* Setup a listener for the new stream field on the manager modal.
+* Setup a listener for the new stream field on the manager modal.
 */
 window.document.getElementById("new_stream").addEventListener("paste", (event) => {
 	let addStreamBtn = document.getElementById("add-stream-btn");
@@ -36,8 +37,8 @@ window.document.getElementById("new_stream").addEventListener("paste", (event) =
 });
 
 /**
- 	* Passthrough for logging a message to the browser's console.
- 	* @param {String} msg The message to log to the console.
+* Passthrough for logging a message to the browser's console.
+* @param {String} msg The message to log to the console.
 */
 log = (msg) => {
 	let env = window.document.getElementsByTagName("body")[0].dataset.env;
@@ -50,8 +51,8 @@ log = (msg) => {
 MT.manager = {
 
 	/**
-		* Add a stream to the recent streams table in the stream manager.
-		* @param {String} recentStreamParm The stream to add to the recents table.
+	* Add a stream to the recent streams table in the stream manager.
+	* @param {String} recentStreamParm The stream to add to the recents table.
 	*/
 	addToRecentsTable(recentStreamParm="") {
 		log("MT.manager.addToRecentsTable() - Begin");
@@ -78,26 +79,26 @@ MT.manager = {
 	},
 
 	/**
-		* Add new stream to the stream manager table.
-		* @param {String} streamParm The stream to add.
+	* Add new stream to the stream manager table.
+	* @param {String} streamParm The stream to add.
 	*/
 	addToTable(streamParm="") {
 		log("MT.manager.addToTable() - Begin");
 	
 		const streamManagerModal 					= document.getElementById("streams-modal");
-	 	const streamsTable								= document.getElementById("streams-list-tbody");
-	 	const newStreamField 							= document.getElementById("new_stream");
-	 	const saveBtn 										= document.getElementById("save-btn");
-	 	const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
- 
-	 	if (streamParm != "") {
+		const streamsTable								= document.getElementById("streams-list-tbody");
+		const newStreamField 							= document.getElementById("new_stream");
+		const saveBtn 										= document.getElementById("save-btn");
+		const streamManagerDefaultContent = document.getElementById("streams-manager-default-content");
+
+		if (streamParm != "") {
 			log(`\t Adding ${streamParm}`);
 			let newStream = streamParm;
 			let source = document.getElementById("streams-modal-new-stream-template").innerHTML.trim();
 			let template = Handlebars.compile(source);
 			let context = { stream: newStream };
 			let html = template(context);
- 
+
 			streamsTable.innerHTML += html;
 			newStreamField.value = "";
 			saveBtn.removeAttribute("disabled");
@@ -110,15 +111,15 @@ MT.manager = {
 			MT.streams.setRecentStreams(currentRecentStreams);
 			MT.manager.addToRecentsTable(streamParm);
 		}
- 
-	 	if (document.getElementById("streams-modal").style.display == "block") {
+
+		if (document.getElementById("streams-modal").style.display == "block") {
 			newStreamField.click();
-	 	}
+		}
 
 		// show alert.
-	 	if (streamManagerModal.style.display == "block") {
-	 		MT.manager.triggerAlert(streamParm);
-	 	}
+		if (streamManagerModal.style.display == "block") {
+			MT.manager.triggerAlert(streamParm);
+		}
 
 		// clear autocomplete.
 		let autoCompleteResultsList = document.getElementById("autocomplete-results");
@@ -127,12 +128,12 @@ MT.manager = {
 			autoCompleteResultsList.innerHTML = "";
 			autoCompleteResultsList.style.display = "none";
 		}
- 
+
 		log("MT.manager.addToTable() - End");
 	},
 
 	/**
-		* Various logic that needs to be done when the manager modal is hidden.
+	* Various logic that needs to be done when the manager modal is hidden.
 	*/
 	hidden() {
 		log("MT.manager.hidden() - Begin");
@@ -149,14 +150,12 @@ MT.manager = {
 		log("MT.manager.hidden() - End");
 	},
 
-
-
 	/**
-		* Opens a new window to the creators the user is following.
+	* Opens a new window to the creators the user is following.
 	*/
 	openFollowingWindow() {
 		let followingWindow = window.open("https://www.twitch.tv/directory/following/live", "_blank");
-	let isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
+		let isMobile = document.getElementsByTagName("body")[0].dataset.mobile == "true";
 
 		if (isMobile) {
 			// we do this because in some instances, a blank white screen is left when opening a new window. 
@@ -165,8 +164,8 @@ MT.manager = {
 	},  
 
 	/**
-		* Removes a stream from the recents stream manager table, as well as localStorage.
-		* @param {String} recentStreamParm 
+	* Removes a stream from the recents stream manager table, as well as localStorage.
+	* @param {String} recentStreamParm 
 	*/
 	removeFromRecentsTable(recentStreamParm="", clearAll=false) {
 		log("MT.manager.removeFromRecentsTable() - Begin");
@@ -193,8 +192,8 @@ MT.manager = {
 	},
 
 	/**
-		* Remove a given stream from the stream manager table.
-		* @param {String} streamParm The stream to remove.
+	* Remove a given stream from the stream manager table.
+	* @param {String} streamParm The stream to remove.
 	*/
 	removeFromTable(streamParm="") {
 		log("MT.manager.removeFromTable() - Begin");
@@ -212,7 +211,7 @@ MT.manager = {
 	},
 
 	/**
-		* Setup various elements on the manager modal before it's shown.
+	* Setup various elements on the manager modal before it's shown.
 	*/
 	show() {
 		log("MT.manager.show() - Begin");
@@ -255,7 +254,7 @@ MT.manager = {
 	},
 
 	/**
-		* Setup various elements on the manager modal after it's shown.
+	* Setup various elements on the manager modal after it's shown.
 	*/
 	shown() {
 		log("MT.manager.shown() - Begin");
@@ -280,7 +279,7 @@ MT.manager = {
 	},
 
 	/**
-		* Toggles the add stream button on the stream manager modal.
+	* Toggles the add stream button on the stream manager modal.
 	*/
 	toggleAddButton() {
 		const newStreamInput = document.getElementById("new_stream");
@@ -294,7 +293,7 @@ MT.manager = {
 	},
 
 	/** 
-		* Trigger an alert upon adding a stream.
+	* Trigger an alert upon adding a stream.
 	*/
 	triggerAlert(streamName="") {
 		const wrapper = document.createElement("div");
@@ -320,8 +319,8 @@ MT.manager = {
 MT.settings = {
 
 	/**
-		* Returns an array of settings in localStorage.
-		* @returns {Array} The settings stored in localStorage.
+	* Returns an array of settings in localStorage.
+	* @returns {Array} The settings stored in localStorage.
 	*/
 	getSettings() {
 		let settings = window.localStorage.getItem("settings");
@@ -329,9 +328,9 @@ MT.settings = {
 	},
 
 	/**
-		* Set the key and value of a setting.
-		* @param {String} key The name of the setting.
-		* @param {String} value The value of the setting.
+	* Set the key and value of a setting.
+	* @param {String} key The name of the setting.
+	* @param {String} value The value of the setting.
 	*/
 	setSetting(key="", value="") {
 		if (key != "" && value != "") {
@@ -352,8 +351,8 @@ MT.settings = {
 MT.streams = {
 
 	/**
-		* Returns an array of the recent streams stored in localStorage.
-		* @returns {Array} The recent streams stored in localStorage.
+	* Returns an array of the recent streams stored in localStorage.
+	* @returns {Array} The recent streams stored in localStorage.
 	*/
 	getRecentStreams() {
 		let recents = window.localStorage.getItem("recents");
@@ -371,8 +370,8 @@ MT.streams = {
 	},
 
 	/**
-		* Returns an array of the streams stored in localStorage.
-		* @return {Array} The streams stored in localStorage.
+	* Returns an array of the streams stored in localStorage.
+	* @return {Array} The streams stored in localStorage.
 	*/
 	getStreams() {
 		let localStorage = window.localStorage.getItem("streams");
@@ -425,8 +424,8 @@ MT.streams = {
 	
 
 	/**
-		* Set the value for the recents object in localStorage.
-		* @param {String} streamsParm The list of streams to store in recents object in localStorage.
+	* Set the value for the recents object in localStorage.
+	* @param {String} streamsParm The list of streams to store in recents object in localStorage.
 	*/
 	setRecentStreams(recentStreamsParm="") {
 		log("MT.streams.setRecentStreams() - Begin");
@@ -440,8 +439,8 @@ MT.streams = {
 	},
 
 	/**
-		* Set the streams in localStorage with a collection of streams.
-		* @param {String} streamsParm The streams to store in localStorage.
+	* Set the streams in localStorage with a collection of streams.
+	* @param {String} streamsParm The streams to store in localStorage.
 	*/
 	setStreams(streamsParm) {
 		log("MT.streams.setStreams() - Begin");
@@ -457,8 +456,8 @@ MT.streams = {
 	},
 	
 	/**
-		* Update the current streams stored in localStorage.
-		* @param {Boolean} reordered If the user reordered the streams, we need to reload them based on the given order.
+	* Update the current streams stored in localStorage.
+	* @param {Boolean} reordered If the user reordered the streams, we need to reload them based on the given order.
 	*/
 	update(reordered=false) {
 		log("MT.streams.update() - Begin");
@@ -527,7 +526,7 @@ MT.streams = {
 	},
 
 	/**
-		* Update the current URL to include all current streams.
+	* Update the current URL to include all current streams.
 	*/
 	updateHistory() {
 		log("MT.streams.updateHistory() - Start");
@@ -554,9 +553,9 @@ MT.streams = {
 MT.util = {
 
 	/**
-		* Returns a count of how many streams are stored in localStorage.
-		* Warning: This does not reflect the state of the stream manager modal table.
-		* @return {Number} The number of streams.
+	* Returns a count of how many streams are stored in localStorage.
+	* Warning: This does not reflect the state of the stream manager modal table.
+	* @return {Number} The number of streams.
 	*/
 	streamCount() {
 		return MT.streams.getStreams().length;
