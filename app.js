@@ -36,15 +36,16 @@ app.use(
 );
 
 app.use(userAgent.express());
+
 app.get("/*", function(req, res) {
 	let streamsFromParms = [];
-  	streamsFromParms = req.params["0"].split("/").filter(String);
-  	res.render("index", {
-			streamsFromParms: streamsFromParms,
-			env: env,
-			isMobile: req.useragent.isMobile,
-			buildId: buildId
-  	});
+  streamsFromParms = req.params["0"].split("/").filter(String);
+  res.render("index", {
+		streamsFromParms: streamsFromParms,
+		env: env,
+		isMobile: req.useragent.isMobile,
+		buildId: buildId
+  });
 });
 
 module.exports = app;
