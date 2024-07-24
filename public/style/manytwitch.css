@@ -12,6 +12,11 @@
   --purple-form-control-focus: rgb(182, 101, 226);
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 a {
   color: rgb(255, 255, 255) !important;
 }
