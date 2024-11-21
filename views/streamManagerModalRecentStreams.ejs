@@ -1,40 +1,40 @@
 <br />
 
 <button id="toggle-button"
-				class="btn btn-secondary float-end" 
-				type="button"
-				title="Toggle the recent streams list."
-				data-bs-toggle="collapse" 
-				data-bs-target="#recents-table-container" 
-				aria-expanded="false" 
-				aria-controls="recents-table-container">
+        class="btn btn-secondary float-end" 
+        type="button"
+        title="Toggle the recent streams list."
+        data-bs-toggle="collapse" 
+        data-bs-target="#recents-table-container" 
+        aria-expanded="false" 
+        aria-controls="recents-table-container">
   <i class="fa fa-solid fa-caret-down"></i>
-	&nbsp;Recents
+  &nbsp;Recents
 </button>
 
 <br />
 <br />
 
 <div id="recents-table-container"
-	 	 class="collapse">
-  	<table id="recents-table"
-					 class="table table-striped stream-list streams-list-table">
-		<thead>
-			<tr>
-				<th colspan=2>
-					Recent streams
-					<a href="javascript:;"
-						 id="clear-all-recent-streams-btn"
-						 class="btn btn-danger float-end"
-						 title="Clear the list of recent streams."
-						 aria-label="Clear the list of recent streams."
-						 onclick="if(confirm('Are you sure?'))MT.manager.removeFromRecentsTable('', true);">
-						<i class="fa fa-trash"></i>
-						&nbsp;&nbsp;Clear all
-					</a>
-				</th>
-			</tr>
-		</thead>
-		<tbody id="recent-streams-list-tbody"></tbody>
-	</table>
+      class="collapse">
+    <table id="recents-table"
+            class="table table-striped stream-list streams-list-table">
+    <thead>
+      <tr>
+        <th colspan=2>
+          Recent streams
+          <a href="javascript:;"
+              id="clear-all-recent-streams-btn"
+              class="btn btn-danger float-end"
+              title="Clear the list of recent streams."
+              aria-label="Clear the list of recent streams."
+              onclick="if(confirm('Are you sure?'))MT.manager.removeFromRecentsTable('', true);">
+            <i class="fa fa-trash"></i>
+            &nbsp;&nbsp;Clear all
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="recent-streams-list-tbody"></tbody>
+  </table>
 </div>

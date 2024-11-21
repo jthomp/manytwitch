@@ -14,8 +14,7 @@
         </div>
       </div>
       <div class="modal-body">
-        <form id="new_stream_form" 
-            name="new_stream_form">
+        <form id="new_stream_form" name="new_stream_form">
           <div class="input-group mb-3">
             <input type="text"
                     name="new_stream"
@@ -43,6 +42,16 @@
       <%- include("streamManagerModalRecentStreams") %>
     </div>
     <div class="modal-footer">
+      <button type="button"
+              class="btn btn-purple"
+              id="list-on-twitch-btn"
+              rel="nofollow"
+              target="_blank"
+              title="See the list of creators you're following on Twitch who are live. Opens a new window."
+              aria-label="See the list of creators you're following on Twitch who are live. Opens a new window."
+              onclick="MT.manager.openFollowingWindow();">
+          <i class="fa-solid fa-user"></i>&nbsp;&nbsp;Go to Twitch
+      </button>
       <button type="button" 
               class="btn btn-primary"
               id="save-btn"
@@ -58,7 +67,6 @@
 <input type="hidden" id="order-changed" value="false" />
 
 <script type="text/javascript">
-
   const addStreamBtn = document.getElementById("add-stream-btn");
   const newStreamInput = document.getElementById("new_stream");
   const autoCompleteResultsList = document.getElementById("autocomplete-results");

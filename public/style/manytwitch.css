@@ -1,8 +1,8 @@
 /**
- * ManyTwitch
- * Copyright (C) Justin Thompson (Antillian)
- * https://www.github.com/jthomp
- * ManyTwitch is not affiliated with Twitch or Amazon
+  * ManyTwitch
+  * Copyright (C) Justin Thompson (Antillian)
+  * https://www.github.com/jthomp
+  * ManyTwitch is not affiliated with Twitch or Amazon.
 */
 
 :root {
@@ -96,7 +96,7 @@ a {
   margin: 0 auto;
   display: block;
   text-align: center;
-  min-width: 50%;
+  min-width: 40%;
 }
 
 #default a {
@@ -104,7 +104,7 @@ a {
 }
 
 #default button {
-  padding: 1rem;
+  padding: 0.75rem;
   font-size: 1.75em;
 }
 
@@ -162,7 +162,7 @@ a {
 
 #streams-modal #streams-manager-default-content {
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.25rem;
 }
 
 #footer {
