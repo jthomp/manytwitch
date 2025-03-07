@@ -1,135 +1,135 @@
 <!doctype html>
 <html lang="en">
-	<%- include("head") %>
-	<body data-env="<%- env %>" 
-				data-mobile="<%- isMobile %>"
-				data-version="<%- buildId %>"
-				onmouseenter="document.getElementById('manage-btn-btns').style.display='block';">
-		<div id="alert-placeholder"></div>
-		<div id="container">
-			<noscript>
-				<div class="alert alert-danger strong text-center">ManyTwitch works best with JavaScript enabled</div>
-			</noscript>
-			<%- include("mainActionBar") %>
-			<%- include("defaultContent") %>
-			<div id="streams-container">
-				&nbsp;
-			</div>
-		</div>
+  <%- include("head") %>
+  <body data-env="<%- env %>" 
+          data-mobile="<%- isMobile %>"
+          data-version="<%- buildId %>"
+          onmouseover="document.getElementById('manage-btn-btns').style.display='block';">
+    <div id="alert-placeholder"></div>
+    <div id="container">
+      <noscript>
+        <div class="alert alert-danger strong text-center">ManyTwitch works best with JavaScript enabled</div>
+      </noscript>
+      <%- include("mainActionBar") %>
+      <%- include("defaultContent") %>
+      <div id="streams-container">
+        &nbsp;
+      </div>
+    </div>
 
-		<div id="stream-manager">
-			<%- include("streamManagerModal") %>
-		</div>    
+    <div id="stream-manager">
+      <%- include("streamManagerModal") %>
+    </div>    
 
-		<%- include("newStreamTemplate") %>
-		<%- include("donateModal") %>
-	
-		<script defer src="/js/pwa.js"></script>
+    <%- include("newStreamTemplate") %>
+    <%- include("donateModal") %>
+  
+    <script defer src="/js/pwa.js"></script>
 
-		<script type="text/javascript">
-			const manageBtn = document.getElementById("manage-btn");
-			const manageBtnBtns = document.getElementById("manage-btn-btns");
-			const streamsModal = document.getElementById("streams-modal");
-			const body = document.getElementsByTagName("body")[0];
+    <script type="text/javascript">
+      const manageBtn = document.getElementById("manage-btn");
+      const manageBtnBtns = document.getElementById("manage-btn-btns");
+      const streamsModal = document.getElementById("streams-modal");
+      const body = document.getElementsByTagName("body")[0];
 
-			window.addEventListener("DOMContentLoaded", (event) => {
-				MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
-				MT.streams.update();
+      window.addEventListener("DOMContentLoaded", (event) => {
+        MT.streams.setStreams("<%= streamsFromParms %>"); // init local storage item.
+        MT.streams.update();
 
-				manageBtn.addEventListener("mouseleave", (event) => {
-					setTimeout(() => {
-						manageBtnBtns.style.display = "none";
-					}, 10000);
-				});
+        manageBtn.addEventListener("mouseleave", (event) => {
+          setTimeout(() => {
+            manageBtnBtns.style.display = "none";
+          }, 10000);
+        });
 
-				body.addEventListener("touchstart", (event) => {
-					manageBtnBtns.style.display = "block";
-				});
+        body.addEventListener("touchstart", (event) => {
+          manageBtnBtns.style.display = "block";
+        });
 
-				body.addEventListener("touchend", (event) => {
-					setTimeout(() => {
-						manageBtnBtns.style.display = "none";
-					}, 10000);
-				});
-			});
+        body.addEventListener("touchend", (event) => {
+          setTimeout(() => {
+            manageBtnBtns.style.display = "none";
+          }, 10000);
+        });
+      });
 
-			streamsModal.addEventListener("show.bs.modal", (event) => {
-				MT.manager.show();
-			});
+      streamsModal.addEventListener("show.bs.modal", (event) => {
+        MT.manager.show();
+      });
 
-			streamsModal.addEventListener("shown.bs.modal", (event) => {
-				MT.manager.shown();
-			});
+      streamsModal.addEventListener("shown.bs.modal", (event) => {
+        MT.manager.shown();
+      });
 
-			streamsModal.addEventListener("hidden.bs.modal", (event) => {
-				MT.manager.hidden();
-			});
+      streamsModal.addEventListener("hidden.bs.modal", (event) => {
+        MT.manager.hidden();
+      });
 
-			streamsModal.addEventListener("keydown", (event) => {
-				if (event.ctrlKey || event.metaKey) {
-					switch (String.fromCharCode(event.which).toLowerCase()) {
-						case "s":
-							event.preventDefault();
-							document.getElementById("save-btn").click();
-							break;
-					}
-				}
-			});
+      streamsModal.addEventListener("keydown", (event) => {
+        if (event.ctrlKey || event.metaKey) {
+          switch (String.fromCharCode(event.which).toLowerCase()) {
+            case "s":
+              event.preventDefault();
+              document.getElementById("save-btn").click();
+              break;
+          }
+        }
+      });
 
-			document.getElementById("save-btn").addEventListener("click", (event) => {
-				let streamsList = document.getElementsByClassName("streams-modal-table-tr");
-				let streams = MT.streams.getStreams();
-				let newStreams = [];
-				const orderChangedElement = document.getElementById("order-changed");
+      document.getElementById("save-btn").addEventListener("click", (event) => {
+        let streamsList = document.getElementsByClassName("streams-modal-table-tr");
+        let streams = MT.streams.getStreams();
+        let newStreams = [];
+        const orderChangedElement = document.getElementById("order-changed");
 
-				if (orderChangedElement.checked) {
-					MT.streams.setStreams("");
-					streams = MT.streams.getStreams(); // reload our streams.
-				}
+        if (orderChangedElement.checked) {
+          MT.streams.setStreams("");
+          streams = MT.streams.getStreams(); // reload our streams.
+        }
 
-				Array.from(streamsList).forEach(element => {
-					newStreams.push(element.dataset.streamName);
-				});
+        Array.from(streamsList).forEach(element => {
+          newStreams.push(element.dataset.streamName);
+        });
 
-				MT.streams.setStreams(newStreams.join(","));
-				MT.streams.update(orderChangedElement.checked);
-				orderChangedElement.checked = false;
-			});
+        MT.streams.setStreams(newStreams.join(","));
+        MT.streams.update(orderChangedElement.checked);
+        orderChangedElement.checked = false;
+      });
 
-			manageBtn.addEventListener("mouseenter", (event) => {
-				manageBtn.style.opacity = 1.0;
-			});
+      manageBtn.addEventListener("mouseenter", (event) => {
+        manageBtn.style.opacity = 1.0;
+      });
 
-			manageBtn.addEventListener("mouseleave", (event) => {
-				manageBtn.style.opacity = 0.5;
-			});
+      manageBtn.addEventListener("mouseleave", (event) => {
+        manageBtn.style.opacity = 0.5;
+      });
 
-			setInterval(() => {
-				navigator.serviceWorker.controller.postMessage({ type: "CHECK_FOR_UPDATES" });
-			}, 24 * 60 * 60 * 1000);
+      setInterval(() => {
+        navigator.serviceWorker.controller.postMessage({ type: "CHECK_FOR_UPDATES" });
+      }, 24 * 60 * 60 * 1000);
 
-			navigator.serviceWorker.addEventListener("message", (event) => {
-				if (event.data && event.data.type === "UPDATE_AVAILABLE") {
-					console.log("Update available");
-					if (prompt("There is an update available. Would you like to install it now?")) {
-						navigator.serviceWorker.controller.postMessage({ type: "INSTALL_UPDATE" });
-					}
-				}
-			});
+      navigator.serviceWorker.addEventListener("message", (event) => {
+        if (event.data && event.data.type === "UPDATE_AVAILABLE") {
+          console.log("Update available");
+          if (prompt("There is an update available. Would you like to install it now?")) {
+            navigator.serviceWorker.controller.postMessage({ type: "INSTALL_UPDATE" });
+          }
+        }
+      });
 
-			navigator.serviceWorker.addEventListener("message", (event) => {
-				if (event.data && event.data.type === "INSTALL_UPDATE") {
-					console.log("Installing update");
-					window.location.reload(true);
-				}
-			});
-		</script>
+      navigator.serviceWorker.addEventListener("message", (event) => {
+        if (event.data && event.data.type === "INSTALL_UPDATE") {
+          console.log("Installing update");
+          window.location.reload(true);
+        }
+      });
+    </script>
 
-		<%- include("analytics") %>
-		<script defer src="/js/bootstrap.min.js"></script>
-		<script defer src="/js/handlebars.js"></script>
-		<script defer src="/js/manytwitch.js"></script>
-		<script defer src="/js/express-useragent.min.js"></script>
-		<script defer src="/js/all.min.js"></script>
-	</body>
+    <%- include("analytics") %>
+    <script defer src="/js/bootstrap.min.js"></script>
+    <script defer src="/js/handlebars.js"></script>
+    <script defer src="/js/manytwitch.js"></script>
+    <script defer src="/js/express-useragent.min.js"></script>
+    <script defer src="/js/all.min.js"></script>
+  </body>
 </html>
