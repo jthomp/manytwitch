@@ -104,25 +104,7 @@
         manageBtn.style.opacity = 0.5;
       });
 
-      setInterval(() => {
-        navigator.serviceWorker.controller.postMessage({ type: "CHECK_FOR_UPDATES" });
-      }, 24 * 60 * 60 * 1000);
-
-      navigator.serviceWorker.addEventListener("message", (event) => {
-        if (event.data && event.data.type === "UPDATE_AVAILABLE") {
-          console.log("Update available");
-          if (prompt("There is an update available. Would you like to install it now?")) {
-            navigator.serviceWorker.controller.postMessage({ type: "INSTALL_UPDATE" });
-          }
-        }
-      });
-
-      navigator.serviceWorker.addEventListener("message", (event) => {
-        if (event.data && event.data.type === "INSTALL_UPDATE") {
-          console.log("Installing update");
-          window.location.reload(true);
-        }
-      });
+      // PWA update handling is now managed in pwa.js
     </script>
 
     <%- include("analytics") %>

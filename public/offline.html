@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ManyTwitch - Offline</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .offline-container {
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            color: #9147ff;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin-bottom: 1.5em;
+            color: #ccc;
+        }
+        .offline-icon {
+            font-size: 5em;
+            margin-bottom: 0.3em;
+            opacity: 0.8;
+        }
+        button {
+            background-color: #9147ff;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #772ce8;
+        }
+        button:active {
+            background-color: #5c16c5;
+        }
+        .status-message {
+            margin-top: 2em;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        <h1>You're Offline</h1>
+        <p>It looks like you've lost your internet connection. ManyTwitch needs an active connection to stream content from Twitch.</p>
+        <button onclick="location.reload()">Try Again</button>
+        <p class="status-message">We'll automatically try to reconnect when your connection is restored.</p>
+    </div>
+    
+    <script>
+        // Auto-refresh when connection is restored
+        window.addEventListener('online', function() {
+            location.reload();
+        });
+        
+        // Periodically check connection
+        setInterval(function() {
+            fetch('/').then(function() {
+                location.reload();
+            }).catch(function() {
+                // Still offline
+            });
+        }, 30000); // Check every 30 seconds
+    </script>
+</body>
+</html>
