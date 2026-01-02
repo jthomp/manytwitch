@@ -26,7 +26,7 @@
                     autocomplete="off"
                     autocorrect="off"
                     spellcheck="false"
-                    autocapitalize="none" />
+                    autocapitalize="none">
             <button type="button"
                     class="btn btn-success"
                     id="add-stream-btn"
@@ -63,8 +63,9 @@
     </div>
   </div>
 </div>
+</div>
 
-<input type="hidden" id="order-changed" value="false" />
+<input type="hidden" id="order-changed" value="false">
 
 <script type="text/javascript">
   const addStreamBtn = document.getElementById("add-stream-btn");
@@ -74,12 +75,18 @@
   const recentStreamsListContainer = document.getElementById("recents-table-container");
   const toggleButton = document.getElementById("toggle-button");
 
-  newStreamInput.addEventListener("keypress", (event) => {
-    if (event.keyCode == 13) {
-      document.getElementById("add-stream-btn").click();
+  newStreamInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
       event.preventDefault();
+      const addBtn = document.getElementById("add-stream-btn");
+      if (!addBtn.disabled) {
+        addBtn.click();
+      }
       return false;
     }
+  });
+
+  newStreamInput.addEventListener("input", (event) => {
     showAutocompleteResults(newStreamInput.value);
   });
 

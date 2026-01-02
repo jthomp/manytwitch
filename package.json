@@ -22,10 +22,12 @@
 	},
 	"devDependencies": {
 		"@faker-js/faker": "^7.3.0",
+		"chai": "^6.2.2",
 		"got": ">=12.1.0",
 		"jake": ">=10.8.5",
 		"jsdom": "20.0.0",
 		"jsdom-global": "3.0.2",
-		"minimatch": ">=5.1.0"
+		"minimatch": ">=5.1.0",
+		"mocha": "^11.7.5"
 	}
 }
