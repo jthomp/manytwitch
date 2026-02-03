@@ -1,10 +1,13 @@
-<script id="streams-modal-new-stream-template" 
+<script id="streams-modal-new-stream-template"
 				type="text/x-handlebars-template">
-	<tr id="tr-{{stream}}" 
+	<tr id="tr-{{stream}}"
 			class="streams-modal-table-tr"
 			data-stream-name="{{stream}}">
 		<td colspan=2>
 			<div class="stream-row-container">
+				<span class="drag-handle" title="Drag to reorder">
+					<i class="fa fa-grip-vertical"></i>
+				</span>
 				<input id="streams_{{stream}}"
 								type="hidden"
 								value="{{stream}}"
