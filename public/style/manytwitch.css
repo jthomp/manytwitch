@@ -150,6 +150,36 @@ a {
 #streams-modal table.streams-list-table tbody tr td div.stream-row-container {
   float: left;
   padding-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Drag handle styles */
+.drag-handle {
+  cursor: grab;
+  color: rgb(150, 150, 150);
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.drag-handle:hover {
+  color: rgb(255, 255, 255);
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+/* Drag and drop states */
+#streams-modal table.streams-list-table tbody tr.dragging {
+  background-color: var(--purple-bg-color) !important;
+  opacity: 0.6;
+}
+
+#streams-modal table.streams-list-table tbody tr.drag-over {
+  border-top: 2px solid var(--purple-bg-color) !important;
 }
 
 #streams-modal table.streams-list-table tbody tr td {
@@ -225,8 +255,3 @@ a {
 }
 
 /* autocomplete */
-
-html {
-  opacity: 1 !important;
-  visibility: visible !important;
-}

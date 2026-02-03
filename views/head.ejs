@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Watch multiple live streams at once with ManyTwitch. ManyTwitch makes it easy to enjoy multiple gaming and esports streams simultaneously. Try it out!" />
 	<meta name="keywords" content="twitch, multiple twitch, multiple twitch streams, many twitch, manytwitch, many twitch streams, watch twitch mobile, watch multiple twitch streams mobile, watch multiple twitch streams windows, watch multiple twitch streams mac, watch multiple twitch streams macos, watch multiple twitch streams linux, live streaming, multi-mwitch, twitch.tv alternative, watch multiple streams, gaming live streams, esports live streams, stream aggregator, stream multiple games, live gaming platform, twitch stream manager">
-	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
 	<meta property="og:title" content="ManyTwitch" />
 	<meta property="og:url" content="https://www.manytwitch.app/" />
 	<meta name="theme-color" content="rgb(0,0,0)" />
@@ -15,19 +16,31 @@
 	<title>ManyTwitch &bull; Watch multiple Twitch streams</title>
 	<link rel="manifest" href="/manifest.json" />
 	
-	<link rel="stylesheet" href="/style/manytwitch.css" media="print" onload="this.media='all'">
-	<noscript><link rel="stylesheet" href="/style/manytwitch.css"></noscript>
-
-	<link rel="preload" href="/style/bootstrap-dark.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<noscript><link rel="stylesheet" href="/style/bootstrap-dark.min.css"></noscript>
-
-	<link rel="preload" href="/style/solid.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<noscript><link rel="stylesheet" href="/style/solid.min.css"></noscript>
-
 	<style>
 		body { background-color: rgb(0,0,0) !important; }
-		html { visibility: hidden; opacity: 0; }
+		html {
+			visibility: hidden;
+			opacity: 0;
+		}
+		html.ready {
+			visibility: visible;
+			opacity: 1;
+			transition: opacity 0.15s ease-in;
+		}
 	</style>
+	<script>
+		// Fallback: show page after 2 seconds if CSS hasn't loaded
+		setTimeout(function() { document.documentElement.classList.add('ready'); }, 2000);
+	</script>
+
+	<link rel="stylesheet" href="/style/manytwitch.css" media="print" onload="this.media='all'; window.cssLoaded = (window.cssLoaded || 0) + 1; if(window.cssLoaded >= 3) document.documentElement.classList.add('ready');">
+	<noscript><link rel="stylesheet" href="/style/manytwitch.css"></noscript>
+
+	<link rel="preload" href="/style/bootstrap-dark.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'; window.cssLoaded = (window.cssLoaded || 0) + 1; if(window.cssLoaded >= 3) document.documentElement.classList.add('ready');">
+	<noscript><link rel="stylesheet" href="/style/bootstrap-dark.min.css"></noscript>
+
+	<link rel="preload" href="/style/solid.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'; window.cssLoaded = (window.cssLoaded || 0) + 1; if(window.cssLoaded >= 3) document.documentElement.classList.add('ready');">
+	<noscript><link rel="stylesheet" href="/style/solid.min.css"></noscript>
 
 	<link rel="apple-touch-startup-image" href="public/images/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
 	<link rel="apple-touch-startup-image" href="public/images/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">

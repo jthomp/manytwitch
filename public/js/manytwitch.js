@@ -14,6 +14,7 @@ MT["manager"] = {}; // the stream manager modal.
 MT["streams"] = {}; // managing streams.
 MT["util"] = {};   // misc. utils.
 MT["settings"] = {}; // user settings (currently unused.)
+MT["dragDrop"] = {}; // drag and drop functionality for stream reordering.
 
 /**
   * Recalculate the size of the streams if the window is resized.
@@ -70,7 +71,7 @@ MT.manager = {
         let template = Handlebars.compile(source);
         let context = { stream: recentStreamParm };
         let html = template(context);
-        recentStreamsTable.innerHTML += html;
+        recentStreamsTable.insertAdjacentHTML("beforeend", html);
         log(`\t Added stream: ${recentStreamParm}`);
       }
     }
@@ -99,7 +100,7 @@ MT.manager = {
       let context = { stream: newStream };
       let html = template(context);
 
-      streamsTable.innerHTML += html;
+      streamsTable.insertAdjacentHTML("beforeend", html);
       newStreamField.value = "";
       saveBtn.removeAttribute("disabled");
       MT.manager.toggleAddButton();
@@ -146,6 +147,9 @@ MT.manager = {
     addStreamBtn.setAttribute("disabled", "disabled");
     autocompleteResultsList.innerHTML = "";
     autocompleteResultsList.style.display = "none";
+
+    // Clean up drag and drop listeners
+    MT.dragDrop.cleanup();
 
     log("MT.manager.hidden() - End");
   },
@@ -274,6 +278,9 @@ MT.manager = {
     }
 
     newStreamInput.focus();
+
+    // Initialize drag and drop for stream reordering
+    MT.dragDrop.init();
 
     log("MT.manager.shown() - End");
   },
@@ -561,4 +568,183 @@ MT.util = {
     return MT.streams.getStreams().length;
   }
 
+},
+
+// drag and drop functionality for stream reordering using mouse events.
+MT.dragDrop = {
+  draggedElement: null,
+  isDragging: false,
+  boundHandlers: null,
+
+  /**
+    * Initialize drag and drop event listeners on the streams table.
+  */
+  init() {
+    log("MT.dragDrop.init() - Begin");
+
+    const tbody = document.getElementById("streams-list-tbody");
+    if (!tbody) {
+      log("MT.dragDrop.init() - No tbody found");
+      return;
+    }
+
+    // Create bound handlers if they don't exist
+    if (!MT.dragDrop.boundHandlers) {
+      MT.dragDrop.boundHandlers = {
+        mousedown: MT.dragDrop.handleMouseDown.bind(MT.dragDrop),
+        mousemove: MT.dragDrop.handleMouseMove.bind(MT.dragDrop),
+        mouseup: MT.dragDrop.handleMouseUp.bind(MT.dragDrop)
+      };
+    }
+
+    // Remove existing listeners first to prevent duplicates
+    tbody.removeEventListener("mousedown", MT.dragDrop.boundHandlers.mousedown);
+    document.removeEventListener("mousemove", MT.dragDrop.boundHandlers.mousemove);
+    document.removeEventListener("mouseup", MT.dragDrop.boundHandlers.mouseup);
+
+    // Add mousedown listener to tbody
+    tbody.addEventListener("mousedown", MT.dragDrop.boundHandlers.mousedown);
+
+    log("MT.dragDrop.init() - End");
+  },
+
+  /**
+    * Handle mouse down on a drag handle.
+    * @param {MouseEvent} event The mouse event.
+  */
+  handleMouseDown(event) {
+    // Only start drag if clicking on the drag handle
+    const handle = event.target.closest(".drag-handle");
+    if (!handle) return;
+
+    const row = event.target.closest(".streams-modal-table-tr");
+    if (!row) return;
+
+    event.preventDefault();
+
+    this.draggedElement = row;
+    this.isDragging = true;
+    row.classList.add("dragging");
+
+    // Add document-level listeners for move and up
+    document.addEventListener("mousemove", this.boundHandlers.mousemove);
+    document.addEventListener("mouseup", this.boundHandlers.mouseup);
+
+    log(`MT.dragDrop.handleMouseDown() - Started dragging: ${row.dataset.streamName}`);
+  },
+
+  /**
+    * Handle mouse move during drag.
+    * @param {MouseEvent} event The mouse event.
+  */
+  handleMouseMove(event) {
+    if (!this.isDragging || !this.draggedElement) return;
+
+    const tbody = document.getElementById("streams-list-tbody");
+    const rows = Array.from(tbody.querySelectorAll(".streams-modal-table-tr"));
+
+    // Remove drag-over from all rows first
+    rows.forEach(row => row.classList.remove("drag-over"));
+
+    // Find which row we're hovering over
+    for (const row of rows) {
+      if (row === this.draggedElement) continue;
+
+      const rect = row.getBoundingClientRect();
+      if (event.clientY >= rect.top && event.clientY <= rect.bottom) {
+        row.classList.add("drag-over");
+        break;
+      }
+    }
+  },
+
+  /**
+    * Handle mouse up to complete drag.
+    * @param {MouseEvent} event The mouse event.
+  */
+  handleMouseUp(event) {
+    if (!this.isDragging || !this.draggedElement) {
+      this.cleanup();
+      return;
+    }
+
+    const tbody = document.getElementById("streams-list-tbody");
+    const rows = Array.from(tbody.querySelectorAll(".streams-modal-table-tr"));
+
+    // Find the target row (the one with drag-over class)
+    const targetRow = rows.find(row => row.classList.contains("drag-over"));
+
+    if (targetRow && targetRow !== this.draggedElement) {
+      const draggedIndex = rows.indexOf(this.draggedElement);
+      const targetIndex = rows.indexOf(targetRow);
+
+      if (draggedIndex < targetIndex) {
+        targetRow.parentNode.insertBefore(this.draggedElement, targetRow.nextSibling);
+      } else {
+        targetRow.parentNode.insertBefore(this.draggedElement, targetRow);
+      }
+
+      // Mark that the order has changed
+      const orderChangedElement = document.getElementById("order-changed");
+      if (orderChangedElement) {
+        orderChangedElement.checked = true;
+      }
+
+      // Enable save button
+      const saveBtn = document.getElementById("save-btn");
+      if (saveBtn) {
+        saveBtn.removeAttribute("disabled");
+      }
+
+      log(`MT.dragDrop.handleMouseUp() - Dropped ${this.draggedElement.dataset.streamName} ${draggedIndex < targetIndex ? "after" : "before"} ${targetRow.dataset.streamName}`);
+    }
+
+    // Clean up
+    this.resetDragState();
+  },
+
+  /**
+    * Reset the drag state without removing listeners.
+  */
+  resetDragState() {
+    if (this.draggedElement) {
+      this.draggedElement.classList.remove("dragging");
+    }
+
+    document.querySelectorAll(".streams-modal-table-tr.drag-over").forEach(tr => {
+      tr.classList.remove("drag-over");
+    });
+
+    // Remove document-level listeners if bound handlers exist
+    if (this.boundHandlers) {
+      if (this.boundHandlers.mousemove) {
+        document.removeEventListener("mousemove", this.boundHandlers.mousemove);
+      }
+      if (this.boundHandlers.mouseup) {
+        document.removeEventListener("mouseup", this.boundHandlers.mouseup);
+      }
+    }
+
+    this.draggedElement = null;
+    this.isDragging = false;
+  },
+
+  /**
+    * Clean up drag and drop state and listeners when modal is hidden.
+  */
+  cleanup() {
+    log("MT.dragDrop.cleanup() - Begin");
+
+    this.resetDragState();
+
+    // Remove tbody listener
+    if (this.boundHandlers) {
+      const tbody = document.getElementById("streams-list-tbody");
+      if (tbody) {
+        tbody.removeEventListener("mousedown", this.boundHandlers.mousedown);
+      }
+    }
+
+    log("MT.dragDrop.cleanup() - End");
+  }
 };
