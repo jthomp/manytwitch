@@ -715,9 +715,15 @@ MT.dragDrop = {
       tr.classList.remove("drag-over");
     });
 
-    // Remove document-level listeners
-    document.removeEventListener("mousemove", this.boundHandlers.mousemove);
-    document.removeEventListener("mouseup", this.boundHandlers.mouseup);
+    // Remove document-level listeners if bound handlers exist
+    if (this.boundHandlers) {
+      if (this.boundHandlers.mousemove) {
+        document.removeEventListener("mousemove", this.boundHandlers.mousemove);
+      }
+      if (this.boundHandlers.mouseup) {
+        document.removeEventListener("mouseup", this.boundHandlers.mouseup);
+      }
+    }
 
     this.draggedElement = null;
     this.isDragging = false;
